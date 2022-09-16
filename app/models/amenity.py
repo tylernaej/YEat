@@ -28,4 +28,3 @@ class Amenity(db.Model):
             "id": self.id,
             "description": self.description
         }
-    

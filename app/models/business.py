@@ -17,8 +17,8 @@ class Business(db.Model):
     state = db.Column(db.String(50), nullable=False)
     zipcode = db.Column(db.String(50), nullable=False)
     country = db.Column(db.String(50), nullable=False)
-    latitude = db.Column(db.Integer, nullable=False)
-    longitude = db.Column(db.Integer, nullable=False)
+    latitude = db.Column(db.Float, nullable=False)
+    longitude = db.Column(db.Float, nullable=False)
     description = db.Column(db.String(50), nullable=False)
     price_range = db.Column(db.Integer, nullable=False)
 
@@ -29,7 +29,7 @@ class Business(db.Model):
     categories = db.relationship("Category", secondary=business_categories, back_populates='businesses', cascade="all, delete")
 
     def to_dict(self):
-        
+
         return {
             "id" : self.id,
             "ownerId" : self.owner_id,
