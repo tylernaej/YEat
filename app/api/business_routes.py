@@ -33,3 +33,8 @@ def get_businesses_of_current_user():
         biz_lst.append(dict_business)
 
     return {'businesses': [business for business in biz_lst]}
+
+@business_routes.route('/<business:id>')
+def get_business_by_id(id):
+    business = Business.query.get(id)
+    return business.to_dict()
