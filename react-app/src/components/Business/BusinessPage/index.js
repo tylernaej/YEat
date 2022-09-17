@@ -4,6 +4,15 @@ import { useParams } from "react-router-dom";
 
 import { readBizThunk } from "../../../store/business";
 
+//components
+import AboutInfo from "./AboutInfo";
+import AmenityInfo from "./AmenityInfo";
+import ContactInfo from "./ContactInfo";
+import HeaderInfo from "./HeaderInfo";
+import ReviewInfo from "./ReviewInfo";
+import Reviews from "./Reviews";
+
+
 function BizPage() {
     const { businessId } = useParams()
 
@@ -16,12 +25,21 @@ function BizPage() {
 
     useEffect(() => {
         dispatch(readBizThunk(businessId))
-        .then(() => setIsLoaded(true))
+            .then(() => setIsLoaded(true))
     }, [dispatch])
 
     return isLoaded && (
         <div>
-            {business.name}
+            <HeaderInfo business={business} />
+            <div>
+                <AboutInfo business={business} />
+                <AmenityInfo business={business} />
+                <ReviewInfo business={business} />
+                <Reviews business={business} />
+            </div>
+            <div>
+                <ContactInfo business={business} />
+            </div>
         </div>
     )
 }
