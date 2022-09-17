@@ -5,8 +5,11 @@ import { signUp } from '../../store/session';
 
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [profilePicture, setProfilePicture] = useState('')
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const user = useSelector(state => state.session.user);
@@ -38,6 +41,18 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
+  const updateFirstName = (e) => {
+    setFirstName(e.target.value);
+  }
+
+  const updateLastName = (e) => {
+    setLastName(e.target.value);
+  }
+
+  const updateProfilePicture = (e) => {
+    setProfilePicture(e.target.value);
+  }
+
   if (user) {
     return <Redirect to='/' />;
   }
@@ -50,10 +65,28 @@ const SignUpForm = () => {
         ))}
       </div>
       <div>
+        <label>First Name</label>
+        <input
+          type="text"
+          name="first name"
+          onChange={updateFirstName}
+          value={firstName}
+        ></input>
+      </div>
+      <div>
+        <label>Last Name</label>
+        <input
+          type="text"
+          name="username"
+          onChange={updateLastName}
+          value={lastName}
+        ></input>
+      </div>
+      <div>
         <label>User Name</label>
         <input
-          type='text'
-          name='username'
+          type="text"
+          name="username"
           onChange={updateUsername}
           value={username}
         ></input>
@@ -61,8 +94,8 @@ const SignUpForm = () => {
       <div>
         <label>Email</label>
         <input
-          type='text'
-          name='email'
+          type="text"
+          name="email"
           onChange={updateEmail}
           value={email}
         ></input>
@@ -70,8 +103,8 @@ const SignUpForm = () => {
       <div>
         <label>Password</label>
         <input
-          type='password'
-          name='password'
+          type="password"
+          name="password"
           onChange={updatePassword}
           value={password}
         ></input>
@@ -79,14 +112,23 @@ const SignUpForm = () => {
       <div>
         <label>Repeat Password</label>
         <input
-          type='password'
-          name='repeat_password'
+          type="password"
+          name="repeat_password"
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <div>
+        <label>Profile Picture</label>
+        <input
+          type="text"
+          name="profile picture"
+          onChange={updateProfilePicture}
+          value={profilePicture}
+        ></input>
+      </div>
+      <button type="submit">Sign Up</button>
     </form>
   );
 };
