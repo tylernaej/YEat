@@ -45,9 +45,29 @@ class Business(db.Model):
             "latitude" : self.latitude,
             "longitude" : self.longitude,
             "description" : self.description,
-            "priceRange" : self.priceRange
+            "priceRange" : self.price_range,
+            "categories": self.categories
         }
 
+    def to_dict_no_category(self):
+
+        return {
+            "id" : self.id,
+            "ownerId" : self.owner_id,
+            "name" : self.name,
+            "email" : self.email,
+            "phone" : self.phone,
+            "website" : self.website,
+            "address" : self.address,
+            "city" : self.city,
+            "state" : self.state,
+            "zipcode" : self.zipcode,
+            "country" : self.country,
+            "latitude" : self.latitude,
+            "longitude" : self.longitude,
+            "description" : self.description,
+            "priceRange" : self.price_range,
+        }
 
     def __repr__(self):
         return f'<{self.id}, {self.name}>'
