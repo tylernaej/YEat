@@ -44,7 +44,7 @@ function App() {
           <BizForm />
         </Route>
         <Route path='/businesses/:businessId'>
-           <BizPage />
+          <BizPage />
         </Route>
         <Route path='/businesses'>
           <BizList />

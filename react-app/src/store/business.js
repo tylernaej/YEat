@@ -82,7 +82,7 @@ export const createBizThunk = (payload) => async dispatch => {
     const data = await response.json()
 
     if (response.ok) {
-        await dispatch(getBizAction(data))
+        await dispatch(createBizAction(data))
     }
 
     return data
