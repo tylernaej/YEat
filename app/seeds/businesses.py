@@ -1,4 +1,8 @@
-from app.models import db, Business
+from app.models import db, Business, Amenity, Category
+# from .amenities import free_wifi, take_out, dine_in, delivery, reservations, vegetarian_friendly, accepts_credit_cards, accepts_apple_pay, accepts_android_pay, public_restrooms, kid_friendly, outdoor_seating, large_group_friendly, offers_catering, wheelchair_accessible
+
+
+
 
 def seed_businesses():
     business_1 = Business(
@@ -18,6 +22,19 @@ def seed_businesses():
         price_range = 2
     )
 
+    free_wifi = Amenity.query.get(1)
+    take_out = Amenity.query.get(2)
+    dine_in = Amenity.query.get(3)
+    chinese = Category.query.get(1)
+    japanese = Category.query.get(2)
+
+
+    business_1.amenities.append(free_wifi)
+    business_1.amenities.append(take_out)
+    business_1.amenities.append(dine_in)
+    business_1.categories.append(chinese)
+
+    
     business_2 = Business(
         owner_id = 1,
         name = "Granville",
@@ -34,6 +51,11 @@ def seed_businesses():
         description = "LA's Favorite Neighborhood Spot Since 2006. Come As You Are!",
         price_range = 2
     )
+
+    business_2.amenities.append(free_wifi)
+    business_2.amenities.append(take_out)
+    business_2.amenities.append(dine_in)
+    business_2.categories.append(japanese)
 
     db.session.add(business_1)
     db.session.add(business_2)

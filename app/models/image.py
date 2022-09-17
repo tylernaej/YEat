@@ -1,6 +1,5 @@
 from .db import db
 
-
 class Image(db.Model):
     __tablename__ = 'images'
 
