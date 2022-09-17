@@ -10,6 +10,7 @@ business_routes = Blueprint('businesses', __name__)
 def get_all_businesses():
 
     category = request.args.get('category')
+
     
     if category:
         cat_query_result = Category.query.filter(Category.category.ilike(f'%{category}%')).all()
