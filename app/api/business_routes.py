@@ -1,8 +1,10 @@
+from crypt import methods
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import User, Business, Category, Amenity, Image, Review
 from flask_login import current_user, login_user, logout_user, login_required
 from sqlalchemy.orm import joinedload
+from app.forms.business_form import CreateBusinessForm
 
 business_routes = Blueprint('businesses', __name__)
 
@@ -139,3 +141,11 @@ def get_amenities_by_business_id(id):
         amenities_lst.append(amenity.description)
     
     return {'amenities': amenities_lst}
+
+
+@business_routes.route('/', methods=['POST'])
+def create_a_business():
+    form = CreateBusinessForm()
+    data = request.form
+    print(data)
+    return 'Hi'
