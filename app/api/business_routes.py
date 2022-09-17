@@ -173,10 +173,65 @@ def create_a_business():
         db.session.commit()
         # print('\n\n\n\n', business.to_dict(), '\n\n\n\n')
         return business.to_dict()
-    print(form.errors)
+    # print(form.errors)
     errors = {
         "message": "Validation Error",
         "statusCode": 400,
         "errors": form.errors
     }
     return errors
+
+
+@business_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def edit_a_business(id):
+    business = Business.query.get(id)
+    if not business:
+        return {"message": "Business could not be found", "statusCode": 404}
+
+    if business.owner_id != current_user.id:
+        return {"message": "Forbidden", "statusCode": 403}
+
+    form = CreateBusinessForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+       
+        business.owner_id = current_user.id
+        business.address = form.address.data
+        business.city = form.city.data
+        business.state = form.state.data
+        business.country = form.country.data
+        business.zipcode = form.zipcode.data
+        business.latitude = form.latitude.data
+        business.longitude = form.longitude.data
+        business.description = form.description.data
+        business.price_range = form.priceRange.data
+        business.email = form.email.data
+        business.phone = form.phone.data
+        business.name = form.name.data
+        business.website = form.website.data
+        
+        db.session.commit()
+        return business.to_dict()
+    # print(form.errors)
+    errors = {
+        "message": "Validation Error",
+        "statusCode": 400,
+        "errors": form.errors
+    }
+    return errors
+
+@business_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_a_business(id):
+    business = Business.query.get(id)
+    if not business:
+        return {"message": "Business could not be found", "statusCode": 404}
+
+    if business.owner_id != current_user.id:
+        return {"message": "Forbidden", "statusCode": 403}
+
+    db.session.delete(business)
+    db.session.commit()
+    
+    return {  "message": "Successfully deleted", "statusCode": 200}
