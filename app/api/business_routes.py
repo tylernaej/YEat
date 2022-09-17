@@ -13,19 +13,42 @@ business_routes = Blueprint('businesses', __name__)
 def get_all_businesses():
 
     category = request.args.get('category')
+    name = request.args.get('name')
 
-    
-    if category:
-        cat_query_result = Category.query.filter(Category.category.ilike(f'%{category}%')).all()
-        
-        categories_lst = []
-        for category in cat_query_result:
-            dict_category = category.to_dict()
-            categories_lst.append(dict_category)
-
+    if category or name:
         business_lst = []
-        for category in categories_lst:
-            businesses = Business.query.filter(Business.categories)
+        if category:
+            cat_query_result = Category.query.filter(Category.category.ilike(f'%{category}%')).all()
+            
+            categories_lst = []
+            for category in cat_query_result:
+                dict_category = category.to_dict()
+                categories_lst.append(dict_category)
+            for category1 in categories_lst:
+                businesses = Business.query.all()
+                for business in businesses:
+                    dict_business = business.to_dict()
+                    biz_catetgory_lst = []
+                    for category in dict_business['categories']:
+                        dict_category = category.to_dict()
+                        biz_catetgory_lst.append(dict_category['category'])
+                    dict_business['categories'] = biz_catetgory_lst
+                    if category1['category'] in dict_business['categories']:
+                        business_lst.append(dict_business)
+        if name: 
+            name_query_result = Business.query.filter(Business.name.ilike(f'%{name}%')).all()
+            for business in name_query_result:
+                dict_business = business.to_dict()
+                biz_catetgory_lst = []
+                for category in dict_business['categories']:
+                    dict_category = category.to_dict()
+                    biz_catetgory_lst.append(dict_category['category'])
+                dict_business['categories'] = biz_catetgory_lst
+                if dict_business not in business_lst:
+                    business_lst.append(dict_business)
+
+
+        return {'businesses': business_lst}
 
 
     businesses = Business.query.all()
