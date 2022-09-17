@@ -109,3 +109,17 @@ def get_reviews_by_business_id(id):
         reviews_lst.append(dict_review)
 
     return {'Reviews': reviews_lst}
+
+
+@business_routes.route('/<int:id>/amenities')
+def get_amenities_by_business_id(id):
+
+    business = Business.query.get(id)
+    if not business:
+        return {"message": "Business could not be found", "statusCode": 404}
+
+    amenities_lst = []
+    for amenity in business.amenities:
+        amenities_lst.append(amenity.description)
+    
+    return {'amenities': amenities_lst}
