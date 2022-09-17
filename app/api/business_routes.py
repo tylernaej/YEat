@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import User, Business, Category, Amenity, Image, Review
 from flask_login import current_user, login_user, logout_user, login_required
@@ -8,6 +8,21 @@ business_routes = Blueprint('businesses', __name__)
 
 @business_routes.route('/')
 def get_all_businesses():
+
+    category = request.args.get('category')
+    
+    if category:
+        cat_query_result = Category.query.filter(Category.category.ilike(f'%{category}%')).all()
+        
+        categories_lst = []
+        for category in cat_query_result:
+            dict_category = category.to_dict()
+            categories_lst.append(dict_category)
+
+        business_lst = []
+        for category in categories_lst:
+            businesses = Business.query.filter(Business.categories)
+
 
     businesses = Business.query.all()
 
