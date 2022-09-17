@@ -19,13 +19,13 @@ def get_all_businesses():
         business_lst = []
         if category:
             cat_query_result = Category.query.filter(Category.category.ilike(f'%{category}%')).all()
+            businesses = Business.query.all()
             
             categories_lst = []
             for category in cat_query_result:
                 dict_category = category.to_dict()
                 categories_lst.append(dict_category)
             for category1 in categories_lst:
-                businesses = Business.query.all()
                 for business in businesses:
                     dict_business = business.to_dict()
                     biz_catetgory_lst = []
@@ -256,5 +256,5 @@ def delete_a_business(id):
 
     db.session.delete(business)
     db.session.commit()
-    
+
     return {  "message": "Successfully deleted", "statusCode": 200}
