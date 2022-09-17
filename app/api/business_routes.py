@@ -1,10 +1,7 @@
-from crypt import methods
-from xml.dom import ValidationErr
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, request
 from flask_login import login_required
 from app.models import User, Business, Category, Amenity, Image, Review, db
 from flask_login import current_user, login_user, logout_user, login_required
-from sqlalchemy.orm import joinedload
 from app.forms.business_form import CreateBusinessForm
 
 business_routes = Blueprint('businesses', __name__)
@@ -20,7 +17,7 @@ def get_all_businesses():
         if category:
             cat_query_result = Category.query.filter(Category.category.ilike(f'%{category}%')).all()
             businesses = Business.query.all()
-            
+
             categories_lst = []
             for category in cat_query_result:
                 dict_category = category.to_dict()
@@ -35,7 +32,7 @@ def get_all_businesses():
                     dict_business['categories'] = biz_catetgory_lst
                     if category1['category'] in dict_business['categories']:
                         business_lst.append(dict_business)
-        if name: 
+        if name:
             name_query_result = Business.query.filter(Business.name.ilike(f'%{name}%')).all()
             for business in name_query_result:
                 dict_business = business.to_dict()
@@ -54,8 +51,10 @@ def get_all_businesses():
     businesses = Business.query.all()
 
     biz_lst = []
-    for business in businesses: 
+    for business in businesses:
         dict_business= business.to_dict()
+        dict_business["numReviews"] = len(business.reviews)
+        dict_business["avgReviews"] = sum([review.rating for review in business.reviews]) / len(business.reviews)
         category_lst = []
         for category in business.categories:
             category_lst.append(category.category)
@@ -81,7 +80,7 @@ def get_businesses_of_current_user():
             category_lst.append(category.category)
         dict_business['categories'] = category_lst
         biz_lst.append(dict_business)
-    
+
 
     return {'businesses': [business for business in biz_lst]}
 
@@ -105,7 +104,7 @@ def get_business_by_id(id):
     # get all the images associated to the biz and add them as k/v pair list
     image_lst = []
     images = Image.query.filter(Image.business_id == id).all()
-    for image in images: 
+    for image in images:
         dict_image = image.to_dict()
         image_lst.append(dict_image)
     dict_business['images'] = image_lst
@@ -121,6 +120,10 @@ def get_business_by_id(id):
         dict_review = review.to_dict()
         review_lst.append(dict_review)
     dict_business['reviews'] = review_lst
+
+    # get total reviews and avg
+    dict_business["numReviews"] = len(business.reviews)
+    dict_business["avgReviews"] = sum([review.rating for review in business.reviews]) / len(business.reviews)
 
     # add the amenities as a k/v pair to the biz
     amenities_lst = []
@@ -163,7 +166,7 @@ def get_amenities_by_business_id(id):
     amenities_lst = []
     for amenity in business.amenities:
         amenities_lst.append(amenity.description)
-    
+
     return {'amenities': amenities_lst}
 
 
@@ -218,7 +221,7 @@ def edit_a_business(id):
     form = CreateBusinessForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-       
+
         business.owner_id = current_user.id
         business.address = form.address.data
         business.city = form.city.data
@@ -233,7 +236,7 @@ def edit_a_business(id):
         business.phone = form.phone.data
         business.name = form.name.data
         business.website = form.website.data
-        
+
         db.session.commit()
         return business.to_dict()
     # print(form.errors)
