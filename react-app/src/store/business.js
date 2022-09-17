@@ -11,6 +11,7 @@ const DELETE_BIZ = "biz/delete-biz"
 // Action Creators
 
 const getBizAction = payload => {
+    console.log(payload)
     return {
         type: GET_BIZ,
         payload
@@ -54,21 +55,73 @@ const deleteBizAction = payload => {
 
 // Thunk Action Creators
 
+export const getBizThunk = () => async dispatch => {
+    const response = await fetch('/api/businesses/')
+    const data = await response.json()
+
+    if (response.ok) {
+        await dispatch(getBizAction(data))
+    }
+
+    return data
+}
+
+export const getUsersBizThunk = () => async dispatch => {
+
+}
+
+export const createBizThunk = (payload) => async dispatch => {
+    const response = await fetch(
+        '/api/businesses',
+        {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        }
+    )
+    const data = await response.json()
+
+    if (response.ok) {
+        await dispatch(getBizAction(data))
+    }
+
+    return data
+}
+
+export const readBizThunk = (businessId) => async dispatch => {
+    const response = await fetch(`/api/businesses/${businessId}`)
+    const data = await response.json()
+
+    if (response.ok) {
+        await dispatch(readBizAction(data))
+    }
+
+    return data
+}
+
+export const updateBizThunk = () => async dispatch => {
+
+}
+
+export const deleteBizThunk = () => async dispatch => {
+
+}
+
 // Reducer
 
 const intitialState = {}
 
 const businessReducer = (state = intitialState, action) => {
-    let newState = {...state};
+    let newState = { ...state };
     switch (action.type) {
         case (GET_BIZ): {
-            action.payload.Businesses.forEach(business => {
+            action.payload.businesses.forEach(business => {
                 newState[business.id] = { ...newState[business.id], ...business }
             })
             return newState
         }
         case (GET_USERS_BIZ): {
-            action.payload.Businesses.forEach(business => {
+            action.payload.businesses.forEach(business => {
                 newState[business.id] = { ...newState[business.id], ...business }
             })
             return newState
