@@ -70,8 +70,22 @@ export const getUsersBizThunk = () => async dispatch => {
 
 }
 
-export const createBizThunk = () => async dispatch => {
+export const createBizThunk = (payload) => async dispatch => {
+    const response = await fetch(
+        '/api/businesses',
+        {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        }
+    )
+    const data = await response.json()
 
+    if (response.ok) {
+        await dispatch(getBizAction(data))
+    }
+
+    return data
 }
 
 export const readBizThunk = (businessId) => async dispatch => {

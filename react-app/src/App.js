@@ -11,6 +11,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import BizList from './components/Business/BusinessList';
 import BizPage from './components/Business/BusinessPage';
+import BizForm from './components/Business/CreateBusinessForm';
 
 import { authenticate } from './store/session';
 
@@ -38,6 +39,9 @@ function App() {
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/businesses/create'>
+          <BizForm />
         </Route>
         <Route path='/businesses/:businessId'>
            <BizPage />
