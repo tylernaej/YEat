@@ -10,6 +10,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import BizList from './components/Business/BusinessList';
+import BizPage from './components/Business/BusinessPage';
 
 import { authenticate } from './store/session';
 
@@ -37,6 +38,9 @@ function App() {
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/businesses/:businessId'>
+           <BizPage />
         </Route>
         <Route path='/businesses'>
           <BizList />

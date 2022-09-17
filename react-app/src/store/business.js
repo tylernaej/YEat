@@ -60,11 +60,37 @@ export const getBizThunk = () => async dispatch => {
     const data = await response.json()
 
     if (response.ok) {
-        console.log(data)
         await dispatch(getBizAction(data))
     }
 
     return data
+}
+
+export const getUsersBizThunk = () => async dispatch => {
+
+}
+
+export const createBizThunk = () => async dispatch => {
+
+}
+
+export const readBizThunk = (businessId) => async dispatch => {
+    const response = await fetch(`/api/businesses/${businessId}`)
+    const data = await response.json()
+
+    if (response.ok) {
+        await dispatch(readBizAction(data))
+    }
+
+    return data
+}
+
+export const updateBizThunk = () => async dispatch => {
+
+}
+
+export const deleteBizThunk = () => async dispatch => {
+
 }
 
 // Reducer
