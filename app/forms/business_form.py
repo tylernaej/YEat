@@ -9,7 +9,7 @@ def description_length(form, field):
     if len(description) > 50:
         raise ValidationError('Description must be 50 characters or less')
     elif len(description) < 10:
-        raise ValidationError('Description must be more 10 characters or more')
+        raise ValidationError('Description must be 10 characters or more')
 
 
 def valid_lat(form, field):
@@ -37,11 +37,11 @@ class CreateBusinessForm(FlaskForm):
     state = StringField('State', validators=[DataRequired()])
     country = StringField('Country', validators=[DataRequired()])
     zipcode = StringField('Zip Code', validators=[DataRequired()])
-    lat = IntegerField('Latitude', validators=[DataRequired(), valid_lat])
-    lng = IntegerField("Longitude", validators=[DataRequired(), valid_lng])
+    latitude = IntegerField('Latitude', validators=[DataRequired(), valid_lat])
+    longitude = IntegerField("Longitude", validators=[DataRequired(), valid_lng])
     description = StringField('Description', validators=[DataRequired(), description_length])
     priceRange = IntegerField('Price Range', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
-    phone_number = StringField('Phone Number', validators=[DataRequired()])
+    phone = StringField('Phone Number', validators=[DataRequired()])
     name = StringField('Name', validators=[DataRequired()])
-    website_url = StringField('Website URL')
+    website = StringField('Website URL')

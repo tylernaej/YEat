@@ -1,7 +1,8 @@
 from crypt import methods
+from xml.dom import ValidationErr
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
-from app.models import User, Business, Category, Amenity, Image, Review
+from app.models import User, Business, Category, Amenity, Image, Review, db
 from flask_login import current_user, login_user, logout_user, login_required
 from sqlalchemy.orm import joinedload
 from app.forms.business_form import CreateBusinessForm
@@ -143,9 +144,39 @@ def get_amenities_by_business_id(id):
     return {'amenities': amenities_lst}
 
 
-@business_routes.route('/', methods=['POST'])
+@business_routes.route('', methods=['POST'])
+@login_required
 def create_a_business():
     form = CreateBusinessForm()
-    data = request.form
-    print(data)
-    return 'Hi'
+    # data = request.form
+    # print('\n\n\n\n', form.data, '\n\n\n\n')
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        business = Business(
+            owner_id = current_user.id,
+            address = form.address.data,
+            city = form.city.data,
+            state = form.state.data,
+            country = form.country.data,
+            zipcode = form.zipcode.data,
+            latitude = form.latitude.data,
+            longitude = form.longitude.data,
+            description = form.description.data,
+            price_range = form.priceRange.data,
+            email = form.email.data,
+            phone = form.phone.data,
+            name = form.name.data,
+            website = form.website.data
+        )
+        # print('TEST 2', business.to_dict())
+        db.session.add(business)
+        db.session.commit()
+        # print('\n\n\n\n', business.to_dict(), '\n\n\n\n')
+        return business.to_dict()
+    print(form.errors)
+    errors = {
+        "message": "Validation Error",
+        "statusCode": 400,
+        "errors": form.errors
+    }
+    return errors
