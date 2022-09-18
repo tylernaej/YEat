@@ -117,8 +117,21 @@ export const updateBizThunk = ({businessId, business}) => async dispatch => {
     return data
 }
 
-export const deleteBizThunk = () => async dispatch => {
+export const deleteBizThunk = (businessId) => async dispatch => {
+    const response = await fetch(
+        `/api/businesses/${businessId}`,
+        {
+            method: "DELETE"
+        }
+    )
 
+    const data = await response.json()
+
+    if(response.ok){
+        await dispatch(deleteBizAction(businessId))
+    }
+    
+    return data
 }
 
 // Reducer

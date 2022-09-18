@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { readBizThunk, updateBizThunk } from "../../../store/business";
+import { updateBizThunk, deleteBizThunk } from "../../../store/business";
 
 function UpdateBizForm({ business }) {
     const dispatch = useDispatch()
@@ -75,6 +75,12 @@ function UpdateBizForm({ business }) {
         history.push(`/businesses/${business.id}/about`)
     }
 
+    const handleDelete = async e => {
+        e.preventDefault()
+        await dispatch(deleteBizThunk(business.id))
+        history.push(`/businesses`)
+    }
+
     return (
         <form onSubmit={handleSubmit}>
             <div>
@@ -131,6 +137,7 @@ function UpdateBizForm({ business }) {
             </div>
             <div>
                 <button type="submit">Submit</button>
+                <button onClick={handleDelete}>Delete</button>
             </div>
         </form>
     )
