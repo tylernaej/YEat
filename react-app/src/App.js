@@ -14,13 +14,14 @@ import BizPage from './components/Business/BusinessPage';
 import BizForm from './components/Business/CreateBusinessForm';
 
 import { authenticate } from './store/session';
+import UpdateBizForm from './components/Business/UpdateBusinessForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -40,8 +41,11 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <Route path='/businesses/create'>
+        <Route path='/create-business'>
           <BizForm />
+        </Route>
+        <Route path='/businesses/:businessId/edit'>
+          <UpdateBizForm />
         </Route>
         <Route path='/businesses/:businessId'>
           <BizPage />
@@ -50,7 +54,7 @@ function App() {
           <BizList />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />

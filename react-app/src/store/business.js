@@ -99,8 +99,22 @@ export const readBizThunk = (businessId) => async dispatch => {
     return data
 }
 
-export const updateBizThunk = () => async dispatch => {
+export const updateBizThunk = ({businessId, business}) => async dispatch => {
+    const response = await fetch(
+        `/api/business/${businessId}`,
+        {
+            method: "PUT",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(business)
+        }
+    )
+    const data = await response.json()
 
+    if (response.ok) {
+        await dispatch(updateBizAction(data))
+    }
+
+    return data
 }
 
 export const deleteBizThunk = () => async dispatch => {

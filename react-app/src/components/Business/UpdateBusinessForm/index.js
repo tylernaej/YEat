@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { createBizThunk } from "../../../store/business";
+import { readBizThunk, updateBizThunk } from "../../../store/business";
 
-function BizForm() {
+function UpdateBizForm() {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const sessionUser = useSelector(state => state.session.user)
+    const { businessId } = useParams()
 
-    const [name, setName] = useState('')
+    const sessionUser = useSelector(state => state.session.user)
+    const businesses = useSelector(state => state.businesses)
+    const business = businesses[Number(businessId)]
+
+    console.log(business)
+
+    const [name, setName] = useState(business ? business.name : '')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
     const [website, setWebsite] = useState('')
@@ -26,6 +32,12 @@ function BizForm() {
 
     const [validationErrors, setValidationErrors] = useState([])
     const [isSubmitted, setIsSubmitted] = useState(false)
+    const [isLoaded, setIsLoaded] = useState(false)
+
+    useEffect(() => {
+        dispatch(readBizThunk(businessId))
+        .then(setIsLoaded(true))
+    }, [dispatch])
 
     useEffect(() => {
         const errors = []
@@ -67,12 +79,14 @@ function BizForm() {
             priceRange
         }
 
-        const data = await dispatch(createBizThunk(newBiz))
+        const payload = { businessId, business: newBiz }
 
-        history.push(`/businesses/${data.id}`)
+        const data = await dispatch(updateBizThunk(payload))
+
+        history.push(`/businesses/${businessId}`)
     }
 
-    return (
+    return isLoaded && (
         <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="name">Name</label>
@@ -133,4 +147,4 @@ function BizForm() {
     )
 }
 
-export default BizForm
+export default UpdateBizForm
