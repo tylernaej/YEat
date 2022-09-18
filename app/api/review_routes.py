@@ -47,11 +47,25 @@ def edit_review(reviewId):
 @review_routes.route('/<int:reviewId>', methods=["DELETE"])
 @login_required
 def delete_review(reviewId):
-    pass
 
     # query for the review
+    review = Review.query.get(reviewId)
+
+    # if no review found
+    if not review:
+        #abort ?
+        pass
+
+    # if user is not the reviewer
+    if current_user != review.user_id:
+        #abort ?
+        pass
 
     # delete the review
+    db.session.delete(review)
+    db.session.commit()
+
+    return { "message": "Successfully deleted", "statusCode": 200 }
 
     # return success message
 
