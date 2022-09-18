@@ -1,0 +1,24 @@
+#all-amenities{
+    display: flex;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 10%;
+    width: 100%;
+    height: 30%;
+    font-size: large;
+}
+
+    #each-amenity{
+        display: flex;
+        width: 45%;
+        margin: 10px;
+        margin-left: 0px;
+    }
+
+        #actual-amenity{
+            margin-left: 10px;
+        }
+
+
