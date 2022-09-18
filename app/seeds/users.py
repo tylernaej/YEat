@@ -1,7 +1,7 @@
 from app.models import db, User
 
 
-# Adds a demo user, you can add other users here if you want
+# Adds a demo user, you can add other users here if you want.
 def seed_users():
     demo = User(
         first_name='Demo', last_name='User', username='Demo', email='demo@aa.io', password='password', profile_picture='https://cdn.allthings.how/wp-content/uploads/2020/11/allthings.how-how-to-change-your-picture-on-zoom-profile-picture.png')
