@@ -44,9 +44,6 @@ function App() {
         <Route path='/create-business'>
           <BizForm />
         </Route>
-        <Route path='/businesses/:businessId/edit'>
-          <UpdateBizForm />
-        </Route>
         <Route path='/businesses/:businessId'>
           <BizPage />
         </Route>

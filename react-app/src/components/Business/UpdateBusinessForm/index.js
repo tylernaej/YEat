@@ -4,17 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { readBizThunk, updateBizThunk } from "../../../store/business";
 
-function UpdateBizForm() {
+function UpdateBizForm({ business }) {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const { businessId } = useParams()
-
     const sessionUser = useSelector(state => state.session.user)
-    const businesses = useSelector(state => state.businesses)
-    const business = businesses[Number(businessId)]
-
-    console.log(business)
 
     const [name, setName] = useState(business ? business.name : '')
     const [email, setEmail] = useState('')
@@ -33,11 +27,6 @@ function UpdateBizForm() {
     const [validationErrors, setValidationErrors] = useState([])
     const [isSubmitted, setIsSubmitted] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false)
-
-    useEffect(() => {
-        dispatch(readBizThunk(businessId))
-        .then(setIsLoaded(true))
-    }, [dispatch])
 
     useEffect(() => {
         const errors = []
@@ -79,14 +68,14 @@ function UpdateBizForm() {
             priceRange
         }
 
-        const payload = { businessId, business: newBiz }
+        const payload = { businessId: business.id, business: newBiz }
 
         const data = await dispatch(updateBizThunk(payload))
 
-        history.push(`/businesses/${businessId}`)
+        history.push(`/businesses/${business.id}`)
     }
 
-    return isLoaded && (
+    return (
         <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="name">Name</label>
