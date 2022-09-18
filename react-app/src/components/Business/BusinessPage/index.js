@@ -10,7 +10,7 @@ import AmenityInfo from "./AmenityInfo";
 import ContactInfo from "./ContactInfo";
 import HeaderInfo from "./HeaderInfo";
 import ReviewInfo from "./ReviewInfo";
-import Reviews from "./Reviews";
+import ReviewsList from "./ReviewsList";
 
 
 function BizPage() {
@@ -26,6 +26,9 @@ function BizPage() {
     useEffect(() => {
         dispatch(readBizThunk(businessId))
             .then(() => setIsLoaded(true))
+
+            // make another fetch request for reviews of the business for more information
+            // add this when doing feature 2 - reviews
     }, [dispatch])
 
     return isLoaded && (
@@ -35,7 +38,7 @@ function BizPage() {
                 <AboutInfo business={business} />
                 <AmenityInfo business={business} />
                 <ReviewInfo business={business} />
-                <Reviews business={business} />
+                <ReviewsList business={business} />
             </div>
             <div>
                 <ContactInfo business={business} />
