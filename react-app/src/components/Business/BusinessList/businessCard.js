@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 function BizCard({ business }) {
     return (
-        <NavLink to={`/businesses/${business.id}`}>
+        <NavLink to={`/businesses/${business.id}/about`}>
             <p> {business.name} </p>
         </NavLink>
         // <div>
