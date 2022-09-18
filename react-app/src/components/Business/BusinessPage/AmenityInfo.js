@@ -25,8 +25,7 @@ function AmenityInfo({ business }){
                     <div id='all-amenities'>
                         {amenities.map(amenity => {
                             return (
-                            <>
-                                <div id='each-amenity' key={amenity.id}>
+                                <div id='each-amenity' key={amenity}>
                                     <div>
                                         {business.amenities.includes(amenity) ? checkmark : xmark}
                                     </div>
@@ -34,8 +33,6 @@ function AmenityInfo({ business }){
                                         {amenity}
                                     </div>
                                 </div>
-                                
-                            </>
                             );
                         })}
                     </div>
