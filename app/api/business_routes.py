@@ -53,8 +53,9 @@ def get_all_businesses():
     biz_lst = []
     for business in businesses:
         dict_business= business.to_dict()
-        dict_business["numReviews"] = len(business.reviews)
-        dict_business["avgReviews"] = sum([review.rating for review in business.reviews]) / len(business.reviews)
+        if business.reviews:
+            dict_business["numReviews"] = len(business.reviews)
+            dict_business["avgReviews"] = sum([review.rating for review in business.reviews]) / len(business.reviews)
         category_lst = []
         for category in business.categories:
             category_lst.append(category.category)
