@@ -3,6 +3,7 @@ import './headerInfo.css'
 
 function HeaderInfo({ business }){
         // console.log(business)
+        
     return (
         <div id='header-component'>
             <div id='row-1'>
@@ -32,7 +33,8 @@ function HeaderInfo({ business }){
             </div>
             <div id='row'>
                 <div id='business-images'>
-                    See {business.images.length} photos
+                    {business.images.length > 1 ? `See ${business.images.length} photos` : `See ${business.images.length} photo`}
+                    {/* See {business.images.length} photos */}
                 </div>
             </div>
         </div>
