@@ -82,7 +82,7 @@ export const createBizThunk = (payload) => async dispatch => {
     const data = await response.json()
 
     if (response.ok) {
-        await dispatch(getBizAction(data))
+        await dispatch(createBizAction(data))
     }
 
     return data
@@ -99,12 +99,39 @@ export const readBizThunk = (businessId) => async dispatch => {
     return data
 }
 
-export const updateBizThunk = () => async dispatch => {
+export const updateBizThunk = ({businessId, business}) => async dispatch => {
+    const response = await fetch(
+        `/api/businesses/${businessId}`,
+        {
+            method: "PUT",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(business)
+        }
+    )
+    const data = await response.json()
 
+    if (response.ok) {
+        await dispatch(updateBizAction(data))
+    }
+
+    return data
 }
 
-export const deleteBizThunk = () => async dispatch => {
+export const deleteBizThunk = (businessId) => async dispatch => {
+    const response = await fetch(
+        `/api/businesses/${businessId}`,
+        {
+            method: "DELETE"
+        }
+    )
 
+    const data = await response.json()
+
+    if(response.ok){
+        await dispatch(deleteBizAction(businessId))
+    }
+    
+    return data
 }
 
 // Reducer

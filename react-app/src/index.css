@@ -1,1 +1,358 @@
-/* TODO Add site wide styles */
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #FFFFFF;
+    font-family: Graphik Meetup, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    /* padding-bottom: 6rem; */
+}
+
+div {
+    overflow-wrap: break-word;
+}
+
+/* .backround-light-blue {
+    background-color: #F6F7F8;
+} */
+
+.backround-grey {
+    background-color: #EFEFEF;
+}
+
+/* Main Div  */
+.main-div {
+    width: 100%;
+    height: 100%;
+    /* justify-content: center; */
+}
+
+/* Footer */
+footer {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+/* NavLinks */
+.navLink {
+    text-decoration: none;
+    color: black;
+}
+
+.navLink-bluegreen {
+    text-decoration: none;
+    color: #008294;
+}
+
+/* Buttons */
+button.default {
+    padding: 10px 20px;
+    margin: 10px;
+    width: 200px;
+    height: 40px;
+    background-color: #F65858;
+    color: white;
+    border: none;
+    border-radius: 10px
+}
+
+button.return {
+    padding: 10px 20px;
+    margin: 10px;
+    width: 200px;
+    height: 40px;
+    background-color: white;
+    color: grey;
+    border: 1px #C5C4C4 solid;
+    border-radius: 10px
+}
+
+button.default:disabled {
+    padding: 10px 20px;
+    margin: 10px;
+    width: 200px;
+    height: 40px;
+    background-color: #D9D9D9;
+    color: #A4A4A4;
+    border: none;
+    border-radius: 10px
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: default;
+}
+
+/* Form Stuff */
+.w450px {
+    width: 450px;
+}
+
+input {
+    width: 100%;
+    height: 55;
+    padding: 10px 20px 10px 40px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    font-family: Graphik Meetup, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+}
+
+select {
+    width: 100%;
+    height: 55;
+    padding: 10px 20px 10px 40px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    font-family: Graphik Meetup, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px 20px 10px 40px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    font-family: Graphik Meetup, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Images */
+img.cover {
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+/* Text */
+p.spacing {
+    line-height: 35px;
+}
+
+.text25 {
+    font-size: 25px
+}
+
+.text20 {
+    font-size: 20px;
+}
+
+.text16 {
+    font-size: 16px;
+}
+
+.text14 {
+    font-size: 14px;
+}
+
+.textcolor-gold {
+    color: #877457;
+}
+
+.textcolor-bluegreen {
+    color: #008294;
+}
+
+.textcolor-grey {
+    color: #757575;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+/* Displays */
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-row-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.flex-column-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flex-row-justify-between {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.flex-row-justify-around {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.flex-row-align-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/* Width and Heights */
+.w100 {
+    width: 100%
+}
+
+.w70 {
+    width: 70%;
+}
+
+.w30 {
+    width: 30%;
+}
+
+.h100 {
+    height: 100%;
+}
+
+/* Margin, Borders, and Padding */
+.border-none-sides {
+    border-top: #E6E6E6 1px solid;
+    border-bottom: #E6E6E6 1px solid;
+}
+
+.border-top-black-2px {
+    border-top: 2px solid black;
+}
+
+.padding-none-sides {
+    padding: 20px 0px 20px 0px
+}
+
+.padding-sides {
+    padding: 0 20px 0 20px
+}
+
+.padding20 {
+    padding: 20px;
+}
+
+.padding5 {
+    padding: 5px;
+}
+
+.border20 {
+    border: 20px;
+}
+
+.verticalMargin10 {
+    margin: 10px 0;
+}
+
+/* Event/Group list card  */
+.card {
+    width: 640px;
+    border-top: #D9D9D9 3px solid;
+    padding: 5px 0px;
+}
+
+.card:hover {
+    background-color: #F6F7F8;
+
+}
+
+.minicard {
+    width: 350px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    /* border: 1px black solid; */
+    box-shadow: 2px 2px 2px black;
+}
+
+.card-left {
+    width: 30%;
+}
+
+.card-right {
+    width: 70%
+}
+
+
+/* Card Image Stuff */
+div.card-image-container {
+    height: 100px;
+    width: 178px;
+    border-radius: 10px;
+}
+
+div.header-img {
+    width: 80%;
+    max-width: 600px;
+    height: 338px;
+}
+
+img.card-image {
+    height: 100px;
+    width: 178px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+div.minicard-image {
+    height: 56px;
+    width: 56px;
+    border-radius: 5px;
+}
+
+img.minicard-image {
+    height: 56px;
+    width: 56px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+/* .small-square-image {
+
+} */
+
+/* List stuff */
+
+.list-no-style {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+div.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #FFFFFF;
+}

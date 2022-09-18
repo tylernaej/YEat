@@ -1,0 +1,34 @@
+#header-component{
+    width: 100%;
+    /* height: 30%; */
+    box-sizing: border-box;
+    padding: 0% 10%;
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+}
+
+    #row-1{
+        width: 100%;
+        font-size: 30px;
+    }
+
+        #business-name{
+            margin: 2% 0%;
+        }
+
+    #row{
+        display: flex;
+        margin-bottom: 1%;
+        font-size: 20px;
+    }
+
+
+
+    
+
+        #right-side{
+            margin-left: 8px;
+        }
+    
+    
