@@ -16,7 +16,7 @@ amenities = [
       "Large-group friendly",
       "Offers Catering",
       "Wheelchair accessible",
-      "Dogs allowed"
+      "Dogs allowed",
       "Live music"
 ]
 
