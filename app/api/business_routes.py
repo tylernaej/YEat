@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, Response, make_response, jsonify, abort
 from flask_login import login_required
 from app.models import User, Business, Category, Amenity, Image, Review, db
 from flask_login import current_user, login_user, logout_user, login_required
@@ -69,8 +69,10 @@ def get_all_businesses():
 def get_businesses_of_current_user():
     businesses = Business.query.filter(Business.owner_id == current_user.id).all()
 
-    if not businesses:
-        return {"message":"You don't have any businesses!","statusCode": 404}
+    # if not businesses:
+        # Response.status = 404 
+        # abort(404, "You don't have any businesses!")
+        # return {"message":"You don't have any businesses!"}
 
     biz_lst = []
 
@@ -279,3 +281,16 @@ def delete_a_business(id):
     db.session.commit()
 
     return {  "message": "Successfully deleted", "statusCode": 200}
+
+
+#ERROR HANDLERS
+@business_routes.errorhandler(404)
+def custom400(error):
+    print('\n\n', error, '\n\n')
+    response = jsonify({'message': str(error)})
+    print('\n\n', response, '\n\n')
+    response.status_code = 404
+    return response
+    # etc.
+
+# abort(400, {'message': 'custom error message to appear in body'})
