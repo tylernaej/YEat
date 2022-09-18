@@ -7,6 +7,7 @@ const CREATE_REVIEW = "biz/create-review"
 // const READ_REVIEW = "biz/read-review"
 const UPDATE_REVIEW = "biz/update-review"
 const DELETE_REVIEW = "biz/delete-review"
+const ON_DELETE_CASCADE_REVIEWS = "biz/on-delete-cascade-review"
 
 // Action Creators
 
@@ -48,6 +49,13 @@ const updateReviewAction = payload => {
 const deleteReviewAction = payload => {
     return {
         type: DELETE_REVIEW,
+        payload
+    }
+}
+
+export const onDeleteCascadeReviewsAction = payload => {
+    return {
+        type: ON_DELETE_CASCADE_REVIEWS,
         payload
     }
 }
@@ -147,6 +155,19 @@ const reviewsReducer = (state = intitialState, action) => {
             newState = { ...state };
             delete newState[action.payload]
             return newState
+        }
+        case (ON_DELETE_CASCADE_REVIEWS): {
+            newState = { ...state };
+
+            const reviews = Object.values(newState);
+
+            reviews.forEach((review) => {
+              if (review.bizId === action.payload) {
+                delete newState[action.payload];
+              }
+            });
+
+            return newState;
         }
         default: {
             return state
