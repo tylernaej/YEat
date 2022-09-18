@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { createBizThunk } from "../../../store/business";
@@ -36,13 +36,8 @@ function BizForm() {
 
     }, [name, email, phone, website, address, city, state, zipcode, country, latitude, longitude, description, priceRange])
 
-    if (!sessionUser) {
-        return (
-            <div>
-                PLEASE LOG IN TO CONTINUE
-            </div>
-        )
-    }
+    if (!sessionUser) return <Redirect to="/login" />
+
 
     const handleSubmit = async e => {
         e.preventDefault()
