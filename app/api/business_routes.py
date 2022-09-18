@@ -141,9 +141,14 @@ def get_reviews_by_business_id(id):
         return {"message": "Business could not be found", "statusCode": 404}
 
     reviews = Review.query.filter(Review.business_id == id).all()
-    images = Image.query.all()
 
+    images = Image.query.all()
     images_lst = [image.to_dict() for image in images]
+
+    users = User.query.all()
+    users_lst = [user.to_dict() for user in users]
+
+    print(f'\n\nusers list: {users_lst}\n\n')
 
     reviews_lst = []
     for review in reviews:
@@ -151,6 +156,13 @@ def get_reviews_by_business_id(id):
         for image in images_lst:
             if image['reviewId'] == review.id:
                 dict_review['images'] = image
+        for user in users_lst:
+            if review.user_id == user['id']:
+                owner = {}
+                owner['firstName'] = user['firstName']
+                owner['lastName'] = user['lastName']
+                owner['profilePicture'] = user['profilePicture']
+                dict_review['reviewer'] = owner
         reviews_lst.append(dict_review)
 
     return {'Reviews': reviews_lst}
