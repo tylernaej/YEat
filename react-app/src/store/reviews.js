@@ -97,7 +97,24 @@ export const updateReviewThunk = ({reviewId, review}) => async dispatch => {
     const data = await response.json()
 
     if (response.ok) {
-        await dispatch(updateReviewAction)
+        await dispatch(updateReviewAction(data))
+    }
+
+    return data
+}
+
+export const deleteReviewThunk = (reviewId) => async dispatch => {
+    const response = await fetch(
+        `/api/review/${reviewId}`,
+        {
+            method: "DELETE",
+        }
+    )
+
+    const data = await response.json()
+
+    if(response.ok){
+        await dispatch(deleteReviewAction(reviewId))
     }
 
     return data
@@ -124,6 +141,11 @@ const reviewsReducer = (state = intitialState, action) => {
         case (UPDATE_REVIEW): {
             newState = {...state}
             newState[action.payload.id] = {...newState[action.payload.id], ...action.payload}
+            return newState
+        }
+        case (DELETE_REVIEW): {
+            newState = { ...state };
+            delete newState[action.payload]
             return newState
         }
         default: {
