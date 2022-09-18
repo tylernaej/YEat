@@ -7,27 +7,28 @@ import CreateReviewButton from './NavBarComponents/CreateReviewButton/CreateRevi
 import HomeButton from './NavBarComponents/HomeButton/HomeButton';
 import ProfileButton from './NavBarComponents/ProfileButton/ProfileButton';
 import SearchBar from './NavBarComponents/SearchBar/SearchBar';
+import './NavBar.css'
 
 const NavBar = () => {
   return (
-    <nav>
-      <ul>
-        <li>
+    <nav className='flex-row-justify-between' id='nav'>
+        <div>
           <HomeButton />
-        </li>
-        <li>
+        </div>
+        <div>
           <SearchBar />
-        </li>
-        <li>
-          <CreateBusinessButton />
-        </li>
-        <li>
-          <CreateReviewButton />
-        </li>
-        <li>
-          <ProfileButton />
-        </li>
-      </ul>
+        </div>
+        <div className='flex-row'>
+          <div>
+            <CreateBusinessButton />
+          </div>
+          <div>
+            <CreateReviewButton />
+          </div>
+          <div>
+            <ProfileButton />
+          </div>
+        </div>
     </nav>
   );
 }
