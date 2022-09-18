@@ -53,14 +53,29 @@ const deleteReviewAction = payload => {
 }
 
 // Thunk Action Creators
+export const getBizReviewThunk = (businessId) => async dispatch => {
+    const response = await fetch(`/api/business/${businessId}/reviews`)
+    const data = await response.json()
+
+    if(response.ok){
+        await dispatch(getBizReviewsAction(data))
+    }
+    return data
+}
 
 // Reducer
 
 const intitialState = {}
 
 const reviewsReducer = (state = intitialState, action) => {
-    let newState = {...state};
+    let newState = {};
     switch (action.type) {
+        case (GET_BIZ_REVIEWS): {
+            action.payload.Reviews.forEach(review => {
+                newState[review.id] = {...newState[review.id], ...review}
+            })
+            return newState
+        }
         default: {
             return state
         }
