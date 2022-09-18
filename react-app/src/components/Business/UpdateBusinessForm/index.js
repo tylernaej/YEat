@@ -1,31 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { createBizThunk } from "../../../store/business";
+import { updateBizThunk, deleteBizThunk } from "../../../store/business";
 
-function BizForm() {
+function UpdateBizForm({ business }) {
     const dispatch = useDispatch()
     const history = useHistory()
 
     const sessionUser = useSelector(state => state.session.user)
 
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [phone, setPhone] = useState('')
-    const [website, setWebsite] = useState('')
-    const [address, setAddress] = useState('')
-    const [city, setCity] = useState('')
-    const [state, setState] = useState('')
-    const [zipcode, setZipcode] = useState('')
-    const [country, setCountry] = useState('')
-    const [latitude, setLatitude] = useState('')
-    const [longitude, setLongitude] = useState('')
-    const [description, setDescription] = useState('')
-    const [priceRange, setPriceRange] = useState('')
+    const [name, setName] = useState(business ? business.name : '')
+    const [email, setEmail] = useState(business ? business.email : '')
+    const [phone, setPhone] = useState(business ? business.phone : '')
+    const [website, setWebsite] = useState(business ? business.website : '')
+    const [address, setAddress] = useState(business ? business.address : '')
+    const [city, setCity] = useState(business ? business.city : '')
+    const [state, setState] = useState(business ? business.state : '')
+    const [zipcode, setZipcode] = useState(business ? business.zipcode : '')
+    const [country, setCountry] = useState(business ? business.country : '')
+    const [latitude, setLatitude] = useState(business ? business.latitude : '')
+    const [longitude, setLongitude] = useState(business ? business.longitude : '')
+    const [description, setDescription] = useState(business ? business.description : '')
+    const [priceRange, setPriceRange] = useState(business ? business.priceRange : '')
 
     const [validationErrors, setValidationErrors] = useState([])
     const [isSubmitted, setIsSubmitted] = useState(false)
+    const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
         const errors = []
@@ -36,8 +37,13 @@ function BizForm() {
 
     }, [name, email, phone, website, address, city, state, zipcode, country, latitude, longitude, description, priceRange])
 
-    if (!sessionUser) return <Redirect to="/login" />
-
+    if (!sessionUser) {
+        return (
+            <div>
+                PLEASE LOG IN TO CONTINUE
+            </div>
+        )
+    }
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -62,9 +68,17 @@ function BizForm() {
             priceRange
         }
 
-        const data = await dispatch(createBizThunk(newBiz))
+        const payload = { businessId: business.id, business: newBiz }
 
-        history.push(`/businesses/${data.id}/about`)
+        const data = await dispatch(updateBizThunk(payload))
+
+        history.push(`/businesses/${business.id}/about`)
+    }
+
+    const handleDelete = async e => {
+        e.preventDefault()
+        await dispatch(deleteBizThunk(business.id))
+        history.push(`/businesses`)
     }
 
     return (
@@ -123,9 +137,10 @@ function BizForm() {
             </div>
             <div>
                 <button type="submit">Submit</button>
+                <button onClick={handleDelete}>Delete</button>
             </div>
         </form>
     )
 }
 
-export default BizForm
+export default UpdateBizForm

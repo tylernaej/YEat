@@ -1,0 +1,13 @@
+#contact-info-container{
+    margin: 4px;
+    padding: 10px
+}
+
+#website-container{
+    border-bottom:solid rgb(210, 210, 210) 1px
+}
+
+#phone-container{
+    margin: 3px;
+    border-bottom:solid rgb(210, 210, 210) 1px
+}
