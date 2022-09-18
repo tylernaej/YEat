@@ -101,7 +101,7 @@ export const readBizThunk = (businessId) => async dispatch => {
 
 export const updateBizThunk = ({businessId, business}) => async dispatch => {
     const response = await fetch(
-        `/api/business/${businessId}`,
+        `/api/businesses/${businessId}`,
         {
             method: "PUT",
             headers: { 'Content-Type': 'application/json' },

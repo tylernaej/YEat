@@ -122,8 +122,12 @@ def get_business_by_id(id):
     dict_business['reviews'] = review_lst
 
     # get total reviews and avg
-    dict_business["numReviews"] = len(business.reviews)
-    dict_business["avgReviews"] = sum([review.rating for review in business.reviews]) / len(business.reviews)
+    if reviews:
+        dict_business["numReviews"] = len(business.reviews)
+        dict_business["avgReviews"] = sum([review.rating for review in business.reviews]) / len(business.reviews)
+
+
+    
 
     # add the amenities as a k/v pair to the biz
     amenities_lst = []
@@ -218,6 +222,7 @@ def create_a_business():
         "errors": form.errors
     }
     return errors
+
 
 
 @business_routes.route('/<int:id>', methods=['PUT'])

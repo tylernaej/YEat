@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import './headerInfo.css'
 
 function HeaderInfo({ business }){
@@ -27,8 +28,7 @@ function HeaderInfo({ business }){
                     {business.categories}
                 </div>
                 <div id='right-side'>
-                    Edit
-                    {/* redirect to the edit page? */}
+                    <NavLink to={`/businesses/${business.id}/edit`}>Edit</NavLink>
                 </div>
             </div>
             <div id='row'>

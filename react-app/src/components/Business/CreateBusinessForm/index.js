@@ -64,7 +64,7 @@ function BizForm() {
 
         const data = await dispatch(createBizThunk(newBiz))
 
-        history.push(`/businesses/${data.id}`)
+        history.push(`/businesses/${data.id}/about`)
     }
 
     return (

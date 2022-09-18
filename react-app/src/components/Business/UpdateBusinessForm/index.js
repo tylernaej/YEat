@@ -11,18 +11,18 @@ function UpdateBizForm({ business }) {
     const sessionUser = useSelector(state => state.session.user)
 
     const [name, setName] = useState(business ? business.name : '')
-    const [email, setEmail] = useState('')
-    const [phone, setPhone] = useState('')
-    const [website, setWebsite] = useState('')
-    const [address, setAddress] = useState('')
-    const [city, setCity] = useState('')
-    const [state, setState] = useState('')
-    const [zipcode, setZipcode] = useState('')
-    const [country, setCountry] = useState('')
-    const [latitude, setLatitude] = useState('')
-    const [longitude, setLongitude] = useState('')
-    const [description, setDescription] = useState('')
-    const [priceRange, setPriceRange] = useState('')
+    const [email, setEmail] = useState(business ? business.email : '')
+    const [phone, setPhone] = useState(business ? business.phone : '')
+    const [website, setWebsite] = useState(business ? business.website : '')
+    const [address, setAddress] = useState(business ? business.address : '')
+    const [city, setCity] = useState(business ? business.city : '')
+    const [state, setState] = useState(business ? business.state : '')
+    const [zipcode, setZipcode] = useState(business ? business.zipcode : '')
+    const [country, setCountry] = useState(business ? business.country : '')
+    const [latitude, setLatitude] = useState(business ? business.latitude : '')
+    const [longitude, setLongitude] = useState(business ? business.longitude : '')
+    const [description, setDescription] = useState(business ? business.description : '')
+    const [priceRange, setPriceRange] = useState(business ? business.priceRange : '')
 
     const [validationErrors, setValidationErrors] = useState([])
     const [isSubmitted, setIsSubmitted] = useState(false)
@@ -72,7 +72,7 @@ function UpdateBizForm({ business }) {
 
         const data = await dispatch(updateBizThunk(payload))
 
-        history.push(`/businesses/${business.id}`)
+        history.push(`/businesses/${business.id}/about`)
     }
 
     return (
