@@ -62,7 +62,7 @@ export const onDeleteCascadeReviewsAction = payload => {
 
 // Thunk Action Creators
 export const getBizReviewThunk = (businessId) => async dispatch => {
-    const response = await fetch(`/api/business/${businessId}/reviews`)
+    const response = await fetch(`/api/businesses/${businessId}/reviews`)
     const data = await response.json()
 
     if(response.ok){
@@ -77,7 +77,7 @@ export const getBizReviewThunk = (businessId) => async dispatch => {
 
 export const createReviewThunk = ({businessId, review}) => async dispatch => {
     const response = await fetch(
-        `/api/business/${businessId}/reviews`,
+        `/api/businesses/${businessId}/reviews`,
         {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
@@ -136,8 +136,9 @@ const reviewsReducer = (state = intitialState, action) => {
     let newState = {};
     switch (action.type) {
         case (GET_BIZ_REVIEWS): {
+            console.log(action.payload)
             action.payload.Reviews.forEach(review => {
-                newState[review.id] = {...newState[review.id], ...review}
+                newState[review.id] = review
             })
             return newState
         }

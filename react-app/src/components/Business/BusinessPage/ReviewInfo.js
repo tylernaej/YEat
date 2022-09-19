@@ -10,19 +10,19 @@ function ReviewInfo({ business }) {
     const numratings5 = business.reviews.filter(review => review.rating === 5).length
     const maxNumRatings = Math.max(numratings1, numratings2, numratings3, numratings4, numratings5, 1)
 
-    console.log(`rating1: ${numratings1}, rating2: ${numratings2}, rating3: ${numratings3}, rating4: ${numratings4}, rating5: ${numratings5}, maxrating: ${maxNumRatings}`)
+    // console.log(`rating1: ${numratings1}, rating2: ${numratings2}, rating3: ${numratings3}, rating4: ${numratings4}, rating5: ${numratings5}, maxrating: ${maxNumRatings}`)
     const filled1 = ((maxNumRatings / numratings1) * 100 === Infinity)? 0 : (maxNumRatings / numratings1) * 100
     const filled2 = ((maxNumRatings / numratings2) * 100 === Infinity)? 0 : (maxNumRatings / numratings2) * 100
     const filled3 = ((maxNumRatings / numratings3) * 100 === Infinity)? 0 : (maxNumRatings / numratings3) * 100
     const filled4 = ((maxNumRatings / numratings4) * 100 === Infinity)? 0 : (maxNumRatings / numratings4) * 100
     const filled5 = ((maxNumRatings / numratings5) * 100 === Infinity)? 0 : (maxNumRatings / numratings5) * 100
-    console.log(`filled1: ${filled1}, filled2: ${filled2}, filled3: ${filled3}, filled4: ${filled4}, filled5: ${filled5}`)
+    // console.log(`filled1: ${filled1}, filled2: ${filled2}, filled3: ${filled3}, filled4: ${filled4}, filled5: ${filled5}`)
     const void1 = 100 - filled1 
     const void2 = 100 - filled2
     const void3 = 100 - filled3
     const void4 = 100 - filled4
     const void5 = 100 - filled5
-    console.log(`void1: ${void1}, void2: ${void2}, void3: ${void3}, void4: ${void4}, void5: ${void5}`)
+    // console.log(`void1: ${void1}, void2: ${void2}, void3: ${void3}, void4: ${void4}, void5: ${void5}`)
 
     return (
         <div style={{width: "750px"}}>
