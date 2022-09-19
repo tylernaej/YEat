@@ -55,6 +55,9 @@ function App() {
         <Route path="/businesses/:businessId">
           <BizPage />
         </Route>
+        <Route path="/businesses/search">
+          <BizList />
+        </Route>
         <Route path="/businesses">
           <BizList />
         </Route>
