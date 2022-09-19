@@ -3,6 +3,7 @@ from flask_login import login_required
 from app.models import User, Business, Category, Amenity, Image, Review, db
 from flask_login import current_user, login_user, logout_user, login_required
 from app.forms.business_form import CreateBusinessForm
+from app.forms.review_form import ReviewForm
 
 business_routes = Blueprint('businesses', __name__)
 
@@ -71,7 +72,7 @@ def get_businesses_of_current_user():
     businesses = Business.query.filter(Business.owner_id == current_user.id).all()
 
     # if not businesses:
-        # Response.status = 404 
+        # Response.status = 404
         # abort(404, "You don't have any businesses!")
         # return {"message":"You don't have any businesses!"}
 
@@ -131,7 +132,7 @@ def get_business_by_id(id):
         dict_business["avgReviews"] = sum([review.rating for review in business.reviews]) / len(business.reviews)
 
 
-    
+
 
     # add the amenities as a k/v pair to the biz
     amenities_lst = []
@@ -141,7 +142,42 @@ def get_business_by_id(id):
 
     return dict_business
 
-@business_routes.route('/<int:id>/reviews')
+@business_routes.route('/<int:id>/reviews', methods=["POST"])
+@login_required
+def post_review_for_business(id):
+    # query for business
+    business = Business.query.get(id)
+
+    if not business:
+        return {"message": "Business could not be found", "statusCode": 404}
+
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+
+        review = Review(
+            user_id = current_user.id,
+            business_id = id,
+            rating = form.rating.data,
+            review = form.review.data
+        )
+
+        db.session.add(review)
+        db.session.commit()
+        # return the updated review
+        return review.to_dict()
+
+    # return errors if
+    errors = {
+        "message": "Validation Error",
+        "statusCode": 400,
+        "errors": form.errors
+    }
+    return errors
+
+
+
+@business_routes.route('/<int:id>/reviews', methods=["GET"])
 def get_reviews_by_business_id(id):
 
     business = Business.query.get(id)
