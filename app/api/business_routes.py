@@ -1,9 +1,10 @@
 from flask import Blueprint, request, Response, make_response, jsonify, abort
 from flask_login import login_required
-from app.models import User, Business, Category, Amenity, Image, Review, db
+from app.models import User, Business, Category, Amenity, Image, Review, business, db
 from flask_login import current_user, login_user, logout_user, login_required
 from app.forms.business_form import CreateBusinessForm
 from app.forms.review_form import ReviewForm
+from app.forms.amenity_form import AddAmenityForm
 
 business_routes = Blueprint('businesses', __name__)
 
@@ -318,6 +319,78 @@ def delete_a_business(id):
     db.session.commit()
 
     return {  "message": "Successfully deleted", "statusCode": 200}
+
+@business_routes.route('<int:id>/amenities', methods=['POST'])
+@login_required
+def add_amenities_to_a_business(id):
+    business = Business.query.get(id)
+    if not business:
+        return {"message": "Business could not be found", "statusCode": 404}
+
+    if business.owner_id != current_user.id:
+        return {"message": "Forbidden", "statusCode": 403}
+
+    form = AddAmenityForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        if form.freeWifi.data == True:
+            business.amenities.append(form.freeWifi.data)
+
+        if form.takeOut.data == True:
+            business.amenities.append(form.takeOut.data)
+
+        if form.dineIn.data == True:
+            business.amenities.append(form.dineIn.data)
+
+        if form.delivery.data == True:
+            business.amenities.append(form.delivery.data)
+
+        if form.vegetarianFriendly.data == True:
+            business.amenities.append(form.vegetarianFriendly.data)
+
+        if form.acceptsCreditCards.data == True:
+            business.amenities.append(form.acceptsCreditCards.data)
+
+        if form.acceptsApplePay.data == True:
+            business.amenities.append(form.acceptsApplePay.data)
+
+        if form.acceptsAndroidPay.data == True:
+            business.amenities.append(form.acceptsAndroidPay.data)
+
+        if form.publicRestrooms.data == True:
+            business.amenities.append(form.publicRestrooms.data)
+
+        if form.kidFriendly.data == True:
+            business.amenities.append(form.kidFriendly.data)
+
+        if form.outdoorSeating.data == True:
+            business.amenities.append(form.outdoorSeating.data)
+
+        if form.largeGroupFriendly.data == True:
+            business.amenities.append(form.largeGroupFriendly.data)
+
+        if form.offersCatering.data == True:
+            business.amenities.append(form.offersCatering.data)
+
+        if form.wheelchairAccessible.data == True:
+            business.amenities.append(form.wheelchairAccessible.data)
+
+        if form.dogsAllowed.data == True:
+            business.amenities.append(form.dogsAllowed.data)
+
+        if form.liveMusic.data == True:
+            business.amenities.append(form.liveMusic.data)
+
+        db.session.commit()
+        return business.to_dict()
+
+    return 'Failure to add amenities to business'
+
+
+
+    
+
+
 
 
 #ERROR HANDLERS
