@@ -11,3 +11,8 @@
     margin: 3px;
     border-bottom:solid rgb(210, 210, 210) 1px
 }
+
+.no-amenity{
+    color: grey;
+    text-decoration: line-through;
+}

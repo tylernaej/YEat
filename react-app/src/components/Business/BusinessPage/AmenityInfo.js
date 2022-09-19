@@ -25,8 +25,8 @@ function AmenityInfo({ business }){
                     <div id='all-amenities'>
                         {amenities.map(amenity => {
                             return (
-                                <div id='each-amenity' key={amenity}>
-                                    <div>
+                                <div className={business.amenities.includes(amenity) ? 'has-amenity' : 'no-amenity'}id='each-amenity' key={amenity}>
+                                    <div >
                                         {business.amenities.includes(amenity) ? checkmark : xmark}
                                     </div>
                                     <div id='actual-amenity'>

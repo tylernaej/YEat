@@ -19,7 +19,7 @@ function ReviewsList({ business }){
 
     }, [dispatch]);
     // dispatch a fetch request for reviews of a business for more info
-    return (
+    return isLoaded && (
         <div>
             {reviewsList.map(review => (
                 <ReviewCard review={review} key={review.id}/>
