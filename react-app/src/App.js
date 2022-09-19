@@ -17,6 +17,7 @@ import { authenticate } from './store/session';
 import UpdateBizForm from './components/Business/UpdateBusinessForm';
 import BizReviewSearch from './components/Reviews/BizReviewSearch';
 import UserBizList from './components/Business/UserBusinesses/UserBizList';
+import SplashPage from './components/Home/SplashPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -66,7 +67,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path="/" exact={true}>
-          <h1>My Home Page</h1>
+          <SplashPage />
         </Route>
       </Switch>
     </div>
