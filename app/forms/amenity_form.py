@@ -3,7 +3,7 @@ from wtforms import StringField, BooleanField
 from wtforms.validators import DataRequired, Email, ValidationError
 
 class AddAmenityForm(FlaskForm):
-      freeWifi = BooleanField("Free-wifi")
+      freeWifi = BooleanField("Free-wifi", default=False, false_values=('False', 'false', '', False))
       takeOut = BooleanField("Take-out")
       dineIn = BooleanField("Dine-in")
       delivery = BooleanField("Delivery")
