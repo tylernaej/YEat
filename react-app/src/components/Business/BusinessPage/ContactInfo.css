@@ -1,6 +1,9 @@
 #contact-info-container{
-    margin: 4px;
-    padding: 10px
+    box-sizing: border-box;
+    margin-left: 10px;
+    border-radius: 15px;
+    border: 1px grey solid;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 #website-container{

@@ -1,30 +1,35 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import './ContactInfo.css'
 
 
-function ContactInfo({ business }){
-    
+function ContactInfo({ business }) {
+
     return (
         <div id='contact-info-container'>
-            <div className="flex-row" id='website-container'>
+            <div className="flex-row-justify-between padding20" id='website-container'>
                 <div>
-                    {business.website}
+                    <a href={business.website} target="_blank" rel="noreferrer noopener">
+                        {business.website}
+                    </a>
                 </div>
                 <div>
-                    <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                    <a href={business.website} target="_blank" rel="noreferrer noopener">
+                        <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
                 </div>
-            </div>           
-            <div className="flex-row" id='phone-container'>
+            </div>
+            <div className="flex-row-justify-between padding20" id='phone-container'>
                 <div>
                     {business.phone}
                 </div>
                 <div>
                     <i className="fa-solid fa-phone-flip"></i>
-                </div>               
+                </div>
             </div>
-            <div>
+            {/* <div>
                 potential map info?
-            </div>          
+            </div>           */}
         </div>
     )
 }
