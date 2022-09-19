@@ -12,7 +12,7 @@ import BizList from './components/Business/BusinessList';
 import BizPage from './components/Business/BusinessPage';
 import BizForm from './components/Business/CreateBusinessForm';
 import BizSearchList from './components/Business/BusinessList/searchIndex';
-
+import ReviewForm from './components/Reviews/CreateReviewForm';
 import { authenticate } from './store/session';
 import UpdateBizForm from './components/Business/UpdateBusinessForm';
 import BizReviewSearch from './components/Reviews/BizReviewSearch';
@@ -49,6 +49,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path="/create-business">
           <BizForm />
+        </ProtectedRoute>
+        <ProtectedRoute path="/businesses/:businessId/create-review">
+          <ReviewForm />
         </ProtectedRoute>
         <ProtectedRoute path="/businesses/reviews/search">
           <BizReviewSearch />

@@ -76,6 +76,7 @@ export const getBizReviewThunk = (businessId) => async dispatch => {
 // }
 
 export const createReviewThunk = ({businessId, review}) => async dispatch => {
+    console.log(businessId, review)
     const response = await fetch(
         `/api/businesses/${businessId}/reviews`,
         {
