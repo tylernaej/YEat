@@ -36,36 +36,35 @@ function BizPage() {
     }, [dispatch])
 
     return isLoaded && (
-        <Switch>
-            <Route path={`${url}/about`}>
-                <div>
-                    <div className="w100 flex-row-center">
-                        <div className="w40">
-                            <HeaderInfo business={business} />
-                        </div>
-                    </div>
-
-                    <div className="w100 flex-row-center">
-                        <div className="w1070px flex-row">
-                            <div className="w70">
-                                <AboutInfo business={business} />
-                                <AmenityInfo business={business} />
-                                <ReviewInfo business={business} />
-                                <ReviewsList business={business} />
-                            </div>
-                            <div className="w30">
-                                <ContactInfo business={business} />
-                            </div>
-                        </div>
-                    </div>
-
+        <div>
+            <div className="w100 flex-row-center">
+                <div className="w40">
+                    <HeaderInfo business={business} />
                 </div>
-            </Route>
-            <Route path={`${url}/edit`}>
-                <UpdateBizForm business={business} />
-            </Route>
-
-        </Switch>
+            </div>
+            <div>
+                <div className="w100 flex-row-center">
+                    <Switch>
+                        <Route path={`${url}/about`}>
+                            <div className="w1070px flex-row">
+                                <div className="w70">
+                                    <AboutInfo business={business} />
+                                    <AmenityInfo business={business} />
+                                    <ReviewInfo business={business} />
+                                    <ReviewsList business={business} />
+                                </div>
+                                <div className="w30">
+                                    <ContactInfo business={business} />
+                                </div>
+                            </div>
+                        </Route>
+                        <Route path={`${url}/edit`}>
+                            <UpdateBizForm business={business} />
+                        </Route>
+                    </Switch>
+                </div>
+            </div>
+        </div>
 
     )
 }
