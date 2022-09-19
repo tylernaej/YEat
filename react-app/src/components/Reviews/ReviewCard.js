@@ -3,10 +3,6 @@ import profileImage from "../../../src/assets/ProfileDefault-removebg-preview.pn
 
 function ReviewCard({ review }) {
 
-
-    // console.log(review)
-    console.log(review.timeCreated.split(' ').slice(1, 3));
-
     return (
         <div>
             <div>

@@ -44,27 +44,36 @@ function BizPage() {
                 </div>
             </div>
             <div>
-                <BizNavBar business={business}/>
+                <BizNavBar business={business} />
             </div>
             <div className="w100 flex-row-center">
-                <Switch>
-                    <Route path={`${url}/about`}>
-                        <div className="w1070px flex-row">
-                            <div className="w70">
+                <div className="w1070px flex-row-center">
+                    <div className="w70">
+                        <Switch>
+                            <Route path={`${url}/about`}>
                                 <AboutInfo business={business} />
                                 <AmenityInfo business={business} />
                                 <ReviewInfo business={business} />
                                 <ReviewsList business={business} />
-                            </div>
-                            <div className="w30">
-                                <ContactInfo business={business} />
-                            </div>
-                        </div>
-                    </Route>
-                    <Route path={`${url}/edit`}>
-                        <UpdateBizForm business={business} />
-                    </Route>
-                </Switch>
+                            </Route>
+                            <Route path={`${url}/reviews`}>
+                                <div>
+                                    <ReviewInfo business={business} />
+                                    <ReviewsList business={business} />
+                                </div>
+                            </Route>
+                            <Route path={`${url}/photos`}>
+                                Photo feature not implemented yet
+                            </Route>
+                            <Route path={`${url}/edit`}>
+                                <UpdateBizForm business={business} />
+                            </Route>
+                        </Switch>
+                    </div>
+                    <div className="w30">
+                        <ContactInfo business={business} />
+                    </div>
+                </div>
             </div>
         </div>
 

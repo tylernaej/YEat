@@ -10,7 +10,7 @@ function AboutInfo({ business }){
 
     console.log('specialties', specialties)
     return (
-        <div>
+        <div className="border-top-black-2px">
             <div>
                 <h2 id="from-the-business">
                     From the business
