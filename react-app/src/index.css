@@ -273,6 +273,10 @@ p.spacing {
     padding: 20px;
 }
 
+.padding10 {
+    padding: 10px
+}
+
 .padding5 {
     padding: 5px;
 }
@@ -283,6 +287,10 @@ p.spacing {
 
 .verticalMargin15 {
     margin: 15px 0;
+}
+
+.testborder {
+    border: 5px solid red;
 }
 
 /* Event/Group list card  */

@@ -54,7 +54,7 @@ function BizPage() {
                                 <AboutInfo business={business} />
                                 <AmenityInfo business={business} />
                                 <ReviewInfo business={business} />
-                                <ReviewsList business={business} />
+                                {/* <ReviewsList business={business} /> */}
                             </Route>
                             <Route path={`${url}/reviews`}>
                                 <div>

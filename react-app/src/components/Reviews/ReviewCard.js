@@ -4,21 +4,30 @@ import profileImage from "../../../src/assets/ProfileDefault-removebg-preview.pn
 function ReviewCard({ review }) {
 
     return (
-        <div>
+        <div className="border-top-black-2px verticalMargin15 padding10">
             <div>
-                <div className="flex-row">
+                <div className="flex-row-align-center">
                     {/* user information */}
                     <div id="profile-image-wrapper">
-                         <img id='profile-image' src={review.reviewer.profilePicture ? review.reviewer.profilePicture : profileImage} alt={review.reviewer.firstName} />
+                        <img id='profile-image' src={review.reviewer.profilePicture ? review.reviewer.profilePicture : profileImage} alt={review.reviewer.firstName} />
                     </div>
-                    <div>{review.reviewer.firstName} {review.reviewer.lastName}</div>
-                    <div></div>
+                    <div className="padding5">
+                        <h4>
+                            {review.reviewer.firstName} {review.reviewer.lastName[0]}.
+                        </h4>
+                    </div>
                 </div>
                 <div>
-                    Rating: {review.rating} - {review.timeCreated.split(' ').slice(1, 4).join(' ')}
+                    <span className="textcolor-grey">
+                        Rating: {review.rating} - {review.timeCreated.split(' ').slice(1, 4).join(' ')}
+                    </span>
                 </div>
             </div>
-            <div>{review.review}</div>
+            <div>
+                <p>
+                    {review.review}
+                </p>
+            </div>
         </div>
     )
 }
