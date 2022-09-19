@@ -11,6 +11,7 @@ import User from './components/User';
 import BizList from './components/Business/BusinessList';
 import BizPage from './components/Business/BusinessPage';
 import BizForm from './components/Business/CreateBusinessForm';
+import BizSearchList from './components/Business/BusinessList/searchIndex';
 
 import { authenticate } from './store/session';
 import UpdateBizForm from './components/Business/UpdateBusinessForm';
@@ -52,11 +53,11 @@ function App() {
         <ProtectedRoute path="/businesses/reviews/search">
           <BizReviewSearch />
         </ProtectedRoute>
+        <Route path="/businesses/search">
+          <BizSearchList />
+        </Route>
         <Route path="/businesses/:businessId">
           <BizPage />
-        </Route>
-        <Route path="/businesses/search">
-          <BizList />
         </Route>
         <Route path="/businesses">
           <BizList />
