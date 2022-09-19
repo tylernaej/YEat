@@ -1,4 +1,4 @@
-from app.models import db, Review
+from app.models import business, db, Review
 
 def seed_reviews():
     review_1 = Review(
@@ -29,10 +29,72 @@ def seed_reviews():
         review = " This place is trash!!"
     )
 
+    # review_ = Review(
+    #     user_id = 4,
+    #     business_id = ,
+    #     rating = ,
+    #     review = ,
+    # )
+    # review_ = Review(
+    #     user_id = 4,
+    #     business_id = ,
+    #     rating = ,
+    #     review = ,
+    # )
+    # review_ = Review(
+    #     user_id = ,
+    #     business_id = ,
+    #     rating = ,
+    #     review = ,
+    # )
+    # review_ = Review(
+    #     user_id = ,
+    #     business_id = ,
+    #     rating = ,
+    #     review = ,
+    # )
+    # review_ = Review(
+    #     user_id = ,
+    #     business_id = ,
+    #     rating = ,
+    #     review = ,
+    # )
+    # review_ = Review(
+    #     user_id = ,
+    #     business_id = ,
+    #     rating = ,
+    #     review = ,
+    # )
+    # review_ = Review(
+    #     user_id = ,
+    #     business_id = ,
+    #     rating = ,
+    #     review = ,
+    # )
+    # review_ = Review(
+    #     user_id = ,
+    #     business_id = ,
+    #     rating = ,
+    #     review = ,
+    # )
+    # review_ = Review(
+    #     user_id = ,
+    #     business_id = ,
+    #     rating = ,
+    #     review = ,
+    # )
+    # review_ = Review(
+    #     user_id = ,
+    #     business_id = ,
+    #     rating = ,
+    #     review = ,
+    # )
+
     db.session.add(review_1)
     db.session.add(review_2)
     db.session.add(review_3)
     db.session.add(review_4)
+    db.session.add(review_)
     db.session.commit()
 
 def undo_reviews():
