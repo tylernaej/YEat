@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Switch, Route, useParams, useRouteMatch } from "react-router-dom";
 
 import { readBizThunk } from "../../../store/business";
+import { getBizReviewThunk } from "../../../store/reviews";
 
 //components
 import AboutInfo from "./AboutInfo";
@@ -10,7 +11,7 @@ import AmenityInfo from "./AmenityInfo";
 import ContactInfo from "./ContactInfo";
 import HeaderInfo from "./HeaderInfo";
 import ReviewInfo from "./ReviewInfo";
-import ReviewsList from "./ReviewsList";
+import ReviewsList from "../../Reviews/ReviewList";
 import UpdateBizForm from "../UpdateBusinessForm";
 
 
@@ -27,6 +28,7 @@ function BizPage() {
 
     useEffect(() => {
         dispatch(readBizThunk(businessId))
+            .then(() => dispatch(getBizReviewThunk(businessId)))
             .then(() => setIsLoaded(true))
 
         // make another fetch request for reviews of the business for more information
