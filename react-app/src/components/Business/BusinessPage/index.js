@@ -39,20 +39,30 @@ function BizPage() {
         <Switch>
             <Route path={`${url}/about`}>
                 <div>
-                    <HeaderInfo business={business} />
-                    <div>
-                        <AboutInfo business={business} />
-                        <AmenityInfo business={business} />
-                        <ReviewInfo business={business} />
-                        <ReviewsList business={business} />
+                    <div className="w100 flex-row-center">
+                        <div className="w40">
+                            <HeaderInfo business={business} />
+                        </div>
                     </div>
-                    <div>
-                        <ContactInfo business={business} />
+
+                    <div className="w100 flex-row-center">
+                        <div className="w1070px flex-row">
+                            <div className="w70">
+                                <AboutInfo business={business} />
+                                <AmenityInfo business={business} />
+                                <ReviewInfo business={business} />
+                                <ReviewsList business={business} />
+                            </div>
+                            <div className="w30">
+                                <ContactInfo business={business} />
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </Route>
             <Route path={`${url}/edit`}>
-                <UpdateBizForm business={business}/>
+                <UpdateBizForm business={business} />
             </Route>
 
         </Switch>
