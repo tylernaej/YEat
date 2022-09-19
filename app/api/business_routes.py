@@ -333,53 +333,79 @@ def add_amenities_to_a_business(id):
     form = AddAmenityForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        if form.freeWifi.data == True:
-            business.amenities.append(form.freeWifi.data)
+        free_wifi = Amenity.query.get(1)
+        take_out = Amenity.query.get(2)
+        dine_in = Amenity.query.get(3)
+        Delivery = Amenity.query.get(4)
+        Reservations = Amenity.query.get(5)
+        Vegetarian_friendly = Amenity.query.get(6)
+        Accepts_Credit_Cards = Amenity.query.get(7)
+        Accepts_Apple_Pay = Amenity.query.get(8)
+        Accepts_Android_Pay = Amenity.query.get(9)
+        Public_Restrooms = Amenity.query.get(10)
+        Kid_friendly = Amenity.query.get(11)
+        Outdoor_seating = Amenity.query.get(12)
+        Large_group_friendly = Amenity.query.get(13)
+        Offers_Catering = Amenity.query.get(14)
+        Wheelchair_accessible = Amenity.query.get(15)
+        Dogs_allowed = Amenity.query.get(16)
+        Live_music = Amenity.query.get(17)
+        print('\n\n\n\n',business.amenities, '\n\n\n\n')
 
-        if form.takeOut.data == True:
-            business.amenities.append(form.takeOut.data)
+        del business.amenities
 
-        if form.dineIn.data == True:
-            business.amenities.append(form.dineIn.data)
+        print('\n\n\n\n',business.amenities, '\n\n\n\n')
 
-        if form.delivery.data == True:
-            business.amenities.append(form.delivery.data)
+        if form.freeWifi.data is True:
+            business.amenities.append(free_wifi)
 
-        if form.vegetarianFriendly.data == True:
-            business.amenities.append(form.vegetarianFriendly.data)
+        if form.takeOut.data is True:
+            business.amenities.append(take_out)
 
-        if form.acceptsCreditCards.data == True:
-            business.amenities.append(form.acceptsCreditCards.data)
+        if form.dineIn.data is True:
+            business.amenities.append(dine_in)
 
-        if form.acceptsApplePay.data == True:
-            business.amenities.append(form.acceptsApplePay.data)
+        if form.delivery.data is True:
+            business.amenities.append(Delivery)
+        
+        if form.reservations.data is True:
+            business.amenities.append(Reservations)
 
-        if form.acceptsAndroidPay.data == True:
-            business.amenities.append(form.acceptsAndroidPay.data)
+        if form.vegetarianFriendly.data is True:
+            business.amenities.append(Vegetarian_friendly)
 
-        if form.publicRestrooms.data == True:
-            business.amenities.append(form.publicRestrooms.data)
+        if form.acceptsCreditCards.data is True:
+            business.amenities.append(Accepts_Credit_Cards)
 
-        if form.kidFriendly.data == True:
-            business.amenities.append(form.kidFriendly.data)
+        if form.acceptsApplePay.data is True:
+            business.amenities.append(Accepts_Apple_Pay)
 
-        if form.outdoorSeating.data == True:
-            business.amenities.append(form.outdoorSeating.data)
+        if form.acceptsAndroidPay.data is True:
+            business.amenities.append(Accepts_Android_Pay)
 
-        if form.largeGroupFriendly.data == True:
-            business.amenities.append(form.largeGroupFriendly.data)
+        if form.publicRestrooms.data is True:
+            business.amenities.append(Public_Restrooms)
 
-        if form.offersCatering.data == True:
-            business.amenities.append(form.offersCatering.data)
+        if form.kidFriendly.data is True:
+            business.amenities.append(Kid_friendly)
 
-        if form.wheelchairAccessible.data == True:
-            business.amenities.append(form.wheelchairAccessible.data)
+        if form.outdoorSeating.data is True:
+            business.amenities.append(Outdoor_seating)
 
-        if form.dogsAllowed.data == True:
-            business.amenities.append(form.dogsAllowed.data)
+        if form.largeGroupFriendly.data is True:
+            business.amenities.append(Large_group_friendly)
 
-        if form.liveMusic.data == True:
-            business.amenities.append(form.liveMusic.data)
+        if form.offersCatering.data is True:
+            business.amenities.append(Offers_Catering)
+
+        if form.wheelchairAccessible.data is True:
+            business.amenities.append(Wheelchair_accessible)
+
+        if form.dogsAllowed.data is True:
+            business.amenities.append(Dogs_allowed)
+
+        if form.liveMusic.data is True:
+            business.amenities.append(Live_music)
 
         db.session.commit()
         return business.to_dict_no_category()
