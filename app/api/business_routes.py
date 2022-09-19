@@ -12,6 +12,7 @@ def get_all_businesses():
     category = request.args.get('category')
     name = request.args.get('name')
 
+    print(f'\n\nin route {category}, {name} \n\n')
     if category or name:
         business_lst = []
         if category:
@@ -44,7 +45,7 @@ def get_all_businesses():
                 if dict_business not in business_lst:
                     business_lst.append(dict_business)
 
-
+        print('\n\n',business_lst)
         return {'businesses': business_lst}
 
 
