@@ -52,7 +52,7 @@ function SearchBar() {
     await dispatch(getBizThunk(params))
     setUserInput("")
     const query = new URLSearchParams(params)
-    history.push(`/businesses?${query.toString()}`)
+    history.push(`/businesses/search?${query.toString()}`)
   }
 
 
