@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import ProfileDropDownInfo from "./ProfileDropDown/ProfileDropDownInfo";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
@@ -9,14 +9,21 @@ import './ProfileButton.css'
 function ProfileButton() {
     
     const sessionUser = useSelector(state => state.session.user)
-    // console.log(sessionUser)
     const [menu, setMenu] = useState(false)
 
     function toggleMenu(e){
         setMenu(current => !current) 
     }
 
-    
+    useEffect(() => {
+        const closeMenu = () => {
+            if(menu){
+                setMenu(false)
+            }
+        }
+        document.addEventListener('click', closeMenu)
+        return () => document.removeEventListener('click', closeMenu)
+    }, [menu])
 
   return (
     <div>

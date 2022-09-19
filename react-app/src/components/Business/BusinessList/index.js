@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
+import { useLocation } from "react-router-dom";
 
 import { getBizThunk } from "../../../store/business";
 
 import BizCard from "./businessCard";
+
+function useQuery() {
+    const { search } = useLocation();
+  
+    return React.useMemo(() => new URLSearchParams(search), [search]);
+  }
+
 
 function BizList() {
     const dispatch = useDispatch()
@@ -11,6 +19,9 @@ function BizList() {
     const businessList = Object.values(businesses)
 
     const [isLoaded, setIsLoaded] = useState(false)
+
+    console.log(useQuery().get('name'))
+    console.log(useQuery().get('category'))
 
     useEffect(() => {
         dispatch(getBizThunk())

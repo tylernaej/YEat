@@ -55,8 +55,9 @@ const deleteBizAction = payload => {
 
 // Thunk Action Creators
 
-export const getBizThunk = () => async dispatch => {
-    const response = await fetch('/api/businesses/')
+export const getBizThunk = (params) => async dispatch => {
+    const query = new URLSearchParams(params)
+    const response = await fetch(`/api/businesses/?${query.toString()}`)
     const data = await response.json()
 
     if (response.ok) {
@@ -69,7 +70,6 @@ export const getBizThunk = () => async dispatch => {
 export const getUsersBizThunk = () => async dispatch => {
     const response = await fetch('/api/businesses/current')
     const data = await response.json()
-    console.log(data)
 
     if(response.ok){
         await dispatch(getUsersBizAction(data))

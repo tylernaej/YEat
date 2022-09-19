@@ -1,0 +1,20 @@
+#magnifying-glass{
+    height: 100%;
+    padding-left: 5px;
+    background-color: #F40E15;
+    color: white
+}
+
+#search-bar-container{
+}
+
+#search-bar{
+}
+
+#search-form{
+}
+
+#drop-down{
+    position: absolute;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .3);
+}
