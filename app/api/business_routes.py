@@ -382,7 +382,7 @@ def add_amenities_to_a_business(id):
             business.amenities.append(form.liveMusic.data)
 
         db.session.commit()
-        return business.to_dict()
+        return business.to_dict_no_category()
 
     return 'Failure to add amenities to business'
 
