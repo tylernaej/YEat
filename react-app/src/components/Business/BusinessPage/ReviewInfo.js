@@ -11,11 +11,11 @@ function ReviewInfo({ business }) {
     const maxNumRatings = Math.max(numratings1, numratings2, numratings3, numratings4, numratings5, 1)
 
     // console.log(`rating1: ${numratings1}, rating2: ${numratings2}, rating3: ${numratings3}, rating4: ${numratings4}, rating5: ${numratings5}, maxrating: ${maxNumRatings}`)
-    const filled1 = ((maxNumRatings / numratings1) * 100 === Infinity)? 0 : (maxNumRatings / numratings1) * 100
-    const filled2 = ((maxNumRatings / numratings2) * 100 === Infinity)? 0 : (maxNumRatings / numratings2) * 100
-    const filled3 = ((maxNumRatings / numratings3) * 100 === Infinity)? 0 : (maxNumRatings / numratings3) * 100
-    const filled4 = ((maxNumRatings / numratings4) * 100 === Infinity)? 0 : (maxNumRatings / numratings4) * 100
-    const filled5 = ((maxNumRatings / numratings5) * 100 === Infinity)? 0 : (maxNumRatings / numratings5) * 100
+    const filled1 = ((numratings1 / maxNumRatings) * 100 === Infinity)? 0 : (numratings1 / maxNumRatings) * 100
+    const filled2 = ((numratings2 / maxNumRatings) * 100 === Infinity)? 0 : (numratings2 / maxNumRatings) * 100
+    const filled3 = ((numratings3 / maxNumRatings) * 100 === Infinity)? 0 : (numratings3 / maxNumRatings) * 100
+    const filled4 = ((numratings4 / maxNumRatings) * 100 === Infinity)? 0 : (numratings4 / maxNumRatings) * 100
+    const filled5 = ((numratings5 / maxNumRatings) * 100 === Infinity)? 0 : (numratings5 / maxNumRatings) * 100
     // console.log(`filled1: ${filled1}, filled2: ${filled2}, filled3: ${filled3}, filled4: ${filled4}, filled5: ${filled5}`)
     const void1 = 100 - filled1 
     const void2 = 100 - filled2
