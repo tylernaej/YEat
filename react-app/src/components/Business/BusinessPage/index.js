@@ -10,7 +10,7 @@ import AmenityInfo from "./AmenityInfo";
 import ContactInfo from "./ContactInfo";
 import HeaderInfo from "./HeaderInfo";
 import ReviewInfo from "./ReviewInfo";
-import ReviewsList from "./ReviewsList";
+import ReviewsList from "../../Reviews/ReviewList";
 import UpdateBizForm from "../UpdateBusinessForm";
 
 
