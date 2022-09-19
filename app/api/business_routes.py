@@ -319,6 +319,11 @@ def delete_a_business(id):
 
     return {  "message": "Successfully deleted", "statusCode": 200}
 
+# @business_routes.route('<int:id>', methods=['POST'])
+# @login_required
+# def add_amenities_to_a_business(id):
+
+
 
 #ERROR HANDLERS
 @business_routes.errorhandler(404)
