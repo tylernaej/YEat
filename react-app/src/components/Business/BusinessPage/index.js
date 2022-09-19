@@ -28,7 +28,7 @@ function BizPage() {
 
     useEffect(() => {
         dispatch(readBizThunk(businessId))
-            .then(() => dispatch(getBizReviewThunk(businessId)))
+            // .then(() => dispatch(getBizReviewThunk(businessId)))
             .then(() => setIsLoaded(true))
 
         // make another fetch request for reviews of the business for more information

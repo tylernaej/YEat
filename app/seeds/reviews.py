@@ -33,7 +33,7 @@ def seed_reviews():
         user_id = 4,
         business_id = 1,
         rating = 2,
-        review = "Bad service, bad food, only thing that made made it not a 1.",
+        review = "Bad service, bad food, only thing that made made it not a 1 was the scenery.",
     )
     review_6 = Review(
         user_id = 4,
