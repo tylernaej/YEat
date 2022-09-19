@@ -258,7 +258,7 @@ p.spacing {
 }
 
 .border-top-black-2px {
-    border-top: 2px solid black;
+    border-top: 2px solid rgb(235,235,235);
 }
 
 .padding-none-sides {
@@ -281,8 +281,8 @@ p.spacing {
     border: 20px;
 }
 
-.verticalMargin10 {
-    margin: 10px 0;
+.verticalMargin15 {
+    margin: 15px 0;
 }
 
 /* Event/Group list card  */

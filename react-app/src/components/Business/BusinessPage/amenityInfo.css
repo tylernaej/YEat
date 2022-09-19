@@ -1,4 +1,4 @@
-#all-amenities{
+#all-amenities {
     display: flex;
     box-sizing: border-box;
     flex-wrap: wrap;
@@ -10,15 +10,18 @@
     font-size: large;
 }
 
-    #each-amenity{
-        display: flex;
-        width: 45%;
-        margin: 10px;
-        margin-left: 0px;
-    }
+#each-amenity {
+    display: flex;
+    width: 45%;
+    margin: 10px;
+    margin-left: 0px;
+}
 
-        #actual-amenity{
-            margin-left: 10px;
-        }
+#actual-amenity {
+    margin-left: 10px;
+}
 
-
+.no-amenity{
+    color: grey;
+    text-decoration: line-through;
+}

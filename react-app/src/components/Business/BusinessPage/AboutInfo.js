@@ -1,29 +1,32 @@
 import React from "react";
 
-function AboutInfo({ business }){
+function AboutInfo({ business }) {
 
     let emptyString = ''
     business.categories.forEach(category => {
         emptyString += `${category}, `
     })
-    const specialties = emptyString.slice(0, emptyString.length -2)
+    const specialties = emptyString.slice(0, emptyString.length - 2)
 
-    console.log('specialties', specialties)
     return (
-        <div className="border-top-black-2px">
+        <div className="border-top-black-2px verticalMargin15">
             <div>
                 <h2 id="from-the-business">
                     From the business
                 </h2>
                 <div>
                     <div id='specialties-container'>
-                        Specialties:
+                        <h4>
+                            Specialties:
+                        </h4>
                         <div id='specialties'>
                             {specialties}
                         </div>
                     </div>
                     <div id='about-container'>
-                        About {business.name}:
+                        <h4>
+                            About {business.name}:
+                        </h4>
                         <div id='business-description'>
                             {business.description}
                         </div>
