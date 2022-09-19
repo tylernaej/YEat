@@ -234,13 +234,22 @@ p.spacing {
     width: 70%;
 }
 
+.w40 {
+    width: 40%;
+}
+
 .w30 {
     width: 30%;
+}
+
+.w1070px {
+    width: 1070px;
 }
 
 .h100 {
     height: 100%;
 }
+
 
 /* Margin, Borders, and Padding */
 .border-none-sides {
