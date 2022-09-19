@@ -59,6 +59,8 @@ category_list = [
     "Frozen Yogurt"
 ]
 
+#comment to force
+
 def seed_categories():
     categories = [Category(category = category) for category in category_list]
 
