@@ -42,6 +42,7 @@ function BizPage() {
                 <div>
                     <BizNavBar business={business} />
                 </div>
+
                 <div className="w1070px flex-row-center">
                     <div className="w70">
                         <Switch>

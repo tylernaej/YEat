@@ -27,9 +27,6 @@ function ContactInfo({ business }) {
                     <i className="fa-solid fa-phone-flip"></i>
                 </div>
             </div>
-            {/* <div>
-                potential map info?
-            </div>           */}
         </div>
     )
 }
