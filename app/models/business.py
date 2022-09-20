@@ -28,6 +28,14 @@ class Business(db.Model):
     amenities = db.relationship("Amenity", secondary=business_amenities, back_populates='businesses', cascade="all, delete")
     categories = db.relationship("Category", secondary=business_categories, back_populates='businesses', cascade="all, delete")
 
+
+    def clear_categories(self):
+        self.categories = None
+        return {
+           "categories" : self.categories
+        }
+
+
     def to_dict(self):
 
         return {

@@ -58,7 +58,7 @@ def get_all_businesses():
         dict_business= business.to_dict()
         if business.reviews:
             dict_business["numReviews"] = len(business.reviews)
-            dict_business["avgReviews"] = sum([review.rating for review in business.reviews]) / len(business.reviews)
+            dict_business["avgReviews"] = round(sum([review.rating for review in business.reviews]) / len(business.reviews), 2)
         category_lst = []
         for category in business.categories:
             category_lst.append(category.category)
@@ -130,7 +130,7 @@ def get_business_by_id(id):
     # get total reviews and avg
     if reviews:
         dict_business["numReviews"] = len(business.reviews)
-        dict_business["avgReviews"] = sum([review.rating for review in business.reviews]) / len(business.reviews)
+        dict_business["avgReviews"] = round(sum([review.rating for review in business.reviews]) / len(business.reviews), 2)
 
 
 
@@ -148,6 +148,7 @@ def get_business_by_id(id):
 def post_review_for_business(id):
     # query for business
     business = Business.query.get(id)
+    print('\n\n\n\n', request.data, '\n\n\n\n')
 
     if not business:
         return {"message": "Business could not be found", "statusCode": 404}
@@ -233,6 +234,7 @@ def create_a_business():
     form = CreateBusinessForm()
     # data = request.form
     # print('\n\n\n\n', form.data, '\n\n\n\n')
+    # print('\n\n\n\n', request, '\n\n\n\n')
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         business = Business(
@@ -407,13 +409,61 @@ def add_amenities_to_a_business(id):
         if form.liveMusic.data is True:
             business.amenities.append(Live_music)
 
+        print('\n\n\n\n',business.amenities, '\n\n\n\n')
         db.session.commit()
         return business.to_dict_no_category()
 
     return 'Failure to add amenities to business'
 
 
+@business_routes.route('<int:id>/categories', methods=['POST'])
+@login_required
+def add_categories_to_business(id):
+    business = Business.query.get(id)
+    if not business:
+        return {"message": "Business could not be found", "statusCode": 404}
 
+    if business.owner_id != current_user.id:
+        return {"message": "Forbidden", "statusCode": 403}
+
+    data = request.get_json()
+    # print(data)
+    print('\n\n\n\n', (data), '\n\n\n\n')
+    key_data_lst = data.keys()
+    value_data_lst = data.values()
+    # print('\n\n\n\n', zip(key_data_lst, value_data_lst), '\n\n\n\n')
+    zipped_lst = list(zip(key_data_lst, value_data_lst))
+    print('\n\n\n\n', (zipped_lst), '\n\n\n\n')
+    # print(zipped_lst)
+
+    categories = Category.query.all()
+    # print(categories)
+
+    categories_lst = []
+    for category in categories:
+        # print(category.category)
+        categories_lst.append(category.category)
+
+    # business.clear_categories()
+    print('\n\n\n\n', business.categories, '\n\n\n\n')
+    del business.categories
+    print('\n\n\n\n', business.categories, '\n\n\n\n')
+
+    # for data_tuple in zipped_lst:
+    #     # print('\n\n\n\n', (data_tuple), '\n\n\n\n')
+    #     if data_tuple[1] is True:
+
+    #         business.categories.append(Category(category = data_tuple[0]))
+
+    i = 0
+    while i < len(zipped_lst):
+        print(categories_lst.index(zipped_lst[i][0]) + 1, 'INDEX')
+        if zipped_lst[i][1] is True:
+            business.categories.append(Category.query.get(categories_lst.index(zipped_lst[i][0]) + 1))
+        i += 1
+    # db.session.add(business)
+    db.session.commit()
+    return business.to_dict_no_category()
     
 
 

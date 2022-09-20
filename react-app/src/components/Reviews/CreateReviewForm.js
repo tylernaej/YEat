@@ -25,13 +25,13 @@ function ReviewForm() {
 
 
     const handleSubmit = async e => {
+        e.preventDefault()
         console.log('testestestest')
-        e.preventDefaut()
 
         setHasSubmitted(true)
-        // console.log(validationErrors)
+        console.log(validationErrors)
 
-        // if(validationErrors.length > 0) return
+        if(validationErrors.length > 0) return
 
         const newReview = {
             rating,
