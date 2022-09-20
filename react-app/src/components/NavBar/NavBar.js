@@ -14,6 +14,8 @@ const NavBar = () => {
     <nav className='flex-row-justify-between' id='nav'>
         <div className='flex-row'>
           <HomeButton />
+        </div>
+        <div>
           <NavLink to={'/businesses'}>See all businesses</NavLink>
         </div>
         <div>

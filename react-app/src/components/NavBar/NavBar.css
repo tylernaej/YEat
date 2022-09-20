@@ -1,3 +1,20 @@
+@font-face {
+    font-family: 'Arimo-Bold';
+    src: url('../../fonts/arimo/Arimo-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'GothicA1-Medium';
+    src: url('../../fonts/gothicA1/GothicA1-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Kodchasan-Bold';
+    src: url('../../fonts/Kodchasan/Kodchasan-Bold.ttf');
+}
+
 #nav{
     width: 100%;
+    text-decoration: none;
+    font-family: 'Kodchasan-Bold'; 
 }
