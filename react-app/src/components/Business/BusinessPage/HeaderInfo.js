@@ -1,36 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import './headerInfo.css'
 
 function HeaderInfo({ business }){
         // console.log(Object.values(business.categories)[1])
         const categoriesList = []
-        business.categories.map(category => {
-            categoriesList.push(category)
-        })
+        useEffect(() => {
+            business.categories.map(category => {
+                categoriesList.push(category)
+            })
+        }, [])
         // console.log(categoriesList)
 
         function photoInHeader(){
-            if(business.images.length === 0){
-                return 'No photos available'
-            }
-            else if (business.images.length === 1){
-                return `See ${business.images.length} photo`;
-            }
-            else {
-                return `See ${business.images.length} photos`;
+            if(business.images){
+                if(business.images.length === 0){
+                    return 'No photos available'
+                }
+                else if (business.images.length === 1){
+                    return `See ${business.images.length} photo`;
+                }
+                else {
+                    return `See ${business.images.length} photos`;
+                }
+            return
             }
         }
 
         function reviewInHeader(){
-            if(business.reviews.length === 0){
-                return 'No reviews available'
-            }
-            else if (business.reviews.length === 1){
-                return `${business.reviews.length} review`;
-            }
-            else {
-                return `${business.reviews.length} reviews`;
+            if(business.reviews){
+                if(business.reviews.length === 0){
+                    return 'No reviews available'
+                }
+                else if (business.reviews.length === 1){
+                    return `${business.reviews.length} review`;
+                }
+                else {
+                    return `${business.reviews.length} reviews`;
+                }
+            return
             }
         }
         

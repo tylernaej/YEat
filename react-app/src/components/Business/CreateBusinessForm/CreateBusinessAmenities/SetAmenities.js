@@ -30,9 +30,7 @@ function SetAmenities({business}){
         console.log(request)
         await dispatch(postAmenities(request))
 
-        // history.push(`/businesses/${id}/about`)
-
-        //render the categories and hide the amenities
+        history.push(`/businesses/${id}/about`)
     }
 
     return isLoaded &&  (

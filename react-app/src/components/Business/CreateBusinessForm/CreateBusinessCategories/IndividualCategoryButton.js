@@ -2,12 +2,12 @@ import React, { useEffect, useState, useRef } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-function IndividualAmenityButton({amenity, checkedState, setCheckedState}){
-    const [amenityChecked, setAmenityChecked] = useState(false)
+function IndividualCategoryButton({category, checkedState, setCheckedState}){
+    const [categoryChecked, setCategoryChecked] = useState(false)
     const isMounted = useRef(false);
 
     const handleChecked = async e => {
-        setAmenityChecked(current => !current)
+        setCategoryChecked(current => !current)
         // console.log(`The Amenity Clicked was: ${amenityChecked} and the checked state is: ${Object.keys(checkedState)}.`)
     }
 
@@ -15,30 +15,30 @@ function IndividualAmenityButton({amenity, checkedState, setCheckedState}){
         // console.log('setting new checked state')
         if (isMounted.current) {
             let newState = {...checkedState}
-            if(`${amenity}` in  newState && !amenityChecked){
-                delete newState[`${amenity}`]
+            if(`${category}` in  newState && !categoryChecked){
+                delete newState[`${category}`]
             }
-            if(amenityChecked){
-                newState[`${amenity}`] = amenityChecked
+            if(categoryChecked){
+                newState[`${category}`] = categoryChecked
             }
             // console.log(`You are updating \n${Object.keys(checkedState)} \nto \n${Object.keys(newState)}`)
             setCheckedState(newState)
         } else {
             isMounted.current = true;
         }
-    }, [amenityChecked])
+    }, [categoryChecked])
 
     return (
         <div>
-            <label htmlFor={`${amenity}`}>{amenity}</label>
+            <label htmlFor={`${category}`}>{category}</label>
             <input 
                 type="checkbox" 
-                name={`${amenity}`} 
-                value={`${amenityChecked}`} 
+                name={`${category}`} 
+                value={`${categoryChecked}`} 
                 onClick={handleChecked} 
             />        
         </div>
     )
 }
 
-export default IndividualAmenityButton
+export default IndividualCategoryButton

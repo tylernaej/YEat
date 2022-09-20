@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { createBizThunk } from "../../../store/business";
 import SetAmenities from "./CreateBusinessAmenities/SetAmenities";
+import SetCategories from "./CreateBusinessCategories/SetCategories";
 
 function BizForm() {
     const dispatch = useDispatch()
@@ -129,6 +130,7 @@ function BizForm() {
             </form>
             <div>
                 <SetAmenities />
+                <SetCategories />
             </div>
         </div>
     )

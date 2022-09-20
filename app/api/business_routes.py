@@ -356,6 +356,7 @@ def add_amenities_to_a_business(id):
 @business_routes.route('/<int:id>/categories', methods=['POST'])
 @login_required
 def add_categories_to_business(id):
+    print(f'\n\nIn Backend\n\n')
     business = Business.query.get(id)
     if not business:
         return {"message": "Business could not be found", "statusCode": 404}
