@@ -337,16 +337,13 @@ def add_amenities_to_a_business(id):
     data = request.get_json()
     keys_list = data.keys()
 
-    for amenity in business.amenities:
-        db.session.delete(amenity)
+    business.amenities.clear()
 
     amenities = Amenity.query.all()
 
-    db.session.commit()
-
     for amenity in amenities:
         for bizAmenity in keys_list:
-            if bizAmenity == amenity.description:
+            if bizAmenity.lower() == amenity.description.lower():
                 business.amenities.append(Amenity.query.get(amenity.id))
 
     db.session.commit()
@@ -356,7 +353,6 @@ def add_amenities_to_a_business(id):
 @business_routes.route('/<int:id>/categories', methods=['POST'])
 @login_required
 def add_categories_to_business(id):
-    print(f'\n\nIn Backend\n\n')
     business = Business.query.get(id)
     if not business:
         return {"message": "Business could not be found", "statusCode": 404}
@@ -367,18 +363,25 @@ def add_categories_to_business(id):
     data = request.get_json()
     keys_list = data.keys()
 
-    for category in business.categories:
-        db.session.delete(category)
+    print(f'\n\nThe categories on the business before clearing are: {business.categories}')
+
+    business.categories.clear()
+
+    print(f'The categories on the business after clearing but before looping are: {business.categories}\n\n')
 
     categories = Category.query.all()
 
-    db.session.commit()
+    print(f'\n\nThe incoming updates are: {keys_list}')
 
     for category in categories:
+        # print(f'Checking to see if {category.category} is one of the categories in the incoming request...')
         for bizCategory in keys_list:
-            if bizCategory == category.category:
+            if bizCategory.lower() == category.category.lower():
+                print(f'\n{category.category} is now being appended onto the business!')
                 business.categories.append(Category.query.get(category.id))
-
+                print(f'The new state of business.categories is: {business.categories}\n')
+    
+    print(f'\nThe state of: {business.categories} is about to be commited!\n\n')
     db.session.commit()
     return business.to_dict_no_category()
     

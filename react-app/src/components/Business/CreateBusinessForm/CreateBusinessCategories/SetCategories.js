@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory, Redirect, useParams, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {getCategories, postCategories} from '../../../../store/fetchFunctions'
 import IndividualCategoryButton from "./IndividualCategoryButton";
 
-function SetCategories({business}){
+function SetBizCategories({business}){
+    const location = useLocation()
     const dispatch = useDispatch()
     const [categories, setCategories] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
     const [checkedState, setCheckedState] = useState({})
     const history = useHistory()
-
-    const id = 1
+    const id = Number(location.pathname.split('/')[2])
     
     useEffect(() => {
         getCategories()
@@ -54,4 +54,4 @@ function SetCategories({business}){
     )
 }
 
-export default SetCategories
+export default SetBizCategories

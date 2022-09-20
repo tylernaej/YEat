@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, Redirect } from "react-router-dom";
+import { useHistory, Redirect, useParams, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {getAmenities, postAmenities} from '../../../../store/fetchFunctions'
 import IndividualAmenityButton from "./IndividualAmenityButton";
 
-function SetAmenities({business}){
+function SetBizAmenities({business}){
     const dispatch = useDispatch()
     const [amenities, setAmenities] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
     const [checkedState, setCheckedState] = useState({})
     const history = useHistory()
+    const location = useLocation()
+    const id = Number(location.pathname.split('/')[2])
 
-    const id = 1
+    console.log(`The biz Id is: ${id}`)
     
     useEffect(() => {
         getAmenities()
@@ -25,12 +27,13 @@ function SetAmenities({business}){
         for (const amenity in checkedState){
             amenityPayload[`${amenity}`] = true
         }
+        console.log(`The biz id in the handle submit is: ${id}`)
         const request = {id, amenityPayload}
         
         console.log(request)
         await dispatch(postAmenities(request))
 
-        history.push(`/businesses/${id}/about`)
+        history.push(`/create-business/${id}/categories`)
     }
 
     return isLoaded &&  (
@@ -54,4 +57,4 @@ function SetAmenities({business}){
     )
 }
 
-export default SetAmenities
+export default SetBizAmenities
