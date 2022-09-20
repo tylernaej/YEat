@@ -1,4 +1,18 @@
-#five-star-filled-bar{
-    border: solid red 1px;
-    border: solid yell
+.reviewMeter {
+    width: 100%;
+    border-radius: 15px;
+    /* border: 1px solid black; */
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.15);
+    height: 10px;
+    background-color: #F0F0F0;
+}
+
+.reviewMeterBar {
+    height: 10px;
+    border-radius: 15px;
+    position: left;
+}
+
+.reviewMeterVoid {
+
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
-import { Switch, Route, useParams, useRouteMatch } from "react-router-dom";
+import { Switch, Route, useParams, useRouteMatch, Redirect } from "react-router-dom";
 
 import { readBizThunk } from "../../../store/business";
 import { getBizReviewThunk } from "../../../store/reviews";
@@ -38,10 +38,8 @@ function BizPage() {
 
     return isLoaded && (
         <div>
-            <div className="w100 flex-row-center">
-                <div className="w40">
-                    <HeaderInfo business={business} />
-                </div>
+            <div id="business-header" className="">
+                <HeaderInfo business={business} />
             </div>
             <div>
                 <BizNavBar business={business} />
