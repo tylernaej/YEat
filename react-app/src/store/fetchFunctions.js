@@ -34,3 +34,10 @@ export const postCategories = ({id, categoryPayload}) => async dispatch => {
     const data = await response.json()
     return data
 }
+
+export const getReview = async (id) => {
+    const response = await fetch(`/api/reviews/${id}`)
+    const data = await response.json()
+
+    return data
+}

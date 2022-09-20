@@ -8,7 +8,7 @@ from app.models import review
 #validators
 def review_length(form, field):
     review = field.data
-    if len(review) < 15:
+    if len(review) < 10:
         raise ValidationError('Description must be 10 characters or more')
 
 class ReviewForm(FlaskForm):

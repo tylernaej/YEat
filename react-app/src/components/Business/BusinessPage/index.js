@@ -13,6 +13,7 @@ import ReviewInfo from "./ReviewInfo";
 import ReviewsList from "../../Reviews/ReviewList";
 import UpdateBizForm from "../UpdateBusinessForm";
 import BizNavBar from "./BusinessNavBar";
+import ReviewForm from "../../Reviews/CreateReviewForm";
 
 import './businesspage.css'
 
@@ -61,6 +62,12 @@ function BizPage() {
                             </Route>
                             <Route path={`${url}/edit`}>
                                 <UpdateBizForm business={business} />
+                            </Route>
+                            <Route path={`${url}/create-review`}>
+                                <ReviewForm />
+                            </Route>
+                            <Route path={`${url}/reviews/:reviewId/edit`}>
+
                             </Route>
                         </Switch>
                     </div>
