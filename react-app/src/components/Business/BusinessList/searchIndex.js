@@ -57,7 +57,7 @@ function BizSearchList() {
 
     if(!bizMatches.current.length){
         return(
-            <div>Loading results</div>
+            <div>No Search Results</div>
         )
     }
     

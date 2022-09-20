@@ -76,6 +76,7 @@ export const getBizReviewThunk = (businessId) => async dispatch => {
 // }
 
 export const createReviewThunk = ({businessId, review}) => async dispatch => {
+    console.log('this is my businessId and review from component', businessId, review)
     const response = await fetch(
         `/api/businesses/${businessId}/reviews`,
         {
@@ -94,8 +95,9 @@ export const createReviewThunk = ({businessId, review}) => async dispatch => {
 }
 
 export const updateReviewThunk = ({reviewId, review}) => async dispatch => {
+    console.log(reviewId, review)
     const response = await fetch(
-        `/api/review/${reviewId}`,
+        `/api/reviews/${reviewId}`,
         {
             method: "PUT",
             headers: {'Content-Type': 'application/json'},

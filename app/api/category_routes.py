@@ -9,9 +9,11 @@ category_routes = Blueprint('categories', __name__)
 @category_routes.route('/')
 def get_all_categories():
     categories = Category.query.all()
+    # print(categories.to_dict())
 
     categories_lst = []
     for category in categories:
+        # print(category)
         categories_lst.append(category.category)
     
     return {"categories": categories_lst}

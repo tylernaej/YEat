@@ -70,7 +70,7 @@ function SearchBar() {
                 value={userInput}
               />
               <button type='submit' id='magnifying-glass'>
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <i className="fa-solid fa-magnifying-glass"></i>
               </button>
             </form>
             {dropDown && (
