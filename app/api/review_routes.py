@@ -7,6 +7,19 @@ from app.forms.review_form import ReviewForm
 
 review_routes = Blueprint('reviews', __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
+
+
+
 @review_routes.route('/<int:reviewId>', methods=["PUT"])
 @login_required
 def edit_review(reviewId):
@@ -16,13 +29,11 @@ def edit_review(reviewId):
 
     # if no review found
     if not review:
-        #abort ?
-        pass
+        return {"message": "Review could not be found", "statusCode": 404}, 404
 
     # if user is not the reviewer
     if current_user != review.user_id:
-        #abort ?
-        pass
+        return {"message": "Forbidden", "statusCode": 403}, 403
 
     # update the information
     form = ReviewForm()
@@ -39,12 +50,7 @@ def edit_review(reviewId):
         return review.to_dict()
 
     # return errors if
-    errors = {
-        "message": "Validation Error",
-        "statusCode": 400,
-        "errors": form.errors
-    }
-    return errors
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 @review_routes.route('/<int:reviewId>', methods=["DELETE"])
 @login_required
@@ -55,19 +61,17 @@ def delete_review(reviewId):
 
     # if no review found
     if not review:
-        #abort ?
-        pass
+        return {"message": "Review could not be found", "statusCode": 404}, 404
 
     # if user is not the reviewer
     if current_user != review.user_id:
-        #abort ?
-        pass
+        return {"message": "Forbidden", "statusCode": 403}, 403
 
     # delete the review
     db.session.delete(review)
     db.session.commit()
 
-    return { "message": "Successfully deleted", "statusCode": 200 }
+    return { "message": "Successfully deleted", "statusCode": 200 }, 200
 
     # return success message
 

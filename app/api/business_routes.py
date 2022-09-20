@@ -9,6 +9,16 @@ from sqlalchemy import desc
 
 business_routes = Blueprint('businesses', __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
 @business_routes.route('/')
 def get_all_businesses():
 
@@ -98,7 +108,7 @@ def get_business_by_id(id):
     business = Business.query.get(id)
 
     if not business:
-        return {"message": "Business could not be found", "statusCode": 404}
+        return {"message": "Business could not be found", "statusCode": 404}, 404
 
     dict_business= business.to_dict()
 
@@ -152,7 +162,7 @@ def post_review_for_business(id):
     # print('\n\n\n\n', request.data, '\n\n\n\n')
 
     if not business:
-        return {"message": "Business could not be found", "statusCode": 404}
+        return {"message": "Business could not be found", "statusCode": 404}, 404
 
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -171,12 +181,7 @@ def post_review_for_business(id):
         return review.to_dict()
 
     # return errors if
-    errors = {
-        "message": "Validation Error",
-        "statusCode": 400,
-        "errors": form.errors
-    }
-    return errors
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
 
@@ -185,7 +190,7 @@ def get_reviews_by_business_id(id):
 
     business = Business.query.get(id)
     if not business:
-        return {"message": "Business could not be found", "statusCode": 404}
+        return {"message": "Business could not be found", "statusCode": 404}, 404
 
     reviews = Review.query.filter(Review.business_id == id).all()
 
@@ -220,7 +225,7 @@ def get_amenities_by_business_id(id):
 
     business = Business.query.get(id)
     if not business:
-        return {"message": "Business could not be found", "statusCode": 404}
+        return {"message": "Business could not be found", "statusCode": 404}, 404
 
     amenities_lst = []
     for amenity in business.amenities:
@@ -260,12 +265,8 @@ def create_a_business():
         # print('\n\n\n\n', business.to_dict(), '\n\n\n\n')
         return business.to_dict()
     # print(form.errors)
-    errors = {
-        "message": "Validation Error",
-        "statusCode": 400,
-        "errors": form.errors
-    }
-    return errors
+
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 
 
@@ -274,10 +275,10 @@ def create_a_business():
 def edit_a_business(id):
     business = Business.query.get(id)
     if not business:
-        return {"message": "Business could not be found", "statusCode": 404}
+        return {"message": "Business could not be found", "statusCode": 404}, 404
 
     if business.owner_id != current_user.id:
-        return {"message": "Forbidden", "statusCode": 403}
+        return {"message": "Forbidden", "statusCode": 403}, 403
 
     form = CreateBusinessForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -301,22 +302,22 @@ def edit_a_business(id):
         db.session.commit()
         return business.to_dict_no_category()
     # print(form.errors)
-    errors = {
-        "message": "Validation Error",
-        "statusCode": 400,
-        "errors": form.errors
-    }
-    return errors
+    # errors = {
+    #     "message": "Validation Error",
+    #     "statusCode": 400,
+    #     "errors": form.errors
+    # }
+    return {"errors": validation_errors_to_error_messages(form.errors)}, 401
 
 @business_routes.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_a_business(id):
     business = Business.query.get(id)
     if not business:
-        return {"message": "Business could not be found", "statusCode": 404}
+        return {"message": "Business could not be found", "statusCode": 404}, 404
 
     if business.owner_id != current_user.id:
-        return {"message": "Forbidden", "statusCode": 403}
+        return {"message": "Forbidden", "statusCode": 403}, 403
 
     db.session.delete(business)
     db.session.commit()
@@ -327,13 +328,13 @@ def delete_a_business(id):
 @login_required
 def add_amenities_to_a_business(id):
 
-    
+
     business = Business.query.get(id)
     if not business:
-        return {"message": "Business could not be found", "statusCode": 404}
+        return {"message": "Business could not be found", "statusCode": 404}, 404
 
     if business.owner_id != current_user.id:
-        return {"message": "Forbidden", "statusCode": 403}
+        return {"message": "Forbidden", "statusCode": 403}, 403
 
     data = request.get_json()
     keys_list = data.keys()
@@ -356,10 +357,10 @@ def add_amenities_to_a_business(id):
 def add_categories_to_business(id):
     business = Business.query.get(id)
     if not business:
-        return {"message": "Business could not be found", "statusCode": 404}
+        return {"message": "Business could not be found", "statusCode": 404}, 404
 
     if business.owner_id != current_user.id:
-        return {"message": "Forbidden", "statusCode": 403}
+        return {"message": "Forbidden", "statusCode": 403}, 403
 
     data = request.get_json()
     keys_list = data.keys()
@@ -381,11 +382,11 @@ def add_categories_to_business(id):
                 print(f'\n{category.category} is now being appended onto the business!')
                 business.categories.append(Category.query.get(category.id))
                 print(f'The new state of business.categories is: {business.categories}\n')
-    
+
     print(f'\nThe state of: {business.categories} is about to be commited!\n\n')
     db.session.commit()
     return business.to_dict_no_category()
-    
+
 
 
 
