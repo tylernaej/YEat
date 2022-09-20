@@ -30,7 +30,7 @@ def valid_lng(form, field):
 
 
 
-# form 
+# form
 class CreateBusinessForm(FlaskForm):
     address = StringField('Address', validators=[DataRequired()])
     city = StringField('City', validators=[DataRequired()])
