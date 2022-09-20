@@ -18,6 +18,7 @@ import UpdateBizForm from './components/Business/UpdateBusinessForm';
 import BizReviewSearch from './components/Reviews/BizReviewSearch';
 import UserBizList from './components/Business/UserBusinesses/UserBizList';
 import SplashPage from './components/Home/SplashPage';
+import UpdateReviewForm from './components/Reviews/UpdateReviewForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -52,6 +53,9 @@ function App() {
           <BizForm />
         </ProtectedRoute>
         <ProtectedRoute path="/businesses/:businessId/create-review">
+          <ReviewForm />
+        </ProtectedRoute>
+        <ProtectedRoute path="/businesses/:businessId/:reviewId/edit">
           <ReviewForm />
         </ProtectedRoute>
         <ProtectedRoute path="/businesses/reviews/search">

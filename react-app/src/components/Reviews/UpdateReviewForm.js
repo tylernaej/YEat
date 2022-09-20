@@ -4,15 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { updateReviewThunk } from "../../store/reviews";
 
-function UpdateReviewForm( {business} ){
+function UpdateReviewForm( {review} ){
     const dispatch = useDispatch();
     const history = useHistory();
     const { businessId } = useParams();
+    console.log(review)
     // console.log(businessId)
     // const business = useSelector((state) => console.log(state))
 
-    const [rating, setRating] = useState("");
-    const [review, setReview] = useState("");
+    const [updateRating, setUpdateRating] = useState("");
+    const [updateReview, setUpdateReview] = useState("");
 
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -21,7 +22,7 @@ function UpdateReviewForm( {business} ){
       const errors = [];
 
       setValidationErrors(errors);
-    }, [rating, review]);
+    }, [updateRating, updateReview]);
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -32,12 +33,12 @@ function UpdateReviewForm( {business} ){
 
       if (validationErrors.length > 0) return;
 
-      const newReview = {
-        rating,
-        review,
+      const updatedReview = {
+        updateRating,
+        updateReview,
       };
 
-      const payload = { businessId: businessId, review: newReview };
+      const payload = { reviewId: review.id, review: updatedReview };
 
       const data = await dispatch(updateReviewThunk(payload));
       console.log(data);
@@ -54,8 +55,8 @@ function UpdateReviewForm( {business} ){
             placeholder="1-5"
             type="number"
             name="rating"
-            value={rating}
-            onChange={(e) => setRating(e.target.value)}
+            value={updateRating}
+            onChange={(e) => setUpdateRating(e.target.value)}
           />
         </div>
         <div>
@@ -65,11 +66,13 @@ function UpdateReviewForm( {business} ){
             placeholder="Write review here"
             type="text"
             name="review"
-            value={review}
-            onChange={(e) => setReview(e.target.value)}
+            value={updateReview}
+            onChange={(e) => setUpdateReview(e.target.value)}
           />
         </div>
         <button type="submit">Submit</button>
       </form>
     );
 }
+
+export default UpdateReviewForm
