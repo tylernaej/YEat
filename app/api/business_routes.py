@@ -14,7 +14,7 @@ def get_all_businesses():
     category = request.args.get('category')
     name = request.args.get('name')
 
-    print(f'\n\nin route {category}, {name} \n\n')
+    # print(f'\n\nin route {category}, {name} \n\n')
     if category or name:
         business_lst = []
         if category:
@@ -47,7 +47,7 @@ def get_all_businesses():
                 if dict_business not in business_lst:
                     business_lst.append(dict_business)
 
-        print('\n\n',business_lst)
+        # print('\n\n',business_lst)
         return {'businesses': business_lst}
 
 
@@ -148,7 +148,7 @@ def get_business_by_id(id):
 def post_review_for_business(id):
     # query for business
     business = Business.query.get(id)
-    print('\n\n\n\n', request.data, '\n\n\n\n')
+    # print('\n\n\n\n', request.data, '\n\n\n\n')
 
     if not business:
         return {"message": "Business could not be found", "statusCode": 404}
@@ -194,7 +194,7 @@ def get_reviews_by_business_id(id):
     users = User.query.all()
     users_lst = [user.to_dict() for user in users]
 
-    print(f'\n\nusers list: {users_lst}\n\n')
+    # print(f'\n\nusers list: {users_lst}\n\n')
 
     reviews_lst = []
     for review in reviews:
@@ -322,9 +322,11 @@ def delete_a_business(id):
 
     return {  "message": "Successfully deleted", "statusCode": 200}
 
-@business_routes.route('<int:id>/amenities', methods=['POST'])
+@business_routes.route('/<int:id>/amenities', methods=['POST'])
 @login_required
 def add_amenities_to_a_business(id):
+
+    
     business = Business.query.get(id)
     if not business:
         return {"message": "Business could not be found", "statusCode": 404}
@@ -332,91 +334,26 @@ def add_amenities_to_a_business(id):
     if business.owner_id != current_user.id:
         return {"message": "Forbidden", "statusCode": 403}
 
-    form = AddAmenityForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        free_wifi = Amenity.query.get(1)
-        take_out = Amenity.query.get(2)
-        dine_in = Amenity.query.get(3)
-        Delivery = Amenity.query.get(4)
-        Reservations = Amenity.query.get(5)
-        Vegetarian_friendly = Amenity.query.get(6)
-        Accepts_Credit_Cards = Amenity.query.get(7)
-        Accepts_Apple_Pay = Amenity.query.get(8)
-        Accepts_Android_Pay = Amenity.query.get(9)
-        Public_Restrooms = Amenity.query.get(10)
-        Kid_friendly = Amenity.query.get(11)
-        Outdoor_seating = Amenity.query.get(12)
-        Large_group_friendly = Amenity.query.get(13)
-        Offers_Catering = Amenity.query.get(14)
-        Wheelchair_accessible = Amenity.query.get(15)
-        Dogs_allowed = Amenity.query.get(16)
-        Live_music = Amenity.query.get(17)
-        print('\n\n\n\n',business.amenities, '\n\n\n\n')
+    data = request.get_json()
+    keys_list = data.keys()
 
-        del business.amenities
+    for amenity in business.amenities:
+        db.session.delete(amenity)
 
-        print('\n\n\n\n',business.amenities, '\n\n\n\n')
+    amenities = Amenity.query.all()
 
-        if form.freeWifi.data is True:
-            business.amenities.append(free_wifi)
+    db.session.commit()
 
-        if form.takeOut.data is True:
-            business.amenities.append(take_out)
+    for amenity in amenities:
+        for bizAmenity in keys_list:
+            if bizAmenity == amenity.description:
+                business.amenities.append(Amenity.query.get(amenity.id))
 
-        if form.dineIn.data is True:
-            business.amenities.append(dine_in)
-
-        if form.delivery.data is True:
-            business.amenities.append(Delivery)
-        
-        if form.reservations.data is True:
-            business.amenities.append(Reservations)
-
-        if form.vegetarianFriendly.data is True:
-            business.amenities.append(Vegetarian_friendly)
-
-        if form.acceptsCreditCards.data is True:
-            business.amenities.append(Accepts_Credit_Cards)
-
-        if form.acceptsApplePay.data is True:
-            business.amenities.append(Accepts_Apple_Pay)
-
-        if form.acceptsAndroidPay.data is True:
-            business.amenities.append(Accepts_Android_Pay)
-
-        if form.publicRestrooms.data is True:
-            business.amenities.append(Public_Restrooms)
-
-        if form.kidFriendly.data is True:
-            business.amenities.append(Kid_friendly)
-
-        if form.outdoorSeating.data is True:
-            business.amenities.append(Outdoor_seating)
-
-        if form.largeGroupFriendly.data is True:
-            business.amenities.append(Large_group_friendly)
-
-        if form.offersCatering.data is True:
-            business.amenities.append(Offers_Catering)
-
-        if form.wheelchairAccessible.data is True:
-            business.amenities.append(Wheelchair_accessible)
-
-        if form.dogsAllowed.data is True:
-            business.amenities.append(Dogs_allowed)
-
-        if form.liveMusic.data is True:
-            business.amenities.append(Live_music)
-
-        print('\n\n\n\n',business.amenities, '\n\n\n\n')
-        db.session.commit()
-        return business.to_dict_no_category()
-
-    return 'Failure to add amenities to business'
+    db.session.commit()
+    return business.to_dict_no_category()
 
 
-@business_routes.route('<int:id>/categories', methods=['POST'])
+@business_routes.route('/<int:id>/categories', methods=['POST'])
 @login_required
 def add_categories_to_business(id):
     business = Business.query.get(id)
@@ -427,41 +364,20 @@ def add_categories_to_business(id):
         return {"message": "Forbidden", "statusCode": 403}
 
     data = request.get_json()
-    # print(data)
-    print('\n\n\n\n', (data), '\n\n\n\n')
-    key_data_lst = data.keys()
-    value_data_lst = data.values()
-    # print('\n\n\n\n', zip(key_data_lst, value_data_lst), '\n\n\n\n')
-    zipped_lst = list(zip(key_data_lst, value_data_lst))
-    print('\n\n\n\n', (zipped_lst), '\n\n\n\n')
-    # print(zipped_lst)
+    keys_list = data.keys()
+
+    for category in business.categories:
+        db.session.delete(category)
 
     categories = Category.query.all()
-    # print(categories)
 
-    categories_lst = []
+    db.session.commit()
+
     for category in categories:
-        # print(category.category)
-        categories_lst.append(category.category)
+        for bizCategory in keys_list:
+            if bizCategory == category.category:
+                business.categories.append(Category.query.get(category.id))
 
-    # business.clear_categories()
-    print('\n\n\n\n', business.categories, '\n\n\n\n')
-    del business.categories
-    print('\n\n\n\n', business.categories, '\n\n\n\n')
-
-    # for data_tuple in zipped_lst:
-    #     # print('\n\n\n\n', (data_tuple), '\n\n\n\n')
-    #     if data_tuple[1] is True:
-
-    #         business.categories.append(Category(category = data_tuple[0]))
-
-    i = 0
-    while i < len(zipped_lst):
-        print(categories_lst.index(zipped_lst[i][0]) + 1, 'INDEX')
-        if zipped_lst[i][1] is True:
-            business.categories.append(Category.query.get(categories_lst.index(zipped_lst[i][0]) + 1))
-        i += 1
-    # db.session.add(business)
     db.session.commit()
     return business.to_dict_no_category()
     
@@ -472,9 +388,9 @@ def add_categories_to_business(id):
 #ERROR HANDLERS
 @business_routes.errorhandler(404)
 def custom400(error):
-    print('\n\n', error, '\n\n')
+    # print('\n\n', error, '\n\n')
     response = jsonify({'message': str(error)})
-    print('\n\n', response, '\n\n')
+    # print('\n\n', response, '\n\n')
     response.status_code = 404
     return response
     # etc.
