@@ -6,9 +6,11 @@ import BizCard from "../Business/BusinessList/businessCard";
 
 function SplashPage() {
     const dispatch = useDispatch()
-    const [isLoaded, setIsLoaded] = useState(false)
+
     const businesses = useSelector(state => state.businesses)
     const businessList = Object.values(businesses)
+
+    const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
         dispatch(getBizThunk())
