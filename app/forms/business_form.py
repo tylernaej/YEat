@@ -47,5 +47,5 @@ class CreateBusinessForm(FlaskForm):
     priceRange = IntegerField('Price Range', validators=[DataRequired(), NumberRange(min=1, max=4, message="Rating must be between 1-4")])
     email = StringField('Email', validators=[DataRequired(), Email()])
     phone = StringField('Phone Number', validators=[DataRequired()])
-    name = StringField('Name', validators=[DataRequired()])
+    name = StringField('Name', validators=[DataRequired(), name_length])
     website = StringField('Website URL')
