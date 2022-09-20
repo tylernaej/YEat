@@ -34,6 +34,9 @@ class Business(db.Model):
         return {
            "categories" : self.categories
         }
+    
+    def clear_amenities(self):
+        self.amenities = []
 
 
     def to_dict(self):
