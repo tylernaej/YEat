@@ -72,7 +72,7 @@ function HeaderInfo({ business }) {
                     </div>
                     <div id='row'>
                         <div id='business-avgReview'>
-                            {business.avgReviews.toFixed(2)}
+                            {business.avgReviews}
                         </div>
                         <div id='right-side'>
                             {reviewsCount}
