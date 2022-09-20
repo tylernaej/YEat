@@ -61,7 +61,7 @@ function BizPage() {
                                 Photo feature not implemented yet
                             </Route>
                             <Route path={`${url}/edit`}>
-                                <UpdateBizForm business={business} />
+                                <UpdateBizForm business={business} setIsLoaded={setIsLoaded} />
                             </Route>
                             <Route path={`${url}/create-review`}>
                                 <ReviewForm />

@@ -3,6 +3,8 @@ import { useHistory, Redirect, useParams, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {getAmenities, postAmenities} from '../../../../store/fetchFunctions'
 import IndividualAmenityButton from "./IndividualAmenityButton";
+import { readBizThunk } from "../../../../store/business";
+import HeaderInfo from "../../BusinessPage/HeaderInfo";
 
 function SetBizAmenities({business}){
     const dispatch = useDispatch()
@@ -36,6 +38,10 @@ function SetBizAmenities({business}){
         history.push(`/create-business/${id}/categories`)
     }
 
+    const handleBack = () => {  
+        history.push(`/businesses/${id}/edit`)
+    }
+
     return isLoaded &&  (
         <div>
             <div>Set Amenities Here</div>
@@ -50,6 +56,7 @@ function SetBizAmenities({business}){
                             />
                         </div>
                     ))}
+                    <button onClick={handleBack} >Go Back</button>
                     <button type='submit'>Submit</button>
                 </form>
             </div>

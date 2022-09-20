@@ -33,6 +33,10 @@ function SetBizCategories({business}){
         history.push(`/businesses/${id}/about`)
     }
 
+    const handleBack = () => {
+        history.push(`/create-business/${id}/amenities`)
+    }
+
     return isLoaded &&  (
         <div>
             <div>Set Catgories Here</div>
@@ -47,7 +51,8 @@ function SetBizCategories({business}){
                             />
                         </div>
                     ))}
-                    <button type='submit'>HERE</button>
+                    <button onClick={handleBack}>Go Back</button>
+                    <button type='submit'>Submit</button>
                 </form>
             </div>
         </div>
