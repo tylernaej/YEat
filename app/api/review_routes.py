@@ -32,7 +32,7 @@ def edit_review(reviewId):
         return {"message": "Review could not be found", "statusCode": 404}, 404
 
     # if user is not the reviewer
-    if current_user != review.user_id:
+    if current_user.id != review.user_id:
         return {"message": "Forbidden", "statusCode": 403}, 403
 
     # update the information
@@ -64,7 +64,8 @@ def delete_review(reviewId):
         return {"message": "Review could not be found", "statusCode": 404}, 404
 
     # if user is not the reviewer
-    if current_user != review.user_id:
+    # print('\n\n\n', current_user.id, review, '\n\n\n')
+    if current_user.id != review.user_id:
         return {"message": "Forbidden", "statusCode": 403}, 403
 
     # delete the review
