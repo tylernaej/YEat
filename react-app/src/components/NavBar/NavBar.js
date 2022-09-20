@@ -12,8 +12,9 @@ import './NavBar.css'
 const NavBar = () => {
   return (
     <nav className='flex-row-justify-between' id='nav'>
-        <div>
+        <div className='flex-row'>
           <HomeButton />
+          <NavLink to={'/businesses'}>See all businesses</NavLink>
         </div>
         <div>
           <SearchBar />
