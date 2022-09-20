@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { getBizReviewThunk } from "../../../store/reviews";
 import './ReviewInfo.css'
 
@@ -50,6 +51,10 @@ function ReviewInfo({ business }) {
                         <h4>Overall rating</h4>
                         <p>Average Rating: {business.avgReviews}</p>
                         <p className="textcolor-grey">{business.numReviews} reviews</p>
+                        <div>
+                            <i className="fa-regular fa-star"></i>
+                            <NavLink to={`/businesses/${business.id}/create-review`}>Write a review</NavLink>
+                        </div>
                     </div>
                 </div>
                 <div className="w70 flex-column">

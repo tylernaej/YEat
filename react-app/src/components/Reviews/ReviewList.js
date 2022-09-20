@@ -7,7 +7,8 @@ function ReviewsList({ business }){
     const dispatch = useDispatch()
 
     const reviews = useSelector(state => state.reviews)
-    const reviewsList = Object.values(reviews)
+    const reviewsList = Object.values(reviews).reverse()
+    // const reversedList = reviewsList.reverse()
 
     const [isLoaded, setIsLoaded] = useState(false)
 

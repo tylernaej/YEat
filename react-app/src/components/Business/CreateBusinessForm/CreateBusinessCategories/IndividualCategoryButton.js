@@ -8,11 +8,9 @@ function IndividualCategoryButton({category, checkedState, setCheckedState}){
 
     const handleChecked = async e => {
         setCategoryChecked(current => !current)
-        // console.log(`The Amenity Clicked was: ${amenityChecked} and the checked state is: ${Object.keys(checkedState)}.`)
     }
 
     useEffect(() => {
-        // console.log('setting new checked state')
         if (isMounted.current) {
             let newState = {...checkedState}
             if(`${category}` in  newState && !categoryChecked){
@@ -21,7 +19,6 @@ function IndividualCategoryButton({category, checkedState, setCheckedState}){
             if(categoryChecked){
                 newState[`${category}`] = categoryChecked
             }
-            // console.log(`You are updating \n${Object.keys(checkedState)} \nto \n${Object.keys(newState)}`)
             setCheckedState(newState)
         } else {
             isMounted.current = true;

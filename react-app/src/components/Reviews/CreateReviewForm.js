@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, Redirect, useParams } from "react-router-dom";
+import { useHistory, Redirect, useParams, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { createReviewThunk } from "../../store/reviews";
@@ -7,7 +7,10 @@ import { createReviewThunk } from "../../store/reviews";
 function ReviewForm() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { businessId } = useParams()
+    // const { businessId } = useParams()
+    const location = useLocation()
+    
+    const businessId = location.pathname.split('/')[2]
     // console.log(businessId)
     // const business = useSelector((state) => console.log(state))
 
@@ -38,7 +41,7 @@ function ReviewForm() {
             review
         }
 
-        const payload = {businessId: businessId, review: newReview}
+        const payload = {businessId, review: newReview}
 
         const data = await dispatch(createReviewThunk(payload))
         console.log(data)

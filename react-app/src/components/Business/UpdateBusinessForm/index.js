@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { updateBizThunk, deleteBizThunk } from "../../../store/business";
 
-function UpdateBizForm({ business }) {
+function UpdateBizForm({ business, setIsLoaded }) {
     const dispatch = useDispatch()
     const history = useHistory()
 
@@ -26,13 +26,9 @@ function UpdateBizForm({ business }) {
 
     const [validationErrors, setValidationErrors] = useState([])
     const [isSubmitted, setIsSubmitted] = useState(false)
-    const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
         const errors = []
-
-        // front end error handling here
-
         setValidationErrors(errors)
 
     }, [name, email, phone, website, address, city, state, zipcode, country, latitude, longitude, description, priceRange])
@@ -50,7 +46,7 @@ function UpdateBizForm({ business }) {
 
         setIsSubmitted(true)
 
-        if (validationErrors.length > 0) return
+        // if (validationErrors.length > 0) return
 
         const newBiz = {
             name,
@@ -72,11 +68,12 @@ function UpdateBizForm({ business }) {
 
         const data = await dispatch(updateBizThunk(payload))
 
-        history.push(`/businesses/${business.id}/about`)
+        history.push(`/create-business/${business.id}/amenities`)
     }
 
     const handleDelete = async e => {
         e.preventDefault()
+        setIsLoaded(false)
         await dispatch(deleteBizThunk(business.id))
         history.push(`/businesses`)
     }

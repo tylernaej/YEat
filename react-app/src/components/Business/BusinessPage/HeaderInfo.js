@@ -37,6 +37,8 @@ function reviewInHeader(reviews) {
 
 function HeaderInfo({ business }) {
     // console.log(Object.values(business.categories)[1])
+
+    console.log(`The Business in the Header Info is: ${Object.keys(business)}`)
     const categoriesList = []
     business.categories.map(category => {
         categoriesList.push(category)

@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 function CreateBusinessButton() {
   return (
     <div>
-        <NavLink to={'/create-business'}>Create A Business</NavLink>
+        <NavLink to={'/create-business/details'}>Create A Business</NavLink>
     </div>
   )
 }
