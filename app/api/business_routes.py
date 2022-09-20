@@ -298,7 +298,7 @@ def edit_a_business(id):
         business.website = form.website.data
 
         db.session.commit()
-        return business.to_dict()
+        return business.to_dict_no_category()
     # print(form.errors)
     errors = {
         "message": "Validation Error",

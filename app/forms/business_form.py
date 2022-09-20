@@ -6,8 +6,8 @@ from app.models import Business
 # validations
 def description_length(form, field):
     description = field.data
-    if len(description) > 50:
-        raise ValidationError('Description must be 50 characters or less')
+    if len(description) > 2000:
+        raise ValidationError('Description must be 2000 characters or less')
     elif len(description) < 10:
         raise ValidationError('Description must be 10 characters or more')
 
