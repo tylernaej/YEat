@@ -39,9 +39,7 @@ function BizPage() {
                 <HeaderInfo business={business} />
             </div>
             <div id="business-body">
-                <div>
-                    <BizNavBar business={business} />
-                </div>
+                <BizNavBar business={business} />
 
                 <div className="w1070px flex-row-center">
                     <div className="w70">

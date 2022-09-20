@@ -10,7 +10,7 @@ function BizNavBar({ business }){
     console.log(sessionUser, business)
 
     return (
-        <div className='flex-row-center w70'>
+        <div id="business-navbar">
             <div className='flex-row-justify-between flex-row-align-center w70'>
                 <NavLink className="navLink-bluegreen header text20" activeClassName='tab-active' to={`${url}/about`}>About</NavLink>
                 <NavLink className="navLink-bluegreen header text20" activeClassName='tab-active' to={`${url}/reviews`}>Reviews</NavLink>

@@ -52,12 +52,8 @@ footer {
     color: #008294;
 }
 
-.navLink-red-button {
-
-}
-
-.navLink-white-button {
-
+.tab-active {
+    text-decoration: underline;
 }
 
 /* Buttons */
