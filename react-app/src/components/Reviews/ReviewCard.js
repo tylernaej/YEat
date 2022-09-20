@@ -20,6 +20,9 @@ function ReviewCard({ review }) {
                     </div>
                 </div>
                 <div>
+                    <NavLink to={`/reviews/${review.id}/edit`}>Edit</NavLink>
+                </div>
+                <div>
                     <span className="textcolor-grey">
                         Rating: {review.rating} - {review.timeCreated.split(' ').slice(1, 4).join(' ')}
                     </span>

@@ -27,7 +27,9 @@ def edit_review(reviewId):
     # update the information
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    print('\n\n\n\n', form.errors, '\n\n\n\n')
     if form.validate_on_submit():
+        print('\n\n\n\n', 'TEST', '\n\n\n\n')
         review.rating = form.rating.data
         review.review = form.review.data
 
@@ -78,3 +80,12 @@ def add_image_to_review(reviewId):
     # add images
 
     # return the image
+
+
+
+@review_routes.route('/<int:id>', methods=['GET'])
+@login_required
+def get_review_by_id(id):
+    review = Review.query.get(id)
+
+    return review.to_dict()
