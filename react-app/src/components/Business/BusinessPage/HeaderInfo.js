@@ -10,6 +10,31 @@ function dollarsigns(range) {
     return signs
 }
 
+function photoInHeader(business) {
+    if (business.images.length === 0) {
+        return 'No photos available'
+    }
+    else if (business.images.length === 1) {
+        return `See ${business.images.length} photo`;
+    }
+    else {
+        return `See ${business.images.length} photos`;
+    }
+}
+
+function reviewInHeader(reviews) {
+    // console.log(business)
+    if (reviews?.length === 0) {
+        return 'No reviews available'
+    }
+    else if (reviews?.length === 1) {
+        return `${reviews?.length} review`;
+    }
+    else {
+        return `${reviews?.length} reviews`;
+    }
+}
+
 function HeaderInfo({ business }) {
     // console.log(Object.values(business.categories)[1])
     const categoriesList = []
@@ -17,44 +42,24 @@ function HeaderInfo({ business }) {
         categoriesList.push(category)
     })
     // console.log(categoriesList)
+    console.log('OVER', business)
 
     const price = dollarsigns(business.priceRange)
-    console.log(business.priceRange)
-    console.log(price)
+    const photoCount = photoInHeader(business)
+    const reviewsCount = reviewInHeader(business?.reviews)
 
-    function photoInHeader() {
-        if (business.images.length === 0) {
-            return 'No photos available'
-        }
-        else if (business.images.length === 1) {
-            return `See ${business.images.length} photo`;
-        }
-        else {
-            return `See ${business.images.length} photos`;
-        }
-    }
 
-    function reviewInHeader() {
-        if (business.reviews.length === 0) {
-            return 'No reviews available'
-        }
-        else if (business.reviews.length === 1) {
-            return `${business.reviews.length} review`;
-        }
-        else {
-            return `${business.reviews.length} reviews`;
-        }
-    }
+
 
     return (
         <>
             <div id='business-images-container'>
-                {photoInHeader()}
-                {/* See {business.images.length} photos */}
+                {/* {photoInHeader()} */}
+                {/* See {photoCount} photos */}
                 <div id='business-images-carousel'>
                     {/* map the images onto here */}
                     <div className="business-image-container">
-                        <img className="actual-image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Restaurant_N%C3%A4sinneula.jpg/1920px-Restaurant_N%C3%A4sinneula.jpg" />
+                        <img className="actual-image" src="https://www.atlantaluxuryrentals.com/wp-content/uploads/2021/08/Local-Restaurants-Atlanta.jpg" />
                     </div>
                 </div>
             </div>
@@ -70,7 +75,7 @@ function HeaderInfo({ business }) {
                             {business.avgReviews.toFixed(2)}
                         </div>
                         <div id='right-side'>
-                            {reviewInHeader()}
+                            {reviewsCount}
                         </div>
                     </div>
                     <div id='row'>

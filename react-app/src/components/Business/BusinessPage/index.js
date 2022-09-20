@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Switch, Route, useParams, useRouteMatch, Redirect } from "react-router-dom";
 
 import { readBizThunk } from "../../../store/business";
-import { getBizReviewThunk } from "../../../store/reviews";
 
 //components
 import AboutInfo from "./AboutInfo";
@@ -14,6 +13,8 @@ import ReviewInfo from "./ReviewInfo";
 import ReviewsList from "../../Reviews/ReviewList";
 import UpdateBizForm from "../UpdateBusinessForm";
 import BizNavBar from "./BusinessNavBar";
+
+import './businesspage.css'
 
 
 function BizPage() {
@@ -29,11 +30,7 @@ function BizPage() {
 
     useEffect(() => {
         dispatch(readBizThunk(businessId))
-            // .then(() => dispatch(getBizReviewThunk(businessId)))
             .then(() => setIsLoaded(true))
-
-        // make another fetch request for reviews of the business for more information
-        // add this when doing feature 2 - reviews
     }, [dispatch])
 
     return isLoaded && (
@@ -41,10 +38,10 @@ function BizPage() {
             <div id="business-header" className="">
                 <HeaderInfo business={business} />
             </div>
-            <div>
-                <BizNavBar business={business} />
-            </div>
-            <div className="w100 flex-row-center">
+            <div id="business-body">
+                <div>
+                    <BizNavBar business={business} />
+                </div>
                 <div className="w1070px flex-row-center">
                     <div className="w70">
                         <Switch>
