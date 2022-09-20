@@ -5,6 +5,7 @@ from flask_login import current_user, login_user, logout_user, login_required
 from app.forms.business_form import CreateBusinessForm
 from app.forms.review_form import ReviewForm
 from app.forms.amenity_form import AddAmenityForm
+from sqlalchemy import desc
 
 business_routes = Blueprint('businesses', __name__)
 

@@ -19,8 +19,8 @@ function UpdateReviewForm(  ){
       .then(() => setIsLoaded(true))
     }, [])
 
-    console.log(unEditedReview.rating);
-    console.log(unEditedReview.review);
+    // console.log(unEditedReview.rating);
+    // console.log(unEditedReview.review);
 
 
     const [rating, setRating] = useState(unEditedReview?.rating);
@@ -61,7 +61,7 @@ function UpdateReviewForm(  ){
       const data = await dispatch(updateReviewThunk(payload));
       // console.log(data);
       // console.log(review)
-      history.push(`/businesses/${unEditedReview.businessId}/about`);
+      history.push(`/businesses/${unEditedReview.businessId}/reviews`);
     };
 
     const handleDelete = async e => {
