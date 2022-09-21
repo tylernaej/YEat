@@ -1,6 +1,8 @@
 .each-card{
     display: flex;
-    border: 1px red solid;
+    /* border: 1px red solid; */
+    /* justify-content: center; */
+    /* align-items: center; */
     height: 270px;
     width: 780px;
     

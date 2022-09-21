@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from "react-router-dom";
+import './index.css'
 
 
 import { getBizThunk } from "../../../store/business";
@@ -23,7 +24,7 @@ function BizList() {
     
 
     return isLoaded && (
-        <div>
+        <div className="bizlist-page">
             {businessList.map(business => (
                 <BizCard key={business.id} business={business} />
             ))}
