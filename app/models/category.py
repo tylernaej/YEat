@@ -13,7 +13,7 @@ class Category(db.Model):
     __tablename__ = 'categories'
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
-    category = db.Column(db.String, nullable=False)
+    category = db.Column(db.String(50), nullable=False)
 
     businesses = db.relationship("Business", secondary=business_categories, back_populates='categories', cascade="all, delete")
 

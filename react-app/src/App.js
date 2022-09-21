@@ -11,11 +11,14 @@ import User from './components/User';
 import BizList from './components/Business/BusinessList';
 import BizPage from './components/Business/BusinessPage';
 import BizForm from './components/Business/CreateBusinessForm';
-
+import BizSearchList from './components/Business/BusinessList/searchIndex';
+import ReviewForm from './components/Reviews/CreateReviewForm';
 import { authenticate } from './store/session';
 import UpdateBizForm from './components/Business/UpdateBusinessForm';
 import BizReviewSearch from './components/Reviews/BizReviewSearch';
 import UserBizList from './components/Business/UserBusinesses/UserBizList';
+import SplashPage from './components/Home/SplashPage';
+import UpdateReviewForm from './components/Reviews/UpdateReviewForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,9 +52,18 @@ function App() {
         <ProtectedRoute path="/create-business">
           <BizForm />
         </ProtectedRoute>
+        {/* <ProtectedRoute path="/businesses/:businessId/create-review">
+          <ReviewForm />
+        </ProtectedRoute> */}
+        <ProtectedRoute path="/reviews/:reviewId/edit">
+          <UpdateReviewForm />
+        </ProtectedRoute>
         <ProtectedRoute path="/businesses/reviews/search">
           <BizReviewSearch />
         </ProtectedRoute>
+        <Route path="/businesses/search">
+          <BizSearchList />
+        </Route>
         <Route path="/businesses/:businessId">
           <BizPage />
         </Route>
@@ -62,7 +74,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <Route path="/" exact={true}>
-          <h1>My Home Page</h1>
+          <SplashPage />
         </Route>
       </Switch>
     </div>

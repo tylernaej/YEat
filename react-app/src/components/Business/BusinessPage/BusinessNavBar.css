@@ -1,0 +1,9 @@
+#business-navbar {
+    border-collapse: initial;
+    border-spacing: 8px 0;
+    margin-left: -8px;
+    margin-right: -8px;
+    display: table;
+    min-width: 100%;
+    table-layout: auto;
+}

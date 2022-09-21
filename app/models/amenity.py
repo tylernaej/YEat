@@ -14,7 +14,7 @@ class Amenity(db.Model):
     __tablename__ = 'amenities'
 
     id = db.Column(db.Integer, primary_key=True)
-    description = db.Column(db.String, nullable=False)
+    description = db.Column(db.String(50), nullable=False)
 
     businesses = db.relationship("Business", secondary=business_amenities, back_populates='amenities', cascade="all, delete")
 

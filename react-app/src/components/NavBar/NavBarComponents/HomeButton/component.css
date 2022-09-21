@@ -1,0 +1,16 @@
+#home-button-nav{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+#home-button-text{
+    padding: 10px;
+    font-size:x-large;
+    display: flex;
+    align-items: center;
+}
+
+#yeat-text{
+    padding-right: 5px;
+}
