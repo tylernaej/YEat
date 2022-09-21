@@ -14,6 +14,7 @@ import ReviewsList from "../../Reviews/ReviewList";
 import UpdateBizForm from "../UpdateBusinessForm";
 import BizNavBar from "./BusinessNavBar";
 import ReviewForm from "../../Reviews/CreateReviewForm";
+import UpdateReviewForm from "../../Reviews/UpdateReviewForm";
 
 import './businesspage.css'
 import { getBizReviewThunk } from "../../../store/reviews";
@@ -22,6 +23,8 @@ import { getBizReviewThunk } from "../../../store/reviews";
 function BizPage() {
     const { businessId } = useParams()
     const { url } = useRouteMatch()
+    console.log(url)
+    const sessionUser = useSelector(state => state.session.user)
 
     const dispatch = useDispatch()
 
@@ -30,6 +33,7 @@ function BizPage() {
 
     const reviews = useSelector(state => state.reviews)
     const reviewsList = Object.values(reviews)
+    const usersReview = reviewsList.find(review => review.userId === sessionUser.id)
 
     const [isLoaded, setIsLoaded] = useState(false)
 
@@ -53,7 +57,7 @@ function BizPage() {
                             <Route path={`${url}/about`}>
                                 <AboutInfo business={business} />
                                 <AmenityInfo business={business} />
-                                <ReviewInfo business={business} reviewsList={reviewsList}/>
+                                <ReviewInfo business={business} reviewsList={reviewsList} usersReview={usersReview}/>
                                 {/* <ReviewsList business={business} /> */}
                             </Route>
                             <Route path={`${url}/reviews`}>
@@ -71,8 +75,8 @@ function BizPage() {
                             <Route path={`${url}/create-review`}>
                                 <ReviewForm />
                             </Route>
-                            <Route path={`${url}/reviews/:reviewId/edit`}>
-
+                            <Route path={`${url}/edit-review`}>
+                                <UpdateReviewForm usersReview={usersReview} bizUrl={url}/>
                             </Route>
                         </Switch>
                     </div>

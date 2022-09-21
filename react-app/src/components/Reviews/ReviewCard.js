@@ -1,10 +1,12 @@
 import React from "react";
 import profileImage from "../../../src/assets/ProfileDefault-removebg-preview.png";
 import UpdateReviewForm from "./UpdateReviewForm";
-import { NavLink } from "react-router-dom";
+import { NavLink, useRouteMatch } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 function ReviewCard({ review }) {
+    // console.log(bizUrl)
+    // const {url} = useRouteMatch()
 
     const sessionUser = useSelector(state => state.session.user)
 
@@ -23,7 +25,7 @@ function ReviewCard({ review }) {
                     </div>
                 </div>
                 <div>
-                    <NavLink style={ { visibility: `${sessionUser && sessionUser.id === review.userId ? 'visible' : 'hidden'}` } } to={`/reviews/${review.id}/edit`}>Edit</NavLink>
+                    {/* <NavLink style={ { visibility: `${sessionUser && sessionUser.id === review.userId ? 'visible' : 'hidden'}` } } to={`/$/edit-review`}>Edit</NavLink> */}
                 </div>
                 <div>
                     <span className="textcolor-grey">

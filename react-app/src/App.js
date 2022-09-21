@@ -59,9 +59,9 @@ function App() {
           {/* <ProtectedRoute path="/businesses/:businessId/create-review">
             <ReviewForm />
           </ProtectedRoute> */}
-          <ProtectedRoute path="/reviews/:reviewId/edit">
+          {/* <ProtectedRoute path="/reviews/:reviewId/edit">
             <UpdateReviewForm />
-          </ProtectedRoute>
+          </ProtectedRoute> */}
           <ProtectedRoute path="/businesses/reviews/search">
             <BizReviewSearch />
           </ProtectedRoute>
