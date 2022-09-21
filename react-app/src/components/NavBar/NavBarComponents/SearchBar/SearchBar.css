@@ -16,6 +16,7 @@
 }
 
 #search-bar-container{
+    width: 500px;
 }
 
 #search-bar{
@@ -25,6 +26,7 @@
 #search-form-container{
     box-shadow: 0 2px 15px 0 rgba(0, 0, 0, .2);
     border-radius: 4px 0px 0px 4px;
+    
 }
 
 #search-form{

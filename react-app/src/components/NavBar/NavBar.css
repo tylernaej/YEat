@@ -21,7 +21,8 @@
     display: flex;
     align-items: center;
     padding: 20px;
-    color: rgb(30, 30, 30)
+    color: rgb(30, 30, 30);
+    box-sizing: border-box;
 }
 
 #nav:visited{
@@ -30,9 +31,29 @@
 
 #see-all-businesses{
     text-decoration: none;
+    font-size: large;
+    font-weight: 600;
+    padding: 15px;
+    border-radius: 5px;
+    transition: .1s;
+}
+
+#see-all-businesses:hover{
+    text-decoration: none;
+    background-color: rgb(240, 240, 240);
 }
 
 #see-all-businesses:visited{
+    text-decoration: none;
+    color: rgb(30, 30, 30)
+}
+
+#see-all-businesses-navlink{
+    text-decoration: none;
+    color: rgb(30, 30, 30)
+}
+
+#see-all-businesses-navlink:visited{
     text-decoration: none;
     color: rgb(30, 30, 30)
 }

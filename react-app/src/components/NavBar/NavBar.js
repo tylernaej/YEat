@@ -19,8 +19,8 @@ const NavBar = () => {
           <SearchBar />
         </div>
         <div className='flex-row' id='right-side-buttons'>
-          <div>
-            <NavLink to={'/businesses'} id='see-all-businesses'>See all businesses</NavLink>
+          <div id='see-all-businesses'>
+            <NavLink to={'/businesses'} id='see-all-businesses-navlink'>See all businesses</NavLink>
           </div>
           <div>
             <CreateBusinessButton />
