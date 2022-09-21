@@ -29,7 +29,7 @@ def name_length(form, field):
 
 def zipcode_length(form, field):
     zipcode = field.data
-    if len(zipcode) == 5:
+    if len(zipcode) != 5:
         raise ValidationError('Zipcode must be 5 digits')
 
 
