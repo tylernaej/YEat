@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    profile_picture = db.Column(db.String(100))
+    profile_picture = db.Column(db.String(1000))
 
     businesses = db.relationship("Business", back_populates='owner')
     reviews = db.relationship("Review", back_populates='user')
