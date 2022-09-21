@@ -60,19 +60,31 @@ function SearchBar() {
     <div> 
         <div id='search-bar-container' onClick={toggleDropDown}>
           <div>
-            <form onSubmit={handleSubmit} action="/" method="GET" className="flex-row-align-center">
-              <label htmlFor='search-bar' id='search-form'></label>
-              <input
-                type='text'
-                id="search-bar"
-                placeholder="tacos, Max's"
-                onChange={inputHandler}
-                value={userInput}
-              />
-              <button type='submit' id='magnifying-glass'>
-                <i className="fa-solid fa-magnifying-glass"></i>
-              </button>
-            </form>
+            <div id='search-form-container'>
+              <form 
+                onSubmit={handleSubmit} 
+                action="/" 
+                method="GET" 
+                className="flex-row-align-center"
+                id='search-form'
+              >
+                <label htmlFor='search-bar' id='search-form'></label>
+                <input
+                  type='text'
+                  id="search-bar"
+                  placeholder="tacos, Max's"
+                  onChange={inputHandler}
+                  value={userInput}
+                />
+                <div 
+                  type='submit' 
+                  id='magnifying-glass'
+                  onClick={handleSubmit}
+                >
+                  <i className="fa-solid fa-magnifying-glass fa-xl"></i>
+                </div>
+              </form>
+            </div>
             {dropDown && (
               <div id='drop-down'>
                 {Array.from(bizMatches).map(business => (

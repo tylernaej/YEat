@@ -1,0 +1,9 @@
+#create-business{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 5px
+}
+#create-business:visited{
+    color: rgb(30, 30, 30)
+}

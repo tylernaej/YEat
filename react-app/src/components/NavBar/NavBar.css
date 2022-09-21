@@ -9,12 +9,35 @@
 }
 
 @font-face {
-    font-family: 'Kodchasan-Bold';
-    src: url('../../fonts/Kodchasan/Kodchasan-Bold.ttf');
+    font-family: 'Kodchasan-Medium';
+    src: url('../../fonts/Kodchasan/Kodchasan-Medium.ttf');
 }
 
 #nav{
     width: 100%;
     text-decoration: none;
-    font-family: 'Kodchasan-Bold'; 
+    font-family: 'GothicA1-Medium';
+    border-bottom: 1px solid rgb(220, 220, 220);
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    color: rgb(30, 30, 30)
+}
+
+#nav:visited{
+    text-decoration: none;
+}
+
+#see-all-businesses{
+    text-decoration: none;
+}
+
+#see-all-businesses:visited{
+    text-decoration: none;
+    color: rgb(30, 30, 30)
+}
+
+#right-side-buttons{
+    display: flex;
+    align-items: center;
 }

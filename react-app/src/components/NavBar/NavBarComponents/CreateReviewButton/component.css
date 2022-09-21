@@ -1,0 +1,10 @@
+#create-review{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+#create-review:visited{
+    color: rgb(30, 30, 30)
+}
