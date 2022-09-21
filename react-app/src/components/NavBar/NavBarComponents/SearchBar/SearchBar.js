@@ -14,12 +14,13 @@ function SearchBar() {
   const [bizMatches, setBizMatches] = useState([])
 
   const toggleDropDown = (e) => {
-    setDropDown(true)
+      setDropDown(true)
   }
 
   useEffect(() => {
-    const closeMenu = () => {
-        if(dropDown){
+    const closeMenu = (e) => {
+        console.log(e.target.id)
+        if(dropDown && e.target.id != 'search-bar'){
             setDropDown(false)
         }
     }
@@ -31,7 +32,6 @@ function SearchBar() {
   const inputHandler = (e) => {
     e.preventDefault()
     setUserInput(e.target.value)
-    console.log(userInput)
     let bizSet = new Set()
     for (const business of Object.values(businesses)){
       if (business.name.toLowerCase().includes(e.target.value.toLowerCase())){
