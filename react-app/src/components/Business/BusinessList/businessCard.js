@@ -1,13 +1,15 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import "./businessCard.css"
+
 
 function BizCard({ business }) {
     console.log(`Loading a biz card for: ${business.name}`)
     return (
-        <div  style={{border: "1px red solid", height:"270px", width:"780px"}}>
-            <NavLink className="flex-row" to={`/businesses/${business.id}/about`}>
+        <div className='each-card'>
+            <NavLink className="flex-row navLink" to={`/businesses/${business.id}/about`}>
                 <div style={{height: "205px", minWidth:"205px", border:"1px red solid"}}>
-                    <img src='https://wallpapercave.com/wp/wp2416473.jpg' style={{objectFit: "cover", height:"205px", width:"205px"}}/>
+                    <img src='https://wallpapercave.com/wp/wp2416473.jpg' style={{objectFit: "cover", height:"205px", width:"205px"}} alt=''/>
                     {/* photo here */}
                 </div>
                 <div>
@@ -19,7 +21,7 @@ function BizCard({ business }) {
                         ))}
                     </div>
                     <div>
-                        <p>{business.description}</p>
+                        <div className='biz-description'>"{business.description}"</div>
                     </div>
                 </div>
 
