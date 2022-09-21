@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import './app.css'
 
 // components
 import LoginForm from './components/auth/LoginForm';
@@ -37,46 +38,50 @@ function App() {
 
   return (
     <BrowserRouter>
-    <div className='h100 w100'>
-      <NavBar />
-      <Switch>
-        <Route path="/login" exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path="/sign-up" exact={true}>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute path="/myBusinesses">
-          <UserBizList />
-        </ProtectedRoute>
-        <ProtectedRoute path="/create-business">
-          <BizForm />
-        </ProtectedRoute>
-        {/* <ProtectedRoute path="/businesses/:businessId/create-review">
-          <ReviewForm />
-        </ProtectedRoute> */}
-        <ProtectedRoute path="/reviews/:reviewId/edit">
-          <UpdateReviewForm />
-        </ProtectedRoute>
-        <ProtectedRoute path="/businesses/reviews/search">
-          <BizReviewSearch />
-        </ProtectedRoute>
-        <Route path="/businesses/search">
-          <BizSearchList />
-        </Route>
-        <Route path="/businesses/:businessId">
-          <BizPage />
-        </Route>
-        <Route path="/businesses">
-          <BizList />
-        </Route>
-        <ProtectedRoute path="/users/:userId" exact={true}>
-          <User />
-        </ProtectedRoute>
-        <Route path="/" exact={true}>
-          <SplashPage />
-        </Route>
-      </Switch>
+    <div className='h100 w100 flex-column'>
+        <NavBar />
+      <div id='navbar-spacer'>
+      </div>
+      <div id='appjs-switch-wrapper'>
+        <Switch>
+          <Route path="/login" exact={true}>
+            <LoginForm />
+          </Route>
+          <Route path="/signup" exact={true}>
+            <SignUpForm />
+          </Route>
+          <ProtectedRoute path="/myBusinesses">
+            <UserBizList />
+          </ProtectedRoute>
+          <ProtectedRoute path="/create-business">
+            <BizForm />
+          </ProtectedRoute>
+          {/* <ProtectedRoute path="/businesses/:businessId/create-review">
+            <ReviewForm />
+          </ProtectedRoute> */}
+          <ProtectedRoute path="/reviews/:reviewId/edit">
+            <UpdateReviewForm />
+          </ProtectedRoute>
+          <ProtectedRoute path="/businesses/reviews/search">
+            <BizReviewSearch />
+          </ProtectedRoute>
+          <Route path="/businesses/search">
+            <BizSearchList />
+          </Route>
+          <Route path="/businesses/:businessId">
+            <BizPage />
+          </Route>
+          <Route path="/businesses">
+            <BizList />
+          </Route>
+          <ProtectedRoute path="/users/:userId" exact={true}>
+            <User />
+          </ProtectedRoute>
+          <Route path="/" exact={true}>
+            <SplashPage />
+          </Route>
+        </Switch>
+      </div>
     </div>
     </BrowserRouter>
   );
