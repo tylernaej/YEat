@@ -88,7 +88,7 @@ function SearchBar() {
             {dropDown && (
               <div id='drop-down'>
                 {Array.from(bizMatches).map(business => (
-                  <div>
+                  <div >
                     <DropDownBizInfo business={business}/>
                   </div>
                 ))}

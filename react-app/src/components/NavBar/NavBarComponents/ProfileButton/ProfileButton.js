@@ -33,7 +33,7 @@ function ProfileButton() {
                     <img id='profile-image' src={sessionUser.profilePicture ? sessionUser.profilePicture : profileImage} />
                 </div>
                 {menu && (
-                    <div>
+                    <div id='utility-drop-down'>
                         <ProfileDropDownInfo sessionUser={sessionUser}/>
                     </div>
                 )}
@@ -41,11 +41,14 @@ function ProfileButton() {
         )
         }
         {!sessionUser && (
-            <div> 
-                <div>
-                    <NavLink to='/login'>Log In</NavLink>
+            <div className="flex-row"> 
+                <div id='login-container'>
+                    <NavLink 
+                        to='/login'
+                        id='login-button'
+                    >Log In</NavLink>
                 </div>
-                <div>
+                <div id='signup-button'>
                     <NavLink to='/signup'>Sign Up</NavLink>
                 </div>
             </div>

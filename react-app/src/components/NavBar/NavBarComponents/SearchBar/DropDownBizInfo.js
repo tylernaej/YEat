@@ -6,7 +6,7 @@ import './DropDownBizInfo.css'
 function DropDownBizInfo({business}){
 
     return  (
-        <div>
+        <div >
             <NavLink to={`/businesses/${business.id}/about`}>
                 <div className="flex-row" id='individual-result'>
                     <div id='result-image'>
