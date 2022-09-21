@@ -4,7 +4,7 @@ class Image(db.Model):
     __tablename__ = 'images'
 
     id = db.Column(db.Integer, primary_key=True, nullable=False)
-    url = db.Column(db.String(255), nullable=False)
+    url = db.Column(db.String(1000), nullable=False)
     uploader_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     business_id = db.Column(db.Integer, db.ForeignKey('businesses.id'))
     review_id = db.Column(db.Integer, db.ForeignKey('reviews.id'))
