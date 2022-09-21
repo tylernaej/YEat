@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import './IndividualAmenities.css'
 
 function IndividualAmenityButton({amenity, checkedState, setCheckedState}){
     const [amenityChecked, setAmenityChecked] = useState(false)
