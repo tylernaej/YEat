@@ -1,0 +1,132 @@
+.whole-bottom-page{
+    margin-top: 30px;
+}
+
+.whole-review-form{
+    min-height: 300px;
+    max-width: 630px;
+    border: solid 1px #c8c6c6;
+    padding: 30px;
+    border-radius: 5px;
+    margin-bottom: 100px;
+    margin-top: 20px;
+}
+
+#rating-div{
+    /* height: 100px; */
+    padding-bottom: 10px;
+    border-bottom: 1px #c8c6c6 solid;
+}
+
+
+#label{
+    font-size: 17px;
+}
+
+
+#review-div{
+    padding-top: 5px;
+    height: 300px;
+}
+
+#rating-input{
+    border: none;
+    height: 20px;
+    width: 11%;
+    /* padding-left: 30px; */
+    /* border: solid 1px #DEDFDF; */
+    padding: 20px 0px;
+    margin-left: 10px;
+    font-size: 17px;
+}
+
+#rating-input::placeholder{
+    color: #acaeae;
+    opacity: 1;
+}
+
+#rating-input:focus{
+    outline: none;
+    /* text-decoration: none; */
+    appearance: none;
+    /* font-size: 20px; */
+    /* -webkit-appearance: none; */
+}
+
+#review-input{
+    /* max-height: fit-content; */
+    min-height: 100px;
+    overflow-y: auto;
+    height: 300px;
+    /* border: solid 1px #DEDFDF; */
+    border: none;
+    padding: 20px 0px;
+    /* padding-left: 30px; */
+    font-size: 17px;
+}
+
+#review-input::placeholder{
+    color: #acaeae;
+    opacity: 1;
+}
+
+#review-input:focus{
+    outline: none;
+}
+
+#button-div{
+    margin-top: 20px;
+    /* height: 1000px; */
+    /* background-color: red; */
+}
+
+#button{
+    /* color: #F20C15; */
+    background-color: #F20C15;
+    color: white;
+    border: none;
+    height: 40px;
+    width: 200px;
+    font-size: large;
+    border-radius: 5px;
+}
+
+
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.rating>input {
+    display: none;
+}
+
+.rating>label {
+    display: flex;
+    position: relative;
+    width: 1.1em;
+    font-size: 30px;
+    color: #FF8742;
+    cursor: pointer;
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0;
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1;
+}
+
+.rating>input:checked~label:before {
+    opacity: 1;
+}
+
+.error{
+    color: red;
+}
