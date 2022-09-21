@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import './headerInfo.css'
+
+// helper functions
 
 function dollarsigns(range) {
     let signs = ''
@@ -23,7 +26,7 @@ function photoInHeader(business) {
 }
 
 function reviewInHeader(reviews) {
-    // console.log(business)
+
     if (reviews?.length === 0) {
         return 'No reviews available'
     }
@@ -35,23 +38,28 @@ function reviewInHeader(reviews) {
     }
 }
 
-function HeaderInfo({ business }) {
-    // console.log(Object.values(business.categories)[1])
 
-    console.log(`The Business in the Header Info is: ${Object.keys(business)}`)
+// component
+
+function HeaderInfo({ business, reviewsList }) {
+
     const categoriesList = []
     business.categories.map(category => {
         categoriesList.push(category)
     })
-    // console.log(categoriesList)
-    console.log('OVER', business)
 
     const price = dollarsigns(business.priceRange)
     const photoCount = photoInHeader(business)
-    const reviewsCount = reviewInHeader(business?.reviews)
+    const reviewsCount = reviewInHeader(reviewsList)
 
+    const numratings1 = reviewsList.filter(review => review.rating === 1).length
+    const numratings2 = reviewsList.filter(review => review.rating === 2).length
+    const numratings3 = reviewsList.filter(review => review.rating === 3).length
+    const numratings4 = reviewsList.filter(review => review.rating === 4).length
+    const numratings5 = reviewsList.filter(review => review.rating === 5).length
 
-
+    const avg = ((numratings1 * 1) + (numratings2 * 2) + (numratings3 * 3) + (numratings4 * 4) + (numratings5 * 5)) / reviewsList.length
+    const ratingPercentage = ((avg / 5) * 100).toFixed(2)
 
     return (
         <>
@@ -75,7 +83,7 @@ function HeaderInfo({ business }) {
                     <div id='row'>
                         <div id='business-avgReview'>
                         <div class="stars-outer">
-                            <div class="stars-inner" style={{width: `${(business.avgReviews / 5) * 100}%`}}></div>
+                        <div class="stars-inner" style={{width: `${ratingPercentage}%`}}></div>
                         </div>
                         </div>
                         <div id='right-side'>

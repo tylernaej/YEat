@@ -3,24 +3,12 @@ import ReviewCard from "./ReviewCard";
 import { getBizReviewThunk } from "../../store/reviews";
 import { useDispatch, useSelector } from "react-redux";
 
-function ReviewsList({ business }){
-    const dispatch = useDispatch()
+function ReviewsList({ reviewsList }){
+    const reviewsListByDate = reviewsList.slice().reverse()
 
-    const reviews = useSelector(state => state.reviews)
-    const reviewsList = Object.values(reviews).reverse()
-    // const reversedList = reviewsList.reverse()
-
-    const [isLoaded, setIsLoaded] = useState(false)
-
-    useEffect(() => {
-      dispatch(getBizReviewThunk(business.id))
-        .then(() => setIsLoaded(true));
-
-    }, [dispatch]);
-
-    return isLoaded && (
+    return (
         <div>
-            {reviewsList.map(review => (
+            {reviewsListByDate.map(review => (
                 <ReviewCard review={review} key={review.id}/>
             ))}
         </div>
