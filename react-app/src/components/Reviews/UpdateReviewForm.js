@@ -9,24 +9,9 @@ import './UpdateReviewForm.css'
 function UpdateReviewForm( {usersReview} ){
     const dispatch = useDispatch();
     const history = useHistory();
-    // const { reviewId } = useParams();
-    // const [unEditedReview, setUnEditedReview] = useState('')
-    // const [isLoaded, setIsLoaded] = useState(false)
-    // const isMounted = useRef(false)
 
-
-    // useEffect(() => {
-    //   getReview(reviewId)
-    //   .then((data) => setUnEditedReview(data))
-    //   .then(() => setIsLoaded(true))
-    // }, [])
-
-    // console.log(unEditedReview.rating);
-    // console.log(unEditedReview.review);
-
-
-    const [rating, setRating] = useState(usersReview.rating);
-    const [review, setReview] = useState(usersReview.review);
+    const [rating, setRating] = useState(usersReview?.rating || '');
+    const [review, setReview] = useState(usersReview?.review || '');
 
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -37,15 +22,6 @@ function UpdateReviewForm( {usersReview} ){
 
       setValidationErrors(errors);
     }, [review, rating]);
-
-    // useEffect(() => {
-    //   if (isMounted && isLoaded) {
-    //     setRating(unEditedReview.rating);
-    //     setReview(unEditedReview.review);
-    //   } else {
-    //     isMounted.current = true;
-    //   }
-    // }, [unEditedReview]);
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -62,8 +38,7 @@ function UpdateReviewForm( {usersReview} ){
       const payload = { reviewId: usersReview.id, review: updatedReview };
 
       const data = await dispatch(updateReviewThunk(payload));
-      // console.log(data);
-      // console.log(review)
+
       history.push(`/businesses/${usersReview.businessId}/reviews`);
     };
 

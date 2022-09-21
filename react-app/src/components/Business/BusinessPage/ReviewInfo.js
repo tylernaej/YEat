@@ -30,6 +30,7 @@ function ReviewInfo({ business, reviewsList, usersReview }) {
     // const void3 = 100 - filled3
     // const void4 = 100 - filled4
     // const void5 = 100 - filled5
+
     console.log(usersReview)
 
     return (
@@ -47,12 +48,12 @@ function ReviewInfo({ business, reviewsList, usersReview }) {
                         <p className="textcolor-grey">{reviewsList.length} reviews</p>
                         <div>
                             <i className="fa-regular fa-star"></i>
-                            {usersReview && 
+                            {!usersReview &&
                                 <NavLink to={`/businesses/${business.id}/create-review`}>Write a review</NavLink>
                             }
-                            {!usersReview && 
+                            {usersReview &&
                                 <NavLink to={`/businesses/${business.id}/edit-review`}>Edit your review</NavLink>
-                            
+
                             }
                             {/* { visibility: `${sessionUser && sessionUser.id === business.ownerId ? "visible" : "hidden"}` } */}
                         </div>

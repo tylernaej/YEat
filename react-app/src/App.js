@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { authenticate } from './store/session';
 import './app.css'
 
 // components
@@ -14,7 +15,6 @@ import BizPage from './components/Business/BusinessPage';
 import BizForm from './components/Business/CreateBusinessForm';
 import BizSearchList from './components/Business/BusinessList/searchIndex';
 import ReviewForm from './components/Reviews/CreateReviewForm';
-import { authenticate } from './store/session';
 import UpdateBizForm from './components/Business/UpdateBusinessForm';
 import BizReviewSearch from './components/Reviews/BizReviewSearch';
 import UserBizList from './components/Business/UserBusinesses/UserBizList';
