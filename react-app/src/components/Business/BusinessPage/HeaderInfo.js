@@ -83,7 +83,7 @@ function HeaderInfo({ business }) {
                         </div>
                     </div>
                     <div id='row'>
-                        <div id='business-priceRange'>
+                        <div id='business-priceRange' style={{color: 'rgba(4, 197, 133)'}}>
                             {price}
                         </div>
                         <div id='right-side'>

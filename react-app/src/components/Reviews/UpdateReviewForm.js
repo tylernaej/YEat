@@ -23,14 +23,15 @@ function UpdateReviewForm(  ){
     // console.log(unEditedReview.review);
 
 
-    const [rating, setRating] = useState(unEditedReview?.rating);
-    const [review, setReview] = useState(unEditedReview?.review);
+    const [rating, setRating] = useState('');
+    const [review, setReview] = useState('');
 
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
     useEffect(() => {
       const errors = [];
+       if (review.length < 10 || review.length > 2000) errors.push("Review length must be between 10 and 2000 characters")
 
       setValidationErrors(errors);
     }, [review, rating]);
@@ -80,35 +81,42 @@ function UpdateReviewForm(  ){
     }
 
     return isLoaded &&(
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="rating">Rating</label>
-          <input
-            required
-            placeholder="1-5"
-            type="number"
-            name="rating"
-            value={rating}
-            onChange={(e) => setRating(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="review">Review</label>
-          <textarea
-            required
-            placeholder="Write review here"
-            type="text"
-            name="review"
-            value={review}
-            onChange={(e) => setReview(e.target.value)}
-          />
-        </div>
-        <div>
-          <button onClick={handleCancel}>Cancel</button>
-          <button type="submit">Submit</button>
-          <button onClick={handleDelete}>Delete</button>
-        </div>
-      </form>
+      <div>
+        {hasSubmitted && validationErrors.map(error => (
+          <div key={error}>{error}</div>
+        ))}
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="rating">Rating</label>
+            <input
+              required
+              placeholder="1-5"
+              min={1}
+              max={5}
+              type="number"
+              name="rating"
+              value={rating}
+              onChange={(e) => setRating(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="review">Review</label>
+            <textarea
+              required
+              placeholder="Write review here"
+              type="text"
+              name="review"
+              value={review}
+              onChange={(e) => setReview(e.target.value)}
+            />
+          </div>
+          <div>
+            <button onClick={handleCancel}>Cancel</button>
+            <button type="submit">Submit</button>
+            <button onClick={handleDelete}>Delete</button>
+          </div>
+        </form>
+      </div>
     );
 }
 
