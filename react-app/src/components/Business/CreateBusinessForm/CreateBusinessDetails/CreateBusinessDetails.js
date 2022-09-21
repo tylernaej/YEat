@@ -43,13 +43,19 @@ function SetBizDetails() {
 
     if (!sessionUser) return <Redirect to="/login" />
 
+    console.log(`this is the latitude ${latitude}`)
+    console.log(`this is the longitude ${longitude}`)
+
 
     const handleSubmit = async e => {
         e.preventDefault()
 
         setIsSubmitted(true)
+        console.log(`this is the validation errors on handle submit`, validationErrors)
 
         if (validationErrors.length > 0) return
+
+        console.log(`this is the validation errors on handle submit after if statement`, validationErrors)
 
         const newBiz = {
             name,
@@ -68,6 +74,7 @@ function SetBizDetails() {
         }
 
         const data = await dispatch(createBizThunk(newBiz))
+        console.log('this is the console log of data',data)
 
         history.push(`/create-business/${data.id}/amenities`)
     }
