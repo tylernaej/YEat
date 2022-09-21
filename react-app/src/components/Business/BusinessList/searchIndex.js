@@ -62,10 +62,18 @@ function BizSearchList() {
     }
     
     return isLoaded && (
-        <div>
-            {bizMatches.current.map(business => (
-                <BizCard key={business.id} business={business} />
-            ))}
+        // <div>
+        //     {bizMatches.current.map(business => (
+        //         <BizCard key={business.id} business={business} />
+        //     ))}
+        // </div>
+        <div className="bizlist-page">
+            <div className="all-results-text">All Results</div>
+            <div >
+                {bizMatches.current.map(business => (
+                    <BizCard key={business.id} business={business} />
+                ))}
+            </div>
         </div>
     )
 }

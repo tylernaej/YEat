@@ -25,9 +25,12 @@ function BizList() {
 
     return isLoaded && (
         <div className="bizlist-page">
-            {businessList.map(business => (
-                <BizCard key={business.id} business={business} />
-            ))}
+            <div className="all-results-text">All Results</div>
+            <div >
+                {businessList.map(business => (
+                    <BizCard key={business.id} business={business} />
+                ))}
+            </div>
         </div>
     )
 }

@@ -32,7 +32,10 @@ function BizCard({ business }) {
                     </div>
                     <div className='flex-row-align-center'>
                         {business.categories.slice(0,3).map(category => (
-                            <div key={category} className='biz-card-category'>{category}</div>
+                            <>
+                                {/* <div key={category} className='biz-card-category'>{category}</div> */}
+                                <NavLink className='navLink biz-card-category' to={`/businesses/search?name=${category}&category=${category}`}>{category}</NavLink>
+                            </>
                         ))}
                         <div style={{color: 'green'}}>{price}</div>
                     </div>
@@ -40,6 +43,7 @@ function BizCard({ business }) {
                         <div className='biz-description'>"{business.description}"</div>
                     </div>
                 </div>
+
 
 
 
