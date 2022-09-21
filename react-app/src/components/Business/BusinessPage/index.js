@@ -14,6 +14,7 @@ import ReviewsList from "../../Reviews/ReviewList";
 import UpdateBizForm from "../UpdateBusinessForm";
 import BizNavBar from "./BusinessNavBar";
 import ReviewForm from "../../Reviews/CreateReviewForm";
+import UpdateReviewForm from "../../Reviews/UpdateReviewForm";
 
 import './businesspage.css'
 import { getBizReviewThunk } from "../../../store/reviews";
@@ -23,6 +24,8 @@ function BizPage() {
     const { businessId } = useParams()
     const { url } = useRouteMatch()
 
+    const sessionUser = useSelector(state => state.session.user)
+
     const dispatch = useDispatch()
 
     const businesses = useSelector(state => state.businesses)
@@ -30,6 +33,8 @@ function BizPage() {
 
     const reviews = useSelector(state => state.reviews)
     const reviewsList = Object.values(reviews)
+
+    const usersReview = sessionUser ? reviewsList.find(review => review.userId === sessionUser.id) : undefined
 
     const [isLoaded, setIsLoaded] = useState(false)
 
@@ -53,12 +58,12 @@ function BizPage() {
                             <Route path={`${url}/about`}>
                                 <AboutInfo business={business} />
                                 <AmenityInfo business={business} />
-                                <ReviewInfo business={business} reviewsList={reviewsList}/>
+                                <ReviewInfo business={business} reviewsList={reviewsList} usersReview={usersReview}/>
                                 {/* <ReviewsList business={business} /> */}
                             </Route>
                             <Route path={`${url}/reviews`}>
                                 <div>
-                                    <ReviewInfo business={business} reviewsList={reviewsList}/>
+                                    <ReviewInfo business={business} reviewsList={reviewsList} usersReview={usersReview}/>
                                     <ReviewsList reviewsList={reviewsList}/>
                                 </div>
                             </Route>
@@ -71,8 +76,8 @@ function BizPage() {
                             <Route path={`${url}/create-review`}>
                                 <ReviewForm />
                             </Route>
-                            <Route path={`${url}/reviews/:reviewId/edit`}>
-
+                            <Route path={`${url}/edit-review`}>
+                                <UpdateReviewForm usersReview={usersReview} />
                             </Route>
                         </Switch>
                     </div>

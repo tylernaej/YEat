@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { getBizReviewThunk } from "../../../store/reviews";
 import './ReviewInfo.css'
 
-function ReviewInfo({ business, reviewsList }) {
+function ReviewInfo({ business, reviewsList, usersReview }) {
 
     // filter the reviews by rating
     const numratings1 = reviewsList.filter(review => review.rating === 1).length
@@ -31,6 +31,8 @@ function ReviewInfo({ business, reviewsList }) {
     // const void4 = 100 - filled4
     // const void5 = 100 - filled5
 
+    console.log(usersReview)
+
     return (
         <div className="border-top-black-2px">
             <h2>Reviews</h2>
@@ -46,7 +48,14 @@ function ReviewInfo({ business, reviewsList }) {
                         <p className="textcolor-grey">{reviewsList.length} reviews</p>
                         <div>
                             <i className="fa-regular fa-star"></i>
-                            <NavLink to={`/businesses/${business.id}/create-review`}>Write a review</NavLink>
+                            {!usersReview &&
+                                <NavLink to={`/businesses/${business.id}/create-review`}>Write a review</NavLink>
+                            }
+                            {usersReview &&
+                                <NavLink to={`/businesses/${business.id}/edit-review`}>Edit your review</NavLink>
+
+                            }
+                            {/* { visibility: `${sessionUser && sessionUser.id === business.ownerId ? "visible" : "hidden"}` } */}
                         </div>
                     </div>
                 </div>

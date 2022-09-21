@@ -4,6 +4,8 @@ import { NavLink } from "react-router-dom";
 import {getBizThunk} from '../../store/business'
 import BizCard from "../Business/BusinessList/businessCard";
 
+import splashImage1 from "../../assets/splash-image1.jpg"
+
 function SplashPage() {
     const dispatch = useDispatch()
 
@@ -20,13 +22,8 @@ function SplashPage() {
     return isLoaded && (
         <div>
             <div>
-                Welcome to YEat
+                <img src={splashImage1} />
             </div>
-            <div>
-            {businessList.map(business => (
-                <BizCard key={business.id} business={business} />
-            ))}
-        </div>
         </div>
     )
 }

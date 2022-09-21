@@ -134,7 +134,7 @@ function ReviewForm() {
               />
             </div>
             <div id="button-div">
-              <button id="button" type="submit">
+              <button type="submit">
                 Submit
               </button>
             </div>
