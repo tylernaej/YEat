@@ -159,10 +159,18 @@ def get_business_by_id(id):
 def post_review_for_business(id):
     # query for business
     business = Business.query.get(id)
-    # print('\n\n\n\n', request.data, '\n\n\n\n')
+    bizReviews = Review.query.filter(Review.user_id == current_user.id).filter(Review.business_id == business.id).all()
+
+    # print('\n\n\n\n this is the business', bizReviews, '\n\n\n\n')
 
     if not business:
         return {"message": "Business could not be found", "statusCode": 404}, 404
+
+    if bizReviews:
+        return {"message": "User already has a review for this spot", "statusCode": 403}, 403
+
+    if business.owner_id == current_user.id:
+         return {"message": "You can't write a review for your own spot!", "statusCode": 403}, 403
 
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
