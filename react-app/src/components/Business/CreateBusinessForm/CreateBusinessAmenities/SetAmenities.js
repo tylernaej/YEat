@@ -6,7 +6,7 @@ import IndividualAmenityButton from "./IndividualAmenityButton";
 import { readBizThunk } from "../../../../store/business";
 import HeaderInfo from "../../BusinessPage/HeaderInfo";
 
-function SetBizAmenities({business}){
+function SetBizAmenities(){
     const dispatch = useDispatch()
     const [amenities, setAmenities] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
@@ -15,8 +15,6 @@ function SetBizAmenities({business}){
     const location = useLocation()
     const id = Number(location.pathname.split('/')[2])
 
-    console.log(`The biz Id is: ${id}`)
-    
     useEffect(() => {
         getAmenities()
         .then((data) => setAmenities(data))
@@ -31,27 +29,27 @@ function SetBizAmenities({business}){
         }
         console.log(`The biz id in the handle submit is: ${id}`)
         const request = {id, amenityPayload}
-        
+
         console.log(request)
         await dispatch(postAmenities(request))
 
         history.push(`/create-business/${id}/categories`)
     }
 
-    const handleBack = () => {  
+    const handleBack = () => {
         history.push(`/businesses/${id}/edit`)
     }
 
     return isLoaded &&  (
         <div>
-            <div>Set Amenities Here</div>
+            <h3>Set Amenities Here</h3>
             <div>
                 <form onSubmit={handleSubmit}>
                     {amenities.amenities.map(amenity => (
                         <div key={`${amenity}`}>
-                            <IndividualAmenityButton 
-                                amenity={amenity} 
-                                checkedState={checkedState} 
+                            <IndividualAmenityButton
+                                amenity={amenity}
+                                checkedState={checkedState}
                                 setCheckedState={setCheckedState}
                             />
                         </div>
