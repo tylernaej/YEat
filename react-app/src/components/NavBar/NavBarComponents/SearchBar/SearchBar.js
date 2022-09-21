@@ -72,7 +72,7 @@ function SearchBar() {
                 <input
                   type='text'
                   id="search-bar"
-                  placeholder="tacos, Max's"
+                  placeholder="tacos, pizza, Max's..."
                   onChange={inputHandler}
                   value={userInput}
                 />
