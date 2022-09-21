@@ -27,6 +27,11 @@ def name_length(form, field):
     if len(name) > 50:
         raise ValidationError('Name must be less than 50 characters')
 
+def zipcode_length(form, field):
+    zipcode = field.data
+    if len(zipcode) == 5:
+        raise ValidationError('Zipcode must be 5 digits')
+
 
 # def valid_email(form, field):
 
@@ -40,7 +45,7 @@ class CreateBusinessForm(FlaskForm):
     city = StringField('City', validators=[DataRequired()])
     state = StringField('State', validators=[DataRequired()])
     country = StringField('Country', validators=[DataRequired()])
-    zipcode = StringField('Zip Code', validators=[DataRequired()])
+    zipcode = StringField('Zip Code', validators=[DataRequired(), zipcode_length])
     latitude = IntegerField('Latitude', validators=[DataRequired(), valid_lat])
     longitude = IntegerField("Longitude", validators=[DataRequired(), valid_lng])
     description = StringField('Description', validators=[DataRequired(), description_length])
