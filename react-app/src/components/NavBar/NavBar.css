@@ -36,6 +36,7 @@
     padding: 15px;
     border-radius: 5px;
     transition: .1s;
+    cursor: pointer;
 }
 
 #see-all-businesses:hover{
