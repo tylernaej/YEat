@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 
 function ReviewCard({ review }) {
 
-    console.log(review)
     const sessionUser = useSelector(state => state.session.user)
 
     return (

@@ -16,6 +16,7 @@ import BizNavBar from "./BusinessNavBar";
 import ReviewForm from "../../Reviews/CreateReviewForm";
 
 import './businesspage.css'
+import { getBizReviewThunk } from "../../../store/reviews";
 
 
 function BizPage() {
@@ -27,17 +28,21 @@ function BizPage() {
     const businesses = useSelector(state => state.businesses)
     const business = businesses[Number(businessId)]
 
+    const reviews = useSelector(state => state.reviews)
+    const reviewsList = Object.values(reviews)
+
     const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
         dispatch(readBizThunk(businessId))
+            .then(() => dispatch(getBizReviewThunk(businessId)))
             .then(() => setIsLoaded(true))
     }, [dispatch])
 
     return isLoaded && (
         <div>
             <div id="business-header" className="">
-                <HeaderInfo business={business} />
+                <HeaderInfo business={business} reviewsList={reviewsList} />
             </div>
             <div id="business-body">
                 <BizNavBar business={business} />
@@ -48,13 +53,13 @@ function BizPage() {
                             <Route path={`${url}/about`}>
                                 <AboutInfo business={business} />
                                 <AmenityInfo business={business} />
-                                <ReviewInfo business={business} />
+                                <ReviewInfo business={business} reviewsList={reviewsList}/>
                                 {/* <ReviewsList business={business} /> */}
                             </Route>
                             <Route path={`${url}/reviews`}>
                                 <div>
-                                    <ReviewInfo business={business} />
-                                    <ReviewsList business={business} />
+                                    <ReviewInfo business={business} reviewsList={reviewsList}/>
+                                    <ReviewsList reviewsList={reviewsList}/>
                                 </div>
                             </Route>
                             <Route path={`${url}/photos`}>
