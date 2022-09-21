@@ -29,10 +29,10 @@ function DropDownBizInfo({business}){
                         <img src={randomImages[Math.floor(Math.random()*10)]} id='random-image'/>
                     </div>
                     <div id='result-details'>
-                        <div id='business-name'>
+                        <div id='search-result-name'>
                             {business.name}
                         </div>
-                        <div id='business-address'>
+                        <div id='search-result-address'>
                             {business.address}
                         </div>
                     </div>
