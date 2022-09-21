@@ -1,0 +1,16 @@
+#result-details{
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+}
+
+#individual-result{
+    border-radius: 5px;
+    padding: 5px;
+    margin: 5px;
+}
+
+#individual-result:hover{
+    background-color: rgb(240, 240, 240);
+}
+

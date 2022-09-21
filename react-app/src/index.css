@@ -52,6 +52,10 @@ footer {
     color: #008294;
 }
 
+.tab-active {
+    text-decoration: underline;
+}
+
 /* Buttons */
 button.default {
     padding: 10px 20px;
@@ -234,13 +238,22 @@ p.spacing {
     width: 70%;
 }
 
+.w40 {
+    width: 40%;
+}
+
 .w30 {
     width: 30%;
+}
+
+.w1070px {
+    width: 1070px;
 }
 
 .h100 {
     height: 100%;
 }
+
 
 /* Margin, Borders, and Padding */
 .border-none-sides {
@@ -249,7 +262,7 @@ p.spacing {
 }
 
 .border-top-black-2px {
-    border-top: 2px solid black;
+    border-top: 2px solid rgb(235,235,235);
 }
 
 .padding-none-sides {
@@ -264,6 +277,10 @@ p.spacing {
     padding: 20px;
 }
 
+.padding10 {
+    padding: 10px
+}
+
 .padding5 {
     padding: 5px;
 }
@@ -272,8 +289,12 @@ p.spacing {
     border: 20px;
 }
 
-.verticalMargin10 {
-    margin: 10px 0;
+.verticalMargin15 {
+    margin: 15px 0;
+}
+
+.testborder {
+    border: 5px solid red;
 }
 
 /* Event/Group list card  */
@@ -355,4 +376,31 @@ div.footer {
     bottom: 0;
     width: 100%;
     background-color: #FFFFFF;
+}
+
+/* Star Rating  */
+
+.stars-outer {
+    display: inline-block;
+    position: relative;
+    font-family: FontAwesome;
+}
+
+.stars-outer::before {
+    content: "\f006 \f006 \f006 \f006 \f006";
+}
+
+.stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+}
+
+.stars-inner::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    /* color: #f8ce0b; */
+    color: rgb(255,135,66);
 }

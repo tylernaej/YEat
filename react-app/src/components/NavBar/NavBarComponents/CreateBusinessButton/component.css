@@ -1,0 +1,18 @@
+#create-business{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: large;
+    font-weight: 600;
+    padding: 15px;
+    border-radius: 5px;
+    transition: .1s;
+}
+
+#create-business:hover{
+    text-decoration: none;
+    background-color: rgb(240, 240, 240);
+}
+#create-business:visited{
+    color: rgb(30, 30, 30)
+}

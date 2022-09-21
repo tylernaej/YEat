@@ -23,10 +23,21 @@ class Business(db.Model):
     price_range = db.Column(db.Integer, nullable=False)
 
     owner = db.relationship("User", back_populates='businesses')
-    reviews = db.relationship("Review", back_populates='business')
-    images = db.relationship("Image", back_populates='business')
-    amenities = db.relationship("Amenity", secondary=business_amenities, back_populates='businesses', cascade="all, delete")
-    categories = db.relationship("Category", secondary=business_categories, back_populates='businesses', cascade="all, delete")
+    reviews = db.relationship("Review", back_populates='business', cascade="all, delete-orphan")
+    images = db.relationship("Image", back_populates='business', cascade="all, delete-orphan")
+    amenities = db.relationship("Amenity", secondary=business_amenities, back_populates='businesses')
+    categories = db.relationship("Category", secondary=business_categories, back_populates='businesses')
+
+
+    def clear_categories(self):
+        self.categories = None
+        return {
+           "categories" : self.categories
+        }
+    
+    def clear_amenities(self):
+        self.amenities = []
+
 
     def to_dict(self):
 

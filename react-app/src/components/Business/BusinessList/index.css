@@ -1,0 +1,10 @@
+.bizlist-page{
+    box-sizing: border-box;
+    margin: 0% 20%;
+}
+
+.all-results-text{
+    margin: 10px;
+    font-weight: 700;
+    font-size: large;
+}

@@ -6,7 +6,49 @@
 }
 
 #profile-image-wrapper{
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     border-radius: 100%;
+    padding: 15px;
+}
+
+#utility-drop-down{
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, .2);
+    border-radius: 4px 0px 0px 4px;
+    padding: 10px;
+    right: 2%
+}
+
+#login-button{
+    padding: 15px;
+    border: 1px solid gainsboro;
+    background-color: rgba(224,7,7,1);
+    color: white;
+    border-radius: 5px;
+    transition: .5s;
+    align-items: center;
+    font-size: large;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+#login-button:hover{
+    background-color:rgb(255, 14, 14);
+}
+
+#login-button:visited{
+    color: white;
+    text-decoration: none;
+}
+
+#login-container{
+    display: flex;
+    flex-direction: row;
+}
+
+#signup-button{
+    padding: 15px;
+
 }
