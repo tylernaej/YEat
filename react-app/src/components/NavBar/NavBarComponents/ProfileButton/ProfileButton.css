@@ -13,6 +13,10 @@
     margin:3px;
 }
 
+#profile-image-wrapper{
+cursor: pointer;
+}
+
 #utility-drop-down{
     position: absolute;
     background-color: white;
@@ -53,6 +57,7 @@
 #signup-button{
     padding: 12px;
     margin:3px;
+    margin-left: 10px;
     border: 1px solid  rgba(224,7,7,1);
     background-color: rgba(224,7,7,1);
     color: white;
