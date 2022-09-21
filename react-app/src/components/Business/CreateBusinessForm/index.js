@@ -17,8 +17,8 @@ function BizForm() {
     if (!sessionUser) return <Redirect to="/login" />
 
     return (
-        <div>
-            <div>
+        <div className="flex-row-center">
+            <div style={{width:"600px"}}>
                 <Switch>
                     <Route path={`${url}/details`}>
                         <SetBizDetails />

@@ -52,9 +52,6 @@ function App() {
         <ProtectedRoute path="/create-business">
           <BizForm />
         </ProtectedRoute>
-        {/* <ProtectedRoute path="/businesses/:businessId/create-review">
-          <ReviewForm />
-        </ProtectedRoute> */}
         <ProtectedRoute path="/reviews/:reviewId/edit">
           <UpdateReviewForm />
         </ProtectedRoute>
