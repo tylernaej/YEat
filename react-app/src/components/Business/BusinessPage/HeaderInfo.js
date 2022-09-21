@@ -74,7 +74,9 @@ function HeaderInfo({ business }) {
                     </div>
                     <div id='row'>
                         <div id='business-avgReview'>
-                            {business.avgReviews}
+                        <div class="stars-outer">
+                            <div class="stars-inner" style={{width: `${(business.avgReviews / 5) * 100}%`}}></div>
+                        </div>
                         </div>
                         <div id='right-side'>
                             {reviewsCount}
