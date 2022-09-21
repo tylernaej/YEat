@@ -203,6 +203,8 @@ function SetBizDetails() {
             <input
               required
               type="number"
+              min={1} 
+              max={4}
               name="priceRange"
               value={priceRange}
               onChange={(e) => setPriceRange(e.target.value)}

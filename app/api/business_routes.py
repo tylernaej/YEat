@@ -195,7 +195,7 @@ def post_review_for_business(id):
 
 @business_routes.route('/<int:id>/reviews', methods=["GET"])
 def get_reviews_by_business_id(id):
-
+    #get biz by id and check if it exists
     business = Business.query.get(id)
     if not business:
         return {"message": "Business could not be found", "statusCode": 404}, 404
