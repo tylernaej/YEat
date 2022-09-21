@@ -5,6 +5,12 @@
 }
 
 #home-button-text{
-    padding-right: 5px;
+    padding: 10px;
     font-size:x-large;
+    display: flex;
+    align-items: center;
+}
+
+#yeat-text{
+    padding-right: 5px;
 }

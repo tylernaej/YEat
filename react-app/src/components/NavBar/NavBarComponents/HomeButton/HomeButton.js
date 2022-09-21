@@ -1,7 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logo from '../../../../assets/favicon-32x32.png'
-import './HomeButton.css'
+import logo from '../../../../assets/YEat-logo_1_25.png'
+import text_red from '../../../../assets/YEat-text_5_15.png'
+import text_black from '../../../../assets/YEat-text-black_2_15.png'
+import './component.css'
 
 
 
@@ -10,9 +12,9 @@ function HomeButton() {
     <div>
       <NavLink to="/" exact={true} activeClassName="active" id='home-button-nav'>
         <div id='home-button-text'>
-          YEat
+          <img src={text_black} id='yeat-text'/>
+          <img src={logo} />
         </div>
-        <img src={logo} />
       </NavLink>
     </div>
   );

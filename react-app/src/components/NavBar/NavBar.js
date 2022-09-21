@@ -16,12 +16,12 @@ const NavBar = () => {
           <HomeButton />
         </div>
         <div>
-          <NavLink to={'/businesses'}>See all businesses</NavLink>
-        </div>
-        <div>
           <SearchBar />
         </div>
-        <div className='flex-row'>
+        <div className='flex-row' id='right-side-buttons'>
+          <div>
+            <NavLink to={'/businesses'} id='see-all-businesses'>See all businesses</NavLink>
+          </div>
           <div>
             <CreateBusinessButton />
           </div>
