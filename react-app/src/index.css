@@ -109,10 +109,15 @@ input {
     padding: 10px 20px 10px 40px;
     margin-bottom: 5px;
     margin-top: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid black;
     box-sizing: border-box;
     font-family: Graphik Meetup, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+}
+
+label {
+    font-weight: bolder;
+    font-size: 16px;
 }
 
 select {
@@ -121,7 +126,7 @@ select {
     padding: 10px 20px 10px 40px;
     margin-bottom: 5px;
     margin-top: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid black;
     box-sizing: border-box;
     font-family: Graphik Meetup, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
@@ -129,13 +134,26 @@ select {
 
 textarea {
     width: 100%;
+    resize: none;
     padding: 10px 20px 10px 40px;
     margin-bottom: 5px;
     margin-top: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid black;
     box-sizing: border-box;
     font-family: Graphik Meetup, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+}
+
+button {
+    background-color: rgb(224,7,7);
+    /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 
 /* Images */
@@ -262,7 +280,7 @@ p.spacing {
 }
 
 .border-top-black-2px {
-    border-top: 2px solid rgb(235,235,235);
+    border-top: 2px solid rgb(235, 235, 235);
 }
 
 .padding-none-sides {
@@ -402,5 +420,5 @@ div.footer {
 .stars-inner::before {
     content: "\f005 \f005 \f005 \f005 \f005";
     /* color: #f8ce0b; */
-    color: rgb(255,135,66);
+    color: rgb(255, 135, 66);
 }

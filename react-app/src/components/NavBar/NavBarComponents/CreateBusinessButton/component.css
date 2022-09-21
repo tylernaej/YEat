@@ -4,7 +4,8 @@
     align-items: center;
     font-size: large;
     font-weight: 600;
-    padding: 15px;
+    padding: 12px;
+    margin:3px;
     border-radius: 5px;
     transition: .1s;
 }
@@ -14,5 +15,6 @@
     background-color: rgb(240, 240, 240);
 }
 #create-business:visited{
-    color: rgb(30, 30, 30)
+    color: rgb(30, 30, 30);
+    text-decoration: none;
 }

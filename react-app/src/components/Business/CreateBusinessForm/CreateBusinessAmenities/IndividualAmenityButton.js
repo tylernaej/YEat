@@ -29,14 +29,15 @@ function IndividualAmenityButton({amenity, checkedState, setCheckedState}){
     }, [amenityChecked])
 
     return (
-        <div>
+        <div className="flex-row">
+            <input
+                style={{ width:"25px" }}
+                type="checkbox"
+                name={`${amenity}`}
+                value={`${amenityChecked}`}
+                onClick={handleChecked}
+            />
             <label htmlFor={`${amenity}`}>{amenity}</label>
-            <input 
-                type="checkbox" 
-                name={`${amenity}`} 
-                value={`${amenityChecked}`} 
-                onClick={handleChecked} 
-            />        
         </div>
     )
 }
