@@ -9,10 +9,11 @@ function ReviewForm() {
     const history = useHistory();
     // const { businessId } = useParams()
     const location = useLocation()
-    
+
     const businessId = location.pathname.split('/')[2]
     // console.log(businessId)
     // const business = useSelector((state) => console.log(state))
+    const sessionUser = useSelector(state => state.session.user)
 
     const [rating, setRating] = useState('')
     const [review, setReview] = useState('')
@@ -44,10 +45,11 @@ function ReviewForm() {
             review
         }
 
-        const payload = {businessId, review: newReview}
+        const reviewer = { firstName: sessionUser.firstName, lastName: sessionUser.lastName, profilePicture: sessionUser.profilePicture}
+
+        const payload = {businessId, review: newReview, reviewer}
 
         const data = await dispatch(createReviewThunk(payload))
-        console.log(data.statusCode)
 
         if(data.statusCode === 403){
           setValidationErrors([data.message])
@@ -56,7 +58,7 @@ function ReviewForm() {
         }
         // if(statusCode)
 
-        history.push(`/businesses/${businessId}/about`)
+        history.push(`/businesses/${businessId}/reviews`)
     }
 
     return (
