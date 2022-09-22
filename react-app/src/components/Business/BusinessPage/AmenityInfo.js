@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getAmenities } from "../../../store/fetchFunctions";
 import './amenityInfo.css'
 
-function AmenityInfo({ business }){
+function AmenityInfo({ business, bizAmenities }){
 
     const [amenities, setAmenities] = useState([])
 
@@ -15,7 +15,6 @@ function AmenityInfo({ business }){
     const checkmark = <i className="fa-solid fa-check"></i>;
     const xmark = <i className="fa-solid fa-x"></i>;
 
-
     return (
         <div id='amenities-context'className="border-top-black-2px">
             <h2>Amenities and More</h2>
@@ -23,9 +22,9 @@ function AmenityInfo({ business }){
                     <div id='all-amenities'>
                         {amenities.map(amenity => {
                             return (
-                                <div className={business.amenities.includes(amenity) ? 'has-amenity' : 'no-amenity'}id='each-amenity' key={amenity}>
+                                <div className={bizAmenities.includes(amenity) ? 'has-amenity' : 'no-amenity'}id='each-amenity' key={amenity}>
                                     <div >
-                                        {business.amenities.includes(amenity) ? checkmark : xmark}
+                                        {bizAmenities.includes(amenity) ? checkmark : xmark}
                                     </div>
                                     <div id='actual-amenity'>
                                         {amenity}

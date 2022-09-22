@@ -6,7 +6,7 @@ import EditIndividualAmenityButton from "./EditIndividualAmenityButton";
 
 import {getAmenities, postAmenities} from '../../../../store/fetchFunctions'
 
-function EditBizAmenities({ business }){
+function EditBizAmenities({ business, setBizAmenities }){
     const dispatch = useDispatch()
     const history = useHistory()
     const location = useLocation()
@@ -24,22 +24,20 @@ function EditBizAmenities({ business }){
 
     useEffect(() => {
         let newState = {}
-        console.log(`${business.amenities}`)
+
         for(const amenity of business.amenities){
             newState[`${amenity}`] = true
         }
+
         setCheckedState(newState)
     }, [])
 
     const handleSubmit = async e => {
         e.preventDefault()
-        let amenityPayload = {}
 
-        for (const amenity in checkedState){
-            amenityPayload[`${amenity}`] = true
-        }
+        setBizAmenities(Object.keys(checkedState))
 
-        const request = {id, amenityPayload}
+        const request = {id, amenityPayload: checkedState}
 
         await dispatch(postAmenities(request))
 

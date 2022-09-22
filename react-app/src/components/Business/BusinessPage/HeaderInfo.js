@@ -41,7 +41,7 @@ function reviewInHeader(reviews) {
 
 // component
 
-function HeaderInfo({ business, reviewsList }) {
+function HeaderInfo({ business, reviewsList, bizCategories }) {
 
     const categoriesList = []
     business.categories.map(category => {
@@ -95,7 +95,7 @@ function HeaderInfo({ business, reviewsList }) {
                             {price}
                         </div>
                         <div id='right-side'>
-                            {categoriesList.join(', ')}
+                            {bizCategories.join(', ')}
                         </div>
                         {/* <div id='right-side'>
                     <NavLink to={`/businesses/${business.id}/edit`}>Edit</NavLink>

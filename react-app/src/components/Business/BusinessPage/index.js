@@ -37,21 +37,32 @@ function BizPage() {
     const usersReview = sessionUser ? reviewsList.find(review => review.userId === sessionUser.id) : undefined
 
     const [isLoaded, setIsLoaded] = useState(false)
+    const [bizAmenities, setBizAmenities] = useState([])
+    const [bizCategories, setBizCategories] = useState([])
 
     useEffect(() => {
         dispatch(readBizThunk(businessId))
-            .then(() => dispatch(getBizReviewThunk(businessId)))
-            .then(() => setIsLoaded(true))
+        .then((data) => {
+            setBizAmenities(data.amenities || [])
+            return data
+        })
+        .then((data) => setBizCategories(data.categories || []))
+        .then(() => dispatch(getBizReviewThunk(businessId)))
+        .then(() => setIsLoaded(true))
     }, [dispatch])
+
+    // console.log(bizCategories)
+    // console.log(bizAmenities)
 
     if(!business){
         return <h1>404 Business not found</h1>
+        // <Redirect to={'/'}/>
     }
 
     return isLoaded && (
         <div>
             <div id="business-header" className="">
-                <HeaderInfo business={business} reviewsList={reviewsList} />
+                <HeaderInfo business={business} reviewsList={reviewsList} bizCategories={bizCategories} />
             </div>
             <div id="business-body">
                 <BizNavBar business={business} />
@@ -60,8 +71,8 @@ function BizPage() {
                     <div className="w70">
                         <Switch>
                             <Route path={`${url}/about`}>
-                                <AboutInfo business={business} />
-                                <AmenityInfo business={business} />
+                                <AboutInfo business={business} bizCategories={bizCategories}/>
+                                <AmenityInfo business={business} bizAmenities={bizAmenities}/>
                                 <ReviewInfo business={business} reviewsList={reviewsList} usersReview={usersReview}/>
                                 {/* <ReviewsList business={business} /> */}
                             </Route>
@@ -75,7 +86,7 @@ function BizPage() {
                                 Photo feature not implemented yet
                             </Route>
                             <Route path={`${url}/edit`}>
-                                <UpdateBizForm business={business} setIsLoaded={setIsLoaded} />
+                                <UpdateBizForm business={business} setIsLoaded={setIsLoaded} setBizCategories={setBizCategories} setBizAmenities={setBizAmenities}/>
                             </Route>
                             <Route path={`${url}/create-review`}>
                                 <ReviewForm />
