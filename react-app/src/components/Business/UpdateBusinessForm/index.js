@@ -8,7 +8,7 @@ import EditBizAmenities from "./EditBusinessAmmenity/EditAmenities";
 
 import './index.css'
 
-function UpdateBizForm({ business, setIsLoaded }) {
+function UpdateBizForm({ business, setIsLoaded, setBizCategories, setBizAmenities }) {
   const { url } = useRouteMatch()
 
   const sessionUser = useSelector(state => state.session.user)
@@ -35,10 +35,10 @@ function UpdateBizForm({ business, setIsLoaded }) {
             <EditBizInfo business={business} setIsLoaded={setIsLoaded} />
           </Route>
           <Route path={`${url}/categories`}>
-            <EditBizCategories business={business} />
+            <EditBizCategories business={business} setBizCategories={setBizCategories} />
           </Route>
           <Route path={`${url}/amenities`}>
-            <EditBizAmenities business={business} />
+            <EditBizAmenities business={business} setBizAmenities={setBizAmenities}/>
           </Route>
         </Switch>
       </div>
