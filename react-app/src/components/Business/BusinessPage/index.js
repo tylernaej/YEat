@@ -85,9 +85,11 @@ function BizPage() {
                             </Route>
                         </Switch>
                     </div>
-                    <div className="w30">
-                        <ContactInfo business={business} />
-                    </div>
+                        <div className="w30">
+                            {window.location.pathname.split('/')[3] !== 'edit' &&(
+                                <ContactInfo business={business} />
+                            )}
+                        </div>
                 </div>
             </div>
         </div>
