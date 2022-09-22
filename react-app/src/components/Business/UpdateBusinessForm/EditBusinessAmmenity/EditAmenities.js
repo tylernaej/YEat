@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, Redirect, useParams, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {getAmenities, postAmenities} from '../../../../store/fetchFunctions'
-import IndividualAmenityButton from "./IndividualAmenityButton";
-import { readBizThunk } from "../../../../store/business";
-import HeaderInfo from "../../BusinessPage/HeaderInfo";
-import './SetAmenities.css'
 
-function SetBizAmenities(){
+import EditIndividualAmenityButton from "./EditIndividualAmenityButton";
+
+import {getAmenities, postAmenities} from '../../../../store/fetchFunctions'
+
+function EditBizAmenities({ business }){
     const dispatch = useDispatch()
     const history = useHistory()
     const location = useLocation()
@@ -35,11 +34,7 @@ function SetBizAmenities(){
 
         await dispatch(postAmenities(request))
 
-        history.push(`/create-business/${id}/categories`)
-    }
-
-    const handleBack = () => {
-        history.push(`/businesses/${id}/edit`)
+        history.push(`/business/${id}/about`)
     }
 
     return isLoaded &&  (
@@ -51,7 +46,8 @@ function SetBizAmenities(){
                         <div id="set-all-amenities">
                             {amenities.amenities.map(amenity => (
                                 <div key={`${amenity}`}>
-                                    <IndividualAmenityButton
+                                    <EditIndividualAmenityButton
+                                        included={business.amenities.includes(amenity)}
                                         amenity={amenity}
                                         checkedState={checkedState}
                                         setCheckedState={setCheckedState}
@@ -60,7 +56,6 @@ function SetBizAmenities(){
                             ))}
                         </div>
                         <div id="set-amenities-button" className="flex-row-justify-between">
-                            <button onClick={handleBack} >Go Back</button>
                             <button type='submit'>Submit</button>
                         </div>
                     </div>
@@ -70,4 +65,4 @@ function SetBizAmenities(){
     )
 }
 
-export default SetBizAmenities
+export default EditBizAmenities

@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import './IndividualAmenities.css'
 
-function IndividualAmenityButton({amenity, checkedState, setCheckedState}){
-    const [amenityChecked, setAmenityChecked] = useState(false)
+function EditIndividualAmenityButton({amenity, checkedState, setCheckedState, included}){
+    const [amenityChecked, setAmenityChecked] = useState(included)
     const isMounted = useRef(false);
 
     const handleChecked = async e => {
@@ -30,16 +29,9 @@ function IndividualAmenityButton({amenity, checkedState, setCheckedState}){
 
     return (
         <div id={amenityChecked ? 'amenity-button-true' : 'amenity-button-false'} className='flex-row amenity-button' onClick={handleChecked}>
-            {/* <input
-                style={{ width:"25px" }}
-                type="checkbox"
-                name={`${amenity}`}
-                value={`${amenityChecked}`}
-                onClick={handleChecked}
-            /> */}
             <div>{amenity}</div>
         </div>
     )
 }
 
-export default IndividualAmenityButton
+export default EditIndividualAmenityButton
