@@ -25,7 +25,6 @@ export const postAmenities = ({id, amenityPayload}) => async dispatch => {
 }
 
 export const postCategories = ({id, categoryPayload}) => async dispatch => {
-    console.log(`The id is: ${id}, and the categories are: ${Object.keys(categoryPayload)}`)
     const response = await fetch(`/api/businesses/${id}/categories`, {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
