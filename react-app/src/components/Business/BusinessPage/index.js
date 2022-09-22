@@ -42,19 +42,19 @@ function BizPage() {
 
     useEffect(() => {
         dispatch(readBizThunk(businessId))
-        .then((data) => {
-            setBizAmenities(data.amenities || [])
-            return data
-        })
-        .then((data) => setBizCategories(data.categories || []))
-        .then(() => dispatch(getBizReviewThunk(businessId)))
-        .then(() => setIsLoaded(true))
+            .then((data) => {
+                setBizAmenities(data.amenities || [])
+                return data
+            })
+            .then((data) => setBizCategories(data.categories || []))
+            .then(() => dispatch(getBizReviewThunk(businessId)))
+            .then(() => setIsLoaded(true))
     }, [dispatch])
 
     // console.log(bizCategories)
     // console.log(bizAmenities)
 
-    if(!business){
+    if (!business) {
         return <h1>404 Business not found</h1>
         // <Redirect to={'/'}/>
     }
@@ -71,22 +71,28 @@ function BizPage() {
                     <div className="w70">
                         <Switch>
                             <Route path={`${url}/about`}>
-                                <AboutInfo business={business} bizCategories={bizCategories}/>
-                                <AmenityInfo business={business} bizAmenities={bizAmenities}/>
-                                <ReviewInfo business={business} reviewsList={reviewsList} usersReview={usersReview}/>
+                                <AboutInfo business={business} bizCategories={bizCategories} />
+                                <AmenityInfo business={business} bizAmenities={bizAmenities} />
+                                <ReviewInfo business={business} reviewsList={reviewsList} usersReview={usersReview} />
                                 {/* <ReviewsList business={business} /> */}
                             </Route>
                             <Route path={`${url}/reviews`}>
                                 <div>
-                                    <ReviewInfo business={business} reviewsList={reviewsList} usersReview={usersReview}/>
-                                    <ReviewsList reviewsList={reviewsList}/>
+                                    <ReviewInfo business={business} reviewsList={reviewsList} usersReview={usersReview} />
+                                    <ReviewsList reviewsList={reviewsList} />
                                 </div>
                             </Route>
                             <Route path={`${url}/photos`}>
                                 Photo feature not implemented yet
                             </Route>
                             <Route path={`${url}/edit`}>
-                                <UpdateBizForm business={business} setIsLoaded={setIsLoaded} setBizCategories={setBizCategories} setBizAmenities={setBizAmenities}/>
+                                <UpdateBizForm
+                                    business={business}
+                                    setIsLoaded={setIsLoaded}
+                                    bizAmenities={bizAmenities}
+                                    bizCategories={bizCategories}
+                                    setBizCategories={setBizCategories}
+                                    setBizAmenities={setBizAmenities} />
                             </Route>
                             <Route path={`${url}/create-review`}>
                                 <ReviewForm />
@@ -96,11 +102,11 @@ function BizPage() {
                             </Route>
                         </Switch>
                     </div>
-                        <div className="w30">
-                            {window.location.pathname.split('/')[3] !== 'edit' &&(
-                                <ContactInfo business={business} />
-                            )}
-                        </div>
+                    <div className="w30">
+                        {window.location.pathname.split('/')[3] !== 'edit' && (
+                            <ContactInfo business={business} />
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
