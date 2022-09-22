@@ -28,6 +28,10 @@ function EditBizInfo({ business, setIsLoaded }) {
     const [validationErrors, setValidationErrors] = useState([])
     const [isSubmitted, setIsSubmitted] = useState(false)
 
+    function onlyLetters(str) {
+      return /^[a-zA-Z]+$/.test(String(str));
+    }
+    
     useEffect(() => {
         const errors = []
         if (name.length > 50) errors.push("Name must be less than 50 characters");
@@ -35,11 +39,12 @@ function EditBizInfo({ business, setIsLoaded }) {
         if (longitude > 180 || longitude < -180) errors.push("Invalid longitude, please be between 180 and -180");
         if (latitude > 90 || latitude < -90) errors.push("Invalid Latitude, please be between 90 and -90");
         if (description.length < 10 || description.length > 2000) errors.push('Description must be between 10 and 2000 characters')
-
-        // front end error handling here
-
+        if (onlyLetters(city)) errors.push("City can only include letters.");
+        if (website.length > 500) errors.push("Website URL length too long.");
+        if (!(/.(com|net|gov|org|io|tv)$/.test(website.split('/')[2]))){
+          errors.push("Please submit a website url")
         setValidationErrors(errors)
-
+        }
     }, [name, email, phone, website, address, city, state, zipcode, country, latitude, longitude, description, priceRange])
 
     if (!sessionUser) {
@@ -76,7 +81,7 @@ function EditBizInfo({ business, setIsLoaded }) {
         const payload = { businessId: business.id, business: newBiz }
 
         const data = await dispatch(updateBizThunk(payload))
-        if (data.statusCode === 403){
+        if (data.statusCode){
           alert('Must be creator of review!')
           setValidationErrors([data.message])
           return
@@ -89,7 +94,10 @@ function EditBizInfo({ business, setIsLoaded }) {
     const handleDelete = async e => {
         e.preventDefault()
         setIsLoaded(false)
-        await dispatch(deleteBizThunk(business.id))
+        const data = await dispatch(deleteBizThunk(business.id))
+        if (data.statusCode) {
+          setValidationErrors([data.message]);
+        }
         history.push(`/businesses`)
     }
 

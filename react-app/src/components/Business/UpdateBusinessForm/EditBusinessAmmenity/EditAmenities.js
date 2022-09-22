@@ -6,7 +6,7 @@ import EditIndividualAmenityButton from "./EditIndividualAmenityButton";
 
 import {getAmenities, postAmenities} from '../../../../store/fetchFunctions'
 
-function EditBizAmenities({ business, setBizAmenities }){
+function EditBizAmenities({ business, bizAmenities, setBizAmenities }){
     const dispatch = useDispatch()
     const history = useHistory()
     const location = useLocation()
@@ -54,7 +54,7 @@ function EditBizAmenities({ business, setBizAmenities }){
                             {amenities.amenities.map(amenity => (
                                 <div key={`${amenity}`}>
                                     <EditIndividualAmenityButton
-                                        included={business.amenities.includes(amenity)}
+                                        included={bizAmenities.includes(amenity)}
                                         amenity={amenity}
                                         checkedState={checkedState}
                                         setCheckedState={setCheckedState}

@@ -14,26 +14,13 @@ function EditIndividualCategoryButton({category, checkedState, setCheckedState, 
         if (isMounted.current) {
             let newState = {...checkedState}
             if(`${category}` in  newState && !categoryChecked){
-                console.log(`${category} was in state and is being removed`)
                 delete newState[`${category}`]
             }
             if(categoryChecked){
-                console.log(`adding ${category} to the state!`)
                 newState[`${category}`] = categoryChecked
-                console.log(`Newstate is now ${Object.keys(newState)}!`)
             }
             setCheckedState(newState)
         } else {
-            let newState = {...checkedState}
-            if(`${category}` in  newState && !categoryChecked){
-                console.log(`${category} was in state and is being removed`)
-                delete newState[`${category}`]
-            }
-            if(categoryChecked){
-                console.log(`adding ${category} to the state!`)
-                newState[`${category}`] = categoryChecked
-            }
-            setCheckedState(newState)
             isMounted.current = true;
         }
     }, [categoryChecked])
