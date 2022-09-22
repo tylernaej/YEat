@@ -10,6 +10,7 @@
     min-width: 100vw;
     max-width: 100vw;
     width:100vw;
+    min-height: 85vh;
     height: 85vh;
     background-size: cover;
     transition: background-image 1s ease-in-out;
@@ -59,4 +60,3 @@
 #this-id-doesnt-exist:hover{
     background-color:rgb(255, 14, 14);
 }
-
