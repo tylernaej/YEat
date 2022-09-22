@@ -68,7 +68,7 @@ function BizPage() {
                 <BizNavBar business={business} />
 
                 <div className="w1070px flex-row-center">
-                    <div className="w70">
+                    <div className="w70 verticalMargin15">
                         <Switch>
                             <Route path={`${url}/about`}>
                                 <AboutInfo business={business} bizCategories={bizCategories} />
@@ -82,9 +82,9 @@ function BizPage() {
                                     <ReviewsList reviewsList={reviewsList} />
                                 </div>
                             </Route>
-                            <Route path={`${url}/photos`}>
+                            {/* <Route path={`${url}/photos`}>
                                 Photo feature not implemented yet
-                            </Route>
+                            </Route> */}
                             <Route path={`${url}/edit`}>
                                 <UpdateBizForm
                                     business={business}

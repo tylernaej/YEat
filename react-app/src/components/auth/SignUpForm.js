@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -13,11 +13,31 @@ const SignUpForm = () => {
   const [profilePicture, setProfilePicture] = useState('')
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+
+  const [isSubmitted, setIsSubmitted] = useState(false)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    const validationErrors = []
+
+    if(password !== repeatPassword) validationErrors.push('Passwords are not the same')
+    // console.log(profilePicture && !/.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(profilePicture.split("?")[0]) && profilePicture.length !== 0)
+    
+    if (!/.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(profilePicture.split("?")[0]) && profilePicture.length !== 0) {
+      validationErrors.push("Please submit a valid preview image");
+    }
+
+    setErrors(validationErrors)
+  }, [password, repeatPassword, profilePicture])
+
   const onSignUp = async (e) => {
     e.preventDefault();
+
+    setIsSubmitted(true)
+
+    if (errors.length > 0) return
+
     if (password === repeatPassword) {
       const data = await dispatch(signUp(firstName, lastName, profilePicture, username, email, password));
       if (data) {
@@ -65,14 +85,15 @@ const SignUpForm = () => {
       </div>
       <form onSubmit={onSignUp}>
         <div>
-          {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+          {isSubmitted && errors.map((error, ind) => (
+            <div className='error' key={ind}><li>{error}</li></div>
           ))}
         </div>
         <div className="firstName-lastName">
           <div className="firstName-lastName-input">
             {/* <label>First Name</label> */}
             <input
+              required
               placeholder="First Name"
               type="text"
               name="first name"
@@ -83,6 +104,7 @@ const SignUpForm = () => {
           <div className="firstName-lastName-input">
             {/* <label>Last Name</label> */}
             <input
+              required
               placeholder="Last Name"
               type="text"
               name="username"
@@ -94,6 +116,7 @@ const SignUpForm = () => {
         <div>
           {/* <label>User Name</label> */}
           <input
+            required
             placeholder="Username"
             type="text"
             name="username"
@@ -104,8 +127,9 @@ const SignUpForm = () => {
         <div>
           {/* <label>Email</label> */}
           <input
+            required
             placeholder="Email"
-            type="text"
+            type="email"
             name="email"
             onChange={updateEmail}
             value={email}
@@ -114,6 +138,7 @@ const SignUpForm = () => {
         <div>
           {/* <label>Password</label> */}
           <input
+            required
             placeholder="Password"
             type="password"
             name="password"
