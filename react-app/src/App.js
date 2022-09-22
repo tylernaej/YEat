@@ -22,6 +22,7 @@ import UserBizList from './components/Business/UserBusinesses/UserBizList';
 import SplashPage from './components/Home/SplashPage';
 import UpdateReviewForm from './components/Reviews/UpdateReviewForm';
 import NavBarSplash from './components/NavBar/NavBarSplash';
+import NavBarNoSearch from './components/NavBar/NavBarNoSearch';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -89,7 +90,7 @@ function App() {
             <UpdateReviewForm />
           </ProtectedRoute> */}
           <ProtectedRoute path="/businesses/reviews/search">
-            <NavBar />
+            <NavBarNoSearch />
             <div id='navbar-spacer'>
             </div>
             <BizReviewSearch />
