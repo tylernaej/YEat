@@ -1,10 +1,10 @@
 import React from "react";
 import './AboutInfo.css'
 
-function AboutInfo({ business }) {
+function AboutInfo({ business, bizCategories }) {
 
     let emptyString = ''
-    business.categories.forEach(category => {
+    bizCategories.forEach(category => {
         emptyString += `${category}, `
     })
     const specialties = emptyString.slice(0, emptyString.length - 2)

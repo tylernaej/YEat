@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {getCategories, postCategories} from '../../../../store/fetchFunctions'
 import EditIndividualCategoryButton from "./EditIndividualCategoryButton";
 
-function EditBizCategories({business}){
+function EditBizCategories({business, setBizCategories}){
     const location = useLocation()
     const dispatch = useDispatch()
     const history = useHistory()
@@ -22,20 +22,19 @@ function EditBizCategories({business}){
 
     useEffect(() => {
         let newState = {}
-        console.log(`${business.categories}`)
+
         for(const category of business.categories){
             newState[`${category}`] = true
         }
+
         setCheckedState(newState)
     }, [])
 
     const handleSubmit = async e => {
         e.preventDefault()
-        let categoryPayload = {}
-        for (const category in checkedState){
-            categoryPayload[`${category}`] = true
-        }
-        const request = {id, categoryPayload}
+
+        const request = {id, categoryPayload: checkedState}
+        setBizCategories(Object.keys(checkedState))
 
         await dispatch(postCategories(request))
 

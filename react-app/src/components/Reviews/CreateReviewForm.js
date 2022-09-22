@@ -11,11 +11,17 @@ function ReviewForm() {
     // const { businessId } = useParams()
     const location = useLocation()
 
+
     const businessId = location.pathname.split('/')[2]
     // console.log(businessId)
     // const business = useSelector((state) => console.log(state))
     const sessionUser = useSelector(state => state.session.user)
+    const reviews = useSelector(state => state.reviews)
+    const reviewsLst = Object.values(reviews)
+    console.log(reviewsLst)
+    let checkUser = sessionUser ? reviewsLst.find(review => review.userId === sessionUser.id) : undefined
     // console.log(sessionUser)
+    console.log(checkUser)
 
     const [rating, setRating] = useState('')
     const [review, setReview] = useState('')
@@ -63,6 +69,10 @@ function ReviewForm() {
         history.push(`/businesses/${businessId}/reviews`)
     }
     // console.log(rating)
+    if(checkUser){
+      // <Redirect to={`/businesses/${businessId}/edit-review`}/>
+      history.push(`/businesses/${businessId}/edit-review`)
+    }
 
     return (
       <div className="whole-bottom-page">
