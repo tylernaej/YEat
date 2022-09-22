@@ -24,7 +24,7 @@ function BizCard({ business }) {
         return (
           <div className="each-card">
             <NavLink
-              className="flex-row navLink"
+              className="flex-row navLink w100"
               to={ `/businesses/${business.id}/create-review`}
             >
               <div style={{ height: "205px", minWidth: "205px" }}>
