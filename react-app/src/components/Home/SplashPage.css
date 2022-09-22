@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'gothicA1-semibold';
+    src: url('../../fonts/gothicA1/GothicA1-SemiBold.ttf');
+}
+
+#splash-main {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    min-width: 100vw;
+    max-width: 100vw;
+    width:100vw;
+    height: 80vh;
+    background-size: cover;
+    transition: background-image 1s ease-in-out;
+    justify-content: center;
+    align-items: center;
+}
+
+#splash-footer {
+    box-sizing: border-box;
+    width:100vw;
+    min-height: 200px;
+    background-color: rgba(215, 28, 28, 0.9);
+    color: white;
+    border-top: 5px solid white;
+}
+
+#splash-header {
+    font-family: 'gothicA1-semibold';
+    text-shadow: 2px 2px #ff0000;
+    font-size: 80px;
+}
