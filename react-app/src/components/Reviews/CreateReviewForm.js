@@ -15,7 +15,7 @@ function ReviewForm() {
     // console.log(businessId)
     // const business = useSelector((state) => console.log(state))
     const sessionUser = useSelector(state => state.session.user)
-    console.log(sessionUser)
+    // console.log(sessionUser)
 
     const [rating, setRating] = useState('')
     const [review, setReview] = useState('')

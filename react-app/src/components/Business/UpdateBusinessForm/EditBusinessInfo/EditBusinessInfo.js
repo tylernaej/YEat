@@ -75,6 +75,11 @@ function EditBizInfo({ business, setIsLoaded }) {
         const payload = { businessId: business.id, business: newBiz }
 
         const data = await dispatch(updateBizThunk(payload))
+        if (data.statusCode === 403){
+          alert('Must be creator of review!')
+          setValidationErrors([data.message])
+          return
+        }
 
         history.push(`/create-business/${business.id}/amenities`)
     }
@@ -87,151 +92,151 @@ function EditBizInfo({ business, setIsLoaded }) {
     }
 
     return (
-        <div>
-            {isSubmitted &&
-                validationErrors.map((error) => <div key={error}>{error}</div>)}
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="name">Name</label>
-                    <input
-                        required
-                        type="text"
-                        name="name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="email">Email</label>
-                    <input
-                        required
-                        type="email"
-                        name="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="phone">Phone: (Format: (123)456-7890)</label>
-                    <input
-                        required
-                        type="tel"
-                        pattern="^(\([0-9]{3}\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$"
-                        name="phone"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="website">Website URL</label>
-                    <input
-                        required
-                        type="url"
-                        name="website"
-                        value={website}
-                        onChange={(e) => setWebsite(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="address">Address</label>
-                    <input
-                        required
-                        type="text"
-                        name="address"
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="city">City</label>
-                    <input
-                        required
-                        type="text"
-                        name="city"
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="state">State</label>
-                    <input
-                        required
-                        type="text"
-                        name="state"
-                        value={state}
-                        onChange={(e) => setState(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="zipcode">Zipcode</label>
-                    <input
-                        required
-                        type="number"
-                        name="zipcode"
-                        value={zipcode}
-                        onChange={(e) => setZipcode(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="country">Country</label>
-                    <input
-                        required
-                        type="text"
-                        name="country"
-                        value={country}
-                        onChange={(e) => setCountry(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="latitude">Latitude</label>
-                    <input
-                        required
-                        type="number"
-                        name="latitude"
-                        value={latitude}
-                        onChange={(e) => setLatitude(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="longitude">Longitude</label>
-                    <input
-                        required
-                        type="number"
-                        name="longitude"
-                        value={longitude}
-                        onChange={(e) => setLongitude(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="priceRange">Price Range (1 - 4)</label>
-                    <input
-                        required
-                        type="number"
-                        min={1}
-                        max={4}
-                        name="priceRange"
-                        value={priceRange}
-                        onChange={(e) => setPriceRange(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="description">Description</label>
-                    <textarea
-                        rows='13'
-                        cols='76'
-                        required
-                        type="text"
-                        name="description"
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <button onClick={handleDelete}>Delete</button>
-                    <button type="submit">Submit</button>
-                </div>
-            </form>
-        </div>
+      <div>
+        {isSubmitted &&
+          validationErrors.map((error) => <div className='error' key={error}><li>{error}</li></div>)}
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="name">Name</label>
+            <input
+              required
+              type="text"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="email">Email</label>
+            <input
+              required
+              type="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="phone">Phone: (Format: (123)456-7890)</label>
+            <input
+              required
+              type="tel"
+              pattern="^(\([0-9]{3}\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$"
+              name="phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="website">Website URL</label>
+            <input
+              required
+              type="url"
+              name="website"
+              value={website}
+              onChange={(e) => setWebsite(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="address">Address</label>
+            <input
+              required
+              type="text"
+              name="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="city">City</label>
+            <input
+              required
+              type="text"
+              name="city"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="state">State</label>
+            <input
+              required
+              type="text"
+              name="state"
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="zipcode">Zipcode</label>
+            <input
+              required
+              type="number"
+              name="zipcode"
+              value={zipcode}
+              onChange={(e) => setZipcode(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="country">Country</label>
+            <input
+              required
+              type="text"
+              name="country"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="latitude">Latitude</label>
+            <input
+              required
+              type="number"
+              name="latitude"
+              value={latitude}
+              onChange={(e) => setLatitude(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="longitude">Longitude</label>
+            <input
+              required
+              type="number"
+              name="longitude"
+              value={longitude}
+              onChange={(e) => setLongitude(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="priceRange">Price Range (1 - 4)</label>
+            <input
+              required
+              type="number"
+              min={1}
+              max={4}
+              name="priceRange"
+              value={priceRange}
+              onChange={(e) => setPriceRange(e.target.value)}
+            />
+          </div>
+          <div>
+            <label htmlFor="description">Description</label>
+            <textarea
+              rows='13'
+              cols='76'
+              required
+              type="text"
+              name="description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+          <div id="edit-business-buttons">
+            <button onClick={handleDelete}>Delete</button>
+            <button type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
     );
 }
 

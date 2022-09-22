@@ -1,17 +1,18 @@
-#update-review-edit-button-div{
+#edit-business-buttons{
     display: flex;
-    width: 100%;
+    /* width: 100%; */
     justify-content: flex-end;
+    align-items: center;
 }
 
-#update-review-edit-button-div>button{
+#edit-business-buttons>button{
     margin-left: 20px;
     background-color: rgba(224, 7, 7, 1);
     transition: .5s;
     border-radius: 5px;
 }
 
-#update-review-edit-button-div>button:hover {
+#edit-business-buttons>button:hover {
     cursor: pointer;
     background-color: rgb(255, 14, 14);
 }
