@@ -1,3 +1,5 @@
+import profile
+from threading import _profile_hook
 from app.models import db, User
 
 
@@ -10,7 +12,7 @@ def seed_users():
     tyler = User(
         first_name='Tyler', last_name='Jean', username='tyler', email='tyler@aa.io', password='password', profile_picture='https://avatars.githubusercontent.com/u/104518737?s=400&u=62e1ffcb888bfa1a9ed7a13e82058c2718962c73&v=4')
     edward = User(
-        first_name='Edward', last_name='Felipe', username='edward', email='edward@aa.io', password='password')
+        first_name='Edward', last_name='Felipe', username='edward', email='edward@aa.io', password='password', profile_picture='https://avatars.githubusercontent.com/u/75222415?s=400&u=c117af6019a7ce2525374cff39a86f6d0bd882c7&v=4')
     yasmine = User(
         first_name='Yasmine', last_name='Mccabe', username='yasmine', email='yasmine@aa.io', password='password'
     )

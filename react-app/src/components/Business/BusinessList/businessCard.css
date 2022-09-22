@@ -23,12 +23,14 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    overflow-wrap: break-word;
     margin-top: 15px;
     color: #797B7D;
 }
 
 .biz-card-right-side{
     margin-left: 20px;
+    width: 550px;
 }
 
 .biz-card-name{
