@@ -17,4 +17,11 @@
 
 .login-to-yeat{
     color: red;
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+}
+
+#full-login-page{
+    padding: 0% 20%;
 }
