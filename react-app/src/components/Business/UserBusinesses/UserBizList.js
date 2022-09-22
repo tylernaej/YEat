@@ -28,7 +28,8 @@ function UserBizList() {
 
   return (
     isLoaded && (
-      <div>
+      <div className="bizlist-page">
+        <h3>Your Business</h3>
         {businessList.map((business) => (
           <BizCard key={business.id} business={business} />
         ))}

@@ -70,6 +70,7 @@ function SearchBar() {
               >
                 <label htmlFor='search-bar' id='search-form'></label>
                 <input
+                  autoComplete="off"
                   type='text'
                   id="search-bar"
                   placeholder="tacos, pizza, Max's..."

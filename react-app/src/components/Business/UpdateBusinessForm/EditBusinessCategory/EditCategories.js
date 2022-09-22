@@ -42,8 +42,9 @@ function EditBizCategories({business}){
         history.push(`/businesses/${id}/about`)
     }
 
-    return isLoaded && (
-        <div id="full-page-categories">
+    return isLoaded &&  (
+        <div id="full-page-categories " style={{width: "100%"}}>
+
             <h3>What categories do you offer?</h3>
             <div>
                 <form onSubmit={handleSubmit}>

@@ -17,8 +17,6 @@ function SplashPage() {
     const dispatch = useDispatch()
     const history = useHistory()
 
-    const businesses = useSelector(state => state.businesses)
-
     const [splashNum, setSplashNum] = useState(0)
     const [isLoaded, setIsLoaded] = useState(false)
 
@@ -45,9 +43,8 @@ function SplashPage() {
                         backgroundImage: `url(${images[splashNum]})`,
                     }
                 }>
-                <div className="w30" style={{ color: "white" }}>
+                <div className="w30 flex-row-center flex-row-align-center" style={{ color: "white"}}>
                     <div>
-
                         <div>
                             <h1 id="splash-header">Welcome to <img src={redLogo} /></h1>
                         </div>
@@ -71,7 +68,7 @@ function SplashPage() {
                         <h5>
                             Dev: Connor Lam
                         </h5>
-                        <li><a style={{textDecoration:"none", color: "white"}} href="https://github.com/tylernaej/YEat/" target="_blank" rel="noreferrer noopener">LinkedIn</a></li>
+                        <li><a style={{textDecoration:"none", color: "white"}} href="https://www.linkedin.com/in/connor-lam-a6545a23b/" target="_blank" rel="noreferrer noopener">LinkedIn</a></li>
                         <li><a style={{textDecoration:"none", color: "white"}} href="https://github.com/ConnorLam" target="_blank" rel="noreferrer noopener">GitHub</a></li>
                     </div>
                     <div>
@@ -86,7 +83,7 @@ function SplashPage() {
                         <h5>
                             Dev: Tyler Jean
                         </h5>
-                        <li><a style={{textDecoration:"none", color: "white"}} href="https://github.com/tylernaej/YEat/" target="_blank" rel="noreferrer noopener">LinkedIn</a></li>
+                        {/* <li><a style={{textDecoration:"none", color: "white"}} href="https://github.com/tylernaej/YEat/" target="_blank" rel="noreferrer noopener">LinkedIn</a></li> */}
                         <li><a style={{textDecoration:"none", color: "white"}} href="https://github.com/tylernaej" target="_blank" rel="noreferrer noopener">GitHub</a></li>
                     </div>
                 </div>

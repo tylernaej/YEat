@@ -83,6 +83,7 @@ function EditBizInfo({ business, setIsLoaded }) {
         }
 
         history.push(`/businesses/${business.id}/about`)
+
     }
 
     const handleDelete = async e => {
