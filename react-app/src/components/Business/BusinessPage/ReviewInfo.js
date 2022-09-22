@@ -7,7 +7,7 @@ import './ReviewInfo.css'
 function ReviewInfo({ business, reviewsList, usersReview }) {
     const sessionUser = useSelector(state => state.session.user)
 
-    const sessionUser = useSelector(state => state.session.user)
+    // const sessionUser = useSelector(state => state.session.user)
     // filter the reviews by rating
     const numratings1 = reviewsList.filter(review => review.rating === 1).length
     const numratings2 = reviewsList.filter(review => review.rating === 2).length
