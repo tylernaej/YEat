@@ -7,6 +7,7 @@ import { updateBizThunk, deleteBizThunk } from "../../../../store/business";
 function EditBizInfo({ business, setIsLoaded }) {
     const dispatch = useDispatch()
     const history = useHistory()
+    const { url } = useRouteMatch()
 
     const sessionUser = useSelector(state => state.session.user)
 
@@ -81,7 +82,7 @@ function EditBizInfo({ business, setIsLoaded }) {
           return
         }
 
-        history.push(`/create-business/${business.id}/amenities`)
+        history.push(`/businesses/${business.id}/about`)
     }
 
     const handleDelete = async e => {
