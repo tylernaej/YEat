@@ -1,0 +1,27 @@
+.login-buttons{
+    display: flex;
+    justify-content: center;
+}
+
+.login-buttons>button{
+    margin-left: 20px;
+    margin-right: 5px;
+    margin-top: 20px;
+    border-radius: 5px;
+    background-color: rgba(224, 7, 7, 1);
+    transition: .5s;
+    width: 150px;
+    /* height: ; */
+    word-wrap: break-word;
+}
+
+.login-to-yeat{
+    color: red;
+    display: flex;
+    flex-direction: center;
+    align-items: center;
+}
+
+#full-login-page{
+    padding: 0% 20%;
+}
