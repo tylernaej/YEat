@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from "react-router-dom";
 import { getBizThunk } from "../../../store/business";
 import BizCard from "./businessCard";
+import BizList from ".";
 
 function useQuery() {
     const { search } = useLocation();
@@ -57,7 +58,7 @@ function BizSearchList() {
 
     if(!bizMatches.current.length){
         return(
-            <div>No Search Results</div>
+            <BizList/>
         )
     }
     

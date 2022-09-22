@@ -75,7 +75,7 @@ function App() {
             <NavBar />
             <div id='navbar-spacer'>
             </div>
-            <UserBizList />
+            <BizSearchList />
           </ProtectedRoute>
           <ProtectedRoute path="/create-business">
             <NavBar />
