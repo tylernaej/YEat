@@ -198,6 +198,10 @@ p.spacing {
     color: #757575;
 }
 
+.textcolor-footer {
+    color: white;
+}
+
 .bold {
     font-weight: bold;
 }
