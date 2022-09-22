@@ -52,8 +52,8 @@ function SplashPage() {
                             <h1 id="splash-header">Welcome to <img src={redLogo} /></h1>
                         </div>
 
-                        <div>
-                            <button onClick={() => history.push('/businesses')}>See all businesses</button>
+                        <div >
+                            <button onClick={() => history.push('/businesses')} id='this-id-doesnt-exist'>See all businesses</button>
                         </div>
                     </div>
                 </div>

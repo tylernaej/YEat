@@ -9,7 +9,6 @@ function IndividualAmenityButton({amenity, checkedState, setCheckedState}){
 
     const handleChecked = async e => {
         setAmenityChecked(current => !current)
-        console.log(`The Amenity Clicked was: ${amenityChecked} and the checked state is: ${Object.keys(checkedState)}.`)
     }
 
     useEffect(() => {
