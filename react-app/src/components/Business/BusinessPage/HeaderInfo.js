@@ -58,7 +58,7 @@ function HeaderInfo({ business, reviewsList, bizCategories }) {
     const numratings4 = reviewsList.filter(review => review.rating === 4).length
     const numratings5 = reviewsList.filter(review => review.rating === 5).length
 
-    const avg = ((numratings1 * 1) + (numratings2 * 2) + (numratings3 * 3) + (numratings4 * 4) + (numratings5 * 5)) / reviewsList.length
+    const avg = reviewsList.length ? ((numratings1 * 1) + (numratings2 * 2) + (numratings3 * 3) + (numratings4 * 4) + (numratings5 * 5)) / reviewsList.length : 0
     const ratingPercentage = ((avg / 5) * 100).toFixed(2)
 
     return (

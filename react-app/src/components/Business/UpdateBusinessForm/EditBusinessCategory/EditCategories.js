@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {getCategories, postCategories} from '../../../../store/fetchFunctions'
 import EditIndividualCategoryButton from "./EditIndividualCategoryButton";
 
-function EditBizCategories({business, setBizCategories}){
+function EditBizCategories({business, bizCategories, setBizCategories}){
     const location = useLocation()
     const dispatch = useDispatch()
     const history = useHistory()
@@ -52,7 +52,7 @@ function EditBizCategories({business, setBizCategories}){
                             {categories.categories.map(category => (
                                 <div key={`${category}`}>
                                     <EditIndividualCategoryButton
-                                        included={business.categories.includes(category)}
+                                        included={bizCategories.includes(category)}
                                         category={category}
                                         checkedState={checkedState}
                                         setCheckedState={setCheckedState}
