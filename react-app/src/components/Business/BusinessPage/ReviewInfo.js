@@ -36,7 +36,7 @@ function ReviewInfo({ business, reviewsList, usersReview }) {
     console.log(usersReview)
 
     return (
-        <div className="border-top-black-2px">
+        <div className="border-top-black-2px review-info-component">
             <h2>Reviews</h2>
             <div className="w100 flex-row-align-center">
                 <div className="w30">

@@ -3,7 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { updateBizThunk, deleteBizThunk } from "../../../store/business";
-// import './index.css'
+import './index.css'
 
 function UpdateBizForm({ business, setIsLoaded }) {
     const dispatch = useDispatch()
@@ -227,7 +227,7 @@ function UpdateBizForm({ business, setIsLoaded }) {
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
-          <div>
+          <div id="edit-business-buttons">
             <button onClick={handleDelete}>Delete</button>
             <button type="submit">Submit</button>
           </div>
