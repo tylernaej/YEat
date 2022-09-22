@@ -34,7 +34,7 @@ function EditBizAmenities({ business }){
 
         await dispatch(postAmenities(request))
 
-        history.push(`/business/${id}/about`)
+        history.push(`/businesses/${id}/about`)
     }
 
     return isLoaded &&  (

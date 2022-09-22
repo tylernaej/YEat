@@ -23,7 +23,7 @@ function UpdateBizForm({ business, setIsLoaded }) {
 
   return (
     <div>
-      <div>
+      <div className="edit-links-div">
         <NavLink to={`${url}/info`}>Edit info</NavLink>
         <NavLink to={`${url}/categories`}>Edit Categories</NavLink>
         <NavLink to={`${url}/amenities`}>Edit Amenities</NavLink>

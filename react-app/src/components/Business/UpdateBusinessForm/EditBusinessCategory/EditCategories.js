@@ -30,7 +30,7 @@ function EditBizCategories({business}){
 
         await dispatch(postCategories(request))
 
-        history.push(`/businesses/${id}/about`)
+        history.push(`/businesses/${id}/edit/amenities`)
     }
 
     return isLoaded &&  (

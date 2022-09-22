@@ -81,7 +81,7 @@ function EditBizInfo({ business, setIsLoaded }) {
           return
         }
 
-        history.push(`/create-business/${business.id}/amenities`)
+        history.push(`/businesses/${business.id}/edit/categories`)
     }
 
     const handleDelete = async e => {
