@@ -9,11 +9,10 @@ function IndividualAmenityButton({amenity, checkedState, setCheckedState}){
 
     const handleChecked = async e => {
         setAmenityChecked(current => !current)
-        console.log(`The Amenity Clicked was: ${amenityChecked} and the checked state is: ${Object.keys(checkedState)}.`)
     }
 
     useEffect(() => {
-        // console.log('setting new checked state')
+
         if (isMounted.current) {
             let newState = {...checkedState}
             if(`${amenity}` in  newState && !amenityChecked){
@@ -22,7 +21,7 @@ function IndividualAmenityButton({amenity, checkedState, setCheckedState}){
             if(amenityChecked){
                 newState[`${amenity}`] = amenityChecked
             }
-            // console.log(`You are updating \n${Object.keys(checkedState)} \nto \n${Object.keys(newState)}`)
+
             setCheckedState(newState)
         } else {
             isMounted.current = true;

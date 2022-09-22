@@ -9,12 +9,13 @@ import './SetAmenities.css'
 
 function SetBizAmenities(){
     const dispatch = useDispatch()
-    const [amenities, setAmenities] = useState([])
-    const [isLoaded, setIsLoaded] = useState(false)
-    const [checkedState, setCheckedState] = useState({})
     const history = useHistory()
     const location = useLocation()
     const id = Number(location.pathname.split('/')[2])
+
+    const [amenities, setAmenities] = useState([])
+    const [isLoaded, setIsLoaded] = useState(false)
+    const [checkedState, setCheckedState] = useState({})
 
     useEffect(() => {
         getAmenities()
@@ -25,13 +26,13 @@ function SetBizAmenities(){
     const handleSubmit = async e => {
         e.preventDefault()
         let amenityPayload = {}
+
         for (const amenity in checkedState){
             amenityPayload[`${amenity}`] = true
         }
-        console.log(`The biz id in the handle submit is: ${id}`)
+
         const request = {id, amenityPayload}
 
-        console.log(request)
         await dispatch(postAmenities(request))
 
         history.push(`/create-business/${id}/categories`)
