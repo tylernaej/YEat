@@ -15,9 +15,6 @@ const NavBarNoSearch = () => {
           <div className='flex-row'>
             <HomeButton />
           </div>
-          <div id='where-would-you-like-to-review'>
-            Where would you like to review?
-          </div>
           <div className='flex-row' id='no-search-right-side-buttons'>
             <div id='no-search-see-all-businesses'>
               <NavLink to={'/businesses'} id='no-search-see-all-businesses-navlink'>All Businesses</NavLink>

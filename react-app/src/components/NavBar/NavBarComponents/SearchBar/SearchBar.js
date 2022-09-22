@@ -71,8 +71,8 @@ function SearchBar() {
 
 
   return (
-    <div> 
-        <div id='search-bar-container' onClick={toggleDropDown}>
+    <div id="search-bar-container-container"> 
+        <div id={location.pathname.split('/')[2] === 'reviews' ? 'review-search-bar-container' : 'search-bar-container'} onClick={toggleDropDown}>
           <div>
             <div id='search-form-container'>
               <form 
@@ -101,7 +101,7 @@ function SearchBar() {
               </form>
             </div>
             {dropDown && (
-              <div id='drop-down'>
+              <div id={location.pathname.split('/')[2] === 'reviews' ? 'review-drop-down' : 'drop-down'}>
                 {Array.from(bizMatches).map(business => (
                   <div >
                     <DropDownBizInfo business={business}/>
