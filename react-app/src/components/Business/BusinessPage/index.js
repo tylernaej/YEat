@@ -82,9 +82,9 @@ function BizPage() {
                                     <ReviewsList reviewsList={reviewsList} />
                                 </div>
                             </Route>
-                            <Route path={`${url}/photos`}>
+                            {/* <Route path={`${url}/photos`}>
                                 Photo feature not implemented yet
-                            </Route>
+                            </Route> */}
                             <Route path={`${url}/edit`}>
                                 <UpdateBizForm
                                     business={business}
