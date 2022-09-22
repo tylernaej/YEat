@@ -28,7 +28,7 @@ function photoInHeader(business) {
 function reviewInHeader(reviews) {
 
     if (reviews?.length === 0) {
-        return 'No reviews available'
+        return 'No reviews yet'
     }
     else if (reviews?.length === 1) {
         return `${reviews?.length} review`;

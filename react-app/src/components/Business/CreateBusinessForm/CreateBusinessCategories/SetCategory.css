@@ -1,4 +1,4 @@
-#set-all-amenities {
+#set-all-categories{
     display: flex;
     box-sizing: border-box;
     flex-wrap: wrap;
@@ -10,27 +10,31 @@
     font-size: large;
 }
 
-#full-page-amenities{
+#full-page-categories{
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     justify-content: center;
     align-items: center;
-    width: 800px;
+    width: 1200px;
+    margin-bottom: 20px;
+    height: auto;
 }
 
-#amenites-form{
+#categories-form{
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
 }
 
-#set-amenities-button{
+#set-categories-button{
     display: flex;
+    flex-direction: row;
     justify-content: flex-end;
 }
 
-#set-amenities-button>*{
+#set-categories-button>*{
     margin-left: 20px;
     margin-right: 5px;
     margin-top: 20px;
@@ -40,7 +44,7 @@
     transition: .5s;
 }
 
-#set-amenities-button>*:hover{
+#set-categories-button>*:hover{
     cursor: pointer;
     background-color: rgb(255, 14, 14);
 }

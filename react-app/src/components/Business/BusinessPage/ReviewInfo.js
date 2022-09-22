@@ -6,6 +6,7 @@ import './ReviewInfo.css'
 
 function ReviewInfo({ business, reviewsList, usersReview }) {
 
+    const sessionUser = useSelector(state => state.session.user)
     // filter the reviews by rating
     const numratings1 = reviewsList.filter(review => review.rating === 1).length
     const numratings2 = reviewsList.filter(review => review.rating === 2).length
@@ -47,13 +48,18 @@ function ReviewInfo({ business, reviewsList, usersReview }) {
 
                         <p className="textcolor-grey">{reviewsList.length} reviews</p>
                         <div>
-                            <i className="fa-regular fa-star"></i>
-                            {!usersReview &&
-                                <NavLink to={`/businesses/${business.id}/create-review`}>Write a review</NavLink>
-                            }
-                            {usersReview &&
-                                <NavLink to={`/businesses/${business.id}/edit-review`}>Edit your review</NavLink>
+                            { sessionUser && sessionUser.id !== business.ownerId && (
+                                <div id="write-edit-review-button">
+                                    <i className="fa-regular fa-star write-review-star"></i>
+                                {!usersReview && 
+                                    <NavLink id="write-edit-review" to={`/businesses/${business.id}/create-review`}>Write a review</NavLink>
+                                }
+                                {usersReview && 
+                                    <NavLink id="write-edit-review"  to={`/businesses/${business.id}/edit-review`}>Edit your review</NavLink>
 
+                                }
+                                </div>
+                            )
                             }
                             {/* { visibility: `${sessionUser && sessionUser.id === business.ownerId ? "visible" : "hidden"}` } */}
                         </div>

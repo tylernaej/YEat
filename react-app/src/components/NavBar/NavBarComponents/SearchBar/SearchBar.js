@@ -19,8 +19,8 @@ function SearchBar() {
 
   useEffect(() => {
     const closeMenu = (e) => {
-        console.log(e.target.id)
-        if(dropDown && e.target.id != 'search-bar'){
+        // console.log(e.target.id)
+        if(dropDown && e.target.id !== 'search-bar'){
             setDropDown(false)
         }
     }

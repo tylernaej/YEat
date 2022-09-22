@@ -3,6 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { updateBizThunk, deleteBizThunk } from "../../../store/business";
+// import './index.css'
 
 function UpdateBizForm({ business, setIsLoaded }) {
     const dispatch = useDispatch()
@@ -203,8 +204,22 @@ function UpdateBizForm({ business, setIsLoaded }) {
             />
           </div>
           <div>
+            <label htmlFor="priceRange">Price Range (1 - 4)</label>
+            <input
+              required
+              type="number"
+              min={1}
+              max={4}
+              name="priceRange"
+              value={priceRange}
+              onChange={(e) => setPriceRange(e.target.value)}
+            />
+          </div>
+          <div>
             <label htmlFor="description">Description</label>
             <textarea
+              rows='13'
+              cols='76'
               required
               type="text"
               name="description"
@@ -213,18 +228,8 @@ function UpdateBizForm({ business, setIsLoaded }) {
             />
           </div>
           <div>
-            <label htmlFor="priceRange">Price Range</label>
-            <input
-              required
-              type="number"
-              name="priceRange"
-              value={priceRange}
-              onChange={(e) => setPriceRange(e.target.value)}
-            />
-          </div>
-          <div>
-            <button type="submit">Submit</button>
             <button onClick={handleDelete}>Delete</button>
+            <button type="submit">Submit</button>
           </div>
         </form>
       </div>

@@ -3,6 +3,7 @@ import { useHistory, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { createBizThunk } from "../../../../store/business";
+import './CreateBusiness.css'
 
 function SetBizDetails() {
   const dispatch = useDispatch()
@@ -219,8 +220,8 @@ function SetBizDetails() {
             onChange={(e) => setDescription(e.target.value)}
           />
         </div>
-        <div>
-          <button type="submit">Submit</button>
+        <div id="create-business-button">
+          <button id="submit-button" type="submit">Submit</button>
         </div>
       </form>
     </div>

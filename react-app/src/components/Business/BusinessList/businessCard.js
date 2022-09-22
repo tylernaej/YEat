@@ -28,7 +28,7 @@ function BizCard({ business }) {
                             <div class="stars-outer">
                                 <div class="stars-inner" style={{width: `${(business.avgReviews / 5) * 100}%`}}></div>
                             </div>
-                            <div className='num-reviews'>{business.numReviews ? business.numReviews : 'No reviews available'}</div>
+                            <div className='num-reviews'>{business.numReviews ? business.numReviews : 'No reviews yet'}</div>
                         </div>
                         <div className='flex-row-align-center'>
                             {business.categories.slice(0,3).map(category => (

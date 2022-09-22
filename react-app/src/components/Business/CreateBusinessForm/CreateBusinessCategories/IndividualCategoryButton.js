@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import './IndividualCategory.css'
 
 function IndividualCategoryButton({category, checkedState, setCheckedState}){
     const [categoryChecked, setCategoryChecked] = useState(false)
@@ -26,14 +27,15 @@ function IndividualCategoryButton({category, checkedState, setCheckedState}){
     }, [categoryChecked])
 
     return (
-        <div>
-            <label htmlFor={`${category}`}>{category}</label>
+        <div id={categoryChecked ? 'category-button-true' : 'category-button-false'} className='flex-row category-button' onClick={handleChecked}>
+            {/* <label htmlFor={`${category}`}>{category}</label>
             <input 
                 type="checkbox" 
                 name={`${category}`} 
                 value={`${categoryChecked}`} 
                 onClick={handleChecked} 
-            />        
+            />         */}
+            <div>{category}</div>
         </div>
     )
 }

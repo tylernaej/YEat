@@ -42,7 +42,7 @@ function SetBizAmenities(){
     }
 
     return isLoaded &&  (
-        <div id="full-page">
+        <div id="full-page-amenities">
             <h3>What amenities do you offer?</h3>
             <div>
                 <form onSubmit={handleSubmit}>

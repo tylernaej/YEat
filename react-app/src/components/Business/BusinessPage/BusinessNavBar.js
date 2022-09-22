@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink, useRouteMatch, useParams } from "react-router-dom";
+import './BusinessNavBar.css'
 
 function BizNavBar({ business }){
     const { url } = useRouteMatch()
