@@ -70,6 +70,12 @@ function App() {
             </div>
             <UserBizList />
           </ProtectedRoute>
+          <ProtectedRoute path="/writeareview/search">
+            <NavBar />
+            <div id='navbar-spacer'>
+            </div>
+            <UserBizList />
+          </ProtectedRoute>
           <ProtectedRoute path="/create-business">
             <NavBar />
             <div id='navbar-spacer'>

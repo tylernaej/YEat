@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Redirect, useHistory } from 'react-router-dom';
+import { NavLink, Redirect, useHistory, useLocation } from 'react-router-dom';
 import './DropDownBizInfo.css'
 
 function DropDownBizInfo({business}){
+
+    const location = useLocation()
 
     const randomImages = [
         "nothing",
@@ -19,7 +21,29 @@ function DropDownBizInfo({business}){
         "https://static01.nyt.com/images/2022/09/06/dining/06michelin1/merlin_208730661_8d43267c-3b6f-4cb7-a063-60cdf52cd4e5-videoSixteenByNine3000.jpg"
     ]
 
-    console.log(randomImages[Math.floor(Math.random()*10)])
+    // console.log(randomImages[Math.floor(Math.random()*10)])
+    // console.log(location.pathname.split('/')[2])
+    if(location.pathname.split('/')[2] === 'reviews'){
+        return  (
+        <div >
+            <NavLink to={`/businesses/${business.id}/create-review`} id='result-navlink'>
+                <div className="flex-row" id='individual-result'>
+                    <div id='result-image'>
+                        <img src={randomImages[Math.floor(Math.random()*10)]} alt='' id='random-image'/>
+                    </div>
+                    <div id='result-details'>
+                        <div id='search-result-name'>
+                            {business.name}
+                        </div>
+                        <div id='search-result-address'>
+                            {business.address}
+                        </div>
+                    </div>
+                </div>
+            </NavLink>
+        </div>
+    )
+    }
 
     return  (
         <div >

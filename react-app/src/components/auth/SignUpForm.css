@@ -1,20 +1,33 @@
-#full-login-page{
+#full-signup-page{
     margin: 0% 20%;
     box-sizing: border-box;
-    /* display: flex; */
-    /* flex-direction: row;
-    justify-content: center; */
-    height: 100%;
+    padding: 0px 15%;
 }
 
-.login-buttons{
+#sign-up-header{
+    color: red;
+    display: flex;
+    justify-content: center;
+}
+
+.firstName-lastName{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.firstName-lastName-input{
+    width: 49%;
+    margin: 0px;
+}
+
+.sign-up-submit{
     display: flex;
     justify-content: center;
     flex-direction: column;
-    /* width: 100%; */
 }
 
-.login-buttons>button{
+.sign-up-submit>button{
     display: flex;
     /* margin-left: 20px; */
     margin-right: 5px;
@@ -28,41 +41,23 @@
     justify-content: center;
 }
 
-.login-buttons>button:hover{
+.sign-up-submit>button:hover {
     cursor: pointer;
     background-color: rgb(255, 14, 14);
 }
 
-.login-to-yeat{
-    color: red;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.login-form{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-
-
-#input-field{
-    width: 50%;
-}
-
-.new-to-yeat{
-    margin-top: 10px;
+.have-an-account{
     display: flex;
     justify-content: flex-end;
+    margin-top: 10px;
 }
 
-.new-to-yeat-words{
+.have-an-account-words{
     margin-right: 5px;
     color: #999999;
 }
 
-.new-to-yeat-link{
+.have-an-account-link{
     text-decoration: none;
     color: #3686C4;
 }
