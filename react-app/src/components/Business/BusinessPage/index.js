@@ -44,6 +44,10 @@ function BizPage() {
             .then(() => setIsLoaded(true))
     }, [dispatch])
 
+    if(!business){
+        return <h1>404 Business not found</h1>
+    }
+
     return isLoaded && (
         <div>
             <div id="business-header" className="">

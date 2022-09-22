@@ -76,6 +76,11 @@ function UpdateBizForm({ business, setIsLoaded }) {
         const payload = { businessId: business.id, business: newBiz }
 
         const data = await dispatch(updateBizThunk(payload))
+        if (data.statusCode === 403){
+          alert('Must be creator of review!')
+          setValidationErrors([data.message])
+          return
+        }
 
         history.push(`/create-business/${business.id}/amenities`)
     }
@@ -90,7 +95,7 @@ function UpdateBizForm({ business, setIsLoaded }) {
     return (
       <div>
         {isSubmitted &&
-          validationErrors.map((error) => <div key={error}>{error}</div>)}
+          validationErrors.map((error) => <div className='error' key={error}><li>{error}</li></div>)}
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="name">Name</label>

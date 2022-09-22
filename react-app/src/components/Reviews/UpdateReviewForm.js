@@ -55,7 +55,7 @@ function UpdateReviewForm( {usersReview} ){
     }
 
     if (!usersReview) {
-      return null;
+      return <h1>404 review not found</h1>;
     }
 
     return (
