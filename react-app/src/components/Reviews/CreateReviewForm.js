@@ -59,7 +59,7 @@ function ReviewForm() {
 
         const data = await dispatch(createReviewThunk(payload))
 
-        if(data.statusCode === 403){
+        if(data.statusCode){
           setValidationErrors([data.message])
 
           return

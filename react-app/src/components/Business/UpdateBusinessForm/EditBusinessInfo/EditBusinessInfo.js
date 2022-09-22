@@ -76,7 +76,7 @@ function EditBizInfo({ business, setIsLoaded }) {
         const payload = { businessId: business.id, business: newBiz }
 
         const data = await dispatch(updateBizThunk(payload))
-        if (data.statusCode === 403){
+        if (data.statusCode){
           alert('Must be creator of review!')
           setValidationErrors([data.message])
           return
@@ -89,7 +89,10 @@ function EditBizInfo({ business, setIsLoaded }) {
     const handleDelete = async e => {
         e.preventDefault()
         setIsLoaded(false)
-        await dispatch(deleteBizThunk(business.id))
+        const data = await dispatch(deleteBizThunk(business.id))
+        if (data.statusCode) {
+          setValidationErrors([data.message]);
+        }
         history.push(`/businesses`)
     }
 
