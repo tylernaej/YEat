@@ -68,7 +68,7 @@ function BizPage() {
                 <BizNavBar business={business} />
 
                 <div className="w1070px flex-row-center">
-                    <div className="w70">
+                    <div className="w70 verticalMargin15">
                         <Switch>
                             <Route path={`${url}/about`}>
                                 <AboutInfo business={business} bizCategories={bizCategories} />
