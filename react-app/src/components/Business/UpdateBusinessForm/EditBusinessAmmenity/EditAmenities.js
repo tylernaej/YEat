@@ -38,7 +38,7 @@ function EditBizAmenities({ business }){
     }
 
     return isLoaded &&  (
-        <div id="full-page-amenities">
+        <div id="full-page-amenities" style={{width: "100%"}}>
             <h3>What amenities do you offer?</h3>
             <div>
                 <form onSubmit={handleSubmit}>

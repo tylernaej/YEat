@@ -30,11 +30,11 @@ function EditBizCategories({business}){
 
         await dispatch(postCategories(request))
 
-        history.push(`/businesses/${id}/edit/amenities`)
+        history.push(`/businesses/${id}/about`)
     }
 
     return isLoaded &&  (
-        <div id="full-page-categories">
+        <div id="full-page-categories " style={{width: "100%"}}>
             <h3>What categories do you offer?</h3>
             <div>
                 <form onSubmit={handleSubmit}>
