@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Redirect, useHistory } from 'react-router-dom';
+import { NavLink, Redirect, useHistory, useLocation } from 'react-router-dom';
 import { getBizThunk, getUsersBizThunk } from "../../../../store/business";
 import DropDownBizInfo from "./DropDownBizInfo";
 import './SearchBar.css'
@@ -8,6 +8,8 @@ import './SearchBar.css'
 function SearchBar() {
   const dispatch = useDispatch()
   const history = useHistory()
+  const location = useLocation()
+  // console.log(location)
   const [dropDown, setDropDown] = useState(false)
   const [userInput, setUserInput] = useState("")
   const businesses = useSelector(state => state.businesses)
@@ -46,13 +48,25 @@ function SearchBar() {
     setBizMatches(bizSet)
   }
 
-  const handleSubmit = async e =>{
+  let handleSubmit = async e =>{
     e.preventDefault()
     let params = {'name': userInput, 'category': userInput}
     await dispatch(getBizThunk(params))
     setUserInput("")
     const query = new URLSearchParams(params)
     history.push(`/businesses/search?${query.toString()}`)
+  }
+  // console.log(location.pathname.split('/')[2])
+
+  if (location.pathname.split('/')[2] === 'reviews'){
+    handleSubmit = async e => {
+      e.preventDefault()
+      let params = { name: userInput, category: userInput };
+      await dispatch(getBizThunk(params));
+      setUserInput("");
+      const reviewBizQuery = new URLSearchParams(params)
+      history.push(`/writeareview/search?${reviewBizQuery.toString()}`)
+    }
   }
 
 
@@ -70,6 +84,7 @@ function SearchBar() {
               >
                 <label htmlFor='search-bar' id='search-form'></label>
                 <input
+                  autoComplete="off"
                   type='text'
                   id="search-bar"
                   placeholder="tacos, pizza, Max's..."

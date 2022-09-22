@@ -12,8 +12,8 @@ function dollarsigns(range) {
 
 
 function BizCard({ business }) {
-    console.log(business)
-    console.log(`${(business.avgReviews / 5) * 100}`)
+    // console.log(business)
+    // console.log(`${(business.avgReviews / 5) * 100}`)
     const price = dollarsigns(business.priceRange);
     return (
         <div className='each-card'>

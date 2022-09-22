@@ -23,6 +23,7 @@ function UpdateBizForm({ business, setIsLoaded }) {
 
   return (
     <div>
+
       <div className="flex-row-justify-between flex-row-align-center">
         <NavLink to={`${url}/info`}>Edit info</NavLink>
         <NavLink to={`${url}/categories`}>Edit Categories</NavLink>

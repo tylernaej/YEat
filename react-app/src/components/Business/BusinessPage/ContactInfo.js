@@ -15,7 +15,7 @@ function ContactInfo({ business }) {
                 </div>
                 <div>
                     <a href={business.website} target="_blank" rel="noreferrer noopener">
-                        <i className="fa-solid fa-arrow-up-right-from-square"></i>
+                        <i id="arrow-right" className="fa-solid fa-arrow-up-right-from-square"></i>
                     </a>
                 </div>
             </div>
