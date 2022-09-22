@@ -4,32 +4,23 @@ import LogoutButton from '../auth/LogoutButton';
 import CreateBusinessButton from './NavBarComponents/CreateBusinessButton/CreateBusinessButton';
 import CreateReviewButton from './NavBarComponents/CreateReviewButton/CreateReviewButton';
 import HomeButton from './NavBarComponents/HomeButton/HomeButton';
-import ProfileButton from './NavBarComponents/ProfileButton/ProfileButton';
+import SplashProfileButton from './NavBarComponents/SplashProfileButton/SplashProfileButton';
 import SearchBar from './NavBarComponents/SearchBar/SearchBar';
-import './NavBar.css'
+import './NavBarSplash.css'
 
-const NavBar = () => {
+const NavBarSplash = () => {
   return (
-    <div id='nav-container'>
-      <nav className='flex-row-justify-between' id='nav'>
+    <div id='splash-nav-container'>
+      <nav className='flex-row-justify-between' id='splash-nav'>
           <div className='flex-row'>
             <HomeButton />
           </div>
           <div>
             <SearchBar />
           </div>
-          <div className='flex-row' id='right-side-buttons'>
-            <div id='see-all-businesses'>
-              <NavLink to={'/businesses'} id='see-all-businesses-navlink'>All Businesses</NavLink>
-            </div>
+          <div className='flex-row' id='splash-right-side-buttons'>
             <div>
-              <CreateBusinessButton />
-            </div>
-            <div>
-              <CreateReviewButton />
-            </div>
-            <div>
-              <ProfileButton />
+              <SplashProfileButton />
             </div>
           </div>
       </nav>
@@ -38,4 +29,4 @@ const NavBar = () => {
   );
 }
 
-export default NavBar;
+export default NavBarSplash;

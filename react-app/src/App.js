@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { authenticate } from './store/session';
 import './app.css'
+
 
 // components
 import LoginForm from './components/auth/LoginForm';
@@ -20,10 +21,20 @@ import BizReviewSearch from './components/Reviews/BizReviewSearch';
 import UserBizList from './components/Business/UserBusinesses/UserBizList';
 import SplashPage from './components/Home/SplashPage';
 import UpdateReviewForm from './components/Reviews/UpdateReviewForm';
+import NavBarSplash from './components/NavBar/NavBarSplash';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  const [location, setLocation] = useState(window.location.pathname)
+
+  console.log('location is:', location)
+
+  useEffect(() => {
+    setLocation(window.location.pathname)
+  }, [location])
+
+  
 
   useEffect(() => {
     (async () => {
@@ -39,21 +50,30 @@ function App() {
   return (
     <BrowserRouter>
     <div className='h100 w100 flex-column'>
-        <NavBar />
-      <div id='navbar-spacer'>
-      </div>
       <div id='appjs-switch-wrapper'>
         <Switch>
           <Route path="/login" exact={true}>
+            <NavBar />
+            <div id='navbar-spacer'>
+            </div>
             <LoginForm />
           </Route>
           <Route path="/signup" exact={true}>
+            <NavBar />
+            <div id='navbar-spacer'>
+            </div>
             <SignUpForm />
           </Route>
           <ProtectedRoute path="/myBusinesses">
+            <NavBar />
+            <div id='navbar-spacer'>
+            </div>
             <UserBizList />
           </ProtectedRoute>
           <ProtectedRoute path="/create-business">
+            <NavBar />
+            <div id='navbar-spacer'>
+            </div>
             <BizForm />
           </ProtectedRoute>
           {/* <ProtectedRoute path="/businesses/:businessId/create-review">
@@ -63,21 +83,36 @@ function App() {
             <UpdateReviewForm />
           </ProtectedRoute> */}
           <ProtectedRoute path="/businesses/reviews/search">
+            <NavBar />
+            <div id='navbar-spacer'>
+            </div>
             <BizReviewSearch />
           </ProtectedRoute>
           <Route path="/businesses/search">
+            <NavBar />
+            <div id='navbar-spacer'>
+            </div>
             <BizSearchList />
           </Route>
           <Route path="/businesses/:businessId">
+            <NavBar />
+            <div id='navbar-spacer'>
+            </div>
             <BizPage />
           </Route>
           <Route path="/businesses">
+            <NavBar />
+            <div id='navbar-spacer'>
+            </div>
             <BizList />
           </Route>
           <ProtectedRoute path="/users/:userId" exact={true}>
+            <div id='navbar-spacer'>
+            </div>
             <User />
           </ProtectedRoute>
           <Route path="/" exact={true}>
+            <NavBarSplash />
             <SplashPage />
           </Route>
         </Switch>

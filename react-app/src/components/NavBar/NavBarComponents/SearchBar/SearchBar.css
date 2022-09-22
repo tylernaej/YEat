@@ -31,6 +31,8 @@
 
 #search-form{
     border: none;
+    background-color: white;
+    border-radius: 5px;
 }
 
 #search-bar:focus{
