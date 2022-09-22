@@ -5,6 +5,7 @@ import { getBizReviewThunk } from "../../../store/reviews";
 import './ReviewInfo.css'
 
 function ReviewInfo({ business, reviewsList, usersReview }) {
+    const sessionUser = useSelector(state => state.session.user)
 
     // filter the reviews by rating
     const numratings1 = reviewsList.filter(review => review.rating === 1).length
@@ -42,18 +43,22 @@ function ReviewInfo({ business, reviewsList, usersReview }) {
                         <h4>Overall rating</h4>
 
                         <div class="stars-outer">
-                            <div class="stars-inner" style={{width: `${ratingPercentage}%`}}></div>
+                            <div class="stars-inner" style={{ width: `${ratingPercentage}%` }}></div>
                         </div>
 
                         <p className="textcolor-grey">{reviewsList.length} reviews</p>
                         <div>
+                            {sessionUser && !usersReview &&
+                            <>
                             <i className="fa-regular fa-star"></i>
-                            {!usersReview &&
-                                <NavLink to={`/businesses/${business.id}/create-review`}>Write a review</NavLink>
+                            <NavLink to={`/businesses/${business.id}/create-review`}>Write a review</NavLink>
+                            </>
                             }
-                            {usersReview &&
-                                <NavLink to={`/businesses/${business.id}/edit-review`}>Edit your review</NavLink>
-
+                            {sessionUser && usersReview &&
+                            <>
+                            <i className="fa-regular fa-star"></i>
+                            <NavLink to={`/businesses/${business.id}/edit-review`}>Edit your review</NavLink>
+                            </>
                             }
                             {/* { visibility: `${sessionUser && sessionUser.id === business.ownerId ? "visible" : "hidden"}` } */}
                         </div>
