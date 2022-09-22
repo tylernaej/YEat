@@ -29,7 +29,7 @@ function SetBizDetails() {
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   function onlyLetters(str) {
-    return /^[a-zA-Z]+$/.test(String(str));
+    return /^[a-zA-Z]+$/.test(str);
   }
 
   useEffect(() => {
