@@ -1,0 +1,91 @@
+#splash-dropdown-container{
+    display: flex;
+    flex-direction: column;
+}
+
+#splash-welcome{
+    border-bottom: 1px solid rgb(220, 220, 220);
+}
+
+#splash-dropdown-container > *{
+    padding:3px;
+    color: rgb(30, 30, 30);
+    justify-content: center;
+}
+
+#splash-utilities-dropdown > *{
+    padding: 8px;
+}
+
+
+#splash-u-d-grid{
+    display: grid;
+    grid-template-columns: 1;
+    grid-template-rows: 5;
+}
+
+#splash-u-d-grid > *{
+    padding: 2px
+}
+
+#splash-top-icon{
+    grid-column: 1 / 2;
+    grid-row: 1
+}
+
+#splash-top-text{
+    grid-column: 2 / 6;
+    grid-row: 1;
+    text-decoration: none;
+    color: rgb(30, 30, 30);
+}
+
+#splash-middle-icon{
+    grid-column: 1 / 2;
+    grid-row: 1;
+    margin-right: 12px;
+    color: rgb(30, 30, 30);
+}
+
+#splash-middle-text{
+    border-radius: 4px;
+    text-decoration: none;
+    color: rgb(30, 30, 30);
+}
+
+#splash-middle-text > *{
+    text-decoration: none;
+    color: rgb(30, 30, 30);
+}
+
+#splash-middle-text:hover{
+    text-decoration: none;
+    background-color: rgb(240, 240, 240);
+    color: rgb(30, 30, 30);
+    cursor: pointer;
+}
+
+#splash-bottom-icon{
+    grid-column: 1 / 2;
+    grid-row: 1;
+    margin-right: 10px;
+}
+
+#splash-bottom-text{
+    grid-column: 2 / 6;
+    grid-row: 1
+}
+
+#splash-logout-wrapper{
+    border-radius: 4px;
+}
+
+#splash-logout-wrapper:hover{
+    text-decoration: none;
+    background-color: rgb(240, 240, 240);
+    cursor: pointer;
+}
+
+#splash-business-navlink{
+    color: rgb(30, 30, 30);
+}

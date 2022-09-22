@@ -13,7 +13,7 @@ function HomeButton() {
       <NavLink to="/" exact={true} activeClassName="active" id='home-button-nav'>
         <div id='home-button-text'>
           <img src={text_black} id='yeat-text'/>
-          <img src={logo} />
+          <img src={logo} id='yeat-logo'/>
         </div>
       </NavLink>
     </div>
