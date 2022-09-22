@@ -7,7 +7,7 @@ import BizCard from "../Business/BusinessList/businessCard";
 import splashImage1 from "../../assets/splash-image1.jpg"
 import splashImage2 from "../../assets/splash-image2.jpg"
 import splashImage3 from "../../assets/splash-image3.jpg"
-import redLogo from "../../assets/YEat-text_5_15.png"
+import redLogo from "../../assets/YEat-text_red_medium.png"
 
 import './SplashPage.css'
 
@@ -49,7 +49,7 @@ function SplashPage() {
                     <div>
 
                         <div>
-                            <h1>Welcome to <img src={redLogo} /></h1>
+                            <h1 id="splash-header">Welcome to <img src={redLogo} /></h1>
                         </div>
 
                         <div>
