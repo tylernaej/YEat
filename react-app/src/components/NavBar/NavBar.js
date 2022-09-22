@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
@@ -11,28 +10,31 @@ import './NavBar.css'
 
 const NavBar = () => {
   return (
-    <nav className='flex-row-justify-between' id='nav'>
-        <div className='flex-row'>
-          <HomeButton />
-        </div>
-        <div>
-          <SearchBar />
-        </div>
-        <div className='flex-row' id='right-side-buttons'>
-          <div id='see-all-businesses'>
-            <NavLink to={'/businesses'} id='see-all-businesses-navlink'>See all businesses</NavLink>
+    <div id='nav-container'>
+      <nav className='flex-row-justify-between' id='nav'>
+          <div className='flex-row'>
+            <HomeButton />
           </div>
           <div>
-            <CreateBusinessButton />
+            <SearchBar />
           </div>
-          <div>
-            <CreateReviewButton />
+          <div className='flex-row' id='right-side-buttons'>
+            <div id='see-all-businesses'>
+              <NavLink to={'/businesses'} id='see-all-businesses-navlink'>All Businesses</NavLink>
+            </div>
+            <div>
+              <CreateBusinessButton />
+            </div>
+            <div>
+              <CreateReviewButton />
+            </div>
+            <div>
+              <ProfileButton />
+            </div>
           </div>
-          <div>
-            <ProfileButton />
-          </div>
-        </div>
-    </nav>
+      </nav>
+
+    </div>
   );
 }
 

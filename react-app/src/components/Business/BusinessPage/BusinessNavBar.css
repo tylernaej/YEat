@@ -1,9 +1,11 @@
 #business-navbar {
-    border-collapse: initial;
+    /* border-collapse: initial;
     border-spacing: 8px 0;
     margin-left: -8px;
-    margin-right: -8px;
-    display: table;
+    margin-right: -8px; */
+    padding-right: 75px;
+    /* display: table;
     min-width: 100%;
-    table-layout: auto;
+    table-layout: auto; */
+    margin: 10px 0px;
 }

@@ -9,7 +9,7 @@ def seed_businesses():
         owner_id = 1,
         name = "Running Goose",
         email = "business1@seeder.com",
-        phone = "(323) 469-1080",
+        phone = "(323)469-1080",
         website = "https://runningoose.com",
         address = "1620 N Cahuenga Blvd",
         city = "Los Angeles",
@@ -39,6 +39,7 @@ def seed_businesses():
     Wheelchair_accessible = Amenity.query.get(15)
     Dogs_allowed = Amenity.query.get(16)
     Live_music = Amenity.query.get(17)
+    Garage_Parking = Amenity.query.get(18)
     #Categories
     chinese = Category.query.get(1)
     japanese = Category.query.get(2)
@@ -96,6 +97,10 @@ def seed_businesses():
     Poke = Category.query.get(54)
     Filipino = Category.query.get(55)
     Frozen_Yogurt = Category.query.get(56)
+    Lunch = Category.query.get(57)
+    Dinner = Category.query.get(58)
+    Casual = Category.query.get(59)
+    Fine_Dining = Category.query.get(60)
     #biz1
     business_1.amenities.append(free_wifi)
     business_1.amenities.append(take_out)
@@ -118,7 +123,7 @@ def seed_businesses():
         owner_id = 1,
         name = "Granville",
         email = "business2@seeder.com",
-        phone = "(424) 522-5161",
+        phone = "(424)522-5161",
         website = "https://www.granvillerestaurants.com/",
         address = "8701 Beverly Blvd",
         city = "West Hollywood",
@@ -152,7 +157,7 @@ def seed_businesses():
         owner_id = 1,
         name = "Egg Tuck",
         email = "business3@seeder.com",
-        phone = "(213) 674-7080",
+        phone = "(213)674-7080",
         website = "http://www.eggtuck.com",
         address = "3458 Wilshire Blvd Ste 1/2",
         city = "Los Angeles",
@@ -185,7 +190,7 @@ def seed_businesses():
         owner_id = 1,
         name = "Howlin' Ray's",
         email = "business4@seeder.com",
-        phone = "(213) 935-8399",
+        phone = "(213)935-8399",
         website = "http://www.howlinrays.com",
         address = "727 N Broadway Ste 128",
         city = "Los Angeles",
@@ -216,7 +221,7 @@ def seed_businesses():
         owner_id = 1,
         name = "Bottega Louie",
         email = "business5@seeder.com",
-        phone = "(213) 802-1470",
+        phone = "(213)802-1470",
         website = "http://www.bottegalouie.com/",
         address = "700 S Grand Ave",
         city = "Los Angeles",
@@ -252,7 +257,7 @@ def seed_businesses():
         owner_id = 1,
         name = "Slurpin' Ramen Bar",
         email = "business6@seeder.com",
-        phone = "(213) 603-9492",
+        phone = "(213)603-9492",
         website = "https://slurpinramenbar.com",
         address = "3500 W 8th St",
         city = "Los Angeles",
@@ -285,7 +290,7 @@ def seed_businesses():
         owner_id = 1,
         name = "Tempura Endo",
         email = "business7@seeder.com",
-        phone = "(424) 512-4518",
+        phone = "(424)512-4518",
         website = "http://www.beverlyhills-endo.com/",
         address = "9777 S Santa Monica Blvd",
         city = "Beverly Hills",

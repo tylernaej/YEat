@@ -56,7 +56,11 @@ category_list = [
 	"Hot Dogs",
 	"Poke",
 	"Filipino",
-    "Frozen Yogurt"
+    "Frozen Yogurt",
+	"Lunch",
+	"Dinner",
+	"Casual",
+	"Fine Dining"
 ]
 
 #comment to force

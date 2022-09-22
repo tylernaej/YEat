@@ -1,0 +1,72 @@
+@font-face {
+    font-family: 'Arimo-Bold';
+    src: url('../../fonts/arimo/Arimo-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'GothicA1-Medium';
+    src: url('../../fonts/gothicA1/GothicA1-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Kodchasan-Medium';
+    src: url('../../fonts/Kodchasan/Kodchasan-Medium.ttf');
+}
+
+#splash-nav-container{
+    position: relative;
+}
+
+#splash-nav{
+    width: 100%;
+    text-decoration: none;
+    font-family: 'GothicA1-Medium';
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 1;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0);
+    background-image: linear-gradient(0deg, rgba(160,160,160,0), rgba(160, 160, 160, .4), rgba(160, 160, 160, .7), rgba(160, 160, 160, .9));
+}
+
+#splash-nav:visited{
+    text-decoration: none;
+}
+
+#splash-see-all-businesses{
+    text-decoration: none;
+    font-size: large;
+    font-weight: 600;
+    padding: 15px;
+    border-radius: 5px;
+    transition: .1s;
+    cursor: pointer;
+}
+
+#splash-see-all-businesses:hover{
+    text-decoration: none;
+    background-color: rgb(240, 240, 240);
+}
+
+#splash-see-all-businesses:visited{
+    text-decoration: none;
+    color: rgb(30, 30, 30)
+}
+
+#splash-see-all-businesses-navlink{
+    text-decoration: none;
+    color: rgb(30, 30, 30)
+}
+
+#splash-see-all-businesses-navlink:visited{
+    text-decoration: none;
+    color: rgb(30, 30, 30)
+}
+
+#splash-right-side-buttons{
+    display: flex;
+    align-items: center;
+}

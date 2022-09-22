@@ -1,0 +1,9 @@
+#appjs-switch-wrapper{
+    margin-top: 0px;
+    position: relative;
+}
+
+#navbar-spacer{
+    box-sizing: border-box;
+    height: 100px;
+}
