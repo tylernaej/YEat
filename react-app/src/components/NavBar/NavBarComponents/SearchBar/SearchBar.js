@@ -59,14 +59,14 @@ function SearchBar() {
   // console.log(location.pathname.split('/')[2])
 
   if (location.pathname.split('/')[2] === 'reviews'){
-    handleSubmit = async e => {
-      e.preventDefault()
-      let params = { name: userInput, category: userInput };
-      await dispatch(getBizThunk(params));
-      setUserInput("");
-      const reviewBizQuery = new URLSearchParams(params)
-      history.push(`/writeareview/search?${reviewBizQuery.toString()}`)
-    }
+      handleSubmit = async e => {
+        e.preventDefault()
+        let params = { name: userInput, category: userInput };
+        await dispatch(getBizThunk(params));
+        setUserInput("");
+        const reviewBizQuery = new URLSearchParams(params)
+        history.push(`/writeareview/search?${reviewBizQuery.toString()}`)
+      }
   }
 
 
