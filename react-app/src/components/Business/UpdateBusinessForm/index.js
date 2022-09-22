@@ -3,7 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { updateBizThunk, deleteBizThunk } from "../../../store/business";
-// import './index.css'
+import './index.css'
 
 function UpdateBizForm({ business, setIsLoaded }) {
     const dispatch = useDispatch()
@@ -76,6 +76,11 @@ function UpdateBizForm({ business, setIsLoaded }) {
         const payload = { businessId: business.id, business: newBiz }
 
         const data = await dispatch(updateBizThunk(payload))
+        if (data.statusCode === 403){
+          alert('Must be creator of review!')
+          setValidationErrors([data.message])
+          return
+        }
 
         history.push(`/create-business/${business.id}/amenities`)
     }
@@ -90,7 +95,7 @@ function UpdateBizForm({ business, setIsLoaded }) {
     return (
       <div>
         {isSubmitted &&
-          validationErrors.map((error) => <div key={error}>{error}</div>)}
+          validationErrors.map((error) => <div className='error' key={error}><li>{error}</li></div>)}
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="name">Name</label>
@@ -227,7 +232,7 @@ function UpdateBizForm({ business, setIsLoaded }) {
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
-          <div>
+          <div id="edit-business-buttons">
             <button onClick={handleDelete}>Delete</button>
             <button type="submit">Submit</button>
           </div>
