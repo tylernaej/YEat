@@ -4,23 +4,10 @@ import { NavLink } from "react-router-dom";
 import { getBizReviewThunk } from "../../../store/reviews";
 import './ReviewInfo.css'
 
-function ReviewInfo({ business }) {
+function ReviewInfo({ business, reviewsList, usersReview }) {
+    const sessionUser = useSelector(state => state.session.user)
 
-    const dispatch = useDispatch()
-
-    const reviews = useSelector(state => state.reviews)
-    const reviewsList = Object.values(reviews)
-
-    const [isLoaded, setIsLoaded] = useState(false)
-
-    useEffect(() => {
-        dispatch(getBizReviewThunk(business.id))
-            .then(() => setIsLoaded(true));
-
-    }, [dispatch]);
-
-    // calculation for live
-
+    // const sessionUser = useSelector(state => state.session.user)
     // filter the reviews by rating
     const numratings1 = reviewsList.filter(review => review.rating === 1).length
     const numratings2 = reviewsList.filter(review => review.rating === 2).length
@@ -31,7 +18,6 @@ function ReviewInfo({ business }) {
     const maxNumRatings = Math.max(numratings1, numratings2, numratings3, numratings4, numratings5, 1)
     const avg = ((numratings1 * 1) + (numratings2 * 2) + (numratings3 * 3) + (numratings4 * 4) + (numratings5 * 5)) / reviewsList.length
     const ratingPercentage = ((avg / 5) * 100).toFixed(2)
-    console.log(avg, ratingPercentage)
 
     // calculations for the dynamic bars
     const filled1 = ((numratings1 / maxNumRatings) * 100 === Infinity) ? 0 : (numratings1 / maxNumRatings) * 100
@@ -47,8 +33,10 @@ function ReviewInfo({ business }) {
     // const void4 = 100 - filled4
     // const void5 = 100 - filled5
 
-    return isLoaded && (
-        <div className="border-top-black-2px">
+    console.log(usersReview)
+
+    return (
+        <div className="border-top-black-2px review-info-component">
             <h2>Reviews</h2>
             <div className="w100 flex-row-align-center">
                 <div className="w30">
@@ -56,13 +44,25 @@ function ReviewInfo({ business }) {
                         <h4>Overall rating</h4>
 
                         <div class="stars-outer">
-                            <div class="stars-inner" style={{width: `${ratingPercentage}%`}}></div>
+                            <div class="stars-inner" style={{ width: `${ratingPercentage}%` }}></div>
                         </div>
 
                         <p className="textcolor-grey">{reviewsList.length} reviews</p>
                         <div>
-                            <i className="fa-regular fa-star"></i>
-                            <NavLink to={`/businesses/${business.id}/create-review`}>Write a review</NavLink>
+                            { sessionUser && sessionUser.id !== business.ownerId && (
+                                <div id="write-edit-review-button">
+                                    <i className="fa-regular fa-star write-review-star"></i>
+                                {!usersReview && 
+                                    <NavLink id="write-edit-review" to={`/businesses/${business.id}/create-review`}>Write a review</NavLink>
+                                }
+                                {usersReview && 
+                                    <NavLink id="write-edit-review"  to={`/businesses/${business.id}/edit-review`}>Edit your review</NavLink>
+
+                                }
+                                </div>
+                            )
+                            }
+                            {/* { visibility: `${sessionUser && sessionUser.id === business.ownerId ? "visible" : "hidden"}` } */}
                         </div>
                     </div>
                 </div>

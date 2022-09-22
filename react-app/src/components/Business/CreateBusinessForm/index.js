@@ -17,7 +17,7 @@ function BizForm() {
     if (!sessionUser) return <Redirect to="/login" />
 
     return (
-        <div>
+        <div className="flex-row-center">
             <div>
                 <Switch>
                     <Route path={`${url}/details`}>

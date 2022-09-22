@@ -46,10 +46,17 @@ function ProfileButton() {
                     <NavLink 
                         to='/login'
                         id='login-button'
-                    >Log In</NavLink>
+                    >
+                        Log In
+                    </NavLink>
                 </div>
-                <div id='signup-button'>
-                    <NavLink to='/signup'>Sign Up</NavLink>
+                <div id='signup-container'>
+                    <NavLink 
+                        to='/signup'
+                        id='signup-button'
+                    >
+                        Sign Up
+                    </NavLink>
                 </div>
             </div>
         )}

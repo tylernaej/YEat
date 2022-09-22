@@ -12,8 +12,6 @@ function AmenityInfo({ business }){
         )
     }, [])
 
-    console.log(amenities)
-    console.log(business.amenities)
     const checkmark = <i className="fa-solid fa-check"></i>;
     const xmark = <i className="fa-solid fa-x"></i>;
 

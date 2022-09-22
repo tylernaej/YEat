@@ -2,7 +2,8 @@
     text-decoration: none;
     display: flex;
     align-items: center;
-    padding: 15px;
+    padding: 12px;
+    margin:3px;
     font-size: large;
     font-weight: 600;
     border-radius: 5px;
@@ -15,5 +16,6 @@
 }
 
 #create-review:visited{
-    color: rgb(30, 30, 30)
+    color: rgb(30, 30, 30);
+    text-decoration: none;
 }

@@ -1,0 +1,21 @@
+#update-review-edit-button-div{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+#update-review-edit-button-div>button{
+    margin-left: 20px;
+    background-color: rgba(224, 7, 7, 1);
+    transition: .5s;
+    border-radius: 5px;
+}
+
+#update-review-edit-button-div>button:hover {
+    cursor: pointer;
+    background-color: rgb(255, 14, 14);
+}
+
+.error{
+    margin: 10px 0px;
+}

@@ -14,3 +14,13 @@
 #yeat-text{
     padding-right: 5px;
 }
+
+#yeat-logo{
+    transition: all 1s;
+    transition-timing: ease-in-out;
+
+}
+
+#yeat-logo:hover{
+    transform: rotate(10deg);
+}

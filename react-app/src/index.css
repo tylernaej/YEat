@@ -106,13 +106,18 @@ button:disabled {
 input {
     width: 100%;
     height: 55;
-    padding: 10px 20px 10px 40px;
+    padding: 10px 20px 10px 20px;
     margin-bottom: 5px;
     margin-top: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid black;
     box-sizing: border-box;
     font-family: Graphik Meetup, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+}
+
+label {
+    font-weight: bolder;
+    font-size: 16px;
 }
 
 select {
@@ -121,7 +126,7 @@ select {
     padding: 10px 20px 10px 40px;
     margin-bottom: 5px;
     margin-top: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid black;
     box-sizing: border-box;
     font-family: Graphik Meetup, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
@@ -129,13 +134,26 @@ select {
 
 textarea {
     width: 100%;
-    padding: 10px 20px 10px 40px;
+    resize: none;
+    padding: 10px 20px 10px 20px;
     margin-bottom: 5px;
     margin-top: 5px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 1px solid black;
     box-sizing: border-box;
     font-family: Graphik Meetup, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+}
+
+button {
+    background-color: rgb(224,7,7);
+    /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 
 /* Images */
@@ -178,6 +196,10 @@ p.spacing {
 
 .textcolor-grey {
     color: #757575;
+}
+
+.textcolor-footer {
+    color: white;
 }
 
 .bold {
@@ -262,7 +284,7 @@ p.spacing {
 }
 
 .border-top-black-2px {
-    border-top: 2px solid rgb(235,235,235);
+    border-top: 2px solid rgb(235, 235, 235);
 }
 
 .padding-none-sides {
@@ -296,72 +318,6 @@ p.spacing {
 .testborder {
     border: 5px solid red;
 }
-
-/* Event/Group list card  */
-.card {
-    width: 640px;
-    border-top: #D9D9D9 3px solid;
-    padding: 5px 0px;
-}
-
-.card:hover {
-    background-color: #F6F7F8;
-
-}
-
-.minicard {
-    width: 350px;
-    box-sizing: border-box;
-    border-radius: 10px;
-    /* border: 1px black solid; */
-    box-shadow: 2px 2px 2px black;
-}
-
-.card-left {
-    width: 30%;
-}
-
-.card-right {
-    width: 70%
-}
-
-
-/* Card Image Stuff */
-div.card-image-container {
-    height: 100px;
-    width: 178px;
-    border-radius: 10px;
-}
-
-div.header-img {
-    width: 80%;
-    max-width: 600px;
-    height: 338px;
-}
-
-img.card-image {
-    height: 100px;
-    width: 178px;
-    border-radius: 10px;
-    object-fit: cover;
-}
-
-div.minicard-image {
-    height: 56px;
-    width: 56px;
-    border-radius: 5px;
-}
-
-img.minicard-image {
-    height: 56px;
-    width: 56px;
-    border-radius: 5px;
-    object-fit: cover;
-}
-
-/* .small-square-image {
-
-} */
 
 /* List stuff */
 
@@ -402,5 +358,5 @@ div.footer {
 .stars-inner::before {
     content: "\f005 \f005 \f005 \f005 \f005";
     /* color: #f8ce0b; */
-    color: rgb(255,135,66);
+    color: rgb(255, 135, 66);
 }
