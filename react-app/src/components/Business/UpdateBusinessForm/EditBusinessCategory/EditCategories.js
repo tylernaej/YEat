@@ -20,6 +20,15 @@ function EditBizCategories({business}){
         .then(() => setIsLoaded(true))
     }, [dispatch])
 
+    useEffect(() => {
+        let newState = {}
+        console.log(`${business.categories}`)
+        for(const category of business.categories){
+            newState[`${category}`] = true
+        }
+        setCheckedState(newState)
+    }, [])
+
     const handleSubmit = async e => {
         e.preventDefault()
         let categoryPayload = {}
@@ -35,6 +44,7 @@ function EditBizCategories({business}){
 
     return isLoaded &&  (
         <div id="full-page-categories " style={{width: "100%"}}>
+
             <h3>What categories do you offer?</h3>
             <div>
                 <form onSubmit={handleSubmit}>

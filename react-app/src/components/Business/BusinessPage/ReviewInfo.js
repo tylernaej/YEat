@@ -33,8 +33,6 @@ function ReviewInfo({ business, reviewsList, usersReview }) {
     // const void4 = 100 - filled4
     // const void5 = 100 - filled5
 
-    console.log(usersReview)
-
     return (
         <div className="border-top-black-2px review-info-component">
             <h2>Reviews</h2>
