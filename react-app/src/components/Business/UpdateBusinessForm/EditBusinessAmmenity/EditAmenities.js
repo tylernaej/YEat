@@ -22,6 +22,15 @@ function EditBizAmenities({ business }){
         .then(() => setIsLoaded(true))
     }, [dispatch])
 
+    useEffect(() => {
+        let newState = {}
+        console.log(`${business.amenities}`)
+        for(const amenity of business.amenities){
+            newState[`${amenity}`] = true
+        }
+        setCheckedState(newState)
+    }, [])
+
     const handleSubmit = async e => {
         e.preventDefault()
         let amenityPayload = {}
