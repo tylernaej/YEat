@@ -18,7 +18,7 @@ function BizForm() {
 
     return (
         <div className="flex-row-center">
-            <div style={{width:"600px"}}>
+            <div>
                 <Switch>
                     <Route path={`${url}/details`}>
                         <SetBizDetails />

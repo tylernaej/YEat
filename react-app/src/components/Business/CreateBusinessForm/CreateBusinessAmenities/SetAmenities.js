@@ -5,6 +5,7 @@ import {getAmenities, postAmenities} from '../../../../store/fetchFunctions'
 import IndividualAmenityButton from "./IndividualAmenityButton";
 import { readBizThunk } from "../../../../store/business";
 import HeaderInfo from "../../BusinessPage/HeaderInfo";
+import './SetAmenities.css'
 
 function SetBizAmenities(){
     const dispatch = useDispatch()
@@ -41,21 +42,27 @@ function SetBizAmenities(){
     }
 
     return isLoaded &&  (
-        <div>
-            <h3>Set Amenities Here</h3>
+        <div id="full-page">
+            <h3>What amenities do you offer?</h3>
             <div>
                 <form onSubmit={handleSubmit}>
-                    {amenities.amenities.map(amenity => (
-                        <div key={`${amenity}`}>
-                            <IndividualAmenityButton
-                                amenity={amenity}
-                                checkedState={checkedState}
-                                setCheckedState={setCheckedState}
-                            />
+                    <div id='amenities-form'>
+                        <div id="set-all-amenities">
+                            {amenities.amenities.map(amenity => (
+                                <div key={`${amenity}`}>
+                                    <IndividualAmenityButton
+                                        amenity={amenity}
+                                        checkedState={checkedState}
+                                        setCheckedState={setCheckedState}
+                                    />
+                                </div>
+                            ))}
                         </div>
-                    ))}
-                    <button onClick={handleBack} >Go Back</button>
-                    <button type='submit'>Submit</button>
+                        <div id="set-amenities-button" className="flex-row-justify-between">
+                            <button onClick={handleBack} >Go Back</button>
+                            <button type='submit'>Submit</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

@@ -1,0 +1,46 @@
+#set-all-amenities {
+    display: flex;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+    font-size: large;
+}
+
+#full-page{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+}
+
+#amenites-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#set-amenities-button{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#set-amenities-button>*{
+    margin-left: 20px;
+    margin-right: 5px;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgba(224, 7, 7, 1);
+    transition: .5s;
+}
+
+#set-amenities-button>*:hover{
+    cursor: pointer;
+    background-color: rgb(255, 14, 14);
+}

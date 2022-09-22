@@ -9,7 +9,7 @@ function IndividualAmenityButton({amenity, checkedState, setCheckedState}){
 
     const handleChecked = async e => {
         setAmenityChecked(current => !current)
-        // console.log(`The Amenity Clicked was: ${amenityChecked} and the checked state is: ${Object.keys(checkedState)}.`)
+        console.log(`The Amenity Clicked was: ${amenityChecked} and the checked state is: ${Object.keys(checkedState)}.`)
     }
 
     useEffect(() => {
@@ -30,15 +30,15 @@ function IndividualAmenityButton({amenity, checkedState, setCheckedState}){
     }, [amenityChecked])
 
     return (
-        <div className="flex-row">
-            <input
+        <div id={amenityChecked ? 'amenity-button-true' : 'amenity-button-false'} className='flex-row amenity-button' onClick={handleChecked}>
+            {/* <input
                 style={{ width:"25px" }}
                 type="checkbox"
                 name={`${amenity}`}
                 value={`${amenityChecked}`}
                 onClick={handleChecked}
-            />
-            <label htmlFor={`${amenity}`}>{amenity}</label>
+            /> */}
+            <div>{amenity}</div>
         </div>
     )
 }
