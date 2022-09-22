@@ -3,6 +3,11 @@
     src: url('../../fonts/gothicA1/GothicA1-SemiBold.ttf');
 }
 
+@font-face {
+  font-family: 'Kodchasan-Light';
+  src: url('../../fonts/Kodchasan/Kodchasan-Light.ttf');
+}
+
 #splash-main {
     box-sizing: border-box;
     display: flex;
@@ -21,16 +26,18 @@
     box-sizing: border-box;
     width:100vw;
     min-height: 200px;
-    height: 15vh;
+    height: 14vh;
     background-color: rgba(215, 28, 28, 0.9);
     color: white;
     border-top: 5px solid white;
+    font-family: 'Kodchasan-Light';
 }
 
 #splash-header {
     font-family: 'gothicA1-semibold';
     text-shadow: 2px 2px #ff0000;
     font-size: 80px;
+    color: rgb(250, 250, 250)
 }
 
 #this-id-doesnt-exist{
@@ -58,5 +65,9 @@
 
 #this-id-doesnt-exist:hover{
     background-color:rgb(255, 14, 14);
+}
+
+h5{
+  font-size: medium;
 }
 
