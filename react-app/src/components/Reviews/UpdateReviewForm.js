@@ -39,13 +39,24 @@ function UpdateReviewForm( {usersReview} ){
       const payload = { reviewId: usersReview.id, review: updatedReview };
 
       const data = await dispatch(updateReviewThunk(payload));
+      
+      if (data.statusCode){
+        setValidationErrors([data.message])
+        return
+      }
 
       history.push(`/businesses/${usersReview.businessId}/reviews`);
     };
 
     const handleDelete = async e => {
       e.preventDefault()
-      await dispatch(deleteReviewThunk(usersReview.id));
+      const data = await dispatch(deleteReviewThunk(usersReview.id));
+
+      if (data.statusCode){
+        setValidationErrors([data.message])
+        return
+      }
+      
       history.push(`/businesses/${usersReview.businessId}/reviews`)
     }
 

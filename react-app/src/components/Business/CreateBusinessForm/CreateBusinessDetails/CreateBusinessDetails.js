@@ -28,14 +28,22 @@ function SetBizDetails() {
   const [validationErrors, setValidationErrors] = useState([])
   const [isSubmitted, setIsSubmitted] = useState(false)
 
+  function onlyLetters(str) {
+    return /^[a-zA-Z]+$/.test(String(str));
+  }
+
   useEffect(() => {
     const errors = []
-    if (name.length > 50) errors.push("Name must be less than 50 characters");
-    if (zipcode.length !== 5) errors.push("Zipcode must be 5 digits");
-    if (longitude > 180 || longitude < -180) errors.push("Invalid longitude, please be between 180 and -180");
-    if (latitude > 90 || latitude < -90) errors.push("Invalid Latitude, please be between 90 and -90");
-    if (description.length < 10 || description.length > 2000) errors.push('Description must be between 10 and 2000 characters')
-
+    if (name.length > 50) errors.push("Name must be less than 50 characters.");
+    if (zipcode.length !== 5) errors.push("Zipcode must be 5 digits.");
+    if (longitude > 180 || longitude < -180) errors.push("Invalid longitude, please be between 180 and -180.");
+    if (latitude > 90 || latitude < -90) errors.push("Invalid Latitude, please be between 90 and -90.");
+    if (description.length < 10 || description.length > 2000) errors.push('Description must be between 10 and 2000 characters.')
+    if (onlyLetters(city)) errors.push("City can only include letters.")
+    if (website.length > 500) errors.push("Website URL length too long.")
+    if (!(/.(com|net|gov|org|io|tv)$/.test(website.split('/')[2]))){
+      errors.push("Please submit a website url")
+    }
     setValidationErrors(errors)
 
   }, [name, email, phone, website, address, city, state, zipcode, country, latitude, longitude, description, priceRange])
@@ -49,7 +57,7 @@ function SetBizDetails() {
     setIsSubmitted(true)
 
     if (validationErrors.length > 0) return
-
+    
     const newBiz = {
       name,
       email,
@@ -59,7 +67,7 @@ function SetBizDetails() {
       city,
       state,
       zipcode,
-      country,
+      country: 'USA',
       latitude,
       longitude,
       description,
@@ -68,11 +76,11 @@ function SetBizDetails() {
 
     const data = await dispatch(createBizThunk(newBiz))
 
-    // if(data.statusCode === 401){
-    //   setValidationErrors([data.message])
+    if(data.statusCode){
+      setValidationErrors([data.message])
 
-    //   return
-    // }
+      return
+    }
 
     history.push(`/create-business/${data.id}/amenities`)
   }
@@ -166,7 +174,7 @@ function SetBizDetails() {
             onChange={(e) => setZipcode(e.target.value)}
           />
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="country">Country</label>
           <input
             required
@@ -175,7 +183,7 @@ function SetBizDetails() {
             value={country}
             onChange={(e) => setCountry(e.target.value)}
           />
-        </div>
+        </div> */}
         <div>
           <label htmlFor="latitude">Latitude</label>
           <input

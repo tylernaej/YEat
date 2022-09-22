@@ -10,7 +10,7 @@ function AboutInfo({ business, bizCategories }) {
     const specialties = emptyString.slice(0, emptyString.length - 2)
 
     return (
-        <div className="border-top-black-2px verticalMargin15">
+        <div className="border-top-black-2px">
             <div>
                 <h2 id="from-the-business">
                     From the business

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUsersBizThunk } from "../../../store/business";
 
 import BizCard from "../BusinessList/businessCard";
+import './UserBizList.css'
 
 function UserBizList() {
   const dispatch = useDispatch();
@@ -22,7 +23,11 @@ function UserBizList() {
 
 
     if(!businessList.length){
-        return <h2>You have no businesses</h2>
+        return(
+          <div className="no-biz-list">
+            <h1>You have no businesses</h1>
+          </div>
+        ) 
     }
   
 
