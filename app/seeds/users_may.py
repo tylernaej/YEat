@@ -72,6 +72,32 @@ def seed_usersv2():
         first_name='Tiffany', last_name='Yang', username='tYang', email='tyang@aa.io', password='password'
     )
 
+
+    bLau = User(
+        first_name='Benjamin', last_name='Lau', username='bLau', email='blau@aa.io', password='password'
+    )
+
+    aBui =User(
+        first_name='An', last_name='Bui', username='aBui', email='abui@aa.io', password='password'
+    )
+
+    rChang =User(
+        first_name='Randy', last_name='Chang', username='rChang', email='rchang@aa.io', password='password'
+    )
+
+    wMarett =User(
+        first_name='Will', last_name='Marett', username='wMarett', email='wmarett@aa.io', password='password'
+    )
+
+    kHan =User(
+        first_name='Kris', last_name='Han', username='kHan', email='khan@aa.io', password='password'
+    )
+
+    bSimpson =User(
+        first_name='Brad', last_name='Simpson', username='bSimpson', email='bsimpson@aa.io', password='password'
+    )
+
+
     db.session.add(demo)
 
     db.session.add(connor)
@@ -98,6 +124,13 @@ def seed_usersv2():
     db.session.add(rHenry)
     db.session.add(rNguyen)
     db.session.add(tYang)
+
+    db.session.add(bLau)
+    db.session.add(aBui)
+    db.session.add(rChang)
+    db.session.add(wMarett)
+    db.session.add(kHan)
+    db.session.add(bSimpson)
 
     db.session.commit()
 

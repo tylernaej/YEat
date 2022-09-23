@@ -1,4 +1,4 @@
-from app.models import db, Review
+from app.models import db, Review, Business
 from random import randint
 
 def seed_reviewsv2():
@@ -16,11 +16,16 @@ def seed_reviewsv2():
 
     for b_id in range(1, 31):
 
+        business = Business.query.get(b_id)
+
         users = set()
 
-        for r_count in range(1, randint(1, 11)):
+        for r_count in range(1, randint(10, 20)):
 
             r_u_id = randint(1, 24)
+
+            if business.owner_id == r_u_id:
+                continue
 
             if r_u_id not in users:
 
@@ -29,7 +34,7 @@ def seed_reviewsv2():
                 review = Review(
                     user_id = r_u_id,
                     business_id = b_id,
-                    rating = randRating / 2,
+                    rating = randRating if randRating < 6 else randRating - 5,
                     review = reviews[randRating],
                 )
                 db.session.add(review)
