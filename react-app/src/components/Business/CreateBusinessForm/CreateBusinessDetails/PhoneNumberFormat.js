@@ -4,6 +4,9 @@ export const changeToDigits = (phoneNumber) => {
   }
 
 export const phoneNumberFormatter = (phone) => {
+    if(!phone){
+      return
+    }
     const frame = '(___) ___-____'
   
     const digits = changeToDigits(phone)
