@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getReview } from "../../store/fetchFunctions";
 import { updateReviewThunk, deleteReviewThunk } from "../../store/reviews";
 import './UpdateReviewForm.css'
+import {Modal} from '../../context/Modal'
+import DeleteReviewButton from "./DeleteReviewModal";
 
 function UpdateReviewForm( {usersReview} ){
     const dispatch = useDispatch();
@@ -15,6 +17,8 @@ function UpdateReviewForm( {usersReview} ){
 
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
+
+    const [showModal, setShowModal] = useState(false)
 
     useEffect(() => {
       const errors = [];
@@ -64,6 +68,12 @@ function UpdateReviewForm( {usersReview} ){
       e.preventDefault()
       history.push(`/businesses/${usersReview.businessId}/reviews`);
     }
+
+    const handleClick = (e) => {
+      e.preventDefault();
+      setShowModal(true);
+      console.log(e);
+    };
 
     if (!usersReview) {
       return null;
@@ -153,7 +163,14 @@ function UpdateReviewForm( {usersReview} ){
             </div>
             <div id="update-review-edit-button-div">
               <button onClick={handleCancel}>Cancel</button>
-              <button onClick={handleDelete}>Delete</button>
+              {/* <button onClick={handleDelete}>Delete</button> */}
+              <button onClick={handleClick}>Delete</button>
+              {showModal && (
+                <Modal onClose={() => setShowModal(false)}>
+                  {/* <DeleteBizButton business={business} setIsLoaded={setIsLoaded} setValidationErrors={setValidationErrors} setShowModal={setShowModal}/> */}
+                  <DeleteReviewButton setValidationErrors={setValidationErrors} usersReview={usersReview} setShowModal={setShowModal}/>
+                </Modal>
+              )}
               <button type="submit">Submit</button>
             </div>
           </form>

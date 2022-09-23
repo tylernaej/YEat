@@ -23,6 +23,7 @@ import SplashPage from './components/Home/SplashPage';
 import UpdateReviewForm from './components/Reviews/UpdateReviewForm';
 import NavBarSplash from './components/NavBar/NavBarSplash';
 import NavBarNoSearch from './components/NavBar/NavBarNoSearch';
+// import { ModalProvider } from './context/Modal';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,83 +50,85 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-    <div className='h100 w100 flex-column'>
-      <div id='appjs-switch-wrapper'>
-        <Switch>
-          <Route path="/login" exact={true}>
-            <NavBar />
-            <div id='navbar-spacer'>
-            </div>
-            <LoginForm />
-          </Route>
-          <Route path="/signup" exact={true}>
-            <NavBar />
-            <div id='navbar-spacer'>
-            </div>
-            <SignUpForm />
-          </Route>
-          <ProtectedRoute path="/myBusinesses">
-            <NavBar />
-            <div id='navbar-spacer'>
-            </div>
-            <UserBizList />
-          </ProtectedRoute>
-          <ProtectedRoute path="/writeareview/search">
-            <NavBar />
-            <div id='navbar-spacer'>
-            </div>
-            <BizSearchList />
-          </ProtectedRoute>
-          <ProtectedRoute path="/create-business">
-            <NavBar />
-            <div id='navbar-spacer'>
-            </div>
-            <BizForm />
-          </ProtectedRoute>
-          {/* <ProtectedRoute path="/businesses/:businessId/create-review">
-            <ReviewForm />
-          </ProtectedRoute> */}
-          {/* <ProtectedRoute path="/reviews/:reviewId/edit">
-            <UpdateReviewForm />
-          </ProtectedRoute> */}
-          <ProtectedRoute path="/businesses/reviews/search">
-            <NavBarNoSearch />
-            <div id='navbar-spacer'>
-            </div>
-            <BizReviewSearch />
-          </ProtectedRoute>
-          <Route path="/businesses/search">
-            <NavBar />
-            <div id='navbar-spacer'>
-            </div>
-            <BizSearchList />
-          </Route>
-          <Route path="/businesses/:businessId">
-            <NavBar />
-            <div id='navbar-spacer'>
-            </div>
-            <BizPage />
-          </Route>
-          <Route path="/businesses">
-            <NavBar />
-            <div id='navbar-spacer'>
-            </div>
-            <BizList />
-          </Route>
-          <ProtectedRoute path="/users/:userId" exact={true}>
-            <div id='navbar-spacer'>
-            </div>
-            <User />
-          </ProtectedRoute>
-          <Route path="/" exact={true}>
-            <NavBarSplash />
-            <SplashPage />
-          </Route>
-        </Switch>
+    // <ModalProvider>
+      <BrowserRouter>
+      <div className='h100 w100 flex-column'>
+        <div id='appjs-switch-wrapper'>
+          <Switch>
+            <Route path="/login" exact={true}>
+              <NavBar />
+              <div id='navbar-spacer'>
+              </div>
+              <LoginForm />
+            </Route>
+            <Route path="/signup" exact={true}>
+              <NavBar />
+              <div id='navbar-spacer'>
+              </div>
+              <SignUpForm />
+            </Route>
+            <ProtectedRoute path="/myBusinesses">
+              <NavBar />
+              <div id='navbar-spacer'>
+              </div>
+              <UserBizList />
+            </ProtectedRoute>
+            <ProtectedRoute path="/writeareview/search">
+              <NavBar />
+              <div id='navbar-spacer'>
+              </div>
+              <BizSearchList />
+            </ProtectedRoute>
+            <ProtectedRoute path="/create-business">
+              <NavBar />
+              <div id='navbar-spacer'>
+              </div>
+              <BizForm />
+            </ProtectedRoute>
+            {/* <ProtectedRoute path="/businesses/:businessId/create-review">
+              <ReviewForm />
+            </ProtectedRoute> */}
+            {/* <ProtectedRoute path="/reviews/:reviewId/edit">
+              <UpdateReviewForm />
+            </ProtectedRoute> */}
+            <ProtectedRoute path="/businesses/reviews/search">
+              <NavBarNoSearch />
+              <div id='navbar-spacer'>
+              </div>
+              <BizReviewSearch />
+            </ProtectedRoute>
+            <Route path="/businesses/search">
+              <NavBar />
+              <div id='navbar-spacer'>
+              </div>
+              <BizSearchList />
+            </Route>
+            <Route path="/businesses/:businessId">
+              <NavBar />
+              <div id='navbar-spacer'>
+              </div>
+              <BizPage />
+            </Route>
+            <Route path="/businesses">
+              <NavBar />
+              <div id='navbar-spacer'>
+              </div>
+              <BizList />
+            </Route>
+            <ProtectedRoute path="/users/:userId" exact={true}>
+              <div id='navbar-spacer'>
+              </div>
+              <User />
+            </ProtectedRoute>
+            <Route path="/" exact={true}>
+              <NavBarSplash />
+              <SplashPage />
+            </Route>
+          </Switch>
+        </div>
       </div>
-    </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    // </ModalProvider>
   );
 }
 
