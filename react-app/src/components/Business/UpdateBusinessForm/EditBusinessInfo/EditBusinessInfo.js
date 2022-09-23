@@ -113,7 +113,6 @@ function EditBizInfo({ business, setIsLoaded }) {
     const handleClick = e => {
       e.preventDefault()
       setShowModal(true)
-      // console.log(e)
     }
 
     return (

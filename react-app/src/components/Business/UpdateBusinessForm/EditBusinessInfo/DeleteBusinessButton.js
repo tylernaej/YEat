@@ -19,11 +19,9 @@ function DeleteBizButton({business, setIsLoaded, setValidationErrors, setShowMod
        const data = await dispatch(deleteBizThunk(business.id));
 
        if (data.statusCode) {
-          // console.log('have error')
          setValidationErrors([data.message]);
          return
        }
-      //  console.log('success')
        history.push(`/businesses`);
      };
 
@@ -35,14 +33,11 @@ function DeleteBizButton({business, setIsLoaded, setValidationErrors, setShowMod
 
   return (
     <div className="whole-modal">
-      {/* <button onClick={() => setShowModal(true)}>Log In</button>
-      {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-          <LoginForm />
-        </Modal>
-      )} */}
       <div className="header-modal">
-        <h3>Are you sure you want to remove {business.name}?</h3>
+        <div>
+          <h3 id='header-text'>Are you sure you want to remove</h3>
+          <h3>{business.name}?</h3>
+        </div>
       </div>
       <div className="confirm-delete">
         <button className='cancel-button' onClick={handleClick}>Cancel</button>
