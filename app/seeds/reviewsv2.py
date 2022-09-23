@@ -3,16 +3,44 @@ from random import randint
 
 def seed_reviewsv2():
     reviews = {
-        1: f'Gross! This place is very dumpy and in a serious need of a fresh paint job. I asked for my steak medium-rare, but it was still cold. I wish I could put a sign out front that said "DON\'T EAT HERE!"',
-        2: f'This place is a waste of calories. The steak was a little dry. The waiter was mediocre at best. There were a lot of interesting decorations on the walls. The menu didn\'t match the one on their website. 2 stars.',
-        3: f'I had high hopes for this place. The entree I had was sublime. Some of my favorite dishes are no longer available. The ambiance gives off an earthy feel-good vibe. The waitress was nothing remarkable. Overall experience: 3 stars.',
-        4: f'I was pleasantly surprised. The food is simply to die for. Make sure to save room for dessert, because that was the best part of the meal! Everything I tried was bursting with flavor. I had a satisfactory experience and will have to try it again.',
-        5: f'I\'ve got a fetish for good food and this place gets me hot! I was happy to see how clean everything was. The food was cooked to perfection. Make sure to save room for dessert, because that was the best part of the meal! The decor was unique and incredible. I\'m definitely coming back for more!',
-        6: f'Yuck! I think this place was featured on Kitchen Nightmares, or at least it should have been. This place is very dumpy and in a serious need of a makeover. Everything tasted either microwaved or straight from a can. I found an eyelash that definitely wasn\'t mine in my food. I wish I could put a sign out front that said "RUN AWAY!"',
-        7: f'This place was just ok. The food was all right but seriously lacked presentation. I shouldn\'t have to pay good money to be served vegetables from a can. The service wasn\'t that good and the waiter was rude. The menu didn\'t match the one on their website. I had a less than satisfactory experience and will probably not be here again.',
-        8: f'I had high hopes for this place. The entree I had was sublime. Some of my favorite dishes are no longer available. The ambiance gives off an earthy feel-good vibe. The waitress was nothing remarkable. Overall experience: 3 stars.',
-        9: f'I was pleasantly surprised. The food is simply to die for. Make sure to save room for dessert, because that was the best part of the meal! Everything I tried was bursting with flavor. I had a satisfactory experience and will have to try it again.',
-        10: f'Yummers! Everything was simply decadent. Everything I tried was bursting with flavor. I\'m definitely coming back for more!', }
+        1: [
+            f'No, no, no, a million times no! This place is very dumpy and in a serious need of a makeover. There were bits of food stuck to my silverware. I wish I could put a sign out front that said "DON\'T EAT HERE!"',
+            f'Lame. The service was terrible. The waiter was very air-headed. My shoes were stained with rat droppings after leaving this place. I gave 1 star because I couldn\'t give 0.',
+            f'Gross! Eating here is like playing Russian Roulette, only you have a 5 out of 6 chance of getting food poisoning. This place is very dumpy and in a serious need of a makeover. Wild horses couldn\'t drag me back here.',
+            f'No! I asked for my steak medium, but it was burnt to a crisp. Too many things on the menu look like crap, smell like crap, and taste like crap. My water glass was stained with lipstick and had bits of food floating in it. I heard a rumor that the vegetarian dishes are prepared alongside the meat. Wild horses couldn\'t drag me back here.',
+            f'I can summarize my visit in one word: Lousy. The kitchen screwed up my order completely, mixing it up with someone else\'s. It took almost an hour to get it corrected! Too many things on the menu look like crap, smell like crap, and taste like crap. I wouldn\'t come back here on a dare.',
+        ],
+        2: [
+            f'I had high hopes for this place. The tofu dish tasted spongy and a bit bland. The ambiance gives off an earthy feel-good vibe. Overall experience: 2 stars.',
+            f'When I walked in, I really wasn\'t expecting much. The food was all right but seriously lacked presentation. The waiter was mediocre at best. I shouldn\'t have to pay good money to be served vegetables from a can. 2 stars.',
+            f'This place is a waste of real estate. I heard a rumor that the vegetarian dishes are prepared alongside the meat. I asked for my steak medium-well, but it was frozen in the center. The service wasn\'t that good and the waiter was rude. 2 stars.',
+            f'Bleh. The steak was a little dry. Seriously, how difficult is it to get a clean glass around here? I gave this place two stars because I was feeling extra generous.',
+            f'Lame. The waiter was mediocre at best. I found the entrees to not be very agreeable to my personal flavor-profile. They need to get their act together before I set foot in this place again.',
+        ],
+        3: [
+            f'I have been here several times before. The photos of the food were appetizing and palpable, but didn\'t live up to the hype. The menu didn\'t match the one on their website. The ambiance gives off an earthy feel-good vibe. 3 stars.',
+            f'I don\'t understand the hype about this place. There were a lot of interesting decorations on the walls. The steak was a little dry. This place deserves its very average rating.',
+            f'This place was nearby and I decided to check it out. The waiter was nothing remarkable. The tofu dish tasted spongy and a bit bland. I felt the prices were too high given the quality of the food. The ambiance gives off an earthy feel-good vibe. 3 stars.',
+            f'Decent place. The fish was undercooked. The ambiance gives off an earthy feel-good vibe. The menu didn\'t match the one on their website. The service wasn\'t that good and the waitress was unprofessional. 3 stars.',
+            f'This place was just ok. The chicken was a little dry. The service was good for the most part but the waitress was a bit air-headed. Overall experience: 3 stars.',
+        ],
+        4: [
+            f'This place was nearby and I decided to check it out. The service was good for the most part but the waiter was a bit tired. The decor was unique and incredible. Everything was mostly decadent. 4 stars.',
+            f'This place had a lot of heart. The waiter did an excellent job. I want to hire their decorator to furnish my house. The food is simply to die for. The appetizers must be sprinkled with crack because I just craved for more and more. Solid 4 stars.',
+            f'I was pleasantly surprised. The decor was unique and incredible. The entree I had was sublime. 4 stars.',
+            f'I was pleasantly surprised. Everything was just so yummy. The decor was unique and incredible. After my meal, I was knocked into a food coma. I could see myself being a regular here.',
+            f'I stumbled on this undiscovered gem right in our neighboorhood. The desserts must be sprinkled with crack because I just craved for more and more. I found the entrees to be very agreeable to my personal flavor-profile. Solid 4 stars.',
+            f'It was much better than I expected. The food was cooked to perfection. I want to hire their decorator to furnish my house. I removed a star because the wait to get in was so long.',
+        ],
+        5: [
+            f'This is one of my favorite places. The decor was unique and incredible. Try out the huge selection of incredible appetizers. The waitress was prompt and polite. This was one of the best mouth-watering burgers I\'ve had grace my taste buds in a long time. I would eat here every day if I could afford it!',
+            f'I stumbled on this undiscovered gem right in our neighboorhood. Make sure to save room for dessert, because that was the best part of the meal! Everything was just so yummy. Overall experience: 5 stars.',
+            f'My taste buds are still tingling from our last visit! Make sure to save room for dessert, because that was the best part of the meal! Everything I tried was bursting with flavor. They got a new customer for life!',
+            f'Yumm-o! Everything I tried was bursting with flavor. The food was cooked to perfection. I found the ambiance to be very charming. The desserts must be sprinkled with crack because I just craved for more and more. Easily earned their 5 stars!',
+            f'This is one of my favorite places. I was happy to see how clean everything was. Everything was simply decadent. The waiter did an excellent job. The appetizers must be sprinkled with crack because I just craved for more and more. Easily earned their 5 stars!',
+            f'Yummers! The food was cooked to perfection. Everything I tried was bursting with flavor. I would eat here every day if I could afford it!',
+        ]
+    }
 
     for b_id in range(1, 31):
 
@@ -30,13 +58,18 @@ def seed_reviewsv2():
             if r_u_id not in users:
                 users.add(r_u_id)
 
-                randRating = randint(1, 10)
+                randRating = None
+
+                if r_count % 3 == 0:
+                    randRating = randint(1, 3)
+                elif r_count % 3 != 0:
+                    randRating = randint(3, 5)
 
                 review = Review(
                     user_id = r_u_id,
                     business_id = b_id,
-                    rating = randRating if randRating < 6 else randRating - 5,
-                    review = reviews[randRating],
+                    rating = randRating,
+                    review = reviews[randRating][randint(0, 4)],
                 )
                 db.session.add(review)
 
