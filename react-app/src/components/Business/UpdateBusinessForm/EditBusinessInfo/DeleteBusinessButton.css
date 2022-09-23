@@ -1,0 +1,38 @@
+.whole-modal{
+    /* width: 1000px; */
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    /* margin: 20px; */
+}
+
+.confirm-delete{
+    display: flex;
+    justify-content: center;
+}
+
+.header-modal{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+.confirm-delete>button {
+    width: 100%;
+    background-color: rgba(224, 7, 7, 1);
+    transition: .5s;
+    border-radius: 5px;
+}
+
+.confirm-delete>button:hover{
+    cursor: pointer;
+    background-color: rgb(255, 14, 14);
+}
+
+.cancel-button{
+    margin-right: 5px;
+}
+
+.confirm-button{
+    margin-left: 5px;
+}
