@@ -13,6 +13,7 @@ function SearchBar() {
   const [userInput, setUserInput] = useState("")
   const businesses = useSelector(state => state.businesses)
   const [bizMatches, setBizMatches] = useState({})
+  const [doneSearching, setDoneSearching] = useState(false)
 
   const toggleDropDown = (e) => {
       setDropDown(true)
@@ -33,10 +34,8 @@ function SearchBar() {
   const inputHandler = (e) => {
     e.preventDefault()
     setUserInput(e.target.value)
-    // console.log(`\n\n\n\nThe user input is: ${e.target.value.toLowerCase()}`)
-    let bizSet = {...bizMatches}
+    let bizSet = {...businesses}
     let bizSetOutgoing = {}
-    // console.log(`There were ${Object.keys(bizSet).length} previous matches!`)
     for (const business of Object.values(businesses)){
       let addedByName = false
       if(business.name.toLowerCase().includes(e.target.value.toLowerCase())){
@@ -46,17 +45,15 @@ function SearchBar() {
       }
       if(!addedByName){
         for (const category of business.categories){
-          // console.log(`The category being checked is ${category}`)
           if(category.toLowerCase().includes(e.target.value.toLowerCase())){
-            // console.log(`The category that met the parameters is: ${category}`)
             bizSetOutgoing[business.id] = business
             delete bizSet[business.id]
           }
         }
       }
     }
-    // console.log(`There are now ${Object.keys(bizSetOutgoing).length} matches!`)
     setBizMatches(bizSetOutgoing)
+    setDoneSearching(true)
   }
 
   let handleSubmit = async e =>{
@@ -82,7 +79,12 @@ function SearchBar() {
   let bizMatchesArray = Object.values(bizMatches)
   let results = Array.from(bizMatchesArray).slice(0,5)
   if(Array.from(bizMatchesArray).length > 5) results.push({endcard: 'See all Results'})
-  if(!results.length && userInput.length) results.push({endcard: 'No Results'})
+  
+  useEffect(() => {
+    if(doneSearching){
+      if(!results.length && userInput.length) results.push({endcard: 'No Results'})
+    }
+  }, [doneSearching])
  
   return (
     <div id="search-bar-container-container"> 
