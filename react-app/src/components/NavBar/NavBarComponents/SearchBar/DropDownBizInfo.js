@@ -4,11 +4,26 @@ import { NavLink, Redirect, useHistory, useLocation } from 'react-router-dom';
 import './DropDownBizInfo.css'
 import { getBizThunk } from "../../../../store/business";
 
+import defaultImage1 from "../../../../assets/defaultBusinessImages/business_default1.jpg"
+import defaultImage2 from "../../../../assets/defaultBusinessImages/business_default2.jpg"
+import defaultImage3 from "../../../../assets/defaultBusinessImages/business_default3.jpg"
+import defaultImage4 from "../../../../assets/defaultBusinessImages/business_default4.jpg"
+import defaultImage5 from "../../../../assets/defaultBusinessImages/business_default5.jpg"
+import defaultImage6 from "../../../../assets/defaultBusinessImages/business_default6.jpg"
+import defaultImage7 from "../../../../assets/defaultBusinessImages/business_default7.jpg"
+import defaultImage8 from "../../../../assets/defaultBusinessImages/business_default8.jpg"
+import defaultImage9 from "../../../../assets/defaultBusinessImages/business_default9.jpg"
+import defaultImage10 from "../../../../assets/defaultBusinessImages/business_default10.jpg"
+
+const defaultImages = [defaultImage1, defaultImage2, defaultImage3, defaultImage4, defaultImage5,
+    defaultImage6, defaultImage7, defaultImage8, defaultImage9, defaultImage10]
+
 function DropDownBizInfo({business, setUserInput, userInput}){
     const dispatch = useDispatch()
     const location = useLocation()
     const [endcard, setEndCard] =useState(false)
     const history = useHistory()
+    const bizDefaultImg = defaultImages[business.id % defaultImages.length]
 
     let handleSubmit = async e =>{
         e.preventDefault()
@@ -30,7 +45,11 @@ function DropDownBizInfo({business, setUserInput, userInput}){
             <NavLink to={`/businesses/${business.id}/create-review`} id='result-navlink'>
                 <div className="flex-row" id='individual-result'>
                     <div id='result-image'>
-                        <div>Image</div>
+                    <img
+                            className="actual-image"
+                            id='default-image'
+                            src={`${bizDefaultImg}`} />
+
                     </div>
                     <div id='result-details'>
                         <div id='search-result-name'>
@@ -51,7 +70,10 @@ function DropDownBizInfo({business, setUserInput, userInput}){
                 <NavLink to={`/businesses/${business.id}/about`} id='result-navlink'>
                     <div className="flex-row" id='individual-result'>
                         <div id='result-image'>
-                            <div>Image</div>
+                            <img
+                                className="actual-image"
+                                id='default-image'
+                                src={`${bizDefaultImg}`} />
                         </div>
                         <div id='result-details'>
                             <div id='search-result-name'>
