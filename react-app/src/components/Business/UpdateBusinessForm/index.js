@@ -13,13 +13,12 @@ function UpdateBizForm({ business, setIsLoaded, bizCategories, bizAmenities, set
 
   const sessionUser = useSelector(state => state.session.user)
 
-  if (!sessionUser || (sessionUser.id !== business.ownderId)) {
+  if (!sessionUser || (sessionUser.id !== business.ownerId)) {
     return <Redirect to={`/businesses/${business.id}/about`} />
   }
 
   return (
     <div>
-
       <div className="flex-row-justify-between flex-row-align-center">
         <NavLink className='NavLink' style={{color:"rgb(23,130,148)"}} to={`${url}/info`}>Edit info</NavLink>
         <NavLink className='NavLink' style={{color:"rgb(23,130,148)"}} to={`${url}/categories`}>Edit Categories</NavLink>

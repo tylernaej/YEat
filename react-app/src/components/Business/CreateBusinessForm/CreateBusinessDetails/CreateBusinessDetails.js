@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
+import { phoneNumberFormatter } from "./PhoneNumberFormat";
 import { createBizThunk } from "../../../../store/business";
 import './CreateBusiness.css'
 
@@ -31,6 +31,11 @@ function SetBizDetails() {
   function onlyLetters(str) {
     return /^[a-zA-Z]+$/.test(str);
   }
+
+  useEffect(() => {
+    const formattedPhone = phoneNumberFormatter(phone)
+    setPhone(formattedPhone)
+  }, [phone])
 
   useEffect(() => {
     const errors = []
@@ -114,11 +119,10 @@ function SetBizDetails() {
           />
         </div>
         <div>
-          <label htmlFor="phone">Phone: (Format: (123)456-7890)</label>
+          <label htmlFor="phone">Phone</label>
           <input
             required
             type="tel"
-            pattern="^(\([0-9]{3}\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$"
             name="phone"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}

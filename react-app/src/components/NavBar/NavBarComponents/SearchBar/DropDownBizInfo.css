@@ -9,7 +9,7 @@
     width: 80px;    
 }
 
-#random-image{
+#default-image{
     height: 80px;
     width: 80px;
     object-fit: cover;

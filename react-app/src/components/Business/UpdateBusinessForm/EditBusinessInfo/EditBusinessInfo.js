@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, Route, Switch, useHistory, useParams, useRouteMatch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
+import { phoneNumberFormatter } from "../../CreateBusinessForm/CreateBusinessDetails/PhoneNumberFormat";
 import { updateBizThunk, deleteBizThunk } from "../../../../store/business";
 import { Modal } from '../../../../context/Modal'
 import DeleteBiz from "./DeleteBusinessModal";
@@ -37,8 +37,9 @@ function EditBizInfo({ business, setIsLoaded }) {
     }
     
     useEffect(() => {
-      console.log("TESTESTEST", showModal);
-    }, [showModal])
+      const formattedPhone = phoneNumberFormatter(phone)
+      setPhone(formattedPhone)
+    }, [phone])
 
     useEffect(() => {
         const errors = []
@@ -141,11 +142,10 @@ function EditBizInfo({ business, setIsLoaded }) {
             />
           </div>
           <div>
-            <label htmlFor="phone">Phone: (Format: (123)456-7890)</label>
+            <label htmlFor="phone">Phone</label>
             <input
               required
               type="tel"
-              pattern="^(\([0-9]{3}\)|[0-9]{3}-)[0-9]{3}-[0-9]{4}$"
               name="phone"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
