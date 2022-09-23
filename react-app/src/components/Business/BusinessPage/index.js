@@ -19,7 +19,6 @@ import UpdateReviewForm from "../../Reviews/UpdateReviewForm";
 import './businesspage.css'
 import { getBizReviewThunk } from "../../../store/reviews";
 
-
 function BizPage() {
     const { businessId } = useParams()
     const { url } = useRouteMatch()

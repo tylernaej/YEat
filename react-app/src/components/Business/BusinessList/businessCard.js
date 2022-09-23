@@ -44,7 +44,7 @@ function BizCard({ business }) {
             >
               <div style={{ height: "205px", minWidth: "205px" }}>
                 <img
-                  src={`${business.images.length ? business.images[0] : bizDefaultImg}`}
+                  src={`${business.images?.length ? business.images[0].url : bizDefaultImg}`}
                   style={{
                     objectFit: "cover",
                     height: "205px",
@@ -102,7 +102,7 @@ function BizCard({ business }) {
                 <NavLink className="flex-row navLink" to={`/businesses/${business.id}/about`}>
                     <div style={{height: "205px", minWidth:"205px"}}>
                         <img
-                        src={`${business.images?.length ? business.images[0] : bizDefaultImg}`}
+                        src={`${business.images?.length ? business.images[0].url : bizDefaultImg}`}
                         style={{objectFit: "cover", height:"205px", width:"205px"}} alt=''/>
                         {/* photo here */}
                     </div>

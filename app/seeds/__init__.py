@@ -24,7 +24,7 @@ def seed():
     seed_businesses()
     # seed_reviews()
     seed_reviewsv2()
-    seed_images()
+    # seed_images()
 
 
 
@@ -38,4 +38,4 @@ def undo():
     undo_amenities()
     # undo_reviews()
     undo_reviewsv2()
-    undo_images()
+    # undo_images()
