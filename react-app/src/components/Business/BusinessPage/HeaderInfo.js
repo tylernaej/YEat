@@ -129,9 +129,6 @@ function HeaderInfo({ business, reviewsList, bizCategories }) {
                         <div id='right-side'>
                             {bizCategories.join(', ')}
                         </div>
-                        {/* <div id='right-side'>
-                    <NavLink to={`/businesses/${business.id}/edit`}>Edit</NavLink>
-                </div> */}
                     </div>
                 </div>
 

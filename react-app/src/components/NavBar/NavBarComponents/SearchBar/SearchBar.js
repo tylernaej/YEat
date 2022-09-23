@@ -13,7 +13,6 @@ function SearchBar() {
   const [userInput, setUserInput] = useState("")
   const businesses = useSelector(state => state.businesses)
   const [bizMatches, setBizMatches] = useState({})
-  const [doneSearching, setDoneSearching] = useState(false)
 
   const toggleDropDown = (e) => {
       setDropDown(true)
@@ -53,7 +52,6 @@ function SearchBar() {
       }
     }
     setBizMatches(bizSetOutgoing)
-    setDoneSearching(true)
   }
 
   let handleSubmit = async e =>{
@@ -79,12 +77,6 @@ function SearchBar() {
   let bizMatchesArray = Object.values(bizMatches)
   let results = Array.from(bizMatchesArray).slice(0,5)
   if(Array.from(bizMatchesArray).length > 5) results.push({endcard: 'See all Results'})
-  
-  useEffect(() => {
-    if(doneSearching){
-      if(!results.length && userInput.length) results.push({endcard: 'No Results'})
-    }
-  }, [doneSearching])
  
   return (
     <div id="search-bar-container-container"> 
