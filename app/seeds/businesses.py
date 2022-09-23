@@ -551,6 +551,453 @@ def seed_businesses():
     business_15.categories.append(Frozen_Yogurt)
     business_15.categories.append(Ice_Cream)
 
+    business_16 = Business(
+        owner_id = 5,
+        name = 'Great White',
+        email = 'business16@seeder.com',
+        phone = '(323)745-5059',
+        website = 'https://www.greatwhite.cafe/locations',
+        address = '244 N Larchmont Blvd',
+        city = 'Los Angeles',
+        state = 'CA',
+        zipcode = 90004,
+        country = "USA",
+        latitude = 34.075871,
+        longitude = -118.323387,
+        description = 'New American classics (burgers, sandwiches) get a California treatment (avocado toast, kale salad).',
+        price_range = 2
+    )
+
+    business_16.amenities.append(Reservations)
+    business_16.amenities.append(Delivery)
+    business_16.amenities.append(take_out)
+    business_16.amenities.append(Large_group_friendly)
+    business_16.amenities.append(Dogs_allowed)
+    business_16.amenities.append(Outdoor_seating)
+    business_16.amenities.append(Garage_Parking)
+
+    business_16.categories.append(American)
+    business_16.categories.append(Breakfast_Brunch)
+    business_16.categories.append(Bar)
+
+
+
+    business_17 = Business(
+        owner_id = 6,
+        name = 'M Grill',
+        email = 'business17@seeder.com',
+        phone = '(213)389-2770',
+        website = 'http://www.m-grill.com/',
+        address = '3832 Wilshire Blvd Fl 2, Ste 202',
+        city = 'Los Angeles',
+        state = 'CA',
+        zipcode = 90010,
+        country = "USA",
+        latitude = 34.061350,
+        longitude = -118.310450,
+        description = 'M grill is an authentic Brazilian Churrascaria (Steakhouse) that offers an enjoyable dining experience with a great variety of meats, salads, and side dishes that represent an authentic Brazilian tradition of great flavors. Come enjoy a feast of grilled meats, continuously served table side by our gauchos (meat carvers), accompanied by traditional Brazilian side dishes and a salad bar area that pleases any vegetarian. The meats are cooked on giant skewers over an open fire, then brought straight to the table where it is carved directly onto your plate. For one set price, you will experience all of our succulent meats, continuously served until you are finished eating.',
+        price_range = 4
+    )
+
+    business_17.amenities.append(Vegetarian_friendly)
+    business_17.amenities.append(Reservations)
+    business_17.amenities.append(Live_music)
+    business_17.amenities.append(Vegan)
+    business_17.amenities.append(Kid_friendly)
+    business_17.amenities.append(free_wifi)
+    business_17.amenities.append(Large_group_friendly)
+
+    business_17.categories.append(Bar)
+    business_17.categories.append(Dinner)
+
+
+
+
+    business_18 = Business (
+        owner_id = 22,
+        name = 'SomiSomi',
+        email = 'business18@seeder.com',
+        phone = '(213)568-3284',
+        website = 'https://www.somisomi.com',
+        address = '621 Western Ave Ste 208-A',
+        city = 'Los Angeles',
+        state = 'CA',
+        zipcode = 90005,
+        country = "USA",
+        latitude = 34.062740,
+        longitude = -118.309440,
+        description = 'We were found in 2016 by two dessert enthusiasts whose love for ice cream led to creating SomiSomi. 4 years later, Somisomi can be found all over the U.S. today, offering irresistible Korean-inspired soft serve in ornate goldfish-shaped waffles cones.',
+        price_range = 1
+    )
+
+    business_18.amenities.append(Accepts_Credit_Cards)
+    business_18.amenities.append(Accepts_Android_Pay)
+    business_18.amenities.append(Accepts_Apple_Pay)
+    business_18.amenities.append(Garage_Parking)
+    business_18.amenities.append(Kid_friendly)
+
+    business_18.categories.append(Dessert)
+    business_18.categories.append(Korean)
+    business_18.categories.append(Ice_Cream)
+
+
+
+    business_19 = Business(
+        owner_id = 19,
+        name = 'Met Him At A Bar',
+        email = 'business19@seeder.com',
+        phone = '(323)852-3321',
+        website = 'http://www.methimatabar.com',
+        address = '801 S La Brea',
+        city = 'Los Angeles',
+        state = 'CA',
+        zipcode = 90036,
+        country = "USA",
+        latitude = 34.060320,
+        longitude = -118.345080,
+        description = 'Small Italian place in Los Angeles known for our quality aesthetic dishes',
+        price_range = 2
+    )
+
+    business_19.amenities.append(Reservations)
+    business_19.amenities.append(Accepts_Apple_Pay)
+    business_19.amenities.append(Outdoor_seating)
+    business_19.amenities.append(free_wifi)
+    business_19.amenities.append(Accepts_Credit_Cards)
+    business_19.amenities.append(Large_group_friendly)
+    business_19.amenities.append(Delivery)
+
+
+
+    business_20 = Business(
+        owner_id = 20,
+        name = 'Firefly',
+        email = 'business20@seeder.com',
+        phone = '(818)762-1833',
+        website = 'http://www.fireflystudiocity.com',
+        address = '11720 Ventura Blvd Studio City',
+        city = 'Los Angeles',
+        state = 'CA',
+        zipcode = 91604,
+        country = "USA",
+        latitude = 34.14344024658203,
+        longitude = -118.39671325683594,
+        description = 'Firefly is the most romantic restaurant in Los Angeles. Dine in our outdoor patio or just stop by for cocktails and appetizers in our indoor library lounge. Firefly offers dinner and a late night menu 7 days a week and is open for Sunday Brunch 10am to 3pm.',
+        price_range = 3
+    )
+
+    business_20.amenities.append(Vegetarian_friendly)
+    business_20.amenities.append(Accepts_Apple_Pay)
+    business_20.amenities.append(Large_group_friendly)
+    business_20.amenities.append(Outdoor_seating)
+    business_20.amenities.append(Kid_friendly)
+    business_20.amenities.append(Reservations)
+    business_20.amenities.append(Accepts_Credit_Cards)
+
+    business_20.categories.append(American)
+    business_20.categories.append(Bar)
+    business_20.categories.append(Lunch)
+    business_20.categories.append(Dinner)
+
+
+
+    business_21 = Business(
+        owner_id = 21,
+        name = 'The Hideaway',
+        email = 'business21@seeder.com',
+        phone = '(310)974-8020',
+        website = 'https://www.thehideawaybeverlyhills.com/',
+        address = '421 N Rodeo Dr',
+        city = 'Beverly Hills',
+        state = 'CA',
+        zipcode = 90210,
+        country = "USA",
+        latitude = 34.0695962,
+        longitude = -118.4034513,
+        description = 'The Hideaway Mexican Steak House, located inside the Rodeo Collection in Beverly Hills.',
+        price_range = 4
+    )
+
+    business_21.amenities.append(Reservations)
+    business_21.amenities.append(Large_group_friendly)
+    business_21.amenities.append(Outdoor_seating)
+    business_21.amenities.append(Accepts_Android_Pay)
+    business_21.amenities.append(Accepts_Apple_Pay)
+    business_21.amenities.append(Accepts_Credit_Cards)
+    business_21.amenities.append(Wheelchair_accessible)
+
+    business_21.categories.append(Mexican)
+    business_21.categories.append(Bar)
+    business_21.categories.append(Dinner)
+
+
+    
+    business_22 = Business(
+        owner_id = 2,
+        name = 'KinKan',
+        email = 'business22@seeder.com',
+        phone = '(323)421-3771',
+        website = 'https://www.exploretock.com/kinkan/',
+        address = '771 N Virgil Ave',
+        city = 'Los Angeles',
+        state = 'CA',
+        zipcode = 900,
+        country = "USA",
+        latitude = 34.0850598,
+        longitude = -118.2869438,
+        description = "40 years ago Nan's father started a Thailand tour company called Sun Moon Shine. Kinkan now honors her father with its Sun-Moon-Shine menu which is a 14-dish, multi-course tour of Thailand's 4 essential culinary regions.",
+        price_range = 4
+    )
+
+    business_22.amenities.append(Reservations)
+    business_22.amenities.append(Large_group_friendly)
+    business_22.amenities.append(Garage_Parking)
+    business_22.amenities.append(Accepts_Android_Pay)
+    business_22.amenities.append(Accepts_Apple_Pay)
+    business_22.amenities.append(Accepts_Credit_Cards)
+    business_22.amenities.append(dine_in)
+
+    business_22.categories.append(Dinner)
+    business_22.categories.append(japanese)
+    business_22.categories.append(Thai)
+
+
+
+    business_23 = Business(
+        owner_id = 23,
+        name = 'HomeState',
+        email = 'business23@seeder.com',
+        phone = '(323)906-1122',
+        website = 'https://www.myhomestate.com/hollywood-blvd-los-angeles/',
+        address = '4624 Hollywood Blvd',
+        city = 'Los Angeles',
+        state = 'CA',
+        zipcode = 90027,
+        country = "USA",
+        latitude = 34.101768493652344,
+        longitude = -118.29412841796875,
+        description = 'A Texas Kitchen serving breakfast tacos, queso, margaritas & frito pies.',
+        price_range = 1
+    )
+
+    business_23.amenities.append(Vegetarian_friendly)
+    business_23.amenities.append(Delivery)
+    business_23.amenities.append(Accepts_Credit_Cards)
+    business_23.amenities.append(Accepts_Apple_Pay)
+    business_23.amenities.append(Outdoor_seating)
+
+    business_23.categories.append(Breakfast_Brunch)
+    business_23.categories.append(Lunch)
+    business_23.categories.append(Tacos)
+
+
+    business_24 = Business(
+        owner_id = 24,
+        name = 'Louder',
+        email = 'business24@seeder.com',
+        phone = '(213)263-9492',
+        website = 'https://www.facebook.com/LoudersLA/',
+        address = '3470 W 6th St',
+        city = 'Los Angeles',
+        state = 'CA',
+        zipcode = 90020,
+        country = "USA",
+        latitude = 34.0629804,
+        longitude = -118.2974791,
+        description = 'Our menu is very diverse. We have everything from yakitori to chicken, seafood and pasta. We also have variety of Korean style bar foods. Everything is specialized to satisfy your taste buds. We promise good food and excellent service!', 
+        price_range = 2
+    )
+
+    business_24.amenities.append(Accepts_Credit_Cards)
+    business_24.amenities.append(Delivery)
+    business_24.amenities.append(take_out)
+    business_24.amenities.append(Large_group_friendly)
+    business_24.amenities.append(Live_music)
+    business_24.amenities.append(Accepts_Apple_Pay)
+    business_24.amenities.append(dine_in)
+
+    business_24.categories.append(Chicken_Wings)
+    business_24.categories.append(Asian_Fusion)
+    business_24.categories.append(Korean)
+
+
+
+    business_25 = Business(
+        owner_id = 25,
+        name = 'Openaire',
+        email = 'business25@seeder.com',
+        phone = '(213)814-3651',
+        website = 'https://www.thelinehotel.com/los-angeles/restaurants-bars/openaire/',
+        address = '3515 Wilshire Blvd Fl 2',
+        city = 'Los Angeles',
+        state = 'CA',
+        zipcode = 90010,
+        country = "USA",
+        latitude = 34.061729431152344,
+        longitude = -118.29792785644531,
+        description = "Created in collaboration with two-star Michelin Chef and native Angeleno, Josiah Citrin, Openaire is a poolside oasis of green at the center of the Koreatown. The menu features the best of California's ingredients from land and sea, embracing the seasons and presented in a shareable format. Simply, Openaire is a celebration of outdoor dining at the center of the melting-pot that is LA.",
+        price_range = 3
+    )
+
+    business_25.amenities.append(Accepts_Credit_Cards)
+    business_25.amenities.append(Reservations)
+    business_25.amenities.append(Large_group_friendly)
+    business_25.amenities.append(Delivery)
+    business_25.amenities.append(free_wifi)
+    business_25.amenities.append(Outdoor_seating)
+    business_25.amenities.append(Accepts_Credit_Cards)
+
+    business_25.categories.append(American)
+    business_25.categories.append(Breakfast_Brunch)
+
+    business_26 = Business(
+        owner_id = 26,
+        name = 'Osteria La Buca',
+        email = 'business26@seeder.com',
+        phone = '(323)462-1900',
+        website = 'http://www.osterialabuca.com/',
+        address = '5210 Melrose Ave',
+        city = 'Los Angeles',
+        state = 'CA',
+        zipcode = 90038,
+        country = "USA",
+        latitude = 34.08350372314453,
+        longitude = -118.31338500976562,
+        description = 'Our core belief: great food need not be elaborate or overwrought, but rather fresh, uncomplicated and well executed in order to get out of the way of the ingredients and find the joy in their innate flavors and qualities. In the vein of a traditional Italian osteria as a casual, local gathering place for food, friends and wine, our menu reflects a less complicated classic grass roots approach to Italian country food inspired by regional ingredients. The joy of eating seasonally, simply and well among good company is one shared by all at Osteria La Buca. It is with this simple thought in mind that we invite you to join us to celebrate and be a part of our family.', 
+        price_range = 3
+    )
+
+    business_26.amenities.append(Accepts_Credit_Cards)
+    business_26.amenities.append(Reservations)
+    business_26.amenities.append(Accepts_Credit_Cards)
+    business_26.amenities.append(Large_group_friendly)
+    business_26.amenities.append(Kid_friendly)
+    business_26.amenities.append(Vegetarian_friendly)
+    business_26.amenities.append(dine_in)
+
+    business_26.categories.append(Italian)
+    business_26.categories.append(Pizza)
+    business_26.categories.append(Bar)
+
+
+
+    business_27 = Business(
+        owner_id = 27,
+        name = 'Mother Wold',
+        email = 'business27@seeder.com',
+        phone = '(323)410-6060',
+        website = 'https://www.motherwolfla.com',
+        address = '1545 Wilcox Ave',
+        city = 'Los Angeles',
+        state = 'CA',
+        zipcode = 90028,
+        country = "USA",
+        latitude = 34.098793029785156,
+        longitude = -118.33102416992188,
+        description = "Mother Wolf is Chef Evan Funke's homage to the Eternal City and culinary heritage of La Cucina Romana.", 
+        price_range = 4
+    )
+
+    business_27.amenities.append(Accepts_Credit_Cards)
+    business_27.amenities.append(Reservations)
+    business_27.amenities.append(Accepts_Apple_Pay)
+    business_27.amenities.append(Accepts_Android_Pay)
+    business_27.amenities.append(Large_group_friendly)
+
+    business_27.categories.append(Italian)
+    business_27.categories.append(Dinner)
+
+
+
+    business_28 = Business(
+        owner_id = 28,
+        name = 'Hangari Kalguksu',
+        email = 'business28@seeder.com',
+        phone = '(213)652-2381',
+        website = 'https://www.hangarikalguksu.com/',
+        address = '3470 W 6th St Ste 9&10',
+        city = 'Los Angeles',
+        state = 'CA',
+        zipcode = 90020,
+        country = "USA",
+        latitude = 34.06358337402344,
+        longitude = -118.29803466796875,
+        description = "Hangari Kalguksu is the destination for Korean comfort food. We specialize in kal-guk-su (hand cut noodle soup) and many other dishes including dumplings, bibimbap and our famous bossam. Our mission is to provide the highest quality food and service at a great value. It doesn't get any simpler than that. Tasty food, great service and value.", 
+        price_range = 2
+    )
+
+    business_28.amenities.append(Accepts_Credit_Cards)
+    business_28.amenities.append(Delivery)
+    business_28.amenities.append(take_out)
+    business_28.amenities.append(Kid_friendly)
+    business_28.amenities.append(Large_group_friendly)
+    business_28.amenities.append(Vegetarian_friendly)
+
+    business_28.categories.append(Korean)
+    business_28.categories.append(Noodles)
+
+
+
+    business_29 = Business(
+        owner_id = 29,
+        name = 'Rice & Nori',
+        email = 'business29@seeder.com',
+        phone = '(213)628-3114',
+        website = 'https://rice-nori.business.site/',
+        address = '123 Astronaut E S Onizuka St Ste 103',
+        city = 'Los Angeles',
+        state = 'CA',
+        zipcode = 90012,
+        country = "USA",
+        latitude = 34.050884,
+        longitude = -118.242154,
+        description = 'Rice Balls, Hand Rolls, Sashimi, Salads, Drinks, and Daily Specials', 
+        price_range = 1
+    )
+
+    business_29.amenities.append(Accepts_Credit_Cards)
+    business_29.amenities.append(Accepts_Apple_Pay)
+    business_29.amenities.append(Accepts_Android_Pay)
+    business_29.amenities.append(Large_group_friendly)
+    business_29.amenities.append(Wheelchair_accessible)
+    business_29.amenities.append(take_out)
+    business_29.amenities.append(Delivery)
+
+    business_29.categories.append(japanese)
+    business_29.categories.append(Lunch)
+    business_29.categories.append(Dinner)
+
+
+
+    business_30 = Business(
+        owner_id = 30,
+        name = 'Providence',
+        email = 'business30@seeder.com',
+        phone = '(323)460-4170',
+        website = 'http://www.providencela.com/',
+        address = '5955 Melrose Ave',
+        city = 'Los Angeles',
+        state = 'CA',
+        zipcode = 90027,
+        country = "USA",
+        latitude = 34.083465576171875,
+        longitude = -118.330322265625,
+        description = "Chef Michael Cimarusti's fine-dining destination delivers innovative seafood in a tranquil setting.", 
+        price_range = 4
+    )
+
+    business_30.amenities.append(Accepts_Credit_Cards)
+    business_30.amenities.append(Reservations)
+    business_30.amenities.append(Vegetarian_friendly)
+    business_30.amenities.append(Large_group_friendly)
+    business_30.amenities.append(free_wifi)
+    business_30.amenities.append(Wheelchair_accessible)
+    business_30.amenities.append(dine_in)
+
+    business_30.categories.append(Dinner)
+    business_30.categories.append(American)
+    business_30.categories.append(Seafood)
+
 
     db.session.add(business_1)
     db.session.add(business_2)
@@ -567,6 +1014,21 @@ def seed_businesses():
     db.session.add(business_13)
     db.session.add(business_14)
     db.session.add(business_15)
+    db.session.add(business_16)
+    db.session.add(business_17)
+    db.session.add(business_18)
+    db.session.add(business_19)
+    db.session.add(business_20)
+    db.session.add(business_21)
+    db.session.add(business_22)
+    db.session.add(business_23)
+    db.session.add(business_24)
+    db.session.add(business_25)
+    db.session.add(business_26)
+    db.session.add(business_27)
+    db.session.add(business_28)
+    db.session.add(business_29)
+    db.session.add(business_30)
     db.session.commit()
 
 def undo_businesses():
