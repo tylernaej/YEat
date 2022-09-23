@@ -54,8 +54,6 @@ function BizSearchList() {
         .then(() => setIsLoaded(true))
     }, [dispatch])
 
-    console.log(`The matches being sent into the return are:`, bizMatches.current)
-
     if(!bizMatches.current.length){
         return(
             <BizList/>
@@ -63,13 +61,8 @@ function BizSearchList() {
     }
     
     return isLoaded && (
-        // <div>
-        //     {bizMatches.current.map(business => (
-        //         <BizCard key={business.id} business={business} />
-        //     ))}
-        // </div>
         <div className="bizlist-page">
-            <div className="all-results-text">All Results</div>
+            <div className="all-results-text">Showing {bizMatches.current.length} results:</div>
             <div >
                 {bizMatches.current.map(business => (
                     <BizCard key={business.id} business={business} />

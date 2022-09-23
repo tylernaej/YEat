@@ -21,7 +21,6 @@ function BizList() {
         dispatch(getBizThunk())
         .then(() => setIsLoaded(true))
     }, [dispatch])
-    
 
     return isLoaded && (
         <div className="bizlist-page">
