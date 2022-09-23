@@ -154,7 +154,7 @@ def seed_businesses():
     business_2.categories.append(Bar)
     #biz3
     business_3 = Business(
-        owner_id = 1,
+        owner_id = 9,
         name = "Egg Tuck",
         email = "business3@seeder.com",
         phone = "(213)674-7080",
@@ -187,7 +187,7 @@ def seed_businesses():
 
     #biz4
     business_4 = Business(
-        owner_id = 1,
+        owner_id = 6,
         name = "Howlin' Ray's",
         email = "business4@seeder.com",
         phone = "(213)935-8399",
@@ -218,7 +218,7 @@ def seed_businesses():
 
     #biz5
     business_5 = Business(
-        owner_id = 1,
+        owner_id = 2,
         name = "Bottega Louie",
         email = "business5@seeder.com",
         phone = "(213)802-1470",
@@ -254,7 +254,7 @@ def seed_businesses():
     
     #biz6
     business_6 = Business(
-        owner_id = 1,
+        owner_id = 8,
         name = "Slurpin' Ramen Bar",
         email = "business6@seeder.com",
         phone = "(213)603-9492",
@@ -314,6 +314,243 @@ def seed_businesses():
     business_7.categories.append(japanese)
     business_7.categories.append(Seafood)
 
+    #biz8
+    business_8 = Business(
+        owner_id = 6,
+        name = "Tiger Sugar",
+        email = "business8@seeder.com",
+        phone = "(213)568-3436",
+        website = "https://en.tigersugar.com",
+        address = "3465 W 6th St Ste 120",
+        city = "Los Angeles",
+        state = "CA",
+        zipcode = 90020,
+        country = "USA",
+        latitude = 34.0637,
+        longitude = -118.2975,
+        description = "Our popular Strawberry Mochi milk with cream mousse is coming soon this summer.",
+        price_range = 1
+    ) 
+
+    business_8.amenities.append(dine_in)
+    business_8.amenities.append(take_out)
+    business_8.amenities.append(Accepts_Credit_Cards)
+    business_8.amenities.append(Wheelchair_accessible)
+    business_8.amenities.append(Public_Restrooms)
+    business_8.amenities.append(Vegetarian_friendly)
+    business_8.amenities.append(Accepts_Apple_Pay)
+    business_8.amenities.append(Accepts_Android_Pay)
+
+    business_8.categories.append(Boba_Tea)
+    business_8.categories.append(Ice_Cream)
+
+    #biz9
+    business_9 = Business(
+        owner_id = 2,
+        name = "Republique",
+        email = "business9@seeder.com",
+        phone = "(310)362-6115",
+        website = "http://republiquela.com",
+        address = "624 S La Brea Ave",
+        city = "Los Angeles",
+        state = "CA",
+        zipcode = 90036,
+        country = "USA",
+        latitude = 34.0641,
+        longitude = -118.3437,
+        description = "* We only accept reservations for dinner. During the day we offer a more casual counter-style service with no reservations. * * Thursday's Chef Walter's Mulit-Course Tasting Menu is Back!!",
+        price_range = 3
+    ) 
+
+    business_9.amenities.append(dine_in)
+    business_9.amenities.append(Accepts_Credit_Cards)
+    business_9.amenities.append(Wheelchair_accessible)
+    business_9.amenities.append(Public_Restrooms)
+    business_9.amenities.append(Vegetarian_friendly)
+    business_9.amenities.append(Accepts_Apple_Pay)
+    business_9.amenities.append(Accepts_Android_Pay)
+
+    business_9.categories.append(Breakfast_Brunch)
+    business_9.categories.append(Fine_Dining)
+
+    #biz10
+    business_10 = Business(
+        owner_id = 15,
+        name = "Valentine Sweets Organic Bakery & Cafe",
+        email = "business10@seeder.com",
+        phone = "(213)626-1680",
+        website = "https://www.valentinesweets.com/",
+        address = "88 E Colorado Blvd",
+        city = "Pasadena",
+        state = "CA",
+        zipcode = 91105,
+        country = "USA",
+        latitude = 34.1455,
+        longitude = -118.1485,
+        description = "Chef Marianna Vardanyan is a Los Angeles based food alchemist who has turned her childhood dreams of desserts into a reality. Growing up in Armenia in the 90s, her favorite treats were Russian Tea Cakes. Though she did not always have access to treats, she dreamed of owning a bakery. Years later, Vardanyan was surprised when she couldnt find a 100 percent organic version of these sweets in the United States. Missing the flavors from her childhood, she decided to create them.",
+        price_range = 2
+    ) 
+
+    business_10.amenities.append(dine_in)
+    business_10.amenities.append(Accepts_Credit_Cards)
+    business_10.amenities.append(Wheelchair_accessible)
+    business_10.amenities.append(Public_Restrooms)
+    business_10.amenities.append(Outdoor_seating)
+    business_10.amenities.append(Accepts_Apple_Pay)
+    business_10.amenities.append(Accepts_Android_Pay)
+
+    business_10.categories.append(Dessert)
+    business_10.categories.append(Coffee_Tea)
+
+    #biz11
+    business_11 = Business(
+        owner_id = 6,
+        name = "Daikokuya Little Tokyo",
+        email = "business11@seeder.com",
+        phone = "(213)626-1680",
+        website = "http://www.dkramen.com",
+        address = "327 E 1st St",
+        city = "Los Angeles",
+        state = "CA",
+        zipcode = 90012,
+        country = "USA",
+        latitude = 34.0499,
+        longitude = -118.2400,
+        description = "DAIKOKUYA Little Tokyo",
+        price_range = 2
+    ) 
+
+    business_11.amenities.append(dine_in)
+    business_11.amenities.append(Accepts_Credit_Cards)
+    business_11.amenities.append(Wheelchair_accessible)
+    business_11.amenities.append(Public_Restrooms)
+    business_11.amenities.append(Outdoor_seating)
+    business_11.amenities.append(Accepts_Apple_Pay)
+    business_11.amenities.append(Accepts_Android_Pay)
+
+    business_11.categories.append(Ramen)
+    business_11.categories.append(Noodles)
+
+    #biz12
+    business_12 = Business(
+        owner_id = 11,
+        name = "Bestia",
+        email = "business12@seeder.com",
+        phone = "(213)514-5724",
+        website = "http://www.bestiala.com/",
+        address = "2121 E 7th Pl",
+        city = "Los Angeles",
+        state = "CA",
+        zipcode = 90021,
+        country = "USA",
+        latitude = 34.0499,
+        longitude = -118.2400,
+        description = "The concept for Bestia juxtaposes decorative contemporary elements against a raw, industrial space dripping with character. This approach pays homage to sophisticated modern-day Italian spaces, which often integrate contemporary interiors into centuries-old structures. Strong, traditional building materials such as tile, steel, marble, and wood also provide pops of festive color. The name Bestia (Italian for “Beast”) echoes throughout the space via hard-edged design elements, such as the wall covering’s pattern of bar-fight weapons, intimidating meat-hook chandeliers suspended from soaring steel tracks, and bathroom tile work that reads as unfinished. The repeated use of chevron and hexagonal patterns, tulip pendant lighting, warm amber tones, and airy booth seating help soften the aggressively industrial space with a bit of whimsy.",
+        price_range = 3
+    ) 
+
+    business_12.amenities.append(dine_in)
+    business_12.amenities.append(Accepts_Credit_Cards)
+    business_12.amenities.append(Wheelchair_accessible)
+    business_12.amenities.append(Public_Restrooms)
+    business_12.amenities.append(Outdoor_seating)
+    business_12.amenities.append(Accepts_Apple_Pay)
+    business_12.amenities.append(Accepts_Android_Pay) 
+
+    business_12.categories.append(Italian)
+    business_12.categories.append(Beer_Wine_Spirits)
+    business_12.categories.append(Pizza)
+    business_12.categories.append(Fine_Dining)
+
+    #biz13
+    business_13 = Business(
+        owner_id = 12,
+        name = "Kang Ho-dong Baekjeong",
+        email = "business13@seeder.com",
+        phone = "(213)384-9678",
+        website = "http://www.baekjeongktown.com",
+        address = "3465 W 6th St Ste 20",
+        city = "Los Angeles",
+        state = "CA",
+        zipcode = 90020,
+        country = "USA",
+        latitude = 34.0637,
+        longitude = -118.2975,
+        description = "***Due To The Overwhelming Demand, Dine-In Reservations Are Not Available***",
+        price_range = 3
+    ) 
+
+    business_13.amenities.append(dine_in)
+    business_13.amenities.append(Accepts_Credit_Cards)
+    business_13.amenities.append(Wheelchair_accessible)
+    business_13.amenities.append(Public_Restrooms)
+    business_13.amenities.append(Outdoor_seating)
+    business_13.amenities.append(Accepts_Apple_Pay)
+    business_13.amenities.append(Accepts_Android_Pay) 
+
+    business_13.categories.append(Barbeque)
+    business_13.categories.append(Korean)
+
+    #biz14
+    business_14 = Business(
+        owner_id = 10,
+        name = "Langer's Delicatessen",
+        email = "business14@seeder.com",
+        phone = "(213)483-8050",
+        website = "http://www.baekjeongktown.com",
+        address = "704 S Alvarado St",
+        city = "Los Angeles",
+        state = "CA",
+        zipcode = 90057,
+        country = "USA",
+        latitude = 34.0561,
+        longitude = -118.2767,
+        description = "HOME OF THE WORLD-FAMOUS #19 PASTRAMI SANDWICH",
+        price_range = 2
+    ) 
+
+    business_14.amenities.append(dine_in)
+    business_14.amenities.append(Accepts_Credit_Cards)
+    business_14.amenities.append(Wheelchair_accessible)
+    business_14.amenities.append(Public_Restrooms)
+    business_14.amenities.append(Outdoor_seating)
+    business_14.amenities.append(Accepts_Apple_Pay)
+    business_14.amenities.append(Accepts_Android_Pay) 
+
+    business_14.categories.append(Sandwiches)
+    business_14.categories.append(Deli)
+
+    
+    #biz15
+    business_15 = Business(
+        owner_id = 3,
+        name = "Tea Master Matcha Cafe & Green Tea Shop",
+        email = "business15@seeder.com",
+        phone = "(213)680-1006",
+        website = "https://www.teamastermatcha.com/",
+        address = "450 E 2nd St",
+        city = "Los Angeles",
+        state = "CA",
+        zipcode = 90012,
+        country = "USA",
+        latitude = 34.0469,
+        longitude = -118.2385,
+        description = "Tea Master is a Japanese matcha cafe and green tea shop located in the Little Tokyo neighborhood of Downtown Los Angeles. Japanese tea has been sold out of the same store for over a decade, with the cafe portion opening in 2014.",
+        price_range = 1
+    ) 
+
+    business_15.amenities.append(dine_in)
+    business_15.amenities.append(Accepts_Credit_Cards)
+    business_15.amenities.append(Wheelchair_accessible)
+    business_15.amenities.append(Public_Restrooms)
+    business_15.amenities.append(Outdoor_seating)
+    business_15.amenities.append(Accepts_Apple_Pay)
+    business_15.amenities.append(Accepts_Android_Pay) 
+
+    business_15.categories.append(Boba_Tea)
+    business_15.categories.append(Frozen_Yogurt)
+    business_15.categories.append(Ice_Cream)
+
 
     db.session.add(business_1)
     db.session.add(business_2)
@@ -322,6 +559,14 @@ def seed_businesses():
     db.session.add(business_5)
     db.session.add(business_6)
     db.session.add(business_7)
+    db.session.add(business_8)
+    db.session.add(business_9)
+    db.session.add(business_10)
+    db.session.add(business_11)
+    db.session.add(business_12)
+    db.session.add(business_13)
+    db.session.add(business_14)
+    db.session.add(business_15)
     db.session.commit()
 
 def undo_businesses():
