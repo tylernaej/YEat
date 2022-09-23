@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Route, Switch, useHistory, useParams, useRouteMatch } from "react-router-dom";
+import { NavLink, Redirect, Route, Switch, useHistory, useParams, useRouteMatch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import EditBizInfo from "./EditBusinessInfo/EditBusinessInfo";
@@ -13,21 +13,17 @@ function UpdateBizForm({ business, setIsLoaded, bizCategories, bizAmenities, set
 
   const sessionUser = useSelector(state => state.session.user)
 
-  if (!sessionUser) {
-    return (
-      <div>
-        PLEASE LOG IN TO CONTINUE
-      </div>
-    )
+  if (!sessionUser || (sessionUser.id !== business.ownderId)) {
+    return <Redirect to={`/businesses/${business.id}/about`} />
   }
 
   return (
     <div>
 
       <div className="flex-row-justify-between flex-row-align-center">
-        <NavLink to={`${url}/info`}>Edit info</NavLink>
-        <NavLink to={`${url}/categories`}>Edit Categories</NavLink>
-        <NavLink to={`${url}/amenities`}>Edit Amenities</NavLink>
+        <NavLink className='NavLink' style={{color:"rgb(23,130,148)"}} to={`${url}/info`}>Edit info</NavLink>
+        <NavLink className='NavLink' style={{color:"rgb(23,130,148)"}} to={`${url}/categories`}>Edit Categories</NavLink>
+        <NavLink className='NavLink' style={{color:"rgb(23,130,148)"}} to={`${url}/amenities`}>Edit Amenities</NavLink>
       </div>
       <div>
         <Switch>

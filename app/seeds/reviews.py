@@ -89,25 +89,25 @@ def seed_reviews():
         rating = 4,
         review = 'Granville better be named GRANDville it was amazing, could have better restrooms though.',
     )
-    review_14 = Review(
+    review_15 = Review(
         user_id = 9,
         business_id = 2,
         rating = 5,
         review = 'Goose goose goose, goose is the word',
     )
-    review_14 = Review(
+    review_16 = Review(
         user_id = 9,
         business_id = 2,
         rating = 3,
         review = 'This place was a little underwhelming based off what I heard, no complaints though.',
     )
-    review_14 = Review(
+    review_17 = Review(
         user_id = 10,
         business_id = 2,
         rating = 4,
         review = 'If this place had better fries, it would be a 5 star, other than that very good.',
     )
-    review_14 = Review(
+    review_18 = Review(
         user_id = 10,
         business_id = 2,
         rating = 5,
@@ -128,8 +128,12 @@ def seed_reviews():
     db.session.add(review_12)
     db.session.add(review_13)
     db.session.add(review_14)
+    db.session.add(review_15)
+    db.session.add(review_16)
+    db.session.add(review_17)
+    db.session.add(review_18)
     db.session.commit()
 
 def undo_reviews():
-    db.session.execute('TRUNCATE businesses RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE reviews RESTART IDENTITY CASCADE;')
     db.session.commit()
