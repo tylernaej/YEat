@@ -17,7 +17,7 @@ function DeleteReviewButton({setValidationErrors, usersReview, setShowModal}){
     //   e.preventDefault();
       const data = await dispatch(deleteReviewThunk(usersReview.id));
 
-      if (data.statusCode) {
+      if (data.statusCode > 200) {
         setValidationErrors([data.message]);
         console.log('have an error')
         return;
