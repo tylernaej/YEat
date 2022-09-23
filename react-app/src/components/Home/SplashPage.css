@@ -12,9 +12,8 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
-    min-width: 100vw;
-    max-width: 100vw;
-    width:100vw;
+    min-width: 100%;
+    width: 100%;
     min-height: 85vh;
     height: 85vh;
     background-size: cover;
@@ -25,9 +24,8 @@
 
 #splash-footer {
     box-sizing: border-box;
-    width:100vw;
-    min-height: 200px;
-    height: 14vh;
+    width: 100%;
+    height: 15vh;
     background-color: rgba(215, 28, 28, 0.9);
     color: white;
     border-top: 5px solid white;

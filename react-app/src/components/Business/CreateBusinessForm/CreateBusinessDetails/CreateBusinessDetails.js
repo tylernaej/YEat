@@ -45,7 +45,6 @@ function SetBizDetails() {
       errors.push("Please submit a website url")
     }
     setValidationErrors(errors)
-    console.log(errors)
 
   }, [name, email, phone, website, address, city, state, zipcode, country, latitude, longitude, description, priceRange])
 

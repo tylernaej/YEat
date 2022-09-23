@@ -3,6 +3,9 @@ import { NavLink, Route, Switch, useHistory, useParams, useRouteMatch } from "re
 import { useDispatch, useSelector } from "react-redux";
 
 import { updateBizThunk, deleteBizThunk } from "../../../../store/business";
+import { Modal } from '../../../../context/Modal'
+import DeleteBiz from "./DeleteBusinessModal";
+import DeleteBizButton from "./DeleteBusinessButton";
 
 function EditBizInfo({ business, setIsLoaded }) {
     const dispatch = useDispatch()
@@ -27,11 +30,16 @@ function EditBizInfo({ business, setIsLoaded }) {
 
     const [validationErrors, setValidationErrors] = useState([])
     const [isSubmitted, setIsSubmitted] = useState(false)
+    const [showModal, setShowModal] = useState(false)
 
     function onlyLetters(str) {
       return /^[a-zA-Z]+$/.test(String(str));
     }
     
+    useEffect(() => {
+      console.log("TESTESTEST", showModal);
+    }, [showModal])
+
     useEffect(() => {
         const errors = []
         if (name.length > 50) errors.push("Name must be less than 50 characters");
@@ -99,6 +107,12 @@ function EditBizInfo({ business, setIsLoaded }) {
           setValidationErrors([data.message]);
         }
         history.push(`/businesses`)
+    }
+
+    const handleClick = e => {
+      e.preventDefault()
+      setShowModal(true)
+      // console.log(e)
     }
 
     return (
@@ -242,7 +256,15 @@ function EditBizInfo({ business, setIsLoaded }) {
             />
           </div>
           <div id="edit-business-buttons">
-            <button onClick={handleDelete}>Delete</button>
+            <>
+              {/* <button onClick={handleDelete}>Delete</button> */}
+              <button onClick={handleClick}>Delete</button>
+              {showModal && (
+                <Modal onClose={() => setShowModal(false)}>
+                  <DeleteBizButton business={business} setIsLoaded={setIsLoaded} setValidationErrors={setValidationErrors} setShowModal={setShowModal}/>
+                </Modal>
+              )}
+            </>
             <button type="submit">Submit</button>
           </div>
         </form>

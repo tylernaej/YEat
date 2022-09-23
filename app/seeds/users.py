@@ -1,5 +1,3 @@
-import profile
-from threading import _profile_hook
 from app.models import db, User
 
 
@@ -7,12 +5,7 @@ from app.models import db, User
 def seed_users():
     demo = User(
         first_name='Demo', last_name='User', username='Demo', email='demo@aa.io', password='password', profile_picture='https://cdn.allthings.how/wp-content/uploads/2020/11/allthings.how-how-to-change-your-picture-on-zoom-profile-picture.png')
-    connor = User(
-        first_name='Connor', last_name='Lam', username='connor', email='connor@aa.io', password='password', profile_picture='https://preview.redd.it/v0caqchbtn741.jpg?auto=webp&s=c5d05662a039c031f50032e22a7c77dfcf1bfddc')
-    tyler = User(
-        first_name='Tyler', last_name='Jean', username='tyler', email='tyler@aa.io', password='password', profile_picture='https://avatars.githubusercontent.com/u/104518737?s=400&u=62e1ffcb888bfa1a9ed7a13e82058c2718962c73&v=4')
-    edward = User(
-        first_name='Edward', last_name='Felipe', username='edward', email='edward@aa.io', password='password', profile_picture='https://avatars.githubusercontent.com/u/75222415?s=400&u=c117af6019a7ce2525374cff39a86f6d0bd882c7&v=4')
+
     yasmine = User(
         first_name='Yasmine', last_name='Mccabe', username='yasmine', email='yasmine@aa.io', password='password'
     )
@@ -63,9 +56,6 @@ def seed_users():
     )
 
     db.session.add(demo)
-    db.session.add(connor)
-    db.session.add(tyler)
-    db.session.add(edward)
     db.session.add(yasmine)
     db.session.add(zane)
     db.session.add(parris)
