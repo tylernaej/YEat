@@ -28,6 +28,7 @@ def seed_reviewsv2():
                 continue
 
             if r_u_id not in users:
+                users.add(r_u_id)
 
                 randRating = randint(1, 10)
 
