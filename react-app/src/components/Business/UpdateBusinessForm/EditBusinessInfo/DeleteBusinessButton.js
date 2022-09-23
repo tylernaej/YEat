@@ -17,8 +17,9 @@ function DeleteBizButton({business, setIsLoaded, setValidationErrors, setShowMod
        e.preventDefault();
        setIsLoaded(false);
        const data = await dispatch(deleteBizThunk(business.id));
-       if (data.statusCode > 200) {
-          console.log('have error')
+
+       if (data.statusCode) {
+          // console.log('have error')
          setValidationErrors([data.message]);
          return
        }
