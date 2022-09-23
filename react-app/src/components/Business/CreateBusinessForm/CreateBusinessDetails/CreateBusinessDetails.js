@@ -29,7 +29,7 @@ function SetBizDetails() {
   const [isSubmitted, setIsSubmitted] = useState(false)
 
   function onlyLetters(str) {
-    return /^[a-zA-Z]+$/.test(String(str));
+    return /^[a-zA-Z]+$/.test(str);
   }
 
   useEffect(() => {
@@ -39,12 +39,13 @@ function SetBizDetails() {
     if (longitude > 180 || longitude < -180) errors.push("Invalid longitude, please be between 180 and -180.");
     if (latitude > 90 || latitude < -90) errors.push("Invalid Latitude, please be between 90 and -90.");
     if (description.length < 10 || description.length > 2000) errors.push('Description must be between 10 and 2000 characters.')
-    if (onlyLetters(city)) errors.push("City can only include letters.")
+    if (!onlyLetters(city)) errors.push("City can only include letters.")
     if (website.length > 500) errors.push("Website URL length too long.")
     if (!(/.(com|net|gov|org|io|tv)$/.test(website.split('/')[2]))){
       errors.push("Please submit a website url")
     }
     setValidationErrors(errors)
+    console.log(errors)
 
   }, [name, email, phone, website, address, city, state, zipcode, country, latitude, longitude, description, priceRange])
 
