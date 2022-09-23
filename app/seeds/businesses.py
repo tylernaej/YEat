@@ -1,3 +1,4 @@
+from webbrowser import BackgroundBrowser
 from app.models import db, Business, Amenity, Category
 # from .amenities import free_wifi, take_out, dine_in, delivery, reservations, vegetarian_friendly, accepts_credit_cards, accepts_apple_pay, accepts_android_pay, public_restrooms, kid_friendly, outdoor_seating, large_group_friendly, offers_catering, wheelchair_accessible
 
@@ -602,7 +603,7 @@ def seed_businesses():
     business_17.amenities.append(Vegetarian_friendly)
     business_17.amenities.append(Reservations)
     business_17.amenities.append(Live_music)
-    business_17.amenities.append(Vegan)
+    business_17.amenities.append(dine_in)
     business_17.amenities.append(Kid_friendly)
     business_17.amenities.append(free_wifi)
     business_17.amenities.append(Large_group_friendly)
@@ -635,6 +636,7 @@ def seed_businesses():
     business_18.amenities.append(Accepts_Apple_Pay)
     business_18.amenities.append(Garage_Parking)
     business_18.amenities.append(Kid_friendly)
+    business_18.amenities.append(dine_in)
 
     business_18.categories.append(Dessert)
     business_18.categories.append(Korean)
@@ -666,6 +668,9 @@ def seed_businesses():
     business_19.amenities.append(Accepts_Credit_Cards)
     business_19.amenities.append(Large_group_friendly)
     business_19.amenities.append(Delivery)
+
+    business_19.categories.append(Italian)
+    business_19.categories.append(Dinner)
 
 
 
@@ -793,7 +798,7 @@ def seed_businesses():
 
     business_24 = Business(
         owner_id = 24,
-        name = 'Louder',
+        name = 'Louders',
         email = 'business24@seeder.com',
         phone = '(213)263-9492',
         website = 'https://www.facebook.com/LoudersLA/',
@@ -845,7 +850,7 @@ def seed_businesses():
     business_25.amenities.append(Delivery)
     business_25.amenities.append(free_wifi)
     business_25.amenities.append(Outdoor_seating)
-    business_25.amenities.append(Accepts_Credit_Cards)
+    business_25.amenities.append(Accepts_Apple_Pay)
 
     business_25.categories.append(American)
     business_25.categories.append(Breakfast_Brunch)
@@ -869,7 +874,7 @@ def seed_businesses():
 
     business_26.amenities.append(Accepts_Credit_Cards)
     business_26.amenities.append(Reservations)
-    business_26.amenities.append(Accepts_Credit_Cards)
+    business_26.amenities.append(Accepts_Apple_Pay)
     business_26.amenities.append(Large_group_friendly)
     business_26.amenities.append(Kid_friendly)
     business_26.amenities.append(Vegetarian_friendly)
@@ -883,7 +888,7 @@ def seed_businesses():
 
     business_27 = Business(
         owner_id = 27,
-        name = 'Mother Wold',
+        name = 'Mother Wolf',
         email = 'business27@seeder.com',
         phone = '(323)410-6060',
         website = 'https://www.motherwolfla.com',
