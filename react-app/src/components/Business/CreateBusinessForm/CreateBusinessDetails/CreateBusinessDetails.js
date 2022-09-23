@@ -119,7 +119,7 @@ function SetBizDetails() {
           />
         </div>
         <div>
-          <label htmlFor="phone">Phone: (Format: (123)456-7890)</label>
+          <label htmlFor="phone">Phone</label>
           <input
             required
             type="tel"
