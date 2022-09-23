@@ -9,11 +9,10 @@ function SearchBar() {
   const dispatch = useDispatch()
   const history = useHistory()
   const location = useLocation()
-  // console.log(location)
   const [dropDown, setDropDown] = useState(false)
   const [userInput, setUserInput] = useState("")
   const businesses = useSelector(state => state.businesses)
-  const [bizMatches, setBizMatches] = useState([])
+  const [bizMatches, setBizMatches] = useState({})
 
   const toggleDropDown = (e) => {
       setDropDown(true)
@@ -21,8 +20,8 @@ function SearchBar() {
 
   useEffect(() => {
     const closeMenu = (e) => {
-        // console.log(e.target.id)
         if(dropDown && e.target.id !== 'search-bar'){
+            setUserInput("")
             setDropDown(false)
         }
     }
@@ -34,18 +33,30 @@ function SearchBar() {
   const inputHandler = (e) => {
     e.preventDefault()
     setUserInput(e.target.value)
-    let bizSet = new Set()
+    // console.log(`\n\n\n\nThe user input is: ${e.target.value.toLowerCase()}`)
+    let bizSet = {...bizMatches}
+    let bizSetOutgoing = {}
+    // console.log(`There were ${Object.keys(bizSet).length} previous matches!`)
     for (const business of Object.values(businesses)){
-      if (business.name.toLowerCase().includes(e.target.value.toLowerCase())){
-        bizSet.add(business)
+      let addedByName = false
+      if(business.name.toLowerCase().includes(e.target.value.toLowerCase())){
+        delete bizSet[business.id]
+        bizSetOutgoing[business.id] = business
+        addedByName = true
       }
-      for (const category of business.categories){
-        if (category.toLowerCase().includes(e.target.value.toLowerCase())){
-          bizSet.add(business)
+      if(!addedByName){
+        for (const category of business.categories){
+          // console.log(`The category being checked is ${category}`)
+          if(category.toLowerCase().includes(e.target.value.toLowerCase())){
+            // console.log(`The category that met the parameters is: ${category}`)
+            bizSetOutgoing[business.id] = business
+            delete bizSet[business.id]
+          }
         }
       }
     }
-    setBizMatches(bizSet)
+    // console.log(`There are now ${Object.keys(bizSetOutgoing).length} matches!`)
+    setBizMatches(bizSetOutgoing)
   }
 
   let handleSubmit = async e =>{
@@ -56,7 +67,6 @@ function SearchBar() {
     const query = new URLSearchParams(params)
     history.push(`/businesses/search?${query.toString()}`)
   }
-  // console.log(location.pathname.split('/')[2])
 
   if (location.pathname.split('/')[2] === 'reviews'){
       handleSubmit = async e => {
@@ -69,7 +79,11 @@ function SearchBar() {
       }
   }
 
-
+  let bizMatchesArray = Object.values(bizMatches)
+  let results = Array.from(bizMatchesArray).slice(0,5)
+  if(Array.from(bizMatchesArray).length > 5) results.push({endcard: 'See all Results'})
+  if(!results.length && userInput.length) results.push({endcard: 'No Results'})
+ 
   return (
     <div id="search-bar-container-container"> 
         <div id={location.pathname.split('/')[2] === 'reviews' ? 'review-search-bar-container' : 'search-bar-container'} onClick={toggleDropDown}>
@@ -102,9 +116,9 @@ function SearchBar() {
             </div>
             {dropDown && (
               <div id={location.pathname.split('/')[2] === 'reviews' ? 'review-drop-down' : 'drop-down'}>
-                {Array.from(bizMatches).map(business => (
+                {results.map(business => (
                   <div >
-                    <DropDownBizInfo business={business}/>
+                    <DropDownBizInfo business={business} setUserInput={setUserInput} userInput={userInput} />
                   </div>
                 ))}
               </div>
