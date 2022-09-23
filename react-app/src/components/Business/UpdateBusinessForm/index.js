@@ -25,9 +25,9 @@ function UpdateBizForm({ business, setIsLoaded, bizCategories, bizAmenities, set
     <div>
 
       <div className="flex-row-justify-between flex-row-align-center">
-        <NavLink to={`${url}/info`}>Edit info</NavLink>
-        <NavLink to={`${url}/categories`}>Edit Categories</NavLink>
-        <NavLink to={`${url}/amenities`}>Edit Amenities</NavLink>
+        <NavLink className='NavLink' style={{color:"rgb(23,130,148)"}} to={`${url}/info`}>Edit info</NavLink>
+        <NavLink className='NavLink' style={{color:"rgb(23,130,148)"}} to={`${url}/categories`}>Edit Categories</NavLink>
+        <NavLink className='NavLink' style={{color:"rgb(23,130,148)"}} to={`${url}/amenities`}>Edit Amenities</NavLink>
       </div>
       <div>
         <Switch>
