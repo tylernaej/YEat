@@ -102,10 +102,10 @@ function DropDownBizInfo({business, setUserInput, userInput}){
                                     </div>
                                 )} */}
                                 <div id='search-result-name'>
-                                    {business.name}
+                                    {business.name} {visible? `- ${business.phone}` : null}
                                 </div>
                                 {visible && (
-                                    <div>{specialties}</div>
+                                    <div id='search-result-specialties'>{specialties}</div>
                                 )}
                                 <div id='search-result-address'>
                                     {business.address}

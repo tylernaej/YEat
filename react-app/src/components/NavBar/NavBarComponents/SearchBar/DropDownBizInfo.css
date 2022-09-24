@@ -55,11 +55,16 @@
 
 #search-result-name{
     color: rgb(30, 30, 30);
-    text-decoration: none;
+    font-size: medium;
+}
+
+#search-result-specialties{
+    font-size:small;
 }
 
 #search-result-address{
     color: rgb(30, 30, 30);
+    font-size: small;
     text-decoration: none;
 }
 
