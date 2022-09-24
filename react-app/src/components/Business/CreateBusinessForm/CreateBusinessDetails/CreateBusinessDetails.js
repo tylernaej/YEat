@@ -5,6 +5,7 @@ import { phoneNumberFormatter } from "./PhoneNumberFormat";
 import { createBizThunk } from "../../../../store/business";
 import './CreateBusiness.css'
 import PopulateValidBizDetails from "../AutopopulateButtons/PopulateValidBizDetails";
+import PopulateInvalidBizDetails from "../AutopopulateButtons/PopulateInvalidBizDetails";
 
 function SetBizDetails() {
   const dispatch = useDispatch()
@@ -259,6 +260,10 @@ function SetBizDetails() {
         <div id="create-business-button">
           <button id="submit-button" type="submit">Submit</button>
           <PopulateValidBizDetails 
+            populatedValidDetails={populatedValidDetails}
+            setPopulatedValidDetails={setPopulatedValidDetails}
+          />
+          <PopulateInvalidBizDetails 
             populatedValidDetails={populatedValidDetails}
             setPopulatedValidDetails={setPopulatedValidDetails}
           />

@@ -52,31 +52,34 @@ function DropDownBizInfo({business, setUserInput, userInput}){
         return  (
         <div >
             <NavLink to={`/businesses/${business.id}/create-review`} id='result-navlink'>
-                <div 
-                    className="flex-row" 
-                    id='individual-result'
-                    onMouseEnter={() => setVisible(true)}
-                    onMouseLeave={() => setVisible(false)}
-                >
-                    <div id='result-image'>
-                    {visible && (
-                        <div>
-                            <img
-                                className="actual-image"
-                                id='default-image'
-                                src={`${bizDefaultImg}`} />
+            <div id='result-parent'>
+                        <div 
+                            className="flex-row" 
+                            id='individual-result'
+                            onMouseEnter={() => setVisible(true)}
+                            onMouseLeave={() => setVisible(false)}
+                        >
+                            <div id='result-details'>
+                                {/* {visible && (
+                                    <div>
+                                        <img
+                                            className="actual-image"
+                                            id='default-image'
+                                            src={`${bizDefaultImg}`} />
+                                    </div>
+                                )} */}
+                                <div id='search-result-name'>
+                                    {business.name} {visible? `- ${business.phone}` : null}
+                                </div>
+                                {visible && (
+                                    <div id='search-result-specialties'>{specialties}</div>
+                                )}
+                                <div id='search-result-address'>
+                                    {business.address}
+                                </div>
+                            </div>
                         </div>
-                    )}
                     </div>
-                    <div id='result-details'>
-                        <div id='search-result-name'>
-                            {business.name}
-                        </div>
-                        <div id='search-result-address'>
-                            {business.address}
-                        </div>
-                    </div>
-                </div>
             </NavLink>
         </div>
     )

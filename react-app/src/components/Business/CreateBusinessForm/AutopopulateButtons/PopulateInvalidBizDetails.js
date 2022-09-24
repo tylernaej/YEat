@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBizThunk } from "../../../../store/business";
 import './component.css'
 
-function PopulateValidBizDetails({populatedValidDetails, setPopulatedValidDetails}){
+function PopulateInvalidBizDetails({populatedValidDetails, setPopulatedValidDetails}){
     const dispatch = useDispatch()
     const [businesses, setBusinesses] = useState()
     const [isLoaded, setIsLoaded] = useState(false)
@@ -20,7 +20,7 @@ function PopulateValidBizDetails({populatedValidDetails, setPopulatedValidDetail
         e.preventDefault()
         let found = false
         for (const business of businesses.businesses){
-            if(business.name === 'My Test Business'){
+            if(business.name === 'Failed Business'){
                 alert('You\'ve already created that business!')
                 found = true
                 history.push(`/businesses/${business.id}/edit/info`)
@@ -30,19 +30,19 @@ function PopulateValidBizDetails({populatedValidDetails, setPopulatedValidDetail
             const testBusiness = {
                 pressed: true,
                 businessDetails: {
-                    name: 'My Test Business',
-                    email: 'demoUserBusiness@aa.io',
+                    name: 'Failed Business',
+                    email: 'demoUserBusiness',
                     phone: '(555) 555-5555',
-                    website: "https://www.yelp.com/",
+                    website: "https://www.yelp",
                     address: "123 Business Road",
-                    city: "LA",
+                    city: "123 LA",
                     state: 'California',
-                    zipcode: '90012',
+                    zipcode: '900125',
                     country: 'USA',
-                    latitude: 34,
-                    longitude: -118,
-                    description: "This was the business that was created by you when you used the 'Populate Valid Information' button!",
-                    priceRange: 2
+                    latitude: 190,
+                    longitude: -190,
+                    description: "2 short",
+                    priceRange: 6
                 }
             }
             setPopulatedValidDetails(testBusiness)
@@ -50,8 +50,8 @@ function PopulateValidBizDetails({populatedValidDetails, setPopulatedValidDetail
     }
 
     return(
-        <div onClick={handleClick} id='populate-information'>Populate Valid Information</div>
+        <div onClick={handleClick} id='populate-information'>Populate Invalid Information</div>
     ) 
 }
 
-export default PopulateValidBizDetails
+export default PopulateInvalidBizDetails
