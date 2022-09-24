@@ -22,6 +22,7 @@ function DropDownBizInfo({business, setUserInput, userInput}){
     const dispatch = useDispatch()
     const location = useLocation()
     const [endcard, setEndCard] =useState(false)
+    const [visible, setVisible] = useState(false)
     const history = useHistory()
     const bizDefaultImg = defaultImages[business.id % defaultImages.length]
 
@@ -39,17 +40,33 @@ function DropDownBizInfo({business, setUserInput, userInput}){
         setEndCard(true)
     }
 
+    let emptyString = ''
+    if(business.categories){
+        business.categories.forEach(category => {
+            emptyString += `${category}, `
+        })
+    }
+    const specialties = emptyString.slice(0, emptyString.length - 2)
+
     if(location.pathname.split('/')[2] === 'reviews'){
         return  (
         <div >
             <NavLink to={`/businesses/${business.id}/create-review`} id='result-navlink'>
-                <div className="flex-row" id='individual-result'>
+                <div 
+                    className="flex-row" 
+                    id='individual-result'
+                    onMouseEnter={() => setVisible(true)}
+                    onMouseLeave={() => setVisible(false)}
+                >
                     <div id='result-image'>
-                    <img
-                            className="actual-image"
-                            id='default-image'
-                            src={`${bizDefaultImg}`} />
-
+                    {visible && (
+                        <div>
+                            <img
+                                className="actual-image"
+                                id='default-image'
+                                src={`${bizDefaultImg}`} />
+                        </div>
+                    )}
                     </div>
                     <div id='result-details'>
                         <div id='search-result-name'>
@@ -68,19 +85,31 @@ function DropDownBizInfo({business, setUserInput, userInput}){
         <div >
             {!endcard && (
                 <NavLink to={`/businesses/${business.id}/about`} id='result-navlink'>
-                    <div className="flex-row" id='individual-result'>
-                        <div id='result-image'>
-                            <img
-                                className="actual-image"
-                                id='default-image'
-                                src={`${bizDefaultImg}`} />
-                        </div>
-                        <div id='result-details'>
-                            <div id='search-result-name'>
-                                {business.name}
-                            </div>
-                            <div id='search-result-address'>
-                                {business.address}
+                    <div id='result-parent'>
+                        <div 
+                            className="flex-row" 
+                            id='individual-result'
+                            onMouseEnter={() => setVisible(true)}
+                            onMouseLeave={() => setVisible(false)}
+                        >
+                            <div id='result-details'>
+                                {/* {visible && (
+                                    <div>
+                                        <img
+                                            className="actual-image"
+                                            id='default-image'
+                                            src={`${bizDefaultImg}`} />
+                                    </div>
+                                )} */}
+                                <div id='search-result-name'>
+                                    {business.name}
+                                </div>
+                                {visible && (
+                                    <div>{specialties}</div>
+                                )}
+                                <div id='search-result-address'>
+                                    {business.address}
+                                </div>
                             </div>
                         </div>
                     </div>
