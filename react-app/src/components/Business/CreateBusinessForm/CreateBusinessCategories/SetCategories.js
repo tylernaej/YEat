@@ -39,7 +39,7 @@ function SetBizCategories({business}){
 
     return isLoaded &&  (
         <div id="full-page-categories">
-            <h3>What categories do you offer?</h3>
+            <h3>What does your business offer?</h3>
             <div>
                 <form onSubmit={handleSubmit}>
                     <div id="categories-form">

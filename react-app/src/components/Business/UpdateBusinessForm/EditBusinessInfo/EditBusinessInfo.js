@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { phoneNumberFormatter } from "../../CreateBusinessForm/CreateBusinessDetails/PhoneNumberFormat";
 import { updateBizThunk, deleteBizThunk } from "../../../../store/business";
 import { Modal } from '../../../../context/Modal'
-import DeleteBiz from "./DeleteBusinessModal";
 import DeleteBizButton from "./DeleteBusinessButton";
 
 function EditBizInfo({ business, setIsLoaded }) {
@@ -256,7 +255,6 @@ function EditBizInfo({ business, setIsLoaded }) {
           </div>
           <div id="edit-business-buttons">
             <>
-              {/* <button onClick={handleDelete}>Delete</button> */}
               <button onClick={handleClick}>Delete</button>
               {showModal && (
                 <Modal onClose={() => setShowModal(false)}>

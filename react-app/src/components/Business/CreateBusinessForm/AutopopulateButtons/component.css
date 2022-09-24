@@ -1,0 +1,19 @@
+#populate-valid-information{
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: rgba(224, 7, 7, 1);
+    transition: .5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white
+}
+
+#populate-valid-information:hover{
+    cursor: pointer;
+    background-color: rgb(255, 14, 14);
+}
+

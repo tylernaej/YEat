@@ -11,7 +11,6 @@ const DELETE_BIZ = "biz/delete-biz"
 // Action Creators
 
 const getBizAction = payload => {
-    console.log(payload)
     return {
         type: GET_BIZ,
         payload

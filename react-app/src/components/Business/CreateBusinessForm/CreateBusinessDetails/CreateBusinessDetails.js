@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useHistory, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { phoneNumberFormatter } from "./PhoneNumberFormat";
 import { createBizThunk } from "../../../../store/business";
 import './CreateBusiness.css'
+import PopulateValidBizDetails from "../AutopopulateButtons/PopulateValidBizDetails";
 
 function SetBizDetails() {
   const dispatch = useDispatch()
   const history = useHistory()
 
   const sessionUser = useSelector(state => state.session.user)
+
+  const [populatedValidDetails, setPopulatedValidDetails] = useState({pressed:false,businessDetails:{}})
+  const isMounted = useRef() 
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -53,8 +57,26 @@ function SetBizDetails() {
 
   }, [name, email, phone, website, address, city, state, zipcode, country, latitude, longitude, description, priceRange])
 
-  if (!sessionUser) return <Redirect to="/login" />
-
+  useEffect(() => {
+    if(isMounted.current){
+      setName(populatedValidDetails.businessDetails.name)
+      setEmail(populatedValidDetails.businessDetails.email)
+      setPhone(populatedValidDetails.businessDetails.phone)
+      setWebsite(populatedValidDetails.businessDetails.website)
+      setAddress(populatedValidDetails.businessDetails.address)
+      setCity(populatedValidDetails.businessDetails.city)
+      setState(populatedValidDetails.businessDetails.state)
+      setZipcode(populatedValidDetails.businessDetails.zipcode)
+      setCountry(populatedValidDetails.businessDetails.country)
+      setLatitude(populatedValidDetails.businessDetails.latitude)
+      setLongitude(populatedValidDetails.businessDetails.longitude)
+      setDescription(populatedValidDetails.businessDetails.description)
+      setPriceRange(populatedValidDetails.businessDetails.priceRange)
+    }
+    else {
+      isMounted.current = true
+    }
+  }, [populatedValidDetails])
 
   const handleSubmit = async e => {
     e.preventDefault()
@@ -89,10 +111,12 @@ function SetBizDetails() {
 
     history.push(`/create-business/${data.id}/amenities`)
   }
+  
+  if (!sessionUser) return <Redirect to="/login" />
 
   return (
     <div>
-      <h2>Create your business</h2>
+      <h2>First, let's get a little information about your business...</h2>
       <div style={{color:"red", marginBottom:"10px"}}>
       {isSubmitted &&
         validationErrors.map((error) => <div key={error}>{error}</div>)}
@@ -234,6 +258,10 @@ function SetBizDetails() {
         </div>
         <div id="create-business-button">
           <button id="submit-button" type="submit">Submit</button>
+          <PopulateValidBizDetails 
+            populatedValidDetails={populatedValidDetails}
+            setPopulatedValidDetails={setPopulatedValidDetails}
+          />
         </div>
       </form>
     </div>
