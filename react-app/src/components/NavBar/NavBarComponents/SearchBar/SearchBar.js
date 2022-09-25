@@ -59,6 +59,7 @@ function SearchBar() {
     let params = {'name': userInput, 'category': userInput}
     await dispatch(getBizThunk(params))
     setUserInput("")
+    setDropDown(false)
     const query = new URLSearchParams(params)
     history.push(`/businesses/search?${query.toString()}`)
   }

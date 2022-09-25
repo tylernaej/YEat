@@ -33,7 +33,6 @@ function BizCard({ business }) {
 
     const bizDefaultImg = defaultImages[business.id % defaultImages.length]
     const price = dollarsigns(business.priceRange);
-    // console.log(business.reviews)
 
     if (location.pathname.split('/')[1] === 'writeareview'){
         return (

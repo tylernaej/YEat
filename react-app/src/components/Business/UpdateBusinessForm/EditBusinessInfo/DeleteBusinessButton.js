@@ -1,15 +1,13 @@
 
 // import { Modal } from "../../context/Modal";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { deleteBizThunk } from "../../../../store/business";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import './DeleteBusinessButton.css'
 
 function DeleteBizButton({business, setIsLoaded, setValidationErrors, setShowModal}) {
-
-
-//   const [showModal, setShowModal] = useState(false);
+  const isMounted = useRef(false)
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -17,12 +15,12 @@ function DeleteBizButton({business, setIsLoaded, setValidationErrors, setShowMod
        e.preventDefault();
        setIsLoaded(false);
        const data = await dispatch(deleteBizThunk(business.id));
-
-       if (data.statusCode) {
+      //  console.log(data.statusCode)
+       if (data.statusCode > 200) {
          setValidationErrors([data.message]);
          return
        }
-       history.push(`/businesses`);
+       history.push('/businesses');
      };
 
   const handleClick = e => {
@@ -30,6 +28,14 @@ function DeleteBizButton({business, setIsLoaded, setValidationErrors, setShowMod
     setShowModal(false);
   }
 
+  // useEffect(() => {
+  //   if(isMounted.current){
+  //     history.push('/businesses');
+  //   }
+  //   else {
+  //     isMounted.current = true
+  //   }
+  // }, [setShowModal])
 
   return (
     <div className="whole-modal">
