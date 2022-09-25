@@ -5,13 +5,13 @@
 }
 
 #result-image{
-    height: 80px;
-    width: 80px;    
+    height: 60px;
+    width: 60px;    
 }
 
 #default-image{
-    height: 80px;
-    width: 80px;
+    height: 60px;
+    width: 60px;
     object-fit: cover;
 }
 
@@ -37,6 +37,9 @@
     /* border-top: solid 1px rgb(240, 240, 240); */
     border-bottom: solid 1px rgb(240, 240, 240);
     border-radius: 5px;
+    transition: 100ms;
+    transition-property: transform;
+    transition-timing-function: ease-in-out;
 }
 
 #individual-result > *{
@@ -46,15 +49,22 @@
 
 #individual-result:hover{
     background-color: rgb(240, 240, 240);
+    border: 1px solid  black;
+    transform: scale(1.01);
 }
 
 #search-result-name{
     color: rgb(30, 30, 30);
-    text-decoration: none;
+    font-size: medium;
+}
+
+#search-result-specialties{
+    font-size:small;
 }
 
 #search-result-address{
     color: rgb(30, 30, 30);
+    font-size: small;
     text-decoration: none;
 }
 
@@ -66,7 +76,7 @@
 #see-all-results{
     display: flex;
     justify-content: center;
-    font-weight: 600;
+    font-weight: 500;
     border-radius: 5px;
     padding: 5px;
     margin: 5px;

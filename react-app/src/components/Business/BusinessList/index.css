@@ -8,3 +8,18 @@
     font-weight: 700;
     font-size: large;
 }
+
+#loader{
+   width: 100vw;
+   height: 70vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center; 
+}
+
+#loader-greeting{
+    margin-bottom: 30px;
+    font-size: larger;
+    color: rgba(224,7,7,1);
+}

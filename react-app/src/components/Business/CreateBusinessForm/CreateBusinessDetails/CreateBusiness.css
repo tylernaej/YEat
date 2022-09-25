@@ -19,3 +19,7 @@
     cursor: pointer;
     background-color: rgb(255, 14, 14);
 }
+
+#characters-remaining{
+    margin-left: 5px;
+}

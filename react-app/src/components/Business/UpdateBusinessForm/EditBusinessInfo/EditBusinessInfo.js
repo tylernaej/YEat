@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { phoneNumberFormatter } from "../../CreateBusinessForm/CreateBusinessDetails/PhoneNumberFormat";
 import { updateBizThunk, deleteBizThunk } from "../../../../store/business";
 import { Modal } from '../../../../context/Modal'
-import DeleteBiz from "./DeleteBusinessModal";
 import DeleteBizButton from "./DeleteBusinessButton";
 
 function EditBizInfo({ business, setIsLoaded }) {
@@ -33,7 +32,7 @@ function EditBizInfo({ business, setIsLoaded }) {
     const [showModal, setShowModal] = useState(false)
 
     function onlyLetters(str) {
-      return /^[a-zA-Z]+$/.test(String(str));
+      return /^[a-zA-Z\s]*$/.test(String(str));
     }
     
     useEffect(() => {
@@ -243,7 +242,12 @@ function EditBizInfo({ business, setIsLoaded }) {
             />
           </div>
           <div>
-            <label htmlFor="description">Description</label>
+            <div className="flex-row">
+              <label htmlFor="description">Description</label>
+              {description && (
+                <div id='characters-remaining'> - {2000 - description.length} characters remaining</div>
+              )}
+            </div>
             <textarea
               rows='13'
               cols='76'
@@ -256,7 +260,6 @@ function EditBizInfo({ business, setIsLoaded }) {
           </div>
           <div id="edit-business-buttons">
             <>
-              {/* <button onClick={handleDelete}>Delete</button> */}
               <button onClick={handleClick}>Delete</button>
               {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
