@@ -32,7 +32,7 @@ function EditBizInfo({ business, setIsLoaded }) {
     const [showModal, setShowModal] = useState(false)
 
     function onlyLetters(str) {
-      return /^[a-zA-Z]+$/.test(String(str));
+      return /^[a-zA-Z\s]*$/.test(String(str));
     }
     
     useEffect(() => {
