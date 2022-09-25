@@ -2,7 +2,7 @@ from app.models import db, User
 
 def seed_usersv2():
     demo = User(
-        first_name='Demo', last_name='User', username='Demo', email='demo@aa.io', password='password', profile_picture='https://cdn.allthings.how/wp-content/uploads/2020/11/allthings.how-how-to-change-your-picture-on-zoom-profile-picture.png')
+        first_name='Demo', last_name='User', username='Demo', email='demo@aa.io', password='password', profile_picture='https://thepowerofthedream.org/wp-content/uploads/2015/09/generic-profile-picture.jpg')
 
     connor = User(
         first_name='Connor', last_name='Lam', username='cLam', email='connor@aa.io', password='password', profile_picture='https://preview.redd.it/v0caqchbtn741.jpg?auto=webp&s=c5d05662a039c031f50032e22a7c77dfcf1bfddc')
