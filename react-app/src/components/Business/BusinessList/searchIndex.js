@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, useReducer } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { useLocation } from "react-router-dom";
 import { getBizThunk } from "../../../store/business";
+import {PropagateLoader} from "react-spinners"
 import BizCard from "./businessCard";
 import BizList from ".";
 
@@ -19,17 +20,17 @@ function BizSearchList() {
     const query = useQuery()
     const bizMatches = useRef([])
     const[isLoaded, setIsLoaded] = useState(false)
+    const [spinLoaded, setSpinLoaded] = useState(false)
 
     let name = query.get('name')
     let category = query.get('name')
 
-    console.log(`The name is: ${name} and the category is: ${category}`)
-
     let businessSet = new Set()
+    let categorySet = new Set()
+
     if(name){
         for (const business of businessList){
             if(business.name.toLowerCase().includes(name.toLowerCase())){
-                console.log(`${business.name} was a name match!`)
                 businessSet.add(business)
             }
         }
@@ -41,18 +42,72 @@ function BizSearchList() {
             
             for(const bizcategory of business.categories){
                 if (bizcategory.toLowerCase().includes(category.toLowerCase())) {
-                    console.log(`${bizcategory} was a category match!`)
+                    categorySet.add(bizcategory)
                     businessSet.add(business);
                     continue
                 }
             }
         }
     }
+
     bizMatches.current = Array.from(businessSet)
+    const categoriesArray = Array.from(categorySet)
+
     useEffect(() => {
         dispatch(getBizThunk())
         .then(() => setIsLoaded(true))
     }, [dispatch])
+
+    useEffect(() => {
+        setTimeout(() => {
+            setSpinLoaded(true)
+          }, "1000")
+    }, [])
+
+    const greetings = [
+        "Hungry?",
+        "Tacos aren't limited to Tuesdays...",
+        "What's your eating Mood today?",
+        "Think Food, Think us",
+        "Y-Eat? Y Not?",
+        "For those who live to eat",
+        "It could be cheat day?",
+        "Say yes to yumm",
+        "Keep calm!! its food time!",
+        "We value your taste",
+        "Did someone say pizza?",
+    ]
+
+    let greeting = ""
+    if(categoriesArray.length){
+        switch (String(categoriesArray.length)) {
+            case '1':
+                greeting = `${categoriesArray[0]} coming right up!`
+                break
+            case '0':
+                greeting = `${greetings[Math.floor(Math.random() * greetings.length)]}`
+                break
+            default:
+                greeting = `${categoriesArray[0]} & more coming right up!`
+        }
+    }
+
+    if(!spinLoaded){
+        return(
+            <div id='loader'>
+                <div id='loader-greeting'>
+                    {greeting}
+                </div>
+                <div>
+                    <PropagateLoader 
+                        color="#ED161F" 
+                        size={20}
+                        speedMultiplier={1.5}
+                    />
+                </div>
+            </div>
+        )
+    }
 
     if(!bizMatches.current.length){
         return(
