@@ -50,7 +50,7 @@
 #individual-result:hover{
     background-color: rgb(240, 240, 240);
     border: 1px solid  black;
-    transform: scale(1.05);
+    transform: scale(1.01);
 }
 
 #search-result-name{
