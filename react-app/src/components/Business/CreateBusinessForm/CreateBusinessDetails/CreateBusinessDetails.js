@@ -112,7 +112,7 @@ function SetBizDetails() {
 
     history.push(`/create-business/${data.id}/amenities`)
   }
-  
+
   if (!sessionUser) return <Redirect to="/login" />
 
   return (
@@ -246,7 +246,12 @@ function SetBizDetails() {
           />
         </div>
         <div>
-          <label htmlFor="description">Description</label>
+          <div className="flex-row">
+            <label htmlFor="description">Description</label>
+            {description && (
+              <div id='characters-remaining'> - {2000 - description.length} characters remaining</div>
+            )}
+          </div>
           <textarea
             required
             rows='13'
