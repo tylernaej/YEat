@@ -30,14 +30,33 @@ function BizList() {
           }, "800")
     }, [])
 
+    const greetings = [
+        "Hungry?",
+        "Tacos aren't limited to Tuesdays...",
+        "What's your eating Mood today?",
+        "Think Food, Think us",
+        "Y-Eat? Y Not?",
+        "For those who live to eat",
+        "It could be cheat day?",
+        "Say yes to yumm",
+        "Keep calm!! its food time!",
+        "We value your taste",
+        "Did someone say pizza?",
+    ]
+
     if(!spinLoaded){
         return(
             <div id='loader'>
-                <PropagateLoader 
-                    color="#ED161F" 
-                    size={20}
-                    speedMultiplier={1.7}
-                />
+                <div id='loader-greeting'>
+                    <div>{`${greetings[Math.floor(Math.random() * greetings.length)]}`}</div>
+                </div>
+                <div>
+                    <PropagateLoader 
+                        color="#ED161F" 
+                        size={20}
+                        speedMultiplier={1.7}
+                    />
+                </div>
             </div>
         )
     }
