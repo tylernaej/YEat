@@ -44,7 +44,7 @@ function SetBizAmenities(){
 
     return isLoaded &&  (
         <div id="full-page-amenities">
-            <h3>What amenities do you offer?</h3>
+            <h3>What amenities do you offer? (Step 2 of 3)</h3>
             <div>
                 <form onSubmit={handleSubmit}>
                     <div id='amenities-form'>
@@ -61,7 +61,7 @@ function SetBizAmenities(){
                         </div>
                         <div id="set-amenities-button" className="flex-row-justify-between">
                             <button onClick={handleBack} >Go Back</button>
-                            <button type='submit'>Submit</button>
+                            <button type='submit'>Continue</button>
                         </div>
                     </div>
                 </form>

@@ -117,7 +117,7 @@ function SetBizDetails() {
 
   return (
     <div>
-      <h2>First, let's get a little information about your business...</h2>
+      <h2>First, let's get a little information about your business... (Step 1 of 3)</h2>
       <div style={{color:"red", marginBottom:"10px"}}>
       {isSubmitted &&
         validationErrors.map((error) => <div key={error}>{error}</div>)}
@@ -263,7 +263,7 @@ function SetBizDetails() {
           />
         </div>
         <div id="create-business-button">
-          <button id="submit-button" type="submit">Submit</button>
+          <button id="submit-button" type="submit">Continue</button>
           <PopulateValidBizDetails 
             populatedValidDetails={populatedValidDetails}
             setPopulatedValidDetails={setPopulatedValidDetails}
