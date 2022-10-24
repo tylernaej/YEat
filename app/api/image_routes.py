@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from app.models import db, Image
 from flask_login import current_user, login_required
-from app.s3_helpers import (
+from app.AWS_Upload import (
     upload_file_to_s3, allowed_file, get_unique_filename)
 
 image_routes = Blueprint("images", __name__)
@@ -17,7 +17,7 @@ def upload_image():
 
     if not allowed_file(image.filename):
         return {"errors": "file type not permitted"}, 400
-    
+
     image.filename = get_unique_filename(image.filename)
 
     upload = upload_file_to_s3(image)
