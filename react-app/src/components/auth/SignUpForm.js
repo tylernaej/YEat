@@ -24,7 +24,7 @@ const SignUpForm = () => {
     if(password !== repeatPassword) validationErrors.push('Passwords are not the same')
     // console.log(profilePicture && !/.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(profilePicture.split("?")[0]) && profilePicture.length !== 0)
     
-    if (!/.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(profilePicture.split("?")[0]) && profilePicture.length !== 0) {
+    if (!/.(jpg|jpeg|png|webp|avif|svg)$/.test(profilePicture.split("?")[0]) && profilePicture.length !== 0) {
       validationErrors.push("Please submit a valid preview image");
     }
 
