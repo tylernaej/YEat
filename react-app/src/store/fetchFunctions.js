@@ -9,7 +9,7 @@ export const getCategories = async () => {
     const response = await fetch('/api/categories/')
     const data = await response.json()
 
-    
+
 
     return data
 }
@@ -39,4 +39,21 @@ export const getReview = async (id) => {
     const data = await response.json()
 
     return data
+}
+
+
+export const awsUpload = async payload => {
+    const res = await fetch('/api/images', {
+        method: "POST",
+        body: payload,
+    });
+    const data = await res.json();
+
+    if (res.ok) {
+        return data
+    }
+    else {
+        console.log(data)
+        return {'message': 'Failed to upload image'}
+    }
 }

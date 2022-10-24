@@ -61,26 +61,6 @@ def sign_up():
     """
     Creates a new user and logs them in
     """
-    profile_picture = request.files["profilePicture"]
-
-    url = None
-
-    if profile_picture:
-        if not allowed_file(profile_picture.filename):
-            return {"errors": "file type not permitted"}, 400
-
-        profile_picture.filename = get_unique_filename(profile_picture.filename)
-
-        upload = upload_file_to_s3(profile_picture)
-
-        if "url" not in upload:
-            # if the dictionary doesn't have a url key
-            # it means that there was an error when we tried to upload
-            # so we send back that error message
-            return upload, 400
-
-        url = upload["url"]
-
 
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -89,8 +69,7 @@ def sign_up():
         user = User(
             first_name=form.data['firstName'],
             last_name=form.data['lastName'],
-            # profile_picture=form.data['profilePicture'],
-            profile_picture = url,
+            profile_picture=form.data['profilePicture'],
             username=form.data['username'],
             email=form.data['email'],
             password=form.data['password']
