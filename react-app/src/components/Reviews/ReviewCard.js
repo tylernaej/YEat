@@ -7,8 +7,12 @@ import { useSelector } from "react-redux";
 function ReviewCard({ review }) {
     // console.log(bizUrl)
     // const {url} = useRouteMatch()
+    // console.log(review)
 
     const sessionUser = useSelector(state => state.session.user)
+    const images = useSelector(state => state.reviews)
+    // console.log(images)
+    console.log(review)
 
     return (
         <div className="border-top-black-2px verticalMargin15 padding10">
@@ -37,6 +41,13 @@ function ReviewCard({ review }) {
                 <p>
                     {review.review}
                 </p>
+            </div>
+            <div className="images-map-outer">
+                {review.images?.map((image, i) => (
+                    <div className="images-map"key={i}>
+                        <img className="review-image"src={image.url || image} alt=''/>
+                    </div>
+                ))}
             </div>
         </div>
     )

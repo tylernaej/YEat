@@ -76,15 +76,35 @@ def delete_review(reviewId):
 
     # return success message
 
-@review_routes.route('/<int:reviewId>/images', methods=["POST"])
+
+@review_routes.route('/<int:id>/images', methods=['POST'])
 @login_required
-def add_image_to_review(reviewId):
-    pass
-    # query for the review
+def add_images_to_review(id):
+    review = Review.query.get(id)
 
-    # add images
+    # print('\n\n\n\n\n\n\n\n\n\n\n', 'LOOK OVER HERE', request.form)
+    print('\n\n\n\n\n\n\n\n\n\n\n', 'LOOK OVER HERE', request.get_json())
 
-    # return the image
+    if not review:
+        return {"message": "Business could not be found", "statusCode": 404}, 404
+
+    if review.user_id != current_user.id:
+        return {"message": "Forbidden", "statusCode": 403}, 403
+
+    images = request.get_json()['images']
+    print('\n\n\n', images, '\n\n\n') 
+    for image in images:
+        newImg = Image(
+            url = image,
+            uploader_id = current_user.id,
+            review_id = id
+        )
+
+        db.session.add(newImg)
+    db.session.commit()
+
+
+    return newImg.to_dict()
 
 
 

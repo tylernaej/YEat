@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, Redirect } from 'react-router-dom';
+
 import { signUp } from '../../store/session';
+import { awsUpload} from '../../store/fetchFunctions';
+
 import './SignUpForm.css'
 
 const SignUpForm = () => {
@@ -11,8 +14,11 @@ const SignUpForm = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [profilePicture, setProfilePicture] = useState('')
+  const [profilePictureURL, setProfilePictureURL] = useState('')
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+
+  const [imageLoading, setImageLoading] = useState(false);
 
   const [isSubmitted, setIsSubmitted] = useState(false)
   const user = useSelector(state => state.session.user);
@@ -21,15 +27,16 @@ const SignUpForm = () => {
   useEffect(() => {
     const validationErrors = []
 
-    if(password !== repeatPassword) validationErrors.push('Passwords are not the same')
+    if (password !== repeatPassword) validationErrors.push('Passwords are not the same')
     // console.log(profilePicture && !/.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(profilePicture.split("?")[0]) && profilePicture.length !== 0)
-    
-    if (!/.(jpg|jpeg|png|webp|avif|gif|svg)$/.test(profilePicture.split("?")[0]) && profilePicture.length !== 0) {
-      validationErrors.push("Please submit a valid preview image");
-    }
+
+    // if (!/.(jpg|jpeg|png|webp|avif|svg)$/.test(profilePicture.split("?")[0]) && profilePicture.length !== 0) {
+    //   validationErrors.push("Please submit a valid preview image");
+    // }
 
     setErrors(validationErrors)
-  }, [password, repeatPassword, profilePicture])
+  }, [password, repeatPassword])
+
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -38,8 +45,26 @@ const SignUpForm = () => {
 
     if (errors.length > 0) return
 
+    let awsData = {'url': null}
+
+    if(profilePicture){
+      const imgData = new FormData();
+      imgData.append("image", profilePicture)
+      setImageLoading(true)
+
+      awsData = await awsUpload(imgData)
+
+      if (awsData.url) {
+        setImageLoading(false)
+      } else {
+        setImageLoading(false)
+        return
+      }
+    }
+
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(firstName, lastName, profilePicture, username, email, password));
+
+      const data = await dispatch(signUp(firstName, lastName, awsData.url, username, email, password));
       if (data) {
         setErrors(data)
       }
@@ -71,7 +96,9 @@ const SignUpForm = () => {
   }
 
   const updateProfilePicture = (e) => {
-    setProfilePicture(e.target.value);
+    // setProfilePicture(e.target.value);
+    const file = e.target.files[0];
+    setProfilePicture(file);
   }
 
   if (user) {
@@ -159,13 +186,19 @@ const SignUpForm = () => {
         </div>
         <div>
           {/* <label>Profile Picture</label> */}
-          <input
+          {/* <input
             placeholder="Profile Picture (optional)"
             type="text"
             name="profile picture"
             onChange={updateProfilePicture}
             value={profilePicture}
-          ></input>
+          ></input> */}
+          <input
+            type="file"
+            accept="image/*"
+            onChange={updateProfilePicture}
+          />
+          {(imageLoading) && <p>Loading...</p>}
         </div>
         <div className="sign-up-submit">
           <button type="submit">Sign Up</button>

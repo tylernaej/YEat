@@ -110,7 +110,7 @@ function SetBizDetails() {
       return
     }
 
-    history.push(`/create-business/${data.id}/amenities`)
+    history.push(`/create-business/${data.id}/images`)
   }
 
   if (!sessionUser) return <Redirect to="/login" />

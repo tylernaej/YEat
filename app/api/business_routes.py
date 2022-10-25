@@ -1,5 +1,6 @@
 from flask import Blueprint, request, Response, make_response, jsonify, abort
 from flask_login import login_required
+from app.forms.login_form import LoginForm
 from app.models import User, Business, Category, Amenity, Image, Review, business, db
 from flask_login import current_user, login_user, logout_user, login_required
 from app.forms.business_form import CreateBusinessForm
@@ -204,6 +205,7 @@ def get_reviews_by_business_id(id):
 
     images = Image.query.all()
     images_lst = [image.to_dict() for image in images]
+    print('\n\n\n', images_lst, '\n\n\n') 
 
     users = User.query.all()
     users_lst = [user.to_dict() for user in users]
@@ -213,9 +215,11 @@ def get_reviews_by_business_id(id):
     reviews_lst = []
     for review in reviews:
         dict_review = review.to_dict()
+        images_arr = []
         for image in images_lst:
             if image['reviewId'] == review.id:
-                dict_review['images'] = image
+                images_arr.append(image)
+        dict_review['images'] = images_arr
         for user in users_lst:
             if review.user_id == user['id']:
                 owner = {}
@@ -224,6 +228,8 @@ def get_reviews_by_business_id(id):
                 owner['profilePicture'] = user['profilePicture']
                 dict_review['reviewer'] = owner
         reviews_lst.append(dict_review)
+
+    print(reviews_lst)
 
     return {'Reviews': reviews_lst}
 
@@ -395,6 +401,31 @@ def add_categories_to_business(id):
     db.session.commit()
     return business.to_dict_no_category()
 
+@business_routes.route('/<int:id>/images', methods=['POST'])
+@login_required
+def add_images_to_business(id):
+    business = Business.query.get(id)
+
+    # print('\n\n\n\n\n\n\n\n\n\n\n', 'LOOK OVER HERE', request.form)
+    print('\n\n\n\n\n\n\n\n\n\n\n', 'LOOK OVER HERE', request.get_json())
+
+    if not business:
+        return {"message": "Business could not be found", "statusCode": 404}, 404
+
+    if business.owner_id != current_user.id:
+        return {"message": "Forbidden", "statusCode": 403}, 403
+
+    newImg = Image(
+        url = request.get_json()['url'],
+        uploader_id = current_user.id,
+        business_id = id
+    )
+
+    db.session.add(newImg)
+    db.session.commit()
+
+
+    return newImg.to_dict()
 
 
 

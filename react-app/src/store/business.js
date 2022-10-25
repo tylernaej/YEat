@@ -156,7 +156,6 @@ const businessReducer = (state = intitialState, action) => {
             return newState
         }
         case (GET_USERS_BIZ): {
-            console.log(action.payload.businesses)
             action.payload.businesses.forEach(business => {
                 newState[business.id] = { ...newState[business.id], ...business }
             })
