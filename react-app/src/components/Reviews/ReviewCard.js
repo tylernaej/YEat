@@ -42,10 +42,10 @@ function ReviewCard({ review }) {
                     {review.review}
                 </p>
             </div>
-            <div>
+            <div className="images-map-outer">
                 {review.images?.map((image, i) => (
-                    <div key={i}>
-                        <img src={image.url || image} alt=''/>
+                    <div className="images-map"key={i}>
+                        <img className="review-image"src={image.url || image} alt=''/>
                     </div>
                 ))}
             </div>
