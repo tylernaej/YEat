@@ -5,11 +5,13 @@ import session from './session';
 // reducers
 import businessReducer from './business';
 import reviewsReducer from './reviews';
+import mapsReducer from './maps';
 
 const rootReducer = combineReducers({
   session,
   businesses : businessReducer,
-  reviews : reviewsReducer
+  reviews : reviewsReducer,
+  maps: mapsReducer
 });
 
 

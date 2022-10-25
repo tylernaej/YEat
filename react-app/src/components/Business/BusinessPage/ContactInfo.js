@@ -1,9 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import MapContainer from "../../Maps";
 import './ContactInfo.css'
 
 
 function ContactInfo({ business }) {
+
+    console.log(business)
+
+    const center = {
+        lat: Number(business.latitude),
+        lng: Number(business.longitude)
+    }
 
     return (
         <div id='contact-info-container'>
@@ -25,6 +33,11 @@ function ContactInfo({ business }) {
                 </div>
                 <div>
                     <i className="fa-solid fa-phone-flip"></i>
+                </div>
+            </div>
+            <div id='google-maps-outer-container'>
+                <div id='google-maps-inner-container'>
+                    <MapContainer center={center} business={business}/>
                 </div>
             </div>
         </div>
