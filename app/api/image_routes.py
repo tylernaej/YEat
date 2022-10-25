@@ -3,7 +3,7 @@ from app.models import db, Image
 from flask_login import current_user, login_required
 from app.AWS_Upload import (
     upload_file_to_s3, allowed_file, get_unique_filename)
-    
+
 
 image_routes = Blueprint("images", __name__)
 
@@ -42,7 +42,7 @@ image_routes = Blueprint("images", __name__)
 #     return {"url": url}
 
 
-@image_routes.route("/profileImage", methods=["POST"])
+@image_routes.route("", methods=["POST"])
 # @login_required
 def upload_profile_image():
     if "image" not in request.files:
@@ -69,5 +69,3 @@ def upload_profile_image():
     # db.session.add(new_image)
     # db.session.commit()
     return {"url": url}
-
-

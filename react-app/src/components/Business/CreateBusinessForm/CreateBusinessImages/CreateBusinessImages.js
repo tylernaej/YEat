@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useHistory, Redirect, useParams, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { awsUploadImage } from "../../../../store/fetchFunctions";
+import { awsUpload } from "../../../../store/fetchFunctions";
 
-function SetBusinessImages () {
+function SetBusinessImages() {
     const location = useLocation()
     const [image, setImage] = useState('')
     const [awsImages, setAwsImages] = useState([])
@@ -16,20 +16,37 @@ function SetBusinessImages () {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+
         const imgData = new FormData();
         imgData.append("image", image)
-        // imgData.append("businessId", id)
+
         setImageLoading(true)
 
-        let awsData = await awsUploadImage(imgData)
+        let awsData = await awsUpload(imgData)
 
         if (awsData.url) {
             setImageLoading(false)
+            console.log(awsData.url)
         } else {
             setImageLoading(false)
+            console.log(awsData)
             return
         }
 
+        const data = await fetch(
+            `/api/businesses/${id}/images`,
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(awsData)
+            }
+        )
+
+    }
+
+    const updateImage = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
     }
 
     return (
@@ -43,9 +60,8 @@ function SetBusinessImages () {
                 <form>
                     <input
                         type="file"
-                        name="filefield"
-                        multiple="multiple"
-                        onChange={e => setImage(e.target.value)}
+                        accept="image/*"
+                        onChange={updateImage}
                     />
                     <div onClick={handleSubmit}>
                         Add Image

@@ -42,8 +42,8 @@ export const getReview = async (id) => {
 }
 
 
-export const awsUploadProfile = async payload => {
-    const res = await fetch('/api/images/profileImage', {
+export const awsUpload = async payload => {
+    const res = await fetch('/api/images', {
         method: "POST",
         body: payload,
     });
@@ -58,19 +58,19 @@ export const awsUploadProfile = async payload => {
     }
 }
 
-export const awsUploadImage = async payload => {
-    console.log('payload in thunk', payload)
-    const res = await fetch('/api/images', {
-        method: "POST",
-        body: payload,
-    });
-    const data = await res.json();
+// export const awsUploadImage = async payload => {
+//     console.log('payload in thunk', payload)
+//     const res = await fetch('/api/images', {
+//         method: "POST",
+//         body: payload,
+//     });
+//     const data = await res.json();
 
-    if (res.ok) {
-        return data
-    }
-    else {
-        console.log('data in thunk', data)
-        return {'message': 'Failed to upload image'}
-    }
-}
+//     if (res.ok) {
+//         return data
+//     }
+//     else {
+//         console.log('data in thunk', data)
+//         return {'message': 'Failed to upload image'}
+//     }
+// }
