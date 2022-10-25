@@ -215,9 +215,11 @@ def get_reviews_by_business_id(id):
     reviews_lst = []
     for review in reviews:
         dict_review = review.to_dict()
+        images_arr = []
         for image in images_lst:
             if image['reviewId'] == review.id:
-                dict_review['images'] = image
+                images_arr.append(image)
+        dict_review['images'] = images_arr
         for user in users_lst:
             if review.user_id == user['id']:
                 owner = {}

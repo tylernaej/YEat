@@ -25,7 +25,7 @@ function ReviewForm() {
     const sessionUser = useSelector(state => state.session.user)
     const reviews = useSelector(state => state.reviews)
     const reviewsLst = Object.values(reviews)
-    console.log(reviewsLst)
+    // console.log(reviewsLst)
     let checkUser = sessionUser ? reviewsLst.find(review => review.userId === sessionUser.id) : undefined
     // console.log(sessionUser)
     // console.log(checkUser)
@@ -45,7 +45,7 @@ function ReviewForm() {
         setValidationErrors(errors)
     }, [rating, review])
 
-    console.log('IMAGES ARR', imagesArr)
+    // console.log('IMAGES ARR', imagesArr)
 
 
     const handleSubmit = async e => {
@@ -64,7 +64,7 @@ function ReviewForm() {
 
         const reviewer = { firstName: sessionUser.firstName, lastName: sessionUser.lastName, profilePicture: sessionUser.profilePicture}
 
-        const payload = {businessId, review: newReview, reviewer}
+        const payload = {businessId, review: newReview, reviewer, imagesArr}
 
         const data = await dispatch(createReviewThunk(payload))
         .then((data) => fetch(

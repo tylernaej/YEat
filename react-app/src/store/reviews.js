@@ -75,7 +75,7 @@ export const getBizReviewThunk = (businessId) => async dispatch => {
 //     const response = await fetch(`/api/business/${userId}/reviews`)
 // }
 
-export const createReviewThunk = ({businessId, review, reviewer}) => async dispatch => {
+export const createReviewThunk = ({businessId, review, reviewer, imagesArr}) => async dispatch => {
 
     const response = await fetch(
         `/api/businesses/${businessId}/reviews`,
@@ -88,7 +88,7 @@ export const createReviewThunk = ({businessId, review, reviewer}) => async dispa
     const data = await response.json()
 
     if (response.ok) {
-        await dispatch(createReviewAction({data, reviewer}))
+        await dispatch(createReviewAction({data, reviewer, imagesArr}))
     }
 
     return data
@@ -146,7 +146,9 @@ const reviewsReducer = (state = intitialState, action) => {
         }
         case (CREATE_REVIEW): {
             newState = {...state}
-            newState[action.payload.data.id] = {...action.payload.data, reviewer: action.payload.reviewer}
+            console.log(action.payload.imagesArr)
+            newState[action.payload.data.id] = {...action.payload.data, reviewer: action.payload.reviewer, images: action.payload.imagesArr}
+            console.log(newState)
             return newState
         }
         case (UPDATE_REVIEW): {
