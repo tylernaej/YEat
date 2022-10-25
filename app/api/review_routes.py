@@ -92,7 +92,7 @@ def add_images_to_review(id):
         return {"message": "Forbidden", "statusCode": 403}, 403
 
     images = request.get_json()['images']
-    print(images)
+    print('\n\n\n', images, '\n\n\n') 
     for image in images:
         newImg = Image(
             url = image,

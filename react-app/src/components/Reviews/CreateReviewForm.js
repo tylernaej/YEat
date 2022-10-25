@@ -126,13 +126,13 @@ function ReviewForm() {
         }
     }
 
-    const getFile = (e) => {
-      if (document.getElementById('image-input')){
-        // console.log(document.getElementById('image-input'))
-        setFileName(document.getElementById("image-input")?.value.split('\\')[2]);
-      }
-    }
-    console.log(document.getElementById("image-input")?.value.split('\\')[2]);
+    // const getFile = (e) => {
+    //   if (document.getElementById('image-input')){
+    //     // console.log(document.getElementById('image-input'))
+    //     setFileName(document.getElementById("image-input")?.value.split('\\')[2]);
+    //   }
+    // }
+    // console.log(document.getElementById("image-input")?.value.split('\\')[2]);
 
 
     return (

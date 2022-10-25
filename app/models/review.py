@@ -27,6 +27,7 @@ class Review(db.Model):
             "businessId": self.business_id,
             "rating": self.rating,
             "review": self.review,
+            # 'images': [image.to_dict() for image in self.images],
             "timeCreated": self.time_created,
             "timeUpdated": self.time_updated
         }

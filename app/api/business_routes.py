@@ -205,6 +205,7 @@ def get_reviews_by_business_id(id):
 
     images = Image.query.all()
     images_lst = [image.to_dict() for image in images]
+    print('\n\n\n', images_lst, '\n\n\n') 
 
     users = User.query.all()
     users_lst = [user.to_dict() for user in users]
@@ -225,6 +226,8 @@ def get_reviews_by_business_id(id):
                 owner['profilePicture'] = user['profilePicture']
                 dict_review['reviewer'] = owner
         reviews_lst.append(dict_review)
+
+    print(reviews_lst)
 
     return {'Reviews': reviews_lst}
 
