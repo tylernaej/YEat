@@ -119,21 +119,14 @@ function ReviewForm() {
         const file = e.target.files[0];
         setImage(file);
         if (document.getElementById("image-input")) {
-          // console.log(document.getElementById('image-input'))
           setFileName(
-            document.getElementById("image-input")?.value.split("\\")[2]
+            // document.getElementById("image-input")?.value.split("\\")[2]
+            file.name
           );
         }
     }
 
-    // const getFile = (e) => {
-    //   if (document.getElementById('image-input')){
-    //     // console.log(document.getElementById('image-input'))
-    //     setFileName(document.getElementById("image-input")?.value.split('\\')[2]);
-    //   }
-    // }
-    // console.log(document.getElementById("image-input")?.value.split('\\')[2]);
-
+    console.log(image)
 
     return (
       <div className="whole-bottom-page">
@@ -227,7 +220,6 @@ function ReviewForm() {
                     type="file"
                     accept="images/jpg"
                     id="image-input"
-                    // onClick={addImage}
                     onChange={updateImage}
                   />
                   <div id="file-name">{fileName ? fileName : null}</div>

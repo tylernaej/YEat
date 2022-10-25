@@ -7,8 +7,11 @@ import HomeButton from './NavBarComponents/HomeButton/HomeButton';
 import ProfileButton from './NavBarComponents/ProfileButton/ProfileButton';
 import SearchBar from './NavBarComponents/SearchBar/SearchBar';
 import './NavBar.css'
+import { useSelector } from 'react-redux';
 
 const NavBar = () => {
+  const sessionUser = useSelector(state => state.session.user)
+
   return (
     <div id='nav-container'>
       <nav className='flex-row-justify-between' id='nav'>
@@ -22,13 +25,17 @@ const NavBar = () => {
             <div id='see-all-businesses'>
               <NavLink to={'/businesses'} id='see-all-businesses-navlink'>All Businesses</NavLink>
             </div>
-            <div>
-              <CreateBusinessButton />
-            </div>
-            <div>
-              <CreateReviewButton />
-            </div>
-            <div>
+            {sessionUser && (
+              <>
+                <div>
+                  <CreateBusinessButton />
+                </div>
+                <div>
+                  <CreateReviewButton />
+                </div>
+              </>
+            )}
+              <div>
               <ProfileButton />
             </div>
           </div>
