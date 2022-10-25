@@ -3,6 +3,7 @@ import { useHistory, Redirect, useParams, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { createReviewThunk } from "../../store/reviews";
+import { awsUpload } from "../../store/fetchFunctions";
 import './CreateReviewForm.css'
 
 function ReviewForm() {
@@ -10,6 +11,11 @@ function ReviewForm() {
     const history = useHistory();
     // const { businessId } = useParams()
     const location = useLocation()
+
+    const [image, setImage] = useState('')
+    const [awsImages, setAwsImages] = useState([])
+    const [imageLoading, setImageLoading] = useState(false);
+    const [imagesArr, setImagesArr] = useState([])
 
 
     const businessId = location.pathname.split('/')[2]
@@ -21,7 +27,7 @@ function ReviewForm() {
     console.log(reviewsLst)
     let checkUser = sessionUser ? reviewsLst.find(review => review.userId === sessionUser.id) : undefined
     // console.log(sessionUser)
-    console.log(checkUser)
+    // console.log(checkUser)
 
     const [rating, setRating] = useState('')
     const [review, setReview] = useState('')
@@ -37,6 +43,8 @@ function ReviewForm() {
 
         setValidationErrors(errors)
     }, [rating, review])
+
+    console.log('IMAGES ARR', imagesArr)
 
 
     const handleSubmit = async e => {
@@ -58,6 +66,14 @@ function ReviewForm() {
         const payload = {businessId, review: newReview, reviewer}
 
         const data = await dispatch(createReviewThunk(payload))
+        .then((data) => fetch(
+            `/api/reviews/${data.id}/images`,
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({'images': imagesArr})
+            }
+        ))
 
         if(data.statusCode){
           setValidationErrors([data.message])
@@ -73,6 +89,34 @@ function ReviewForm() {
       // <Redirect to={`/businesses/${businessId}/edit-review`}/>
       history.push(`/businesses/${businessId}/edit-review`)
     }
+
+    const addImage = async (e) => {
+      const imgData = new FormData();
+        imgData.append("image", image)
+
+        setImageLoading(true)
+
+        let awsData = await awsUpload(imgData)
+        .then((awsData) => {
+          setImagesArr([...imagesArr, awsData.url])
+        })
+
+        // if (awsData.url) {
+        //     setImageLoading(false)
+        //     console.log(awsData.url)
+        // } else {
+        //     setImageLoading(false)
+        //     console.log(awsData)
+        //     return
+        // }
+    }
+
+    const updateImage = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+    }
+
+
 
     return (
       <div className="whole-bottom-page">
@@ -143,11 +187,27 @@ function ReviewForm() {
                 onChange={(e) => setReview(e.target.value)}
               />
             </div>
+
             <div id="button-div">
               <button type="submit">
                 Submit
               </button>
             </div>
+            {imagesArr.length < 3 && (
+              <div>
+              <label>Add Images</label>
+              <input 
+              type="file"
+              accept="images/jpg"
+              // onClick={addImage}
+              onChange={updateImage}
+              />
+              <div onClick={addImage}>
+                Post Image
+              </div>
+            </div>
+            )}
+            
           </form>
         </div>
       </div>

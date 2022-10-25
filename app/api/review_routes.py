@@ -91,13 +91,16 @@ def add_images_to_review(id):
     if review.user_id != current_user.id:
         return {"message": "Forbidden", "statusCode": 403}, 403
 
-    newImg = Image(
-        url = request.get_json()['url'],
-        uploader_id = current_user.id,
-        review_id = id
-    )
+    images = request.get_json()['images']
+    print(images)
+    for image in images:
+        newImg = Image(
+            url = image,
+            uploader_id = current_user.id,
+            review_id = id
+        )
 
-    db.session.add(newImg)
+        db.session.add(newImg)
     db.session.commit()
 
 
