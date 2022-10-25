@@ -16,6 +16,7 @@ function ReviewForm() {
     const [awsImages, setAwsImages] = useState([])
     const [imageLoading, setImageLoading] = useState(false);
     const [imagesArr, setImagesArr] = useState([])
+    const [fileName, setFileName] = useState('')
 
 
     const businessId = location.pathname.split('/')[2]
@@ -100,6 +101,9 @@ function ReviewForm() {
         .then((awsData) => {
           setImagesArr([...imagesArr, awsData.url])
         })
+        .then(() => setImageLoading(false))
+
+        setFileName('')
 
         // if (awsData.url) {
         //     setImageLoading(false)
@@ -114,8 +118,21 @@ function ReviewForm() {
     const updateImage = (e) => {
         const file = e.target.files[0];
         setImage(file);
+        if (document.getElementById("image-input")) {
+          // console.log(document.getElementById('image-input'))
+          setFileName(
+            document.getElementById("image-input")?.value.split("\\")[2]
+          );
+        }
     }
 
+    const getFile = (e) => {
+      if (document.getElementById('image-input')){
+        // console.log(document.getElementById('image-input'))
+        setFileName(document.getElementById("image-input")?.value.split('\\')[2]);
+      }
+    }
+    console.log(document.getElementById("image-input")?.value.split('\\')[2]);
 
 
     return (
@@ -187,26 +204,42 @@ function ReviewForm() {
                 onChange={(e) => setReview(e.target.value)}
               />
             </div>
+            {imagesArr && (
+              <div className="images-map-outer">
+                {imagesArr.map((image, i) => (
+                  <div className="images-map" key={i}>
+                    <img className="review-image" src={image} alt=''/>
+                  </div>
+                ))}
 
-            <div id="button-div">
-              <button type="submit">
-                Submit
-              </button>
-            </div>
-            {imagesArr.length < 3 && (
-              <div>
-              <label>Add Images</label>
-              <input 
-              type="file"
-              accept="images/jpg"
-              // onClick={addImage}
-              onChange={updateImage}
-              />
-              <div onClick={addImage}>
-                Post Image
               </div>
-            </div>
             )}
+            <div id="image-submit">
+              <div id="button-div">
+                <button type="submit">
+                  Submit
+                </button>
+              </div>
+              {imagesArr.length < 3 && (
+                <div id="button-div">
+                  <label id="image-label" htmlFor="image-input">Add Images</label>
+                  <input 
+                    type="file"
+                    accept="images/jpg"
+                    id="image-input"
+                    // onClick={addImage}
+                    onChange={updateImage}
+                  />
+                  <div id="file-name">{fileName ? fileName : null}</div>
+                  <div onClick={image ? addImage : null} className={image ? 'has-image' : 'no-image'}>
+                    Post Image
+                  </div>
+                  {imageLoading && (
+                    <p>Loading...</p>
+                  )}
+              </div>
+              )}
+            </div>
             
           </form>
         </div>
