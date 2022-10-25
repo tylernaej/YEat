@@ -399,6 +399,7 @@ def add_categories_to_business(id):
 
 
 
+
 #ERROR HANDLERS
 @business_routes.errorhandler(404)
 def custom400(error):

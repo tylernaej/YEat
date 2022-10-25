@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, Redirect } from 'react-router-dom';
 
 import { signUp } from '../../store/session';
-import { awsUpload } from '../../store/fetchFunctions';
+import { awsUploadProfile } from '../../store/fetchFunctions';
 
 import './SignUpForm.css'
 
@@ -45,24 +45,27 @@ const SignUpForm = () => {
 
     if (errors.length > 0) return
 
-    const imgData = new FormData();
-    imgData.append("image", profilePicture)
-    setImageLoading(true)
+    let awsData = {'url': null}
 
-    const data = await awsUpload(imgData)
-
-    console.log(data)
-
-    if (data.url) {
-      setImageLoading(false)
-      await setProfilePictureURL(data.url)
-    } else {
-      setImageLoading(false)
-      return
+    if(profilePicture){
+      const imgData = new FormData();
+      imgData.append("image", profilePicture)
+      setImageLoading(true)
+  
+      awsData = await awsUploadProfile(imgData)
+  
+      if (awsData.url) {
+        setImageLoading(false)
+      } else {
+        setImageLoading(false)
+        return
+      }
     }
 
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(firstName, lastName, profilePictureURL, username, email, password));
+
+      console.log('Data.url', awsData.url)
+      const data = await dispatch(signUp(firstName, lastName, awsData.url, username, email, password));
       if (data) {
         setErrors(data)
       }
