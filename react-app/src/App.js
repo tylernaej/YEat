@@ -23,6 +23,7 @@ import SplashPage from './components/Home/SplashPage';
 import UpdateReviewForm from './components/Reviews/UpdateReviewForm';
 import NavBarSplash from './components/NavBar/NavBarSplash';
 import NavBarNoSearch from './components/NavBar/NavBarNoSearch';
+import About from './components/About/About';
 // import { ModalProvider } from './context/Modal';
 
 function App() {
@@ -120,6 +121,12 @@ function App() {
               </div>
               <User />
             </ProtectedRoute>
+            <Route path="/about" exact={true}>
+              <NavBar />
+              <div id='navbar-spacer'>
+              </div>
+              <About />
+            </Route>
             <Route path="/" exact={true}>
               <NavBarSplash />
               <SplashPage />

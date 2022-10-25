@@ -1,0 +1,12 @@
+
+
+
+#developer-wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+#developer-socials{
+    display: flex;
+    flex-direction: row;
+}
