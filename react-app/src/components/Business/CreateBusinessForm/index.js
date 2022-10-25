@@ -6,6 +6,7 @@ import { createBizThunk } from "../../../store/business";
 import SetBizAmenities from "./CreateBusinessAmenities/SetAmenities";
 import SetBizCategories from "./CreateBusinessCategories/SetCategories";
 import SetBizDetails from "./CreateBusinessDetails/CreateBusinessDetails";
+import SetBusinessImages from "./CreateBusinessImages/CreateBusinessImages";
 
 function BizForm() {
     const dispatch = useDispatch()
@@ -22,6 +23,9 @@ function BizForm() {
                 <Switch>
                     <Route path={`${url}/details`}>
                         <SetBizDetails />
+                    </Route>
+                    <Route path={`${url}/:bizId/images`}>
+                        <SetBusinessImages />
                     </Route>
                     <Route path={`${url}/:bizId/amenities`}>
                         <SetBizAmenities />

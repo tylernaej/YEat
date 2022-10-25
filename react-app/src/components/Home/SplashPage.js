@@ -55,7 +55,7 @@ function SplashPage() {
                     </div>
                 </div>
             </div>
-            <div id="splash-footer" className="flex-row-center">
+            {/* <div id="splash-footer" className="flex-row-center">
                 <div className="flex-row-justify-between w70">
                     <div>
                         <h5>
@@ -83,11 +83,11 @@ function SplashPage() {
                         <h5>
                             Dev: Tyler Jean
                         </h5>
-                        {/* <li><a style={{textDecoration:"none", color: "white"}} href="https://github.com/tylernaej/YEat/" target="_blank" rel="noreferrer noopener">LinkedIn</a></li> */}
+                        <li><a style={{textDecoration:"none", color: "white"}} href="https://github.com/tylernaej/YEat/" target="_blank" rel="noreferrer noopener">LinkedIn</a></li>
                         <li><a style={{textDecoration:"none", color: "white"}} href="https://github.com/tylernaej" target="_blank" rel="noreferrer noopener">GitHub</a></li>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

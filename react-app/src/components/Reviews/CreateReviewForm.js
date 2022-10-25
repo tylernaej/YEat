@@ -3,6 +3,7 @@ import { useHistory, Redirect, useParams, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { createReviewThunk } from "../../store/reviews";
+import { awsUpload } from "../../store/fetchFunctions";
 import './CreateReviewForm.css'
 
 function ReviewForm() {
@@ -11,6 +12,12 @@ function ReviewForm() {
     // const { businessId } = useParams()
     const location = useLocation()
 
+    const [image, setImage] = useState('')
+    const [awsImages, setAwsImages] = useState([])
+    const [imageLoading, setImageLoading] = useState(false);
+    const [imagesArr, setImagesArr] = useState([])
+    const [fileName, setFileName] = useState('')
+
 
     const businessId = location.pathname.split('/')[2]
     // console.log(businessId)
@@ -18,10 +25,10 @@ function ReviewForm() {
     const sessionUser = useSelector(state => state.session.user)
     const reviews = useSelector(state => state.reviews)
     const reviewsLst = Object.values(reviews)
-    console.log(reviewsLst)
+    // console.log(reviewsLst)
     let checkUser = sessionUser ? reviewsLst.find(review => review.userId === sessionUser.id) : undefined
     // console.log(sessionUser)
-    console.log(checkUser)
+    // console.log(checkUser)
 
     const [rating, setRating] = useState('')
     const [review, setReview] = useState('')
@@ -37,6 +44,8 @@ function ReviewForm() {
 
         setValidationErrors(errors)
     }, [rating, review])
+
+    // console.log('IMAGES ARR', imagesArr)
 
 
     const handleSubmit = async e => {
@@ -55,9 +64,17 @@ function ReviewForm() {
 
         const reviewer = { firstName: sessionUser.firstName, lastName: sessionUser.lastName, profilePicture: sessionUser.profilePicture}
 
-        const payload = {businessId, review: newReview, reviewer}
+        const payload = {businessId, review: newReview, reviewer, imagesArr}
 
         const data = await dispatch(createReviewThunk(payload))
+        .then((data) => fetch(
+            `/api/reviews/${data.id}/images`,
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({'images': imagesArr})
+            }
+        ))
 
         if(data.statusCode){
           setValidationErrors([data.message])
@@ -73,6 +90,43 @@ function ReviewForm() {
       // <Redirect to={`/businesses/${businessId}/edit-review`}/>
       history.push(`/businesses/${businessId}/edit-review`)
     }
+
+    const addImage = async (e) => {
+      const imgData = new FormData();
+        imgData.append("image", image)
+
+        setImageLoading(true)
+
+        let awsData = await awsUpload(imgData)
+        .then((awsData) => {
+          setImagesArr([...imagesArr, awsData.url])
+        })
+        .then(() => setImageLoading(false))
+
+        setFileName('')
+
+        // if (awsData.url) {
+        //     setImageLoading(false)
+        //     console.log(awsData.url)
+        // } else {
+        //     setImageLoading(false)
+        //     console.log(awsData)
+        //     return
+        // }
+    }
+
+    const updateImage = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+        if (document.getElementById("image-input")) {
+          setFileName(
+            // document.getElementById("image-input")?.value.split("\\")[2]
+            file.name
+          );
+        }
+    }
+
+    console.log(image)
 
     return (
       <div className="whole-bottom-page">
@@ -143,11 +197,42 @@ function ReviewForm() {
                 onChange={(e) => setReview(e.target.value)}
               />
             </div>
-            <div id="button-div">
-              <button type="submit">
-                Submit
-              </button>
+            {imagesArr && (
+              <div className="images-map-outer">
+                {imagesArr.map((image, i) => (
+                  <div className="images-map" key={i}>
+                    <img className="review-image" src={image} alt=''/>
+                  </div>
+                ))}
+
+              </div>
+            )}
+            <div id="image-submit">
+              <div id="button-div">
+                <button type="submit">
+                  Submit
+                </button>
+              </div>
+              {imagesArr.length < 3 && (
+                <div id="button-div">
+                  <label id="image-label" htmlFor="image-input">Add Images</label>
+                  <input 
+                    type="file"
+                    accept="images/jpg"
+                    id="image-input"
+                    onChange={updateImage}
+                  />
+                  <div id="file-name">{fileName ? fileName : null}</div>
+                  <div onClick={image ? addImage : null} className={image ? 'has-image' : 'no-image'}>
+                    Post Image
+                  </div>
+                  {imageLoading && (
+                    <p>Loading...</p>
+                  )}
+              </div>
+              )}
             </div>
+            
           </form>
         </div>
       </div>

@@ -15,7 +15,7 @@ class Review(db.Model):
 
     user = db.relationship('User', back_populates='reviews')
     business = db.relationship('Business', back_populates='reviews')
-    images = db.relationship("Image", back_populates='review')
+    images = db.relationship("Image", back_populates='review', cascade="all, delete-orphan")
 
     def __repr__(self):
         return f'<{self.id}: user {self.user_id} rates business {self.business_id} with rating of {self.rating}>'
@@ -27,6 +27,7 @@ class Review(db.Model):
             "businessId": self.business_id,
             "rating": self.rating,
             "review": self.review,
+            # 'images': [image.to_dict() for image in self.images],
             "timeCreated": self.time_created,
             "timeUpdated": self.time_updated
         }

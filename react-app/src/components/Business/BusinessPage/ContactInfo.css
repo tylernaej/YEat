@@ -26,3 +26,9 @@
     margin-top: 5px;
 }
 
+#google-maps-outer-container{
+    height: 25em;
+    width: 450px;
+    border: 1px solid black;
+
+}

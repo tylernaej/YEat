@@ -12,13 +12,13 @@ const LogoutButton = () => {
   };
 
   return (
-    <>
+    <div style={{width: '100%', height: '100%'}}>
       
       <div onClick={onLogout}>
       <i className="fa-solid fa-arrow-right-from-bracket" id='bottom-icon'></i>
         Logout
       </div>
-    </>
+    </div>
   )
 };
 

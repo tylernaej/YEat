@@ -1,0 +1,93 @@
+@font-face {
+    font-family: 'gothicA1-semibold';
+    src: url('../../fonts/gothicA1/GothicA1-SemiBold.ttf');
+}
+
+@font-face {
+  font-family: 'Kodchasan-Light';
+  src: url('../../fonts/Kodchasan/Kodchasan-Light.ttf');
+}
+
+
+#about-exterior-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Kodchasan-Light';
+}
+
+#about-interior-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#developer-wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+#developer-name{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: xx-large;
+    margin: 10px;
+}
+
+#profile-picture-wrapper{
+    display: flex;
+    justify-content: center;
+}
+
+#developer-profile-picture{
+    width: 90%;
+    height: 390px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .3);
+}
+
+#individual-developer{
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin: 10px;
+    width: 30em;
+}
+
+#developer-socials{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#developer-socials>*{
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .3);
+    border-radius: 5px;
+    background-color: rgb(50, 50, 50);
+    padding: 5px;
+    width: 25%;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
+#projects-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+#individual-project{
+
+}
+
+.fa-brands{
+    color: white;
+    text-decoration: none;
+}
+
