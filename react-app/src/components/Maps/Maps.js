@@ -13,8 +13,6 @@ const Maps = ({ apiKey, center, business }) => {
     googleMapsApiKey: apiKey,
   });
 
-  console.log('isloaded - ',isLoaded)
-
   return (
     <>
       {isLoaded && (

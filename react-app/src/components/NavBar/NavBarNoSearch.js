@@ -16,14 +16,17 @@ const NavBarNoSearch = () => {
             <HomeButton />
           </div>
           <div className='flex-row' id='no-search-right-side-buttons'>
-            <div id='no-search-see-all-businesses'>
-              <NavLink to={'/businesses'} id='no-search-see-all-businesses-navlink'>All Businesses</NavLink>
+            <div id='see-all-businesses'>
+              <NavLink to={'/businesses'} id='see-all-businesses-navlink'>All Businesses</NavLink>
             </div>
             <div>
               <CreateBusinessButton />
             </div>
             <div>
               <CreateReviewButton />
+            </div>
+            <div id='see-all-businesses'>
+              <NavLink to='/about'  id='see-all-businesses-navlink' >Meet the Devs</NavLink>
             </div>
             <div>
               <ProfileButton />

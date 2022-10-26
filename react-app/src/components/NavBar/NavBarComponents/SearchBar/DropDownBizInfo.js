@@ -51,7 +51,7 @@ function DropDownBizInfo({business, setUserInput, userInput}){
     if(location.pathname.split('/')[2] === 'reviews'){
         return  (
         <div >
-            <NavLink to={`/businesses/${business.id}/create-review`} id='result-navlink'>
+            <NavLink to={{ pathname:`/businesses/${business.id}/create-review`, business: {business}}} id='result-navlink'>
             <div id='result-parent'>
                         <div 
                             className="flex-row" 
