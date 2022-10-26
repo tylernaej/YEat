@@ -12,8 +12,6 @@ const Maps = ({ apiKey, center, business }) => {
     id: 'google-map-script',
     googleMapsApiKey: apiKey,
   });
-  
-  console.log(business)
 
   return (
     <>
