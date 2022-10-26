@@ -6,8 +6,6 @@ import './ContactInfo.css'
 
 function ContactInfo({ business }) {
 
-    console.log(business)
-
     const center = {
         lat: Number(business.latitude),
         lng: Number(business.longitude)
