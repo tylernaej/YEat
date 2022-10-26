@@ -28,14 +28,14 @@ function dollarsigns(range) {
 }
 
 function photoInHeader(business) {
-    if (business.images.length === 0) {
+    if (business.images?.length === 0) {
         return 'No photos available'
     }
-    else if (business.images.length === 1) {
-        return `See ${business.images.length} photo`;
+    else if (business.images?.length === 1) {
+        return `See ${business.images?.length} photo`;
     }
     else {
-        return `See ${business.images.length} photos`;
+        return `See ${business.images?.length} photos`;
     }
 }
 
@@ -99,7 +99,7 @@ function HeaderInfo({ business, reviewsList, bizCategories }) {
                         } */}
 
                         <img
-                            className="actual-image"
+                            className="business-image"
                             src={`${bizDefaultImg}`} />
 
                     </div>

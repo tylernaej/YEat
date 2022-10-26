@@ -44,6 +44,7 @@
     height: 426px;
     position: relative;
     vertical-align: middle;
+    overflow: hidden;
 }
 
 .business-image-container::after {
@@ -60,6 +61,7 @@
 .business-image {
     height: 100%;
     object-fit: cover;
+    /* object-fit: fill; */
     vertical-align: middle;
     width: 100%;
 }

@@ -35,7 +35,10 @@ const NavBar = () => {
                 </div>
               </>
             )}
-              <div>
+            <div id='see-all-businesses'>
+              <NavLink to='/about'  id='see-all-businesses-navlink' >Meet the Devs</NavLink>
+            </div>
+            <div>
               <ProfileButton />
             </div>
           </div>
