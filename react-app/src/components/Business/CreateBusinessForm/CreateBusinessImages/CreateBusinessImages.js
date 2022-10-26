@@ -21,10 +21,17 @@ function SetBusinessImages() {
         const file = uploaded[uploaded.length - 1]
         const reader = new FileReader(file)
 
-        reader.readAsDataURL(file);
-        reader.onloadend = function () {
-            setPreviewImages([...previewImages, reader.result])
+        if (file && file.type.match('image.*')) {
+            reader.readAsDataURL(file);
+            reader.onloadend = function () {
+                setPreviewImages([...previewImages, reader.result])
+            }
         }
+
+        // reader.readAsDataURL(file);
+        // reader.onloadend = function () {
+        //     setPreviewImages([...previewImages, reader.result])
+        // }
     }
 
     // function to remove a file that the user does not want to upload
@@ -41,23 +48,29 @@ function SetBusinessImages() {
 
     const updateImages = async (files) => {
         const uploaded = [...images]
+        // console.log('FILES', files)
         const length = uploaded.length
         const file = files[files.length - 1]
-        const item = uploaded.find(uploadedFile => uploadedFile.name === file.name)
+        // console.log(file)
+        const item = uploaded.find(uploadedFile => uploadedFile?.name === file?.name)
         if (item) {
-          files.pop()
+            files.pop()
         } else {
-          uploaded.push(file)
+            uploaded.push(file)
         }
         setImages(uploaded)
+        console.log(images)
+
         if (uploaded.length !== length) {
-          getPreviewImages(uploaded)
+            getPreviewImages(uploaded)
         }
-      }
+    }
 
     const handleFileEvent = (e) => {
+        // if (!e.target.files) return
         const chosenFiles = Array.prototype.slice.call(e.target.files)
-        updateImages(chosenFiles)
+        if (chosenFiles.length > 0) updateImages(chosenFiles)
+
     }
 
     // const updateImage = (e) => {
@@ -124,8 +137,7 @@ function SetBusinessImages() {
                         className="file-select create-spot"
                         accept=".png,
                             .jpeg,
-                            .jpg,
-                            .gif,"
+                            .jpg,"
                         onChange={handleFileEvent}
                     />
                     <button type="submit">submit</button>
