@@ -46,7 +46,7 @@ function About () {
                             <img id='developer-profile-picture' src='https://media-exp1.licdn.com/dms/image/C5622AQE2ONk8C5o9hQ/feedshare-shrink_800/0/1666375144748?e=1669852800&v=beta&t=-Mh7n8h-ToxY0SMZx1azxcVL7aC7qdcs3IU56x4Pm9s' />
                         </div>
                         <div id="bio">
-                            bio
+                            Hello there! My nane is Edward, and my friends call me Ed. I hope you enjoyed checking out our Yelp clone as much as I enjoyed working with my awesome team! Outside of coding and playing video games in front of my computer, I like to spend time at the beaches and occassionaly hike some of the trails here in Hawaii. Click the links below to check out my projects and/or connect!
                         </div>
                         <div>
                             <div id="connect">Connect:</div>

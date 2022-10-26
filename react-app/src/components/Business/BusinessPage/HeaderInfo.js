@@ -99,7 +99,7 @@ function HeaderInfo({ business, reviewsList, bizCategories }) {
                         } */}
 
                         <img
-                            className="actual-image"
+                            className="business-image"
                             src={`${bizDefaultImg}`} />
 
                     </div>
