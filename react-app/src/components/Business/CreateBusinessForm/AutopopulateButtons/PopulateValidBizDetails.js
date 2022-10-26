@@ -21,7 +21,7 @@ function PopulateValidBizDetails({populatedValidDetails, setPopulatedValidDetail
         let found = false
         for (const business of businesses.businesses){
             if(business.name === 'My Test Business'){
-                alert('You\'ve already created that business!')
+                alert('That business already exists!')
                 found = true
                 history.push(`/businesses/${business.id}/edit/info`)
             }
