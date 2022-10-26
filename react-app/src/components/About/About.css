@@ -14,6 +14,7 @@
     display: flex;
     justify-content: center;
     font-family: 'Kodchasan-Light';
+    margin-bottom: 20px;
 }
 
 #about-interior-container{
@@ -53,7 +54,7 @@
     border: 1px solid grey;
     border-radius: 10px;
     margin: 10px;
-    width: 30em;
+    width: 28em;
 }
 
 #developer-socials{
@@ -72,6 +73,11 @@
     display: flex;
     justify-content: center;
     text-decoration: none;
+    transition: all .2s ease-in-out;
+}
+
+#developer-socials>*:hover{
+    transform: scale(1.08);
 }
 
 #projects-wrapper{
@@ -82,12 +88,62 @@
     width: 100%;
 }
 
-#individual-project{
+#bio{
+    padding: 0px 20px;
+    margin: 10px 0px;
+    height: 9em;
+    color: rgb(129, 127, 127);
+}
 
+#connect{
+    padding: 0px 20px;
+    margin-top: 10px;
+    margin-bottom: -8px;
+}
+
+#projects{
+    padding: 0px 20px;
+    margin: 10px 0px;
+}
+
+#individual-project{
+    transition: all .2s ease-in-out;
+}
+
+#individual-project:hover{
+    transform: scale(1.08);
+    /* animation: tilt-shaking 0.2s ; */
 }
 
 .fa-brands{
     color: white;
     text-decoration: none;
+    transition: all .2s ease-in-out;
+}
+
+/* .fa-brands:hover{
+    transform: scale(1.1);
+} */
+
+@keyframes tilt-shaking {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(5deg);
+    }
+
+    50% {
+        transform: rotate(0eg);
+    }
+
+    75% {
+        transform: rotate(-5deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
