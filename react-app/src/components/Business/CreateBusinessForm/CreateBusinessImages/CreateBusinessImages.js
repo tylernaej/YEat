@@ -115,6 +115,10 @@ function SetBusinessImages() {
         }
     }
 
+    const handleBack = () => {
+        history.push(`/businesses/${id}/edit`)
+    }
+
     return (
         <div>
             <div id='images-form-container'>
@@ -156,7 +160,10 @@ function SetBusinessImages() {
                         onChange={handleFileEvent}
                         disabled = {previewImages.length > 2}
                     />
-                    <button type="submit" id='submit-button'>submit</button>
+                    <div>
+                        <button onClick={handleBack} id='submit-button'>Go Back</button>
+                        <button type="submit" id='submit-button'>submit</button>
+                    </div>
                 </form>
             </div>
         </div>
