@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useHistory, Redirect, useParams, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { awsUpload } from "../../../../store/fetchFunctions";
+import './CreateBusinessImages.css'
 
 function SetBusinessImages() {
     const history = useHistory()
@@ -107,22 +108,35 @@ function SetBusinessImages() {
         history.push(`/create-business/${id}/amenities`)
     }
 
-
+    const handleAddImageClick = () => {
+        const button = document.querySelector('input[type=file]')
+        if(button){
+            button.click()
+        }
+    }
 
     return (
         <div>
-            <div>
+            <div id='images-form-container'>
                 <div className="preview-images-container">
                     {previewImages.length > 0 && previewImages.map((image, i) => (
-                        <div key={i} className="current-preview-image">
-                            <img className="preview image" src={image} />
-                            {/* <img onClick={(e) => removePreviewImage(image, i)} className='remove-preivew-img icon' src={exit} alt="" /> */}
-
-                            <ion-icon onClick={(e) => removePreviewImage(image, i)} name="close-circle"></ion-icon>
+                        <div style={{display: 'flex', flexDirection: 'row'}}>
+                            <div key={i} className="current-preview-image">
+                                <img className="preview-image" src={image} />
+                                {/* <ion-icon onClick={(e) => removePreviewImage(image, i)} name="close-circle" size='large' id='x-icon' ></ion-icon> */}
+                                <div id='x-icon-container'>
+                                    <ion-icon name="close-outline" onClick={(e) => removePreviewImage(image, i)} size='med' id='x-icon'></ion-icon>
+                                </div>
+                            </div>
                         </div>
                     ))}
+                    {previewImages.length < 3 && (
+                        <div id='add-image' onClick={handleAddImageClick}>
+                            <i className="fa-solid fa-plus fa-2x"></i>
+                        </div>
+                    )}
                 </div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} id='images-form'>
                     {/* <input
                         type="file"
                         accept="image/*"
@@ -132,6 +146,7 @@ function SetBusinessImages() {
                         Add Image
                     </div> */}
 
+
                     <input
                         type="file"
                         className="file-select create-spot"
@@ -139,8 +154,9 @@ function SetBusinessImages() {
                             .jpeg,
                             .jpg,"
                         onChange={handleFileEvent}
+                        disabled = {previewImages.length > 2}
                     />
-                    <button type="submit">submit</button>
+                    <button type="submit" id='submit-button'>submit</button>
                 </form>
             </div>
         </div>
