@@ -12,11 +12,11 @@ function ReviewForm() {
     // const { businessId } = useParams()
     const location = useLocation()
 
-    const [image, setImage] = useState('')
-    const [awsImages, setAwsImages] = useState([])
-    const [imageLoading, setImageLoading] = useState(false);
-    const [imagesArr, setImagesArr] = useState([])
-    const [fileName, setFileName] = useState('')
+    // const [image, setImage] = useState('')
+    // const [awsImages, setAwsImages] = useState([])
+    // const [imageLoading, setImageLoading] = useState(false);
+    // const [imagesArr, setImagesArr] = useState([])
+    // const [fileName, setFileName] = useState('')
 
 
     const businessId = location.pathname.split('/')[2]
@@ -45,15 +45,16 @@ function ReviewForm() {
         setValidationErrors(errors)
     }, [rating, review])
 
-    // console.log('IMAGES ARR', imagesArr)
-
+    useEffect(() => {
+      if(sessionUser.id === location.business?.business?.ownerId){
+        history.push(`/businesses/${businessId}/reviews`)
+      }
+    }, [dispatch])
 
     const handleSubmit = async e => {
         e.preventDefault()
-        // console.log('testestestest')
 
         setHasSubmitted(true)
-        // console.log(validationErrors)
 
         if(validationErrors.length > 0) return
 
@@ -64,17 +65,17 @@ function ReviewForm() {
 
         const reviewer = { firstName: sessionUser.firstName, lastName: sessionUser.lastName, profilePicture: sessionUser.profilePicture}
 
-        const payload = {businessId, review: newReview, reviewer, imagesArr}
+        const payload = {businessId, review: newReview, reviewer}
 
         const data = await dispatch(createReviewThunk(payload))
-        .then((data) => fetch(
-            `/api/reviews/${data.id}/images`,
-            {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({'images': imagesArr})
-            }
-        ))
+        // .then((data) => fetch(
+        //     `/api/reviews/${data.id}/images`,
+        //     {
+        //         method: "POST",
+        //         headers: { "Content-Type": "application/json" },
+        //         body: JSON.stringify({'images': imagesArr})
+        //     }
+        // ))
 
         if(data.statusCode){
           setValidationErrors([data.message])
@@ -91,42 +92,31 @@ function ReviewForm() {
       history.push(`/businesses/${businessId}/edit-review`)
     }
 
-    const addImage = async (e) => {
-      const imgData = new FormData();
-        imgData.append("image", image)
+    // const addImage = async (e) => {
+    //   const imgData = new FormData();
+    //     imgData.append("image", image)
 
-        setImageLoading(true)
+    //     setImageLoading(true)
 
-        let awsData = await awsUpload(imgData)
-        .then((awsData) => {
-          setImagesArr([...imagesArr, awsData.url])
-        })
-        .then(() => setImageLoading(false))
+    //     let awsData = await awsUpload(imgData)
+    //     .then((awsData) => {
+    //       setImagesArr([...imagesArr, awsData.url])
+    //     })
+    //     .then(() => setImageLoading(false))
 
-        setFileName('')
+    //     setFileName('')
+    // }
 
-        // if (awsData.url) {
-        //     setImageLoading(false)
-        //     console.log(awsData.url)
-        // } else {
-        //     setImageLoading(false)
-        //     console.log(awsData)
-        //     return
-        // }
-    }
-
-    const updateImage = (e) => {
-        const file = e.target.files[0];
-        setImage(file);
-        if (document.getElementById("image-input")) {
-          setFileName(
-            // document.getElementById("image-input")?.value.split("\\")[2]
-            file.name
-          );
-        }
-    }
-
-    console.log(image)
+    // const updateImage = (e) => {
+    //     const file = e.target.files[0];
+    //     setImage(file);
+    //     if (document.getElementById("image-input")) {
+    //       setFileName(
+    //         // document.getElementById("image-input")?.value.split("\\")[2]
+    //         file.name
+    //       );
+    //     }
+    // }
 
     return (
       <div className="whole-bottom-page">
@@ -197,7 +187,7 @@ function ReviewForm() {
                 onChange={(e) => setReview(e.target.value)}
               />
             </div>
-            {imagesArr && (
+            {/* {imagesArr && (
               <div className="images-map-outer">
                 {imagesArr.map((image, i) => (
                   <div className="images-map" key={i}>
@@ -206,14 +196,14 @@ function ReviewForm() {
                 ))}
 
               </div>
-            )}
+            )} */}
             <div id="image-submit">
               <div id="button-div">
                 <button type="submit">
                   Submit
                 </button>
               </div>
-              {imagesArr.length < 3 && (
+              {/* {imagesArr.length < 3 && (
                 <div id="button-div">
                   <label id="image-label" htmlFor="image-input">Add Images</label>
                   <input 
@@ -230,7 +220,7 @@ function ReviewForm() {
                     <p>Loading...</p>
                   )}
               </div>
-              )}
+              )} */}
             </div>
             
           </form>
