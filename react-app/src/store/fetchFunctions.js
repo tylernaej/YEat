@@ -9,8 +9,6 @@ export const getCategories = async () => {
     const response = await fetch('/api/categories/')
     const data = await response.json()
 
-
-
     return data
 }
 
@@ -57,6 +55,7 @@ export const awsUpload = async payload => {
         return {'message': 'Failed to upload image'}
     }
 }
+
 
 // export const awsUploadImage = async payload => {
 //     console.log('payload in thunk', payload)
