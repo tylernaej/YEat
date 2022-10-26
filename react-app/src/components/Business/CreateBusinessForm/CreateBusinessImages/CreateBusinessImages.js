@@ -60,7 +60,7 @@ function SetBusinessImages() {
             uploaded.push(file)
         }
         setImages(uploaded)
-        console.log(images)
+        // console.log(images)
 
         if (uploaded.length !== length) {
             getPreviewImages(uploaded)

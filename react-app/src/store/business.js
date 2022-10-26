@@ -125,7 +125,7 @@ export const updateBizThunk = ({businessId, business}) => async dispatch => {
 }
 
 export const deleteBizThunk = (businessId) => async dispatch => {
-    console.log(`The business Id in the Thunk is: ${businessId}`)
+    // console.log(`The business Id in the Thunk is: ${businessId}`)
     const response = await fetch(
         `/api/businesses/${businessId}`,
         {

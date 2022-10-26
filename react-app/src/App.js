@@ -31,7 +31,7 @@ function App() {
   const dispatch = useDispatch();
   const [location, setLocation] = useState(window.location.pathname)
 
-  console.log('location is:', location)
+  // console.log('location is:', location)
 
   useEffect(() => {
     setLocation(window.location.pathname)

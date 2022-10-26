@@ -51,7 +51,7 @@ export const awsUpload = async payload => {
         return data
     }
     else {
-        console.log(data)
+        // console.log(data)
         return {'message': 'Failed to upload image'}
     }
 }

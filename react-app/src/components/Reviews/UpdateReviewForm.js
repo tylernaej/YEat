@@ -72,7 +72,7 @@ function UpdateReviewForm( {usersReview} ){
     const handleClick = (e) => {
       e.preventDefault();
       setShowModal(true);
-      console.log(e);
+      // console.log(e);
     };
 
     if (!usersReview) {
