@@ -15,6 +15,8 @@ const MapContainer = ({center, business}) => {
     }
   }, [dispatch, key]);
 
+  console.log('maps container loading')
+
   if (!key) {
     return null;
   }
