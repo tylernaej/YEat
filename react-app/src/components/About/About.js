@@ -18,18 +18,19 @@ function About () {
                         <div id='profile-picture-wrapper'>
                             <img id='developer-profile-picture' src='https://avatars.githubusercontent.com/u/104233383?v=4' />
                         </div>
-                        <div>
-                            bio
+                        {/* change font color? */}
+                        <div id="bio">
+                            Hi I'm Connor and welcome to Y-eat! This project was created by my co-developers and I, and was intented to be a clone of Yelp. Besides my love for coding, I'm an avid lover of badminton and also enjoy playing video games with friends. If you would like to connect with me or checkout my other projects please check the links below.
                         </div>
                         <div>
-                            <div>Connect:</div>
+                            <div id="connect">Connect:</div>
                             <div id='developer-socials'>
                                 <a href="https://github.com/ConnorLam" target="_blank" rel="noreferrer noopener" id='github-logo'><i className="fa-brands fa-github fa-4x" /></a>
                                 <a href='https://www.linkedin.com/in/connor-lam-a6545a23b/' target="_blank" rel="noreferrer noopener" id='linkedin-logo'><i className="fa-brands fa-linkedin fa-4x" /></a>
                                 <a href='https://angel.co/u/connor-lam' target="_blank" rel="noreferrer noopener" id='angelList-logo'><i className="fa-brands fa-angellist fa-4x" /></a>
                             </div>
                         </div>
-                        <div>
+                        <div id="projects">
                             <div>Other Projects:</div>
                             <div id='projects-wrapper'>
                                 <div id='individual-project' ><a href='https://dropshotz.herokuapp.com/' target="_blank" rel="noreferrer noopener">DropShotz</a></div>
@@ -44,18 +45,18 @@ function About () {
                         <div id='profile-picture-wrapper'>
                             <img id='developer-profile-picture' src='https://media-exp1.licdn.com/dms/image/C5622AQE2ONk8C5o9hQ/feedshare-shrink_800/0/1666375144748?e=1669852800&v=beta&t=-Mh7n8h-ToxY0SMZx1azxcVL7aC7qdcs3IU56x4Pm9s' />
                         </div>
-                        <div>
+                        <div id="bio">
                             bio
                         </div>
                         <div>
-                            <div>Connect:</div>
+                            <div id="connect">Connect:</div>
                             <div id='developer-socials'>
                                 <a href='https://github.com/E-F-III' target="_blank" rel="noreferrer noopener" id='github-logo'><i className="fa-brands fa-github fa-4x" /></a>
                                 <a href='https://www.linkedin.com/in/efiii/' target="_blank" rel="noreferrer noopener" id='linkedin-logo'><i className="fa-brands fa-linkedin fa-4x" /></a>
                                 <a href='https://angel.co/u/e-f-iii' target="_blank" rel="noreferrer noopener" id='angelList-logo'><i className="fa-brands fa-angellist fa-4x" /></a>
                             </div>
                         </div>
-                        <div>
+                        <div id="projects">
                             <div>Other Projects:</div>
                             <div id='projects-wrapper'>
                                 <div id='individual-project' ><a href='https://leitner-scape.herokuapp.com/' target="_blank" rel="noreferrer noopener">Leitner-scape</a></div>
@@ -70,18 +71,18 @@ function About () {
                         <div id='profile-picture-wrapper'>
                             <img id='developer-profile-picture' src='https://avatars.githubusercontent.com/u/104518737?s=400&u=62e1ffcb888bfa1a9ed7a13e82058c2718962c73&v=4' />
                         </div>
-                        <div>
+                        <div id="bio">
                             bio
                         </div>
                         <div>
-                            <div>Connect:</div>
+                            <div id="connect">Connect:</div>
                             <div id='developer-socials'>
                                 <a href="https://github.com/tylernaej" target="_blank" rel="noreferrer noopener" id='github-logo'><i className="fa-brands fa-github fa-4x" /></a>
                                 <a href='https://www.linkedin.com/in/tyler-jean-1a934ba8/' target="_blank" rel="noreferrer noopener" id='linkedin-logo'><i className="fa-brands fa-linkedin fa-4x" /></a>
                                 <a href='https://angel.co/u/tyler-jean' target="_blank" rel="noreferrer noopener" id='angelList-logo'><i className="fa-brands fa-angellist fa-4x" /></a>
                             </div>
                         </div>
-                        <div>
+                        <div id="projects">
                             <div>Other Projects:</div>
                             <div id='projects-wrapper'>
                                 <div id='individual-project' ><a href='https://trello-tyler.herokuapp.com/home' target="_blank" rel="noreferrer noopener">Stratify</a></div>
