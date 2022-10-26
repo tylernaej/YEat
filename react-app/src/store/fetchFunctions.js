@@ -56,6 +56,7 @@ export const awsUpload = async payload => {
     }
 }
 
+
 // export const awsUploadImage = async payload => {
 //     console.log('payload in thunk', payload)
 //     const res = await fetch('/api/images', {
