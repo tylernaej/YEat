@@ -210,7 +210,7 @@ def get_reviews_by_business_id(id):
 
     images = Image.query.all()
     images_lst = [image.to_dict() for image in images]
-    print('\n\n\n', images_lst, '\n\n\n')
+    # print('\n\n\n', images_lst, '\n\n\n')
 
     users = User.query.all()
     users_lst = [user.to_dict() for user in users]
@@ -389,25 +389,25 @@ def add_categories_to_business(id):
     data = request.get_json()
     keys_list = data.keys()
 
-    print(f'\n\nThe categories on the business before clearing are: {business.categories}')
+    # print(f'\n\nThe categories on the business before clearing are: {business.categories}')
 
     business.categories.clear()
 
-    print(f'The categories on the business after clearing but before looping are: {business.categories}\n\n')
+    # print(f'The categories on the business after clearing but before looping are: {business.categories}\n\n')
 
     categories = Category.query.all()
 
-    print(f'\n\nThe incoming updates are: {keys_list}')
+    # print(f'\n\nThe incoming updates are: {keys_list}')
 
     for category in categories:
         # print(f'Checking to see if {category.category} is one of the categories in the incoming request...')
         for bizCategory in keys_list:
             if bizCategory.lower() == category.category.lower():
-                print(f'\n{category.category} is now being appended onto the business!')
+                # print(f'\n{category.category} is now being appended onto the business!')
                 business.categories.append(Category.query.get(category.id))
-                print(f'The new state of business.categories is: {business.categories}\n')
+                # print(f'The new state of business.categories is: {business.categories}\n')
 
-    print(f'\nThe state of: {business.categories} is about to be commited!\n\n')
+    # print(f'\nThe state of: {business.categories} is about to be commited!\n\n')
     db.session.commit()
     return business.to_dict_no_category()
 
@@ -417,7 +417,7 @@ def add_images_to_business(id):
     business = Business.query.get(id)
 
     # print('\n\n\n\n\n\n\n\n\n\n\n', 'LOOK OVER HERE', request.form)
-    print('\n\n\n\n\n\n\n\n\n\n\n', 'LOOK OVER HERE', request.get_json())
+    # print('\n\n\n\n\n\n\n\n\n\n\n', 'LOOK OVER HERE', request.get_json())
 
     if not business:
         return {"message": "Business could not be found", "statusCode": 404}, 404

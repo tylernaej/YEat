@@ -38,9 +38,9 @@ def edit_review(reviewId):
     # update the information
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('\n\n\n\n', form.errors, '\n\n\n\n')
+    # print('\n\n\n\n', form.errors, '\n\n\n\n')
     if form.validate_on_submit():
-        print('\n\n\n\n', 'TEST', '\n\n\n\n')
+        # print('\n\n\n\n', 'TEST', '\n\n\n\n')
         review.rating = form.rating.data
         review.review = form.review.data
 
@@ -83,7 +83,7 @@ def add_images_to_review(id):
     review = Review.query.get(id)
 
     # print('\n\n\n\n\n\n\n\n\n\n\n', 'LOOK OVER HERE', request.form)
-    print('\n\n\n\n\n\n\n\n\n\n\n', 'LOOK OVER HERE', request.get_json())
+    # print('\n\n\n\n\n\n\n\n\n\n\n', 'LOOK OVER HERE', request.get_json())
 
     if not review:
         return {"message": "Business could not be found", "statusCode": 404}, 404
@@ -92,7 +92,7 @@ def add_images_to_review(id):
         return {"message": "Forbidden", "statusCode": 403}, 403
 
     images = request.get_json()['images']
-    print('\n\n\n', images, '\n\n\n') 
+    # print('\n\n\n', images, '\n\n\n')
     for image in images:
         newImg = Image(
             url = image,
