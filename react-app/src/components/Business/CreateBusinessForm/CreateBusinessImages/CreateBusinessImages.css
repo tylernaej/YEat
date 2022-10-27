@@ -1,0 +1,78 @@
+#images-form-container{
+    display: flex;
+    flex-direction: column;
+    height: 230px;
+}
+
+#add-image{
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: rgb(210, 210, 210);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .3);
+    transition: 170ms ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+#add-image:hover{
+    background-color: rgb(190, 190, 190);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .3);
+    cursor: pointer;
+}
+
+.preview-images-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px;
+}
+
+.current-preview-image{
+    margin: 10px;
+    position: relative;
+}
+
+.preview-image{
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .3);
+}
+
+#images-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.file-select{
+    width: 450px;
+}
+
+#x-icon{
+    color: white;
+    font-size: 25px;
+}
+
+#x-icon-container{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .3);
+    border-radius: 50%;
+    transition: 170ms ease-in-out;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#x-icon-container:hover{
+    background-color: rgba(0, 0, 0, .8);
+    cursor: pointer;
+}

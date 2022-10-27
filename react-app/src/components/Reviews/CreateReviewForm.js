@@ -21,7 +21,6 @@ function ReviewForm() {
 
     const businessId = location.pathname.split('/')[2]
     // console.log(businessId)
-    // const business = useSelector((state) => console.log(state))
     const sessionUser = useSelector(state => state.session.user)
     const reviews = useSelector(state => state.reviews)
     const reviewsLst = Object.values(reviews)
