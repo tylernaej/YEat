@@ -50,6 +50,7 @@ function BizCard({ business }) {
                     width: "205px",
                   }}
                   alt=""
+                  loading="lazy"
                 />
                 {/* photo here */}
               </div>
@@ -102,7 +103,9 @@ function BizCard({ business }) {
                     <div style={{height: "205px", minWidth:"205px"}}>
                         <img
                         src={`${business.previewImage ? business.previewImage : "https://t4.ftcdn.net/jpg/04/70/29/97/240_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg"}`}
-                        style={{objectFit: "cover", height:"205px", width:"205px"}} alt=''/>
+                        style={{objectFit: "cover", height:"205px", width:"205px"}} alt=''
+                        loading="lazy"
+                        />
                         {/* photo here */}
                     </div>
                     <div className='biz-card-right-side'>
