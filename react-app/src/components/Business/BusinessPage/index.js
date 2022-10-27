@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Switch, Route, useParams, useRouteMatch, Redirect } from "react-router-dom";
 
 import { readBizThunk } from "../../../store/business";
+import { getBizImagesThunk } from "../../../store/business";
 
 //components
 import AboutInfo from "./AboutInfo";

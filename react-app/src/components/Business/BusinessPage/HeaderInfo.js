@@ -1,21 +1,19 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import React from "react";
 import './headerInfo.css'
 
-import defaultImage1 from "../../../assets/defaultBusinessImages/business_default1.jpg"
-import defaultImage2 from "../../../assets/defaultBusinessImages/business_default2.jpg"
-import defaultImage3 from "../../../assets/defaultBusinessImages/business_default3.jpg"
-import defaultImage4 from "../../../assets/defaultBusinessImages/business_default4.jpg"
-import defaultImage5 from "../../../assets/defaultBusinessImages/business_default5.jpg"
-import defaultImage6 from "../../../assets/defaultBusinessImages/business_default6.jpg"
-import defaultImage7 from "../../../assets/defaultBusinessImages/business_default7.jpg"
-import defaultImage8 from "../../../assets/defaultBusinessImages/business_default8.jpg"
-import defaultImage9 from "../../../assets/defaultBusinessImages/business_default9.jpg"
-import defaultImage10 from "../../../assets/defaultBusinessImages/business_default10.jpg"
+// import defaultImage1 from "../../../assets/defaultBusinessImages/business_default1.jpg"
+// import defaultImage2 from "../../../assets/defaultBusinessImages/business_default2.jpg"
+// import defaultImage3 from "../../../assets/defaultBusinessImages/business_default3.jpg"
+// import defaultImage4 from "../../../assets/defaultBusinessImages/business_default4.jpg"
+// import defaultImage5 from "../../../assets/defaultBusinessImages/business_default5.jpg"
+// import defaultImage6 from "../../../assets/defaultBusinessImages/business_default6.jpg"
+// import defaultImage7 from "../../../assets/defaultBusinessImages/business_default7.jpg"
+// import defaultImage8 from "../../../assets/defaultBusinessImages/business_default8.jpg"
+// import defaultImage9 from "../../../assets/defaultBusinessImages/business_default9.jpg"
+// import defaultImage10 from "../../../assets/defaultBusinessImages/business_default10.jpg"
 
-const defaultImages = [defaultImage1, defaultImage2, defaultImage3, defaultImage4, defaultImage5,
-    defaultImage6, defaultImage7, defaultImage8, defaultImage9, defaultImage10]
+// const defaultImages = [defaultImage1, defaultImage2, defaultImage3, defaultImage4, defaultImage5,
+//     defaultImage6, defaultImage7, defaultImage8, defaultImage9, defaultImage10]
 
 // helper functions
 
@@ -27,17 +25,17 @@ function dollarsigns(range) {
     return signs
 }
 
-function photoInHeader(business) {
-    if (business.images?.length === 0) {
-        return 'No photos available'
-    }
-    else if (business.images?.length === 1) {
-        return `See ${business.images?.length} photo`;
-    }
-    else {
-        return `See ${business.images?.length} photos`;
-    }
-}
+// function photoInHeader(business) {
+//     if (business.images?.length === 0) {
+//         return 'No photos available'
+//     }
+//     else if (business.images?.length === 1) {
+//         return `See ${business.images?.length} photo`;
+//     }
+//     else {
+//         return `See ${business.images?.length} photos`;
+//     }
+// }
 
 function reviewInHeader(reviews) {
 
@@ -57,7 +55,7 @@ function reviewInHeader(reviews) {
 
 function HeaderInfo({ business, reviewsList, bizCategories }) {
 
-    const bizDefaultImg = defaultImages[business.id % defaultImages.length]
+    // const bizDefaultImg = defaultImages[business.id % defaultImages.length]
 
     const categoriesList = []
     business.categories.map(category => {
@@ -65,7 +63,7 @@ function HeaderInfo({ business, reviewsList, bizCategories }) {
     })
 
     const price = dollarsigns(business.priceRange)
-    const photoCount = photoInHeader(business)
+    // const photoCount = photoInHeader(business)
     const reviewsCount = reviewInHeader(reviewsList)
 
     const numratings1 = reviewsList.filter(review => review.rating === 1).length
@@ -100,7 +98,7 @@ function HeaderInfo({ business, reviewsList, bizCategories }) {
 
                         <img
                             className="business-image"
-                            src={`${bizDefaultImg}`} />
+                            src={business.images[0]?.url || "https://t4.ftcdn.net/jpg/04/70/29/97/240_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg"} />
 
                     </div>
                 </div>
