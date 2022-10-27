@@ -12,7 +12,7 @@ function ReviewCard({ review }) {
     const sessionUser = useSelector(state => state.session.user)
     const images = useSelector(state => state.reviews)
     // console.log(images)
-    console.log(review)
+    // console.log(review)
 
     return (
         <div className="border-top-black-2px verticalMargin15 padding10">

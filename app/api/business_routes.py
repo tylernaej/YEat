@@ -77,6 +77,11 @@ def get_all_businesses():
         dict_business['categories'] = category_lst
         biz_lst.append(dict_business)
 
+        if len(business.images) > 0:
+            dict_business["previewImage"] = business.images[0].to_dict()["url"]
+        else:
+            dict_business["previewImage"] = ""
+
     return {'businesses': [business for business in biz_lst]}
 
 @business_routes.route('/current')
@@ -205,7 +210,7 @@ def get_reviews_by_business_id(id):
 
     images = Image.query.all()
     images_lst = [image.to_dict() for image in images]
-    print('\n\n\n', images_lst, '\n\n\n') 
+    print('\n\n\n', images_lst, '\n\n\n')
 
     users = User.query.all()
     users_lst = [user.to_dict() for user in users]
@@ -229,8 +234,6 @@ def get_reviews_by_business_id(id):
                 dict_review['reviewer'] = owner
         reviews_lst.append(dict_review)
 
-    print(reviews_lst)
-
     return {'Reviews': reviews_lst}
 
 
@@ -246,6 +249,13 @@ def get_amenities_by_business_id(id):
         amenities_lst.append(amenity.description)
 
     return {'amenities': amenities_lst}
+
+@business_routes.route('/<int:id>/images')
+def get_iamges_by_business_id(id):
+
+    business = Business.query.get(id)
+
+    return {'images': [image.to_dict() for image in business.images] }
 
 
 @business_routes.route('', methods=['POST'])

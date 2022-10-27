@@ -36,7 +36,7 @@ function DropDownBizInfo({business, setUserInput, userInput}){
     }
 
     if('endcard' in business && !endcard){
-        console.log(business.endcard)
+        // console.log(business.endcard)
         setEndCard(true)
     }
 

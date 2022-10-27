@@ -19,10 +19,10 @@ function DeleteReviewButton({setValidationErrors, usersReview, setShowModal}){
 
       if (data.statusCode > 200) {
         setValidationErrors([data.message]);
-        console.log('have an error')
+        // console.log('have an error')
         return;
       }
-      console.log('successfully deleted')
+      // console.log('successfully deleted')
 
       history.push(`/businesses/${usersReview.businessId}/reviews`);
     };
