@@ -54,7 +54,7 @@ function BizPage() {
     // console.log(bizCategories)
     // console.log(bizAmenities)
 
-    if (!business) {
+    if (!business && isLoaded) {
         return <h1>404 Business not found</h1>
         // <Redirect to={'/'}/>
     }
