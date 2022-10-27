@@ -77,6 +77,8 @@ def get_all_businesses():
         dict_business['categories'] = category_lst
         biz_lst.append(dict_business)
 
+        dict_business["previewImage"] = business.images[0].to_dict()["url"]
+
     return {'businesses': [business for business in biz_lst]}
 
 @business_routes.route('/current')
@@ -205,7 +207,7 @@ def get_reviews_by_business_id(id):
 
     images = Image.query.all()
     images_lst = [image.to_dict() for image in images]
-    print('\n\n\n', images_lst, '\n\n\n') 
+    print('\n\n\n', images_lst, '\n\n\n')
 
     users = User.query.all()
     users_lst = [user.to_dict() for user in users]
