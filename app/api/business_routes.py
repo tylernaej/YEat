@@ -77,7 +77,10 @@ def get_all_businesses():
         dict_business['categories'] = category_lst
         biz_lst.append(dict_business)
 
-        dict_business["previewImage"] = business.images[0].to_dict()["url"]
+        if len(business.images) > 0:
+            dict_business["previewImage"] = business.images[0].to_dict()["url"]
+        else:
+            dict_business["previewImage"] = ""
 
     return {'businesses': [business for business in biz_lst]}
 
