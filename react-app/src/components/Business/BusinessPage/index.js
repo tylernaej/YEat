@@ -16,6 +16,7 @@ import UpdateBizForm from "../UpdateBusinessForm";
 import BizNavBar from "./BusinessNavBar";
 import ReviewForm from "../../Reviews/CreateReviewForm";
 import UpdateReviewForm from "../../Reviews/UpdateReviewForm";
+import BusinessImages from "./BusinessImages";
 
 import './businesspage.css'
 import { getBizReviewThunk } from "../../../store/reviews";
@@ -48,6 +49,7 @@ function BizPage() {
             })
             .then((data) => setBizCategories(data.categories || []))
             .then(() => dispatch(getBizReviewThunk(businessId)))
+            .then(() => dispatch(getBizImagesThunk(businessId)))
             .then(() => setIsLoaded(true))
     }, [dispatch])
 
@@ -82,9 +84,9 @@ function BizPage() {
                                     <ReviewsList reviewsList={reviewsList} />
                                 </div>
                             </Route>
-                            {/* <Route path={`${url}/photos`}>
-                                Photo feature not implemented yet
-                            </Route> */}
+                            <Route path={`${url}/images`}>
+                                <BusinessImages business={business} />
+                            </Route>
                             <Route path={`${url}/edit`}>
                                 <UpdateBizForm
                                     business={business}
