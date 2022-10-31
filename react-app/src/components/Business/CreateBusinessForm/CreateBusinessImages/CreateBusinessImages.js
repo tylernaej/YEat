@@ -162,7 +162,7 @@ function SetBusinessImages() {
                     />
                     <div>
                         <button onClick={handleBack} id='submit-button'>Go Back</button>
-                        <button type="submit" id='submit-button'>submit</button>
+                        <button type="submit" id='submit-button'>Submit</button>
                     </div>
                 </form>
             </div>
