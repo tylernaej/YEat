@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Switch, Route, useParams, useRouteMatch, Redirect } from "react-router-dom";
 
 import { readBizThunk } from "../../../store/business";
+import { getBizImagesThunk } from "../../../store/business";
 
 //components
 import AboutInfo from "./AboutInfo";
@@ -15,6 +16,7 @@ import UpdateBizForm from "../UpdateBusinessForm";
 import BizNavBar from "./BusinessNavBar";
 import ReviewForm from "../../Reviews/CreateReviewForm";
 import UpdateReviewForm from "../../Reviews/UpdateReviewForm";
+import BusinessImages from "./BusinessImages";
 
 import './businesspage.css'
 import { getBizReviewThunk } from "../../../store/reviews";
@@ -47,13 +49,14 @@ function BizPage() {
             })
             .then((data) => setBizCategories(data.categories || []))
             .then(() => dispatch(getBizReviewThunk(businessId)))
+            .then(() => dispatch(getBizImagesThunk(businessId)))
             .then(() => setIsLoaded(true))
     }, [dispatch])
 
     // console.log(bizCategories)
     // console.log(bizAmenities)
 
-    if (!business) {
+    if (!business && isLoaded) {
         return <h1>404 Business not found</h1>
         // <Redirect to={'/'}/>
     }
@@ -81,9 +84,9 @@ function BizPage() {
                                     <ReviewsList reviewsList={reviewsList} />
                                 </div>
                             </Route>
-                            {/* <Route path={`${url}/photos`}>
-                                Photo feature not implemented yet
-                            </Route> */}
+                            <Route path={`${url}/images`}>
+                                <BusinessImages business={business} />
+                            </Route>
                             <Route path={`${url}/edit`}>
                                 <UpdateBizForm
                                     business={business}

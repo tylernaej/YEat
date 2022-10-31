@@ -8,6 +8,8 @@ const READ_BIZ = "biz/read-biz"
 const UPDATE_BIZ = "biz/update-biz"
 const DELETE_BIZ = "biz/delete-biz"
 
+const BIZ_IMAGES = 'biz/get-images'
+
 // Action Creators
 
 const getBizAction = payload => {
@@ -48,6 +50,13 @@ const updateBizAction = payload => {
 const deleteBizAction = payload => {
     return {
         type: DELETE_BIZ,
+        payload
+    }
+}
+
+const getBizImagesAction = payload => {
+    return {
+        type: BIZ_IMAGES,
         payload
     }
 }
@@ -138,7 +147,21 @@ export const deleteBizThunk = (businessId) => async dispatch => {
     if(response.ok){
         await dispatch(deleteBizAction(businessId))
     }
-    
+
+    return data
+}
+
+export const getBizImagesThunk = (businessId) => async dispatch => {
+    const response = await fetch(
+        `/api/businesses/${businessId}/images`,
+    )
+
+    const data = await response.json()
+
+    if(response.ok){
+        await dispatch(getBizImagesAction({data, businessId}))
+    }
+
     return data
 }
 
@@ -175,6 +198,10 @@ const businessReducer = (state = intitialState, action) => {
         }
         case (DELETE_BIZ): {
             delete newState[action.payload]
+            return newState
+        }
+        case (BIZ_IMAGES): {
+            newState[action.payload.businessId] = { ...newState[action.payload.businessId], images: action.payload.data.images }
             return newState
         }
         default: {
