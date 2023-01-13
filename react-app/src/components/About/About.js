@@ -73,7 +73,7 @@ function About () {
                             Tyler Jean
                         </div>
                         <div id='profile-picture-wrapper'>
-                            <img id='developer-profile-picture' src='https://avatars.githubusercontent.com/u/104518737?s=400&u=62e1ffcb888bfa1a9ed7a13e82058c2718962c73&v=4' />
+                            <img id='developer-profile-picture' src={t_jean} />
                         </div>
                         <div id="bio">
                             A resident of New Hampshire, Tyler Jean grew up spending much of his time outdoors – Hiking, kayaking, rock-climbing, and long-distance running; all still passions of his to this day. In his adult life, he has worked in leadership positions for a major US airline in several locations across the country. He has a passion for problem-solving, strategy games, and philosophy.
