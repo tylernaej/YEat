@@ -1,6 +1,10 @@
 import React from "react";
 import './About.css'
 
+import c_lam from '../../assets/dev_images/c_lam.jpg'
+import e_felipe from '../../assets/dev_images/e_felipe.jpg'
+import t_jean from '../../assets/dev_images/t_jean.jpg'
+
 function About () {
 
 
@@ -43,7 +47,7 @@ function About () {
                             Edward Felipe III
                         </div>
                         <div id='profile-picture-wrapper'>
-                            <img id='developer-profile-picture' src='https://media-exp1.licdn.com/dms/image/C5622AQE2ONk8C5o9hQ/feedshare-shrink_800/0/1666375144748?e=1669852800&v=beta&t=-Mh7n8h-ToxY0SMZx1azxcVL7aC7qdcs3IU56x4Pm9s' />
+                            <img id='developer-profile-picture' src={e_felipe} />
                         </div>
                         <div id="bio">
                             Hello there! My name is Edward, and my friends call me Ed. I hope you enjoyed checking out our Yelp clone as much as I enjoyed working with my awesome team! Outside of coding and playing video games in front of my computer, I like to spend time at the beaches and occassionaly hike some of the trails here in Hawaii. Click the links below to check out my projects and/or connect!
@@ -72,7 +76,7 @@ function About () {
                             <img id='developer-profile-picture' src='https://avatars.githubusercontent.com/u/104518737?s=400&u=62e1ffcb888bfa1a9ed7a13e82058c2718962c73&v=4' />
                         </div>
                         <div id="bio">
-                            A resident of New Hampshire, Tyler Jean grew up spending much of his time outdoors – Hiking, kayaking, rock-climbing, and long-distance running; all still passions of his to this day. In his adult life, he has worked in leadership positions for a major US airline in several locations across the country. He has a passion for problem-solving, strategy games, and philosophy. 
+                            A resident of New Hampshire, Tyler Jean grew up spending much of his time outdoors – Hiking, kayaking, rock-climbing, and long-distance running; all still passions of his to this day. In his adult life, he has worked in leadership positions for a major US airline in several locations across the country. He has a passion for problem-solving, strategy games, and philosophy.
                         </div>
                         <div>
                             <div id="connect">Connect:</div>
