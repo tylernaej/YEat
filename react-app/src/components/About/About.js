@@ -38,7 +38,7 @@ function About () {
                             <div>Other Projects:</div>
                             <div id='projects-wrapper'>
                                 <div id='individual-project' ><a href='https://dropshotz.herokuapp.com/' target="_blank" rel="noreferrer noopener">DropShotz</a></div>
-                                <div id='individual-project' ><a href='https://airbnb-clone-connor-lam.herokuapp.com/' target="_blank" rel="noreferrer noopener">FakeBnb</a></div>
+                                <div id='individual-project' ><a href='https://fake-bnb.onrender.com/' target="_blank" rel="noreferrer noopener">FakeBnb</a></div>
                             </div>
                         </div>
                     </div>
