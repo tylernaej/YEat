@@ -20,7 +20,7 @@ function About () {
                             Connor Lam
                         </div>
                         <div id='profile-picture-wrapper'>
-                            <img id='developer-profile-picture' src='https://avatars.githubusercontent.com/u/104233383?v=4' />
+                            <img id='developer-profile-picture' src={c_lam} />
                         </div>
                         {/* change font color? */}
                         <div id="bio">
